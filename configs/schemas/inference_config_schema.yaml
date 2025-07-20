@@ -1,0 +1,216 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+title: "Inference Configuration Schema"
+description: "Schema for validating inference configuration parameters"
+type: object
+required:
+  - inference
+  - monitoring
+properties:
+  inference:
+    type: object
+    required:
+      - model_types
+      - real_time_simulation
+      - thresholds
+      - output
+    properties:
+      model_types:
+        type: array
+        items:
+          type: string
+          enum: ["baseline", "lstm", "ensemble"]
+        minItems: 1
+        description: "List of model types to use for inference"
+      
+      real_time_simulation:
+        type: object
+        required:
+          - playback_speed_multiplier
+          - update_interval_seconds
+          - buffer_size_seconds
+        properties:
+          playback_speed_multiplier:
+            type: number
+            minimum: 0.1
+            maximum: 1000
+            description: "Speed multiplier for real-time simulation"
+          
+          update_interval_seconds:
+            type: integer
+            minimum: 1
+            maximum: 3600
+            description: "Interval between prediction updates in seconds"
+          
+          buffer_size_seconds:
+            type: integer
+            minimum: 10
+            maximum: 3600
+            description: "Size of data buffer in seconds"
+          
+          max_latency_ms:
+            type: integer
+            minimum: 1
+            maximum: 10000
+            description: "Maximum allowed latency in milliseconds"
+      
+      thresholds:
+        type: object
+        required:
+          - defect_probability
+          - high_risk_threshold
+          - alert_threshold
+        properties:
+          defect_probability:
+            type: number
+            minimum: 0.0
+            maximum: 1.0
+            description: "Threshold for defect classification"
+          
+          high_risk_threshold:
+            type: number
+            minimum: 0.0
+            maximum: 1.0
+            description: "Threshold for high risk classification"
+          
+          alert_threshold:
+            type: number
+            minimum: 0.0
+            maximum: 1.0
+            description: "Threshold for triggering alerts"
+          
+          confidence_threshold:
+            type: number
+            minimum: 0.0
+            maximum: 1.0
+            description: "Minimum confidence threshold for predictions"
+        additionalProperties: false
+      
+      output:
+        type: object
+        required:
+          - log_predictions
+          - save_trajectories
+          - dashboard_enabled
+        properties:
+          log_predictions:
+            type: boolean
+            description: "Enable prediction logging"
+          
+          save_trajectories:
+            type: boolean
+            description: "Save prediction trajectories"
+          
+          dashboard_enabled:
+            type: boolean
+            description: "Enable real-time dashboard"
+          
+          dashboard_port:
+            type: integer
+            minimum: 1024
+            maximum: 65535
+            description: "Port for dashboard server"
+          
+          prediction_format:
+            type: string
+            enum: ["json", "csv", "parquet"]
+            description: "Format for saved predictions"
+          
+          max_log_size_mb:
+            type: integer
+            minimum: 1
+            maximum: 1000
+            description: "Maximum log file size in MB"
+      
+      preprocessing:
+        type: object
+        properties:
+          outlier_detection:
+            type: boolean
+            description: "Enable outlier detection"
+          
+          outlier_threshold:
+            type: number
+            minimum: 1.0
+            maximum: 10.0
+            description: "Z-score threshold for outlier detection"
+          
+          smoothing_window:
+            type: integer
+            minimum: 1
+            maximum: 100
+            description: "Window size for data smoothing"
+          
+          interpolation_method:
+            type: string
+            enum: ["linear", "cubic", "nearest", "none"]
+            description: "Method for handling missing values"
+  
+  monitoring:
+    type: object
+    required:
+      - metrics_logging
+      - performance_tracking
+      - data_drift_detection
+    properties:
+      metrics_logging:
+        type: boolean
+        description: "Enable metrics logging"
+      
+      performance_tracking:
+        type: boolean
+        description: "Enable performance tracking"
+      
+      data_drift_detection:
+        type: boolean
+        description: "Enable data drift detection"
+      
+      drift_detection_method:
+        type: string
+        enum: ["statistical", "psi", "ks_test", "wasserstein"]
+        description: "Method for drift detection"
+      
+      drift_threshold:
+        type: number
+        minimum: 0.01
+        maximum: 1.0
+        description: "Threshold for drift detection"
+      
+      drift_window_size:
+        type: integer
+        minimum: 100
+        maximum: 10000
+        description: "Window size for drift detection"
+      
+      alert_on_drift:
+        type: boolean
+        description: "Send alerts when drift is detected"
+      
+      model_performance_threshold:
+        type: number
+        minimum: 0.0
+        maximum: 1.0
+        description: "Minimum acceptable model performance"
+      
+      retraining_trigger:
+        type: object
+        properties:
+          performance_degradation:
+            type: boolean
+            description: "Trigger retraining on performance degradation"
+          
+          data_drift:
+            type: boolean
+            description: "Trigger retraining on data drift"
+          
+          schedule_based:
+            type: boolean
+            description: "Schedule-based retraining"
+          
+          schedule_days:
+            type: integer
+            minimum: 1
+            maximum: 365
+            description: "Days between scheduled retraining"
+
+# Additional validation
+additionalProperties: false

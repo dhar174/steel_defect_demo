@@ -1,0 +1,260 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+title: "Data Generation Configuration Schema"
+description: "Schema for validating data generation configuration parameters"
+type: object
+required:
+  - data_generation
+properties:
+  data_generation:
+    type: object
+    required:
+      - num_casts
+      - cast_duration_minutes
+      - sampling_rate_hz
+      - random_seed
+      - sensors
+      - defect_simulation
+      - output
+    properties:
+      num_casts:
+        type: integer
+        minimum: 1
+        maximum: 10000
+        description: "Number of casting sequences to generate"
+      
+      cast_duration_minutes:
+        type: integer
+        minimum: 1
+        maximum: 1440
+        description: "Duration of each cast in minutes"
+      
+      sampling_rate_hz:
+        type: number
+        minimum: 0.1
+        maximum: 10
+        description: "Data sampling rate in Hz"
+      
+      random_seed:
+        type: integer
+        minimum: 0
+        description: "Random seed for reproducibility"
+      
+      sensors:
+        type: object
+        required:
+          - casting_speed
+          - mold_temperature
+          - mold_level
+          - cooling_water_flow
+          - superheat
+          - mold_level_normal_range
+        properties:
+          casting_speed:
+            type: object
+            required: [base_value, noise_std, min_value, max_value]
+            properties:
+              base_value:
+                type: number
+                minimum: 0.1
+                maximum: 5.0
+                description: "Base casting speed in m/min"
+              noise_std:
+                type: number
+                minimum: 0
+                maximum: 1.0
+                description: "Standard deviation of noise"
+              min_value:
+                type: number
+                minimum: 0.1
+                maximum: 10.0
+                description: "Minimum allowed value"
+              max_value:
+                type: number
+                minimum: 0.1
+                maximum: 10.0
+                description: "Maximum allowed value"
+          
+          mold_temperature:
+            type: object
+            required: [base_value, noise_std, min_value, max_value]
+            properties:
+              base_value:
+                type: number
+                minimum: 1000
+                maximum: 2000
+                description: "Base mold temperature in Celsius"
+              noise_std:
+                type: number
+                minimum: 0
+                maximum: 100
+                description: "Standard deviation of noise"
+              min_value:
+                type: number
+                minimum: 1000
+                maximum: 2000
+                description: "Minimum allowed value"
+              max_value:
+                type: number
+                minimum: 1000
+                maximum: 2000
+                description: "Maximum allowed value"
+          
+          mold_level:
+            type: object
+            required: [base_value, noise_std, min_value, max_value]
+            properties:
+              base_value:
+                type: number
+                minimum: 50
+                maximum: 300
+                description: "Base mold level in mm"
+              noise_std:
+                type: number
+                minimum: 0
+                maximum: 50
+                description: "Standard deviation of noise"
+              min_value:
+                type: number
+                minimum: 50
+                maximum: 300
+                description: "Minimum allowed value"
+              max_value:
+                type: number
+                minimum: 50
+                maximum: 300
+                description: "Maximum allowed value"
+          
+          cooling_water_flow:
+            type: object
+            required: [base_value, noise_std, min_value, max_value]
+            properties:
+              base_value:
+                type: number
+                minimum: 50
+                maximum: 500
+                description: "Base cooling water flow in L/min"
+              noise_std:
+                type: number
+                minimum: 0
+                maximum: 100
+                description: "Standard deviation of noise"
+              min_value:
+                type: number
+                minimum: 50
+                maximum: 500
+                description: "Minimum allowed value"
+              max_value:
+                type: number
+                minimum: 50
+                maximum: 500
+                description: "Maximum allowed value"
+          
+          superheat:
+            type: object
+            required: [base_value, noise_std, min_value, max_value]
+            properties:
+              base_value:
+                type: number
+                minimum: 5
+                maximum: 100
+                description: "Base superheat above liquidus in Celsius"
+              noise_std:
+                type: number
+                minimum: 0
+                maximum: 20
+                description: "Standard deviation of noise"
+              min_value:
+                type: number
+                minimum: 5
+                maximum: 100
+                description: "Minimum allowed value"
+              max_value:
+                type: number
+                minimum: 5
+                maximum: 100
+                description: "Maximum allowed value"
+          
+          mold_level_normal_range:
+            type: array
+            items:
+              type: number
+              minimum: 50
+              maximum: 300
+            minItems: 2
+            maxItems: 2
+            description: "Normal operating range for mold level [min, max] in mm"
+      
+      defect_simulation:
+        type: object
+        required:
+          - defect_probability
+          - max_defect_probability
+          - trigger_probability_factor
+          - defect_triggers
+        properties:
+          defect_probability:
+            type: number
+            minimum: 0.0
+            maximum: 1.0
+            description: "Probability of defect occurrence (0-1)"
+          
+          max_defect_probability:
+            type: number
+            minimum: 0.0
+            maximum: 1.0
+            description: "Maximum defect probability when triggers are present"
+          
+          trigger_probability_factor:
+            type: number
+            minimum: 0.0
+            maximum: 1.0
+            description: "Factor for calculating defect probability based on triggers"
+          
+          defect_triggers:
+            type: object
+            required:
+              - prolonged_mold_level_deviation
+              - rapid_temperature_drop
+              - high_speed_with_low_superheat
+            properties:
+              prolonged_mold_level_deviation:
+                type: integer
+                minimum: 1
+                maximum: 300
+                description: "Duration in seconds for mold level deviation trigger"
+              
+              rapid_temperature_drop:
+                type: number
+                minimum: 1
+                maximum: 200
+                description: "Temperature drop in Celsius for rapid drop trigger"
+              
+              high_speed_with_low_superheat:
+                type: boolean
+                description: "Enable high speed with low superheat trigger"
+      
+      output:
+        type: object
+        required:
+          - raw_data_format
+          - metadata_format
+          - train_test_split
+        properties:
+          raw_data_format:
+            type: string
+            enum: ["parquet", "csv", "hdf5"]
+            description: "Format for raw data files"
+          
+          metadata_format:
+            type: string
+            enum: ["json", "yaml"]
+            description: "Format for metadata files"
+          
+          train_test_split:
+            type: number
+            minimum: 0.1
+            maximum: 0.9
+            description: "Fraction of data for training (0.1-0.9)"
+
+# Additional validation rules
+additionalProperties: false

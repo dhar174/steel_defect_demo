@@ -35,9 +35,14 @@ data_generation:
       min_value: 15
       max_value: 40
 
+    # Normal operating ranges for defect detection
+    mold_level_normal_range: [130, 170]  # mm - normal operating range for mold level
+
   
   defect_simulation:
     defect_probability: 0.15
+    max_defect_probability: 0.8
+    trigger_probability_factor: 0.2
     defect_triggers:
       prolonged_mold_level_deviation: 30  # seconds
       rapid_temperature_drop: 50  # Celsius in 60 seconds
