@@ -1,10 +1,6 @@
 #!/usr/bin/env python3
 """Comprehensive model evaluation script"""
 
-import sys
-from pathlib import Path
-sys.path.append(str(Path(__file__).parent.parent / 'src'))
-
 from models.model_evaluator import ModelEvaluator
 from models.baseline_model import BaselineXGBoostModel
 from models.lstm_model import SteelDefectLSTM
