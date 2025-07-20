@@ -32,10 +32,10 @@ class SteelDefectLSTM(nn.Module):
         )
         
         self.classifier = nn.Sequential(
-            nn.Linear(hidden_size, hidden_size // 2),
+            nn.Linear(hidden_size, max(1, hidden_size // 2)),
             nn.ReLU(),
             nn.Dropout(dropout),
-            nn.Linear(hidden_size // 2, 1),
+            nn.Linear(max(1, hidden_size // 2), 1),
             nn.Sigmoid()
         )
     
