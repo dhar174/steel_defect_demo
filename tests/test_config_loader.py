@@ -7,13 +7,8 @@ import json
 from pathlib import Path
 from unittest.mock import patch
 
-# Add src to Python path
-import sys
-sys.path.append(str(Path(__file__).parent.parent / 'src'))
-
-from utils.config_loader import ConfigLoader, ConfigValidationError
-
-
+# Import ConfigLoader and ConfigValidationError from utils
+from src.utils.config_loader import ConfigLoader, ConfigValidationError
 class TestConfigLoader(unittest.TestCase):
     """Test cases for ConfigLoader"""
     
