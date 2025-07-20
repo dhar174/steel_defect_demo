@@ -122,7 +122,7 @@ class SteelCastingDataGenerator:
         has_defect = False
         if triggers:
             # Higher probability if triggers are present
-            defect_prob = min(0.8, len(triggers) * 0.3)
+            defect_prob = min(self.defect_config['max_defect_probability'], len(triggers) * self.defect_config['trigger_probability_factor'])
         else:
             # Base defect probability
             defect_prob = self.defect_config['defect_probability']
