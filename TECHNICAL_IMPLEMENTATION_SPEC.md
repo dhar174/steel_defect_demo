@@ -358,8 +358,25 @@ class SteelCastingDataGenerator:
         return time_series_data, metadata
     
     def generate_dataset(self) -> None:
-        """Generate complete synthetic dataset"""
-        # Implementation details for full dataset generation
+        """
+        Generate a complete synthetic dataset for steel casting processes.
+        
+        This method is intended to create a dataset containing synthetic time-series data
+        for multiple steel casting sequences. The dataset will be generated based on the
+        configuration parameters provided during the initialization of the class.
+        
+        Workflow:
+        - Iterate over a predefined number of casting sequences.
+        - For each sequence, call the `generate_cast_sequence` method to generate time-series data.
+        - Aggregate the data into a single dataset.
+        - Save the dataset to a file or return it as a DataFrame.
+        
+        Expected Outputs:
+        - A complete synthetic dataset in the form of a Pandas DataFrame or saved to a file.
+        
+        Note:
+        This method is currently a placeholder and requires implementation.
+        """
         pass
 ```
 
