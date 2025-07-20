@@ -10,12 +10,8 @@ import sys
 import os
 from pathlib import Path
 
-# Add src to Python path
-sys.path.append(str(Path(__file__).parent.parent / 'src'))
-
-from utils.config_loader import ConfigLoader, ConfigValidationError
-
-
+# Import configuration loader from src package
+from src.utils.config_loader import ConfigLoader, ConfigValidationError
 def main():
     """Demonstrate configuration system usage"""
     
