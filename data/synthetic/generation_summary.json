@@ -1,0 +1,8 @@
+{
+  "total_casts_generated": 1200,
+  "defect_rate_achieved": 0.26166666666666666,
+  "target_defect_rate": 0.15,
+  "train_test_split": 0.8,
+  "output_format": "parquet",
+  "generation_completed_at": "2025-07-20T22:50:35.469634"
+}

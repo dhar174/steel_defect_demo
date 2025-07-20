@@ -1,0 +1,12 @@
+# Data Processing
+pandas>=1.5.0
+numpy>=1.23.0
+pyarrow>=10.0.0
+pyyaml>=6.0
+
+# Scientific Computing
+scipy>=1.9.0
+
+# Utilities
+pathlib
+typing-extensions
