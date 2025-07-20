@@ -36,7 +36,7 @@ class SteelDefectLSTM(nn.Module):
             nn.ReLU(),
             nn.Dropout(dropout),
             nn.Linear(max(1, hidden_size // 2), 1),
-            nn.Sigmoid()
+            # nn.Sigmoid()
         )
     
     def forward(self, x):
