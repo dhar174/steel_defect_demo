@@ -84,7 +84,7 @@ class SteelCastingDataGenerator:
         triggers = []
         
         # 1. Prolonged mold level deviation (>30 seconds outside normal range)
-        mold_level_normal_range = (135, 165)  # ±15mm from base 150mm
+        mold_level_normal_range = self.sensor_config['mold_level_normal_range']  # Configurable range
         outside_range = (df['mold_level'] < mold_level_normal_range[0]) | (df['mold_level'] > mold_level_normal_range[1])
         
         # Find consecutive periods outside range
