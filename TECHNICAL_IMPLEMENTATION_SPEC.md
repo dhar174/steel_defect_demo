@@ -328,9 +328,34 @@ class SteelCastingDataGenerator:
         )
     
     def generate_cast_sequence(self, cast_id: str) -> Tuple[pd.DataFrame, Dict]:
-        """Generate time series data for a single cast"""
-        # Implementation details for synthetic data generation
-        pass
+        """
+        Generate time series data for a single cast.
+        
+        Parameters:
+            cast_id (str): Unique identifier for the cast.
+        
+        Returns:
+            Tuple[pd.DataFrame, Dict]: A tuple containing:
+                - pd.DataFrame: Time series data for the cast.
+                - Dict: Metadata associated with the cast.
+        
+        Implementation Overview:
+            This method generates synthetic time series data for a steel casting process
+            based on the configuration provided during initialization. The data includes
+            process parameters (e.g., temperature, pressure) and timestamps.
+        """
+        # Placeholder implementation
+        num_samples = self.config['data_generation']['num_samples']
+        time_series_data = pd.DataFrame({
+            'timestamp': pd.date_range(start='2023-01-01', periods=num_samples, freq='T'),
+            'temperature': self.random_state.uniform(1500, 1600, num_samples),
+            'pressure': self.random_state.uniform(100, 200, num_samples),
+        })
+        metadata = {
+            'cast_id': cast_id,
+            'generated_at': pd.Timestamp.now(),
+        }
+        return time_series_data, metadata
     
     def generate_dataset(self) -> None:
         """Generate complete synthetic dataset"""
