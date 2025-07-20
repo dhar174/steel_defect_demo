@@ -1122,7 +1122,7 @@ class SystemMonitor:
 
 ### Week 1: Foundation
 - [x] Environment setup and project structure
-- [x] Configuration management implementation
+- [ ] Configuration management implementation
 - [ ] Synthetic data generator implementation
 - [ ] Basic unit tests
 
