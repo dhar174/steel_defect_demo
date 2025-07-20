@@ -1,0 +1,25 @@
+inference:
+  model_types:
+    - "baseline"
+    - "lstm"
+  
+  real_time_simulation:
+    playback_speed_multiplier: 10  # 10x real time
+    update_interval_seconds: 30
+    buffer_size_seconds: 300
+    
+  thresholds:
+    defect_probability: 0.5
+    high_risk_threshold: 0.7
+    alert_threshold: 0.8
+    
+  output:
+    log_predictions: true
+    save_trajectories: true
+    dashboard_enabled: true
+    dashboard_port: 8050
+
+monitoring:
+  metrics_logging: true
+  performance_tracking: true
+  data_drift_detection: true

@@ -1,0 +1,52 @@
+# Data Processing
+pandas>=1.5.0
+numpy>=1.23.0
+scipy>=1.9.0
+scikit-learn>=1.1.0
+
+# Machine Learning
+xgboost>=1.7.0
+lightgbm>=3.3.0
+torch>=1.13.0
+torchvision>=0.14.0
+
+# Data Storage and Serialization
+pyarrow>=10.0.0
+joblib>=1.2.0
+pickle5>=0.0.11
+
+# Visualization and Dashboard
+plotly>=5.11.0
+dash>=2.7.0
+matplotlib>=3.6.0
+seaborn>=0.12.0
+
+# Configuration Management
+pyyaml>=6.0
+hydra-core>=1.2.0
+
+# Utilities
+tqdm>=4.64.0
+python-dateutil>=2.8.0
+pathlib>=1.0.0
+
+# Development and Testing
+pytest>=7.2.0
+pytest-cov>=4.0.0
+black>=22.10.0
+flake8>=5.0.0
+mypy>=0.991
+
+# Monitoring and Logging
+wandb>=0.13.0  # Optional for experiment tracking
+tensorboard>=2.11.0  # Optional for training visualization
+
+# API and Serving
+fastapi>=0.88.0
+uvicorn>=0.20.0
+pydantic>=1.10.0
+
+# Industrial Connectivity (for future production)
+opcua>=0.98.13
+paho-mqtt>=1.6.0
+kafka-python>=2.0.0
