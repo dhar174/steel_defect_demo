@@ -1,125 +1,159 @@
-#!/usr/bin/env python3
-"""Run real-time inference demonstration"""
-
-import sys
-from pathlib import Path
-sys.path.append(str(Path(__file__).parent.parent / 'src'))
-
-from inference.inference_engine import DefectPredictionEngine
-from inference.stream_simulator import RealTimeStreamSimulator
-from visualization.dashboard import DefectMonitoringDashboard
-from utils.config_loader import ConfigLoader
-from utils.logger import get_logger
 import argparse
-import pandas as pd
-import threading
-import time
+import asyncio
+import yaml
+import logging
+from pathlib import Path
+import sys
+import glob
 
-def main():
-    """Main function to run real-time inference demo."""
-    parser = argparse.ArgumentParser(description='Run real-time inference demonstration')
-    parser.add_argument('--config', 
-                       default='configs/inference_config.yaml',
-                       help='Path to inference configuration file')
-    parser.add_argument('--test-data',
-                       default='data/synthetic/test_cast.parquet',
-                       help='Path to test cast data for streaming simulation')
-    parser.add_argument('--model-dir',
-                       default='models',
-                       help='Directory containing trained models')
-    parser.add_argument('--dashboard',
-                       action='store_true',
-                       help='Launch dashboard along with inference')
-    parser.add_argument('--duration',
-                       type=int,
-                       default=300,
-                       help='Duration to run simulation (seconds)')
-    parser.add_argument('--verbose', '-v',
-                       action='store_true',
-                       help='Enable verbose output')
+# Add src to python path
+sys.path.append(str(Path(__file__).resolve().parents[1]))
+
+from src.inference.prediction_pipeline import PredictionPipeline
+
+def setup_logging():
+    """Configures basic logging for the application."""
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s [%(levelname)s] [%(name)s]: %(message)s",
+        datefmt="%Y-%m-%d %H:%M:%S"
+    )
+
+async def main():
+    """Main function to run the inference demo."""
+    parser = argparse.ArgumentParser(description="Run the real-time steel defect inference demo.")
+    parser.add_argument(
+        "--config",
+        type=str,
+        default="configs/inference_config.yaml",
+        help="Path to the inference configuration file."
+    )
+    parser.add_argument(
+        "--cast-file",
+        type=str,
+        help="Path to a single cast data file to run the simulation."
+    )
+    parser.add_argument(
+        "--benchmark",
+        action="store_true",
+        help="Run in benchmark mode to measure performance."
+    )
+    parser.add_argument(
+        "--streams",
+        type=int,
+        default=1,
+        help="Number of concurrent streams (for benchmarking)."
+    )
+    # Add other arguments as needed...
     
     args = parser.parse_args()
-    
-    # Setup logging
-    logger = get_logger(__name__)
-    
-    if args.verbose:
-        logger.info(f"Loading configuration from: {args.config}")
-        logger.info(f"Test data: {args.test_data}")
-        logger.info(f"Model directory: {args.model_dir}")
-        logger.info(f"Simulation duration: {args.duration} seconds")
-    
+    setup_logging()
+
+    # Load configuration
     try:
-        # Load configuration
-        config_loader = ConfigLoader()
-        config = config_loader.load_yaml(args.config)
-        
-        # Initialize inference engine
-        logger.info("Initializing inference engine...")
-        inference_engine = DefectPredictionEngine(args.config)
-        inference_engine.load_models()
-        
-        # Load test cast data for simulation
-        logger.info("Loading test cast data...")
-        # TODO: Implement test data loading
-        test_data = None  # Placeholder
-        
-        # Initialize stream simulator
-        stream_simulator = RealTimeStreamSimulator(test_data, config)
-        
-        # Start dashboard if requested
-        dashboard_thread = None
-        if args.dashboard:
-            logger.info("Starting dashboard...")
-            dashboard = DefectMonitoringDashboard(config)
-            dashboard_thread = threading.Thread(
-                target=dashboard.run,
-                kwargs={'debug': False}
-            )
-            dashboard_thread.daemon = True
-            dashboard_thread.start()
-            time.sleep(2)  # Give dashboard time to start
-        
-        # Start streaming simulation
-        logger.info("Starting real-time inference simulation...")
-        stream_simulator.start_stream()
-        
-        # Process stream with inference engine
-        logger.info("Processing streaming data...")
-        stream_simulator.process_stream(inference_engine)
-        
-        # Run simulation for specified duration
-        start_time = time.time()
-        while time.time() - start_time < args.duration:
-            # Get stream status
-            status = stream_simulator.get_stream_status()
-            
-            if args.verbose and int(time.time() - start_time) % 30 == 0:
-                logger.info(f"Simulation running... Status: {status}")
-            
-            time.sleep(1)
-        
-        # Stop streaming
-        logger.info("Stopping simulation...")
-        stream_simulator.stop_stream()
-        
-        # Generate summary
-        final_status = stream_simulator.get_stream_status()
-        logger.info(f"Simulation completed. Final status: {final_status}")
-        
-        if args.dashboard:
-            logger.info("Dashboard is still running. Press Ctrl+C to exit.")
-            try:
-                while True:
-                    time.sleep(1)
-            except KeyboardInterrupt:
-                logger.info("Shutting down...")
-        
-        logger.info("Real-time inference demo completed successfully.")
-        
-    except Exception as e:
-        logger.error(f"Error during inference demo: {e}")
+        with open(args.config, 'r') as f:
+            config = yaml.safe_load(f)
+    except FileNotFoundError:
+        logging.error(f"Configuration file not found: {args.config}")
+        sys.exit(1)
+    except yaml.YAMLError as e:
+        logging.error(f"Error parsing configuration file: {e}")
         sys.exit(1)
 
+    # Determine which cast files to process
+    if args.cast_file:
+        cast_files = [args.cast_file]
+    else:
+        # Logic to get a default list of test cast files
+        test_data_patterns = [
+            'data/examples/*.csv',
+            'data/test/*.csv',
+            'data/test/*.parquet',
+            'data/synthetic/*.csv',
+            'data/synthetic/*.parquet'
+        ]
+        cast_files = []
+        for pattern in test_data_patterns:
+            found_files = glob.glob(pattern)
+            if found_files:
+                cast_files.extend(found_files)
+                break
+        
+        # If no files found, use the sample file as fallback
+        if not cast_files:
+            sample_file = "data/examples/steel_defect_sample.csv"
+            if Path(sample_file).exists():
+                cast_files = [sample_file]
+            else:
+                logging.error("No test cast files found. Please specify --cast-file or ensure test data exists.")
+                sys.exit(1)
+        
+        # For benchmark mode, multiply the files to create concurrent streams
+        if args.benchmark and args.streams > 1:
+            # Replicate files to create multiple streams
+            original_files = cast_files.copy()
+            cast_files = []
+            for i in range(args.streams):
+                cast_files.extend(original_files)
+
+    logging.info(f"Processing {len(cast_files)} cast files across {args.streams if args.benchmark else 1} streams")
+
+    # Initialize and run the pipeline
+    pipeline = PredictionPipeline(config, cast_files)
+    
+    try:
+        logging.info("Starting inference pipeline. Press Ctrl+C to exit.")
+        if args.benchmark:
+            logging.info("Running in benchmark mode...")
+            # For benchmark mode, we'll run for a fixed duration
+            import time
+            start_time = time.time()
+            
+            # Start the pipeline
+            task = asyncio.create_task(pipeline.run_pipeline())
+            
+            # Run for a fixed duration in benchmark mode (e.g., 60 seconds)
+            benchmark_duration = 60
+            await asyncio.sleep(benchmark_duration)
+            
+            # Stop the pipeline
+            pipeline.stop_pipeline()
+            
+            # Wait for the task to complete cleanup
+            try:
+                await asyncio.wait_for(task, timeout=10)
+            except asyncio.TimeoutError:
+                logging.warning("Pipeline cleanup took longer than expected")
+            
+            # Get performance metrics from the monitor
+            metrics = pipeline.monitor.get_system_performance_metrics()
+            end_time = time.time()
+            
+            # Print benchmark summary
+            logging.info("=" * 50)
+            logging.info("BENCHMARK SUMMARY")
+            logging.info("=" * 50)
+            logging.info(f"Duration: {end_time - start_time:.2f} seconds")
+            logging.info(f"Total Predictions: {metrics['total_predictions']}")
+            logging.info(f"Average Latency: {metrics['avg_latency_ms']:.2f} ms")
+            logging.info(f"Throughput: {metrics['throughput_preds_per_sec']:.2f} predictions/sec")
+            logging.info(f"High Risk Predictions: {metrics['high_risk_predictions']}")
+            logging.info(f"Streams: {args.streams}")
+            logging.info("=" * 50)
+        else:
+            # Normal mode - run until interrupted
+            await pipeline.run_pipeline()
+            
+    except KeyboardInterrupt:
+        logging.info("Shutdown signal received.")
+    finally:
+        logging.info("Stopping pipeline...")
+        pipeline.stop_pipeline()
+        logging.info("Pipeline stopped gracefully.")
+
 if __name__ == "__main__":
-    main()
+    try:
+        asyncio.run(main())
+    except KeyboardInterrupt:
+        logging.info("Application interrupted by user")
+        sys.exit(0)
