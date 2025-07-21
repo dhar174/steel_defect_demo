@@ -150,7 +150,7 @@ uvicorn src.api.main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
 ## Additional Documentation
-More in‑depth guides are located in the `docs/` directory:
+More in-depth guides are located in the `docs/` directory:
 - `TRAINING_GUIDE.md` – step‑by‑step usage of the training scripts
 - `VISUALIZATION_GUIDE.md` – explanation of plotting utilities and dashboards
 - `PRODUCTION_DATA_CONNECTORS.md` – connectors for OPC UA, MQTT, REST and databases
