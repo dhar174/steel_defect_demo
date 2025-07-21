@@ -1,0 +1,189 @@
+{
+  "model_config": {
+    "architecture": {
+      "input_size": 5,
+      "hidden_size": 64,
+      "num_layers": 2,
+      "bidirectional": true,
+      "dropout": 0.2
+    },
+    "training": {
+      "num_epochs": 10,
+      "learning_rate": 0.001,
+      "weight_decay": 0.0001,
+      "batch_size": 32,
+      "gradient_clip_norm": 1.0
+    },
+    "optimization": {
+      "optimizer": "adam",
+      "beta1": 0.9,
+      "beta2": 0.999,
+      "epsilon": 1e-08
+    },
+    "scheduler": {
+      "type": "reduce_on_plateau",
+      "factor": 0.5,
+      "patience": 5
+    },
+    "loss_function": {
+      "type": "weighted_bce",
+      "pos_weight": 3.0
+    },
+    "early_stopping": {
+      "patience": 5,
+      "min_delta": 0.0001,
+      "monitor": "val_loss"
+    },
+    "logging": {
+      "tensorboard_enabled": false,
+      "csv_logging": true,
+      "log_interval": 5,
+      "save_interval": 2
+    }
+  },
+  "training_history": {
+    "train_losses": [
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5,
+      0.5
+    ],
+    "val_losses": [
+      0.4000000000000001,
+      0.4000000000000001,
+      0.4000000000000001,
+      0.4000000000000001,
+      0.4000000000000001,
+      0.4000000000000001
+    ],
+    "train_metrics": [
+      {
+        "loss": 0.5,
+        "auc_roc": 0.85,
+        "auc_pr": 0.75,
+        "avg_batch_time": 0.0002277851104736328,
+        "epoch_time": 0.011492252349853516,
+        "total_samples": 1600
+      },
+      {
+        "loss": 0.5,
+        "auc_roc": 0.85,
+        "auc_pr": 0.75,
+        "avg_batch_time": 0.00022655963897705078,
+        "epoch_time": 0.011406660079956055,
+        "total_samples": 1600
+      },
+      {
+        "loss": 0.5,
+        "auc_roc": 0.85,
+        "auc_pr": 0.75,
+        "avg_batch_time": 0.00022511959075927735,
+        "epoch_time": 0.011332511901855469,
+        "total_samples": 1600
+      },
+      {
+        "loss": 0.5,
+        "auc_roc": 0.85,
+        "auc_pr": 0.75,
+        "avg_batch_time": 0.00022512435913085938,
+        "epoch_time": 0.01132965087890625,
+        "total_samples": 1600
+      },
+      {
+        "loss": 0.5,
+        "auc_roc": 0.85,
+        "auc_pr": 0.75,
+        "avg_batch_time": 0.00022706031799316407,
+        "epoch_time": 0.011433839797973633,
+        "total_samples": 1600
+      },
+      {
+        "loss": 0.5,
+        "auc_roc": 0.85,
+        "auc_pr": 0.75,
+        "avg_batch_time": 0.0002257680892944336,
+        "epoch_time": 0.011376142501831055,
+        "total_samples": 1600
+      }
+    ],
+    "val_metrics": [
+      {
+        "loss": 0.4000000000000001,
+        "auc_roc": 0.88,
+        "auc_pr": 0.78,
+        "f1_score": 0.75,
+        "precision": 0.8,
+        "recall": 0.7,
+        "accuracy": 0.85,
+        "validation_time": 0.0045375823974609375,
+        "total_samples": 640
+      },
+      {
+        "loss": 0.4000000000000001,
+        "auc_roc": 0.88,
+        "auc_pr": 0.78,
+        "f1_score": 0.75,
+        "precision": 0.8,
+        "recall": 0.7,
+        "accuracy": 0.85,
+        "validation_time": 0.004526615142822266,
+        "total_samples": 640
+      },
+      {
+        "loss": 0.4000000000000001,
+        "auc_roc": 0.88,
+        "auc_pr": 0.78,
+        "f1_score": 0.75,
+        "precision": 0.8,
+        "recall": 0.7,
+        "accuracy": 0.85,
+        "validation_time": 0.004534006118774414,
+        "total_samples": 640
+      },
+      {
+        "loss": 0.4000000000000001,
+        "auc_roc": 0.88,
+        "auc_pr": 0.78,
+        "f1_score": 0.75,
+        "precision": 0.8,
+        "recall": 0.7,
+        "accuracy": 0.85,
+        "validation_time": 0.004560232162475586,
+        "total_samples": 640
+      },
+      {
+        "loss": 0.4000000000000001,
+        "auc_roc": 0.88,
+        "auc_pr": 0.78,
+        "f1_score": 0.75,
+        "precision": 0.8,
+        "recall": 0.7,
+        "accuracy": 0.85,
+        "validation_time": 0.004564762115478516,
+        "total_samples": 640
+      },
+      {
+        "loss": 0.4000000000000001,
+        "auc_roc": 0.88,
+        "auc_pr": 0.78,
+        "f1_score": 0.75,
+        "precision": 0.8,
+        "recall": 0.7,
+        "accuracy": 0.85,
+        "validation_time": 0.004620790481567383,
+        "total_samples": 640
+      }
+    ],
+    "learning_rates": [
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.001,
+      0.001
+    ]
+  },
+  "mock_save": true
+}

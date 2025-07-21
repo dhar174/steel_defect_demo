@@ -904,9 +904,16 @@ except ImportError:
         def state_dict(self): return {}
         def load_state_dict(self, state): pass
     
+    class MockLoss:
+        def item(self):
+            return 0.5
+        def backward(self):
+            pass
+    
     class MockCriterion:
         def __init__(self, *args, **kwargs): pass
-        def __call__(self, *args): return type('MockLoss', (), {'item': lambda: 0.5, 'backward': lambda: None})()
+        def __call__(self, predictions, targets): 
+            return MockLoss()
     
     class MockTensor:
         def __init__(self, data=None):
@@ -919,18 +926,24 @@ except ImportError:
         def detach(self): return self
     
     class MockDataLoader:
-        def __init__(self, dataset, batch_size=32, **kwargs):
-            self.dataset = dataset
+        def __init__(self, dataset=None, batch_size=32, **kwargs):
+            self.dataset = dataset or []
             self.batch_size = batch_size
             
         def __iter__(self):
-            # Mock iterator that yields some sample batches
-            for i in range(3):  # Just yield 3 mock batches
-                batch_data = ([0.5] * 32, [0] * 32)  # Mock inputs and targets
-                yield batch_data
+            # Mock iterator that yields sample batches
+            if self.dataset:
+                for batch_data in self.dataset:
+                    yield batch_data
+            else:
+                # Yield some default mock batches
+                for i in range(3):
+                    inputs = [[0.5] * 5] * 32  # Mock inputs: batch_size x features
+                    targets = [0] * 32  # Mock targets
+                    yield (inputs, targets)
                 
         def __len__(self):
-            return 3  # Mock dataset length
+            return len(self.dataset) if self.dataset else 3
     
     # Mock torch namespace
     class torch:
@@ -1795,6 +1808,7 @@ class LSTMTrainer:
         
         # Training configuration
         num_epochs = self.train_config.get('num_epochs', 100)
+        val_metrics = {}  # Initialize to avoid UnboundLocalError
         
         # Training loop
         training_start_time = time.time()
