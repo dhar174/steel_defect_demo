@@ -11,10 +11,8 @@ import os
 from datetime import datetime, timedelta
 import numpy as np
 
-# Add the project root to the Python path
-sys.path.insert(0, os.path.join(os.path.dirname(__file__)))
-
-from src.visualization.components.alert_management import AlertManagementComponent
+# Import the AlertManagementComponent using relative imports
+from .src.visualization.components.alert_management import AlertManagementComponent
 import dash
 from dash import html, Input, Output, State, callback
 import dash_bootstrap_components as dbc
