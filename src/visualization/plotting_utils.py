@@ -114,10 +114,18 @@ class PlottingUtils:
             
         Returns:
             go.Figure: Heatmap
+            
+        Raises:
+            ValueError: If no numeric columns are found in the data
         """
 
         # Calculate correlation matrix
         numeric_data = data.select_dtypes(include=[np.number])
+        
+        # Validate that we have numeric data to compute correlations
+        if numeric_data.empty:
+            raise ValueError("No numeric columns found in the data. Cannot compute correlation matrix.")
+        
         corr_matrix = numeric_data.corr()
         
 
