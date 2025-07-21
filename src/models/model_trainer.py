@@ -373,7 +373,7 @@ class ModelTrainer:
     
     def setup_cross_validation(self,
                               cv_folds: int = 5,
-                              stratify: bool = True) -> Any:
+                              stratify: bool = True) -> Optional[Union[StratifiedKFold, KFold]]:
         """
         Set up cross-validation strategy
         
