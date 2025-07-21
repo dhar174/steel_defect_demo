@@ -1,0 +1,82 @@
+{
+  "model_test_baseline_model": {
+    "artifact_type": "model",
+    "created_at": "2025-07-21T19:00:54.076247",
+    "model_name": "test_baseline_model",
+    "experiment_name": "test_baseline",
+    "version": "test_baseline_model_20250721_190054_auc1000",
+    "file_path": "results/test_training/test_baseline/models/test_baseline_model.pkl",
+    "file_size": 94032,
+    "checksum": "",
+    "metrics": {
+      "accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "matthews_corrcoef": 1.0,
+      "specificity": 1.0,
+      "roc_auc": 1.0,
+      "average_precision": 1.0,
+      "log_loss": 0.02477701516420421,
+      "brier_score": 0.002255133439719761,
+      "class_0": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 320.0
+      },
+      "class_1": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 80.0
+      }
+    },
+    "config": null,
+    "dependencies": null,
+    "description": "Trained model: test_baseline_model"
+  },
+  "feature_engineer_test_baseline_feature_engineer": {
+    "artifact_type": "feature_engineer",
+    "created_at": "2025-07-21T19:00:54.077276",
+    "model_name": "test_baseline_feature_engineer",
+    "experiment_name": "test_baseline",
+    "version": "test_baseline_feature_engineer_20250721_190054",
+    "file_path": "results/test_training/test_baseline/feature_engineers/test_baseline_feature_engineer.joblib",
+    "file_size": 329,
+    "checksum": "",
+    "metrics": null,
+    "config": null,
+    "dependencies": null,
+    "description": "Feature engineering pipeline: test_baseline_feature_engineer"
+  },
+  "results_test_baseline_results": {
+    "artifact_type": "results",
+    "created_at": "2025-07-21T19:00:54.078367",
+    "model_name": "test_baseline_results",
+    "experiment_name": "test_baseline",
+    "version": "test_baseline_results_20250721_190054",
+    "file_path": "results/test_training/test_baseline/results/test_baseline_results.json",
+    "file_size": 8344,
+    "checksum": "",
+    "metrics": null,
+    "config": null,
+    "dependencies": null,
+    "description": "Training results: test_baseline_results"
+  },
+  "config_test_baseline_config": {
+    "artifact_type": "config",
+    "created_at": "2025-07-21T19:00:54.079855",
+    "model_name": "test_baseline_config",
+    "experiment_name": "test_baseline",
+    "version": "test_baseline_config_20250721_190054",
+    "file_path": "results/test_training/test_baseline/configs/test_baseline_config.yaml",
+    "file_size": 352,
+    "checksum": "",
+    "metrics": null,
+    "config": null,
+    "dependencies": null,
+    "description": "Training configuration: test_baseline_config"
+  }
+}

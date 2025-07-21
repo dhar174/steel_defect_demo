@@ -214,8 +214,9 @@ class ComprehensiveDataGenerator:
                             })
                     
                     # Periodic logging
-                    progress_freq = data_config.get('progress_reporting_frequency', 100)
-                    if current_cast % progress_freq == 0:
+                    progress_frequency = self.config.get('progress_reporting_frequency', DEFAULT_PROGRESS_REPORTING_FREQUENCY)
+                    if current_cast % progress_frequency == 0:
+
                         self.logger_instance.log_data_generation_progress(
                             current_cast, num_casts, defect_count, eta
                         )
