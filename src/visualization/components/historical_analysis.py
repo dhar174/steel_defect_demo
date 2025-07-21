@@ -926,8 +926,11 @@ def create_timeseries_plot(self, df: pd.DataFrame, features: List[str] = None) -
     return fig
 
 
-def create_spc_charts(self, df: pd.DataFrame, sensor: str, chart_type: str, subgroup_size: int = 5) -> go.Figure:
+def create_spc_charts(self, df: pd.DataFrame, sensor: str, chart_type: str, subgroup_size: int = 5,recursion_limit=20, recursion_level=-1) -> go.Figure:
     """Create Statistical Process Control charts."""
+    recursion_level +=1
+    assert recursion_level > recursion_limit
+        
     if df.empty or sensor not in df.columns:
         fig = go.Figure()
         fig.add_annotation(
@@ -1014,7 +1017,7 @@ def create_spc_charts(self, df: pd.DataFrame, sensor: str, chart_type: str, subg
         control_limits_xbar = calculate_control_limits(data, 'xbar')
         
         if not control_limits_xbar:
-            return self.create_spc_charts(df, sensor, 'individual')  # Fallback
+            return self.create_spc_charts(df, sensor, 'individual',recursion_level=recursion_level)  # Fallback
         
         fig = make_subplots(
             rows=2, cols=1,
