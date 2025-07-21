@@ -3,14 +3,29 @@ from sklearn.metrics import (
     accuracy_score, precision_score, recall_score, f1_score,
     roc_auc_score, average_precision_score, confusion_matrix
 )
-from typing import Dict, List, Tuple
+from typing import Dict, List, Tuple, Optional
 
 class MetricsCalculator:
     """Calculate and track model performance metrics"""
     
-    def __init__(self):
-        """Initialize metrics calculator."""
+    def __init__(self, config: Optional[Dict] = None):
+        """
+        Initialize metrics calculator.
+        
+        Args:
+            config (Dict, optional): Configuration dictionary containing cost_sensitive_defaults
+        """
         self.metric_history = {}
+        
+        # Set default cost values from config if provided
+        if config and 'evaluation' in config and 'cost_sensitive_defaults' in config['evaluation']:
+            cost_config = config['evaluation']['cost_sensitive_defaults']
+            self.default_false_positive_cost = cost_config.get('false_positive_cost', 1.0)
+            self.default_false_negative_cost = cost_config.get('false_negative_cost', 10.0)
+        else:
+            # Fallback to hardcoded defaults if no config provided
+            self.default_false_positive_cost = 1.0
+            self.default_false_negative_cost = 10.0
     
     def calculate_binary_classification_metrics(self, y_true: np.ndarray, 
                                               y_pred: np.ndarray,
@@ -95,31 +110,40 @@ class MetricsCalculator:
     
     def calculate_cost_sensitive_metrics(self, y_true: np.ndarray,
                                        y_pred: np.ndarray,
-                                       false_positive_cost: float = 1.0,
-                                       false_negative_cost: float = 10.0) -> Dict[str, float]:
+                                       false_positive_cost: Optional[float] = None,
+                                       false_negative_cost: Optional[float] = None) -> Dict[str, float]:
         """
         Calculate cost-sensitive metrics for steel production.
         
         Args:
             y_true (np.ndarray): True labels
             y_pred (np.ndarray): Predicted labels
-            false_positive_cost (float): Cost of false positive
-            false_negative_cost (float): Cost of false negative
+            false_positive_cost (float, optional): Cost of false positive. Uses default if None.
+            false_negative_cost (float, optional): Cost of false negative. Uses default if None.
             
         Returns:
             Dict[str, float]: Cost-sensitive metrics
         """
-        # Placeholder implementation for cost-sensitive metrics
+
+
+        # Use provided costs or fall back to configured defaults
+        fp_cost = false_positive_cost if false_positive_cost is not None else self.default_false_positive_cost
+        fn_cost = false_negative_cost if false_negative_cost is not None else self.default_false_negative_cost
+        
+        # Calculate false positives and false negatives
         false_positives = np.sum((y_pred == 1) & (y_true == 0))
         false_negatives = np.sum((y_pred == 0) & (y_true == 1))
-        cost_sensitive_metric = (
-            (false_positives * false_positive_cost) +
-            (false_negatives * false_negative_cost)
-        )
+        
+        # Calculate total costs
+        total_fp_cost = false_positives * fp_cost
+        total_fn_cost = false_negatives * fn_cost
+        
+        # Return cost-sensitive metrics
         return {
-            "false_positive_cost": false_positives * false_positive_cost,
-            "false_negative_cost": false_negatives * false_negative_cost,
-            "total_cost": cost_sensitive_metric
+            "false_positive_cost": total_fp_cost,
+            "false_negative_cost": total_fn_cost,
+            "total_cost": total_fp_cost + total_fn_cost
+
         }
     
     def track_metrics_over_time(self, metrics: Dict[str, float],
