@@ -25,7 +25,21 @@ lstm_model:
     hidden_size: 64
     num_layers: 2
     dropout: 0.2
-    bidirectional: false
+    bidirectional: true
+    
+  classifier:
+    hidden_dims: [32, 16]
+    activation: "relu"
+    dropout: 0.3
+    
+  normalization:
+    batch_norm: true
+    layer_norm: false
+    input_norm: true
+    
+  regularization:
+    weight_decay: 0.0001
+    gradient_clip: 1.0
     
   training:
     batch_size: 32
