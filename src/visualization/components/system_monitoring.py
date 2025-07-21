@@ -776,8 +776,7 @@ class SystemMonitoringComponent:
             services = list(self.integration_status.keys())
             random_service = np.random.choice(services)
             statuses = ['healthy', 'warning', 'error']
-            weights = [0.8, 0.15, 0.05]  # Mostly healthy
-            new_status = np.random.choice(statuses, p=weights)
+            new_status = np.random.choice(statuses, p=self.INTEGRATION_STATUS_WEIGHTS)
             self.update_integration_status(random_service, new_status)
     
     def get_current_data(self) -> Dict[str, Any]:
