@@ -292,8 +292,8 @@ class TestInference:
     
     def test_data_interval_fallback_to_config(self):
         """Test that data interval falls back to config when no timestamps available."""
-        config_path = '/home/runner/work/steel_defect_demo/steel_defect_demo/configs/inference_config.yaml'
-        inference_engine = DefectPredictionEngine(config_path)
+        config_path = Path(__file__).parent.parent / 'configs' / 'inference_config.yaml'
+        inference_engine = DefectPredictionEngine(str(config_path))
         
         # Create data without timestamp column
         data_without_timestamps = pd.DataFrame({
