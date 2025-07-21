@@ -214,7 +214,7 @@ class ComprehensiveDataGenerator:
                             })
                     
                     # Periodic logging
-                    if current_cast % 100 == 0:
+                    if current_cast % PROGRESS_LOGGING_FREQUENCY == 0:
                         self.logger_instance.log_data_generation_progress(
                             current_cast, num_casts, defect_count, eta
                         )
