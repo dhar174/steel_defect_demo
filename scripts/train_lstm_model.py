@@ -610,8 +610,40 @@ def main():
             sample_input = sample_input.to(device)
         tracker.log_model_graph(model, sample_input)
     
+    # Create training configuration for LSTMTrainer
+    # Extract training configuration from LSTM config and add missing sections
+    training_config = {
+        'training': lstm_config.get('training', {}),
+        'loss_function': lstm_config.get('loss_function', {}),
+        'optimization': {
+            'optimizer': 'adam',
+            'beta1': 0.9,
+            'beta2': 0.999,
+            'epsilon': 1e-8
+        },
+        'scheduler': {
+            'type': 'reduce_on_plateau',
+            'factor': 0.5,
+            'patience': 5,
+            'min_lr': 1e-6
+        },
+        'early_stopping': {
+            'enabled': True,
+            'patience': training_section.get('early_stopping_patience', 15),
+            'min_delta': 1e-4,
+            'monitor': 'val_loss',
+            'restore_best_weights': True
+        },
+        'logging': {
+            'tensorboard_enabled': True,
+            'csv_logging': True,
+            'log_interval': 10,
+            'save_interval': 5
+        }
+    }
+    
     # Initialize trainer
-    trainer = LSTMTrainer(model, lstm_config, device)
+    trainer = LSTMTrainer(model, training_config, device)
     
     # Setup checkpointing
     checkpoint_manager = ModelCheckpointManager(
