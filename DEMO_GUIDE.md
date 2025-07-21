@@ -108,7 +108,7 @@ python scripts/run_dashboard.py --debug          # Development mode
 python scripts/run_dashboard.py --production     # Production mode
 ```
 Key features:
-- Real‑time plots of sensor data
+- Real-time plots of sensor data
 - Risk level indicators and alerts
 - Works with either live data or the mock stream simulator
 Configuration options are located in `configs/inference_config.yaml` and can be overridden with command‑line flags.
