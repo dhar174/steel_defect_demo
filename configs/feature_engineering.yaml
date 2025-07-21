@@ -1,0 +1,29 @@
+feature_engineering:
+  sensor_columns:
+    - temperature
+    - pressure
+    - flow_rate
+    - vibration
+    - power_consumption
+  
+  statistical_features:
+    percentiles: [10, 25, 75, 90]
+    
+  stability_features:
+    spike_threshold: 2.0
+    excursion_std_multiplier: 1.0
+    
+  duration_features:
+    extreme_percentiles: [5, 95]
+    
+  scaling:
+    method: "standard"  # standard, robust, none
+    
+  validation:
+    min_data_points: 50
+    max_missing_ratio: 0.1
+    correlation_threshold: 0.95
+    
+  performance:
+    batch_size: 100
+    n_jobs: -1
