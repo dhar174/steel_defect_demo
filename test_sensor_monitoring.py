@@ -155,4 +155,4 @@ if __name__ == '__main__':
         sensor_monitor.add_data_point(mock_data, timestamp)
     
     # Run the app
-    app.run_server(debug=True, host='127.0.0.1', port=8050)
+    app.run(debug=True, host='127.0.0.1', port=8050)
