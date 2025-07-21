@@ -378,7 +378,7 @@ class CastingFeatureEngineer:
             if min_var > 0:
                 features['sensor_variance_ratio'] = max_var / min_var
             else:
-                features['sensor_variance_ratio'] = np.inf
+                features['sensor_variance_ratio'] = np.nan
         else:
             features['sensor_variance_ratio'] = np.nan
         
