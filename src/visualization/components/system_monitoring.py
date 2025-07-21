@@ -671,8 +671,8 @@ class SystemMonitoringComponent:
     def _get_current_system_metrics(self) -> Dict[str, Any]:
         """Get current system performance metrics using psutil."""
         try:
-            # CPU usage (average over 1 second)
-            cpu_percent = psutil.cpu_percent(interval=0.1)
+            # CPU usage (instantaneous, non-blocking)
+            cpu_percent = psutil.cpu_percent(interval=None)
             
             # Memory usage
             memory = psutil.virtual_memory()
