@@ -65,3 +65,7 @@ Thumbs.db
 .coverage
 htmlcov/
 .pytest_cache/
+
+# Demo outputs and temporary visualization files
+demo_outputs/
+temp_viz/
