@@ -1,0 +1,15 @@
+cross_validation: true
+cv_folds: 3
+data_path: data/examples/steel_defect_sample.csv
+experiment_name: test_baseline
+hyperparameter_search: false
+model_params: null
+model_type: xgboost
+n_jobs: -1
+output_dir: results/test_training/test_baseline
+random_state: 42
+save_artifacts: true
+target_column: defect
+test_size: 0.2
+validation_size: 0.2
+verbose: true
