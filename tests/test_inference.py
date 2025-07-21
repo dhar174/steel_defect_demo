@@ -53,8 +53,8 @@ class TestInference:
     def test_stream_simulator_initialization(self):
         """Test stream simulator initialization."""
         # Create mock inference engine
-        config_path = '/home/runner/work/steel_defect_demo/steel_defect_demo/configs/inference_config.yaml'
-        inference_engine = DefectPredictionEngine(config_path)
+        config_path = Path(__file__).parent.parent / 'configs' / 'inference_config.yaml'
+        inference_engine = DefectPredictionEngine(str(config_path))
         
         # Initialize simulator
         simulator = RealTimeStreamSimulator(
