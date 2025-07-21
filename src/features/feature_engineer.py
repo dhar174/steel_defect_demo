@@ -165,7 +165,7 @@ class CastingFeatureEngineer:
                 if mean_val != 0:
                     cv = std_val / abs(mean_val)
                 else:
-                    cv = np.inf if std_val > 0 else 0
+                    cv = np.nan if std_val > 0 else 0
                 features[f'{sensor}_cv'] = cv
                 
                 # Range ratio
