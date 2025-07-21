@@ -90,7 +90,12 @@ class SteelCastingDataGenerator:
         
         # Find consecutive periods outside range using a more efficient method
         outside_range_int = outside_range.astype(int)
-        consecutive_counts = outside_range_int.groupby((outside_range_int != outside_range_int.shift()).cumsum()).cumsum()
+        # Identify changes in the outside_range condition
+        range_change_groups = (outside_range_int != outside_range_int.shift()).cumsum()
+        
+        # Group by changes and calculate cumulative counts
+        grouped_outside_range = outside_range_int.groupby(range_change_groups)
+        consecutive_counts = grouped_outside_range.cumsum()
         
         if (consecutive_counts >= self.defect_config['defect_triggers']['prolonged_mold_level_deviation']).any():
             triggers.append('prolonged_mold_level_deviation')
