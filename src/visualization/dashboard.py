@@ -606,8 +606,8 @@ class DefectMonitoringDashboard:
         dates = pd.date_range(start=datetime.now() - timedelta(days=30), 
                             end=datetime.now(), freq='D')
         
-        np.random.seed(42)  # For consistent demo data
-        defect_rates = 0.1 + 0.05 * np.sin(np.arange(len(dates)) * 0.2) + 0.02 * np.random.randn(len(dates))
+        rng = np.random.RandomState(42)  # Local random instance for consistent demo data
+        defect_rates = 0.1 + 0.05 * np.sin(np.arange(len(dates)) * 0.2) + 0.02 * rng.randn(len(dates))
         defect_rates = np.clip(defect_rates, 0, 1)
         
         fig = go.Figure()
