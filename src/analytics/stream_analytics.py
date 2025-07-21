@@ -139,11 +139,11 @@ class StreamAnalyticsEngine:
                 
                 if beyond_2sigma_count >= 2:
                     if column not in violations:
-                        violations[column] = f"2 out of 3 consecutive points beyond 2-sigma starting at index {i}"
+                        violations[column] = [f"2 out of 3 consecutive points beyond 2-sigma starting at index {i}"]
                     else:
-                        violations[column] += f"; 2 out of 3 consecutive points beyond 2-sigma starting at index {i}"
+                        violations[column].append(f"2 out of 3 consecutive points beyond 2-sigma starting at index {i}")
         
-        return violations
+        return {column: "; ".join(messages) for column, messages in violations.items()}
     
     def detect_trends(self, data_buffer: pd.DataFrame) -> Dict[str, str]:
         """
