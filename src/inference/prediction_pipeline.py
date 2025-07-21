@@ -7,7 +7,17 @@ from src.inference.stream_simulator import RealTimeStreamSimulator
 from src.monitoring.real_time_monitor import RealTimeMonitor
 
 class PredictionPipeline:
-    """Orchestrates multiple real-time prediction streams."""
+    """
+    Orchestrates multiple real-time prediction streams.
+    
+    This class uses a shared DefectPredictionEngine instance across all streams
+    for efficiency. Model loading is expensive (XGBoost + LSTM models), so sharing
+    a single engine instance provides significant memory and initialization time 
+    savings when running multiple concurrent streams.
+    
+    The shared engine is thread-safe for inference operations since prediction
+    methods only perform read-only operations on loaded models.
+    """
     
     def __init__(self, config: Dict, cast_files: List[str]):
         """
@@ -26,6 +36,11 @@ class PredictionPipeline:
         # Initialize real-time monitor
         self.monitor = RealTimeMonitor(config)
         
+        # Create shared DefectPredictionEngine instance for efficiency
+        # This avoids expensive model loading for each stream
+        self.shared_engine = DefectPredictionEngine(config_path=None)
+        self.shared_engine.config = self.config  # Pass config directly
+        
         # Setup logging
         self.logger = logging.getLogger(__name__)
         if not self.logger.handlers:
@@ -34,6 +49,31 @@ class PredictionPipeline:
             handler.setFormatter(formatter)
             self.logger.addHandler(handler)
             self.logger.setLevel(logging.INFO)
+        
+    def load_shared_models(self, baseline_model_path: str, lstm_model_path: str) -> None:
+        """
+        Load models once on the shared DefectPredictionEngine instance.
+        
+        Args:
+            baseline_model_path (str): Path to saved baseline XGBoost model
+            lstm_model_path (str): Path to saved LSTM model
+        """
+        try:
+            self.logger.info("Loading models on shared DefectPredictionEngine instance")
+            self.shared_engine.load_models(baseline_model_path, lstm_model_path)
+            self.logger.info("Shared models loaded successfully - ready for multi-stream inference")
+        except Exception as e:
+            self.logger.error(f"Failed to load shared models: {e}")
+            raise
+    
+    def get_engine_health_status(self) -> Dict:
+        """
+        Get health status of the shared prediction engine.
+        
+        Returns:
+            Dict: Model health information
+        """
+        return self.shared_engine.get_model_health_status()
         
     async def _run_single_stream(self, stream_id: int, simulator: RealTimeStreamSimulator, engine: DefectPredictionEngine):
         """
@@ -148,15 +188,14 @@ class PredictionPipeline:
                     # Load cast data
                     cast_data = pd.read_csv(cast_file)
                     
-                    # Create DefectPredictionEngine instance
-                    engine = DefectPredictionEngine(config_path=None)
-                    engine.config = self.config  # Pass config directly
+                    # Use shared DefectPredictionEngine instance instead of creating new ones
+                    # This is much more efficient as model loading is expensive
                     
-                    # Create RealTimeStreamSimulator instance
+                    # Create RealTimeStreamSimulator instance with shared engine
                     simulator = RealTimeStreamSimulator(
                         cast_data=cast_data,
                         config=self.config,
-                        inference_engine=engine
+                        inference_engine=self.shared_engine
                     )
                     
                     # Start the simulator's stream
@@ -165,13 +204,13 @@ class PredictionPipeline:
                     # Store the simulator for cleanup later
                     self.streams.append(simulator)
                     
-                    # Create asyncio task for this stream
+                    # Create asyncio task for this stream using shared engine
                     task = asyncio.create_task(
-                        self._run_single_stream(i, simulator, engine)
+                        self._run_single_stream(i, simulator, self.shared_engine)
                     )
                     self.tasks.append(task)
                     
-                    self.logger.info(f"Created stream {i} for cast file: {cast_file}")
+                    self.logger.info(f"Created stream {i} for cast file: {cast_file} (using shared engine)")
                     
                 except Exception as e:
                     self.logger.error(f"Failed to create stream {i} for file {cast_file}: {e}")
