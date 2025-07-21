@@ -717,7 +717,7 @@ class DataQualityAssessor:
         for sensor, stats in distribution_analysis.items():
             # Penalize unrealistic coefficient of variation
             cv = stats.get('coefficient_of_variation', 0)
-            if cv > 0.2:  # High variability might be unrealistic
+            if cv > self.COEFFICIENT_OF_VARIATION_THRESHOLD:  # High variability might be unrealistic
                 score *= 0.95
             
             # Penalize extreme skewness
