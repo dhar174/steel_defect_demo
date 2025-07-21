@@ -1,5 +1,34 @@
 # Predictive Quality Monitoring System for Continuous Steel Casting (Technical Design)
 
+## Quick Start
+
+### Installation
+The package can be installed in development mode to enable direct imports without hardcoded path manipulation:
+
+```bash
+# Clone the repository
+git clone https://github.com/dhar174/steel_defect_demo.git
+cd steel_defect_demo
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Install the package in development mode
+pip install -e .
+```
+
+### Running Demo Scripts
+After installation, you can run any of the demo scripts directly:
+
+```bash
+python demo_model_comparison.py
+python demo_statistical_analysis.py
+python demo_monitoring.py
+python test_sensor_monitoring_unit.py
+```
+
+All scripts now use robust package imports instead of fragile path manipulations.
+
 ## 1. Introduction and Context
 Continuous (strand) casting solidifies molten steel into semi-finished slabs or billets for downstream rolling. Maintaining high cast quality is challenging because *hundreds* of interacting thermal, mechanical, material, environmental, and equipment condition variables influence defect formation.
 

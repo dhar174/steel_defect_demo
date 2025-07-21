@@ -1,16 +1,13 @@
 """
 Example integration of StreamAnalyticsEngine with data pipeline.
 Shows how the engine could be integrated into a real-time monitoring system.
+
+Note: Run 'pip install -e .' from the repository root to install the package in development mode.
 """
 
-import sys
 import numpy as np
 import pandas as pd
-from pathlib import Path
 import time
-
-# Add src to Python path
-sys.path.append(str(Path(__file__).parent / 'src'))
 
 from analytics.stream_analytics import StreamAnalyticsEngine
 

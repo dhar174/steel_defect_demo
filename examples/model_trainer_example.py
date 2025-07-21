@@ -9,16 +9,12 @@ This script demonstrates how to:
 
 Usage:
     python examples/model_trainer_example.py
+
+Note: Run 'pip install -e .' from the repository root to install the package in development mode.
 """
 
-import sys
-import os
 import numpy as np
 import pandas as pd
-from pathlib import Path
-
-# Add src directory to path
-sys.path.append(str(Path(__file__).parent.parent / 'src'))
 
 from models import ModelTrainer, ConfigurationManager
 

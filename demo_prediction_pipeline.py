@@ -4,18 +4,15 @@ Demonstration script for PredictionPipeline functionality.
 
 This script shows how to use the PredictionPipeline to orchestrate
 multiple concurrent data streams for real-time steel defect prediction.
+
+Note: Run 'pip install -e .' from the repository root to install the package in development mode.
 """
 
 import os
-import sys
 import asyncio
 import tempfile
 import pandas as pd
 import numpy as np
-from pathlib import Path
-
-# Add src to path for imports
-sys.path.append(str(Path(__file__).parent / 'src'))
 
 from inference.prediction_pipeline import PredictionPipeline
 

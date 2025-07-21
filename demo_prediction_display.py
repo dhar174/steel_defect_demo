@@ -4,19 +4,16 @@ Demonstration script for the prediction display components.
 
 This script shows how to use the new prediction visualization components
 and generates sample outputs to validate functionality.
+
+Note: Run 'pip install -e .' from the repository root to install the package in development mode.
 """
 
 import yaml
 import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
-import sys
-import os
 
-# Add src to path
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
-
-from src.visualization.components.prediction_display import (
+from visualization.components.prediction_display import (
     PredictionDisplayComponents, 
     create_sample_data_for_demo
 )
