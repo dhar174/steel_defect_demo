@@ -397,7 +397,8 @@ class SteelDefectLSTM(torch.nn.Module if TORCH_AVAILABLE else MockModule):
             if TORCH_AVAILABLE:
                 return self.attention_weights.cpu().numpy()
             else:
-                return np.ones((1, 10))  # Mock attention weights
+                attention_shape = (1, self.hidden_size) if hasattr(self, 'hidden_size') else (1, 10)
+                return np.ones(attention_shape)  # Mock attention weights
         return None
     
     def freeze_layers(self, layer_names: List[str]) -> None:
