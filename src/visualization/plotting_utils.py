@@ -457,7 +457,7 @@ class PlottingUtils:
         
         if format.lower() == "html":
             figure.write_html(filename)
-        elif format.lower() in ['png','jpg','bmp']:
+        elif format.lower() in ['png', 'jpg', 'bmp', 'svg', 'pdf']:
             figure.write_image(filename, format=format)
         else:
 
