@@ -1,0 +1,108 @@
+dashboard:
+  server:
+    host: "0.0.0.0"
+    port: 8050
+    debug: false
+    threaded: true
+    
+  layout:
+    theme: "plotly_white"
+    update_interval_ms: 5000
+    max_data_points: 1000
+    responsive: true
+    
+  pages:
+    - name: "Real-time Monitoring"
+      path: "/"
+      components: ["sensor_plots", "prediction_gauge", "alerts"]
+    - name: "Model Comparison"
+      path: "/model-comparison"
+      components: ["performance_metrics", "feature_importance"]
+    - name: "Historical Analysis"
+      path: "/historical-analysis"
+      components: ["data_explorer", "trend_analysis"]
+    - name: "System Status"
+      path: "/system-status"
+      components: ["performance_metrics", "health_checks"]
+
+  data_sources:
+    prediction_engine: "http://localhost:8000/api/predictions"
+    historical_data: "data/processed/"
+    system_metrics: "local"
+    
+  caching:
+    enabled: true
+    ttl_seconds: 30
+    max_entries: 1000
+
+  visualization:
+    refresh_rate_ms: 5000
+    data_buffer_size: 1000
+    response_time_target_ms: 2000
+    memory_usage_limit_gb: 1
+    concurrent_users_max: 10
+    mobile_support: true
+    
+  performance:
+    lazy_loading: true
+    virtual_scrolling: true
+    debounce_ms: 300
+    memoization: true
+    
+  security:
+    input_validation: true
+    session_timeout_minutes: 30
+    csrf_protection: true
+    content_security_policy: true
+    
+  accessibility:
+    wcag_compliance: "2.1"
+    screen_reader_support: true
+    keyboard_navigation: true
+    
+  features:
+    real_time_streaming: true
+    cross_filtering: true
+    data_export: true
+    custom_layouts: true
+    collaboration_tools: false
+    advanced_analytics: true
+
+# Include inference configuration for compatibility
+inference:
+  model_types:
+    - "baseline"
+    - "lstm"
+  
+  ensemble:
+    baseline_weight: 0.4
+    lstm_weight: 0.6
+    
+  real_time_simulation:
+    playback_speed_multiplier: 10  # 10x real time
+    update_interval_seconds: 30
+    buffer_size_seconds: 300
+    data_interval_seconds: 1.0  # Default interval between data points if not derived from timestamps
+    
+  thresholds:
+    defect_probability: 0.5
+    high_risk_threshold: 0.7
+    alert_threshold: 0.8
+    
+  output:
+    log_predictions: true
+    save_trajectories: true
+    dashboard_enabled: true
+    dashboard_port: 8050
+
+monitoring:
+  metrics_logging: true
+  performance_tracking: true
+  data_drift_detection: true
+  benchmark_duration: 60
+  alerts:
+    console_enabled: true
+    file_enabled: true
+    file_path: "logs/alerts.log"
+    webhook_url: null  # Set to a URL to enable webhook notifications
+    alert_suppression_minutes: 5
