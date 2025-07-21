@@ -8,7 +8,13 @@ import os
 import sys
 sys.path.append(str(Path(__file__).parent.parent / 'src'))
 
-from models.baseline_model import BaselineXGBoostModel
+# Handle optional imports
+try:
+    from models.baseline_model import BaselineXGBoostModel
+    XGBOOST_AVAILABLE = True
+except ImportError:
+    XGBOOST_AVAILABLE = False
+    BaselineXGBoostModel = None
 
 class TestModels:
     """Test suite for model components"""
@@ -58,6 +64,9 @@ class TestModels:
     
     def test_baseline_model_initialization(self):
         """Test baseline model initialization."""
+        if not XGBOOST_AVAILABLE:
+            pytest.skip("XGBoost not available")
+            
         # Test with default parameters
         model = BaselineXGBoostModel()
         assert model.model is not None
@@ -278,26 +287,110 @@ class TestModels:
             assert model.config is not None
             assert 'baseline_model' in model.config
     
-    # Placeholder tests for other components (to be implemented when PyTorch is available)
+    # LSTM Model Tests (now implemented)
     def test_lstm_model_initialization(self):
         """Test LSTM model initialization."""
-        # TODO: Implement when PyTorch is available
-        pass
+        try:
+            from models.lstm_model import SteelDefectLSTM
+            
+            config = {
+                'architecture': {
+                    'input_size': 5,
+                    'hidden_size': 32,
+                    'num_layers': 2,
+                    'bidirectional': True,
+                    'dropout': 0.2
+                },
+                'classifier': {
+                    'hidden_dims': [16, 8],
+                    'activation': 'relu',
+                    'dropout': 0.3
+                },
+                'normalization': {
+                    'batch_norm': True,
+                    'layer_norm': False,
+                    'input_norm': True
+                }
+            }
+            
+            model = SteelDefectLSTM(config)
+            assert model.input_size == 5
+            assert model.hidden_size == 32
+            assert model.num_layers == 2
+            assert model.bidirectional
+            
+            # Test model info
+            info = model.get_model_info()
+            assert info['total_parameters'] > 0
+            assert info['architecture']['input_size'] == 5
+            
+        except ImportError:
+            pytest.skip("PyTorch not available for LSTM tests")
     
     def test_lstm_model_forward_pass(self):
         """Test LSTM forward pass."""
-        # TODO: Implement when PyTorch is available
-        pass
+        try:
+            import torch
+            from models.lstm_model import SteelDefectLSTM
+            
+            config = self.lstm_config  # Use existing config
+            model = SteelDefectLSTM(config)
+            model.eval()
+            
+            # Test forward pass
+            test_input = torch.randn(8, 50, 5)
+            outputs = model(test_input)
+            
+            assert outputs.shape == (8, 1)
+            assert not torch.isnan(outputs).any()
+            
+        except ImportError:
+            pytest.skip("PyTorch not available for LSTM tests")
     
     def test_lstm_dataset_creation(self):
         """Test LSTM dataset creation."""
-        # TODO: Implement when PyTorch is available
-        pass
+        try:
+            import torch
+            from models.lstm_model import CastingSequenceDataset
+            
+            sequences = np.random.randn(100, 50, 5)
+            labels = np.random.binomial(1, 0.15, 100)
+            
+            dataset = CastingSequenceDataset(sequences, labels)
+            assert len(dataset) == 100
+            
+            # Test getitem
+            seq, label = dataset[0]
+            assert isinstance(seq, torch.Tensor)
+            assert isinstance(label, torch.Tensor)
+            assert seq.shape == (50, 5)
+            
+        except ImportError:
+            pytest.skip("PyTorch not available for LSTM tests")
     
     def test_lstm_trainer_initialization(self):
         """Test LSTM trainer initialization."""
-        # TODO: Implement when PyTorch is available
-        pass
+        try:
+            from models.lstm_model import SteelDefectLSTM
+            import torch.nn as nn
+            import torch.optim as optim
+            
+            config = self.lstm_config
+            model = SteelDefectLSTM(config)
+            
+            # Test that model can be used with PyTorch optimizers and loss functions
+            optimizer = optim.Adam(model.parameters(), lr=0.001)
+            criterion = nn.BCEWithLogitsLoss()
+            
+            assert optimizer is not None
+            assert criterion is not None
+            
+            # Test that model parameters are registered correctly
+            params = list(model.parameters())
+            assert len(params) > 0
+            
+        except ImportError:
+            pytest.skip("PyTorch not available for LSTM tests")
     
     def test_model_comparison(self):
         """Test model comparison functionality."""

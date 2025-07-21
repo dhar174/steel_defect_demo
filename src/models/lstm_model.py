@@ -119,8 +119,11 @@ except ImportError:
         def sum(x, dim):
             return MockTensor(x.shape)
 
+
+from torch.nn.utils.rnn import pad_packed_sequence, pack_padded_sequence
 import numpy as np
-from typing import Dict, Any, Optional, List, Union, Tuple
+from typing import Dict, Any, Optional, Tuple, Union, List
+import mathfrom typing import Dict, Any, Optional, List, Union, Tuple
 from pathlib import Path
 
 
@@ -140,7 +143,8 @@ class SteelDefectLSTM(torch.nn.Module if TORCH_AVAILABLE else MockModule):
         """
         super(SteelDefectLSTM, self).__init__()
         
-        # Extract configuration
+
+        # Extract configuration parameters
         arch_config = config.get('architecture', {})
         classifier_config = config.get('classifier', {})
         norm_config = config.get('normalization', {})
@@ -158,7 +162,8 @@ class SteelDefectLSTM(torch.nn.Module if TORCH_AVAILABLE else MockModule):
         self.classifier_activation = classifier_config.get('activation', 'relu')
         self.classifier_dropout = classifier_config.get('dropout', 0.3)
         
-        # Normalization parameters
+
+        # Normalization options
         self.use_batch_norm = norm_config.get('batch_norm', True)
         self.use_layer_norm = norm_config.get('layer_norm', False)
         self.use_input_norm = norm_config.get('input_norm', True)
@@ -217,6 +222,7 @@ class SteelDefectLSTM(torch.nn.Module if TORCH_AVAILABLE else MockModule):
             self._init_weights()
     
     def _build_classifier(self, input_dim: int) -> torch.nn.Sequential if TORCH_AVAILABLE else MockSequential:
+
         """
         Build configurable classifier head.
         
@@ -356,11 +362,13 @@ class SteelDefectLSTM(torch.nn.Module if TORCH_AVAILABLE else MockModule):
             self.attention_weights = attention_scores.detach()
         
         # Classifier forward pass
+
         prediction = self.classifier(final_output)
         
         return prediction
     
-    def init_hidden(self, batch_size: int, device: Optional[str] = None) -> Tuple:
+
+    def init_hidden(self, batch_size: int, device: Optional[torch.device] = None) -> Tuple[torch.Tensor, torch.Tensor]:
         """
         Initialize hidden and cell states.
         
@@ -441,6 +449,7 @@ class SteelDefectLSTM(torch.nn.Module if TORCH_AVAILABLE else MockModule):
         
         # For other layers, would need more complex implementation
         return None
+
 
 
 def load_lstm_config(config_path: str) -> Dict[str, Any]:

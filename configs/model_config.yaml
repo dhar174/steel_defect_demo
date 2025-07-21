@@ -21,21 +21,22 @@ baseline_model:
 
 lstm_model:
   architecture:
-    input_size: 5  # Number of sensors
-    hidden_size: 64
-    num_layers: 2
-    dropout: 0.2
-    bidirectional: true
+
+    input_size: 5  # Number of sensor channels
+    hidden_size: 64  # Hidden state dimension
+    num_layers: 2  # Number of LSTM layers
+    bidirectional: true  # Enable bidirectional processing
+    dropout: 0.2  # Dropout rate between layers
     
   classifier:
-    hidden_dims: [32, 16]
-    activation: "relu"
-    dropout: 0.3
+    hidden_dims: [32, 16]  # Classifier hidden layer dimensions
+    activation: "relu"  # Activation function
+    dropout: 0.3  # Classifier dropout rate
     
   normalization:
-    batch_norm: true
-    layer_norm: false
-    input_norm: true
+    batch_norm: true  # Enable batch normalization
+    layer_norm: false  # Enable layer normalization
+    input_norm: true  # Enable input normalization
     
   regularization:
     weight_decay: 0.0001
@@ -46,7 +47,6 @@ lstm_model:
     learning_rate: 0.001
     num_epochs: 100
     early_stopping_patience: 15
-    weight_decay: 0.0001
     
   data_processing:
     sequence_length: 300  # 5 minutes at 1Hz
