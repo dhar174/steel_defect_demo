@@ -721,7 +721,7 @@ class DataQualityAssessor:
                 score *= 0.95
             
             # Penalize extreme skewness
-            if abs(stats.get('skewness', 0)) > 2:
+            if abs(stats.get('skewness', 0)) > self.MAX_ALLOWED_SKEWNESS:
                 score *= 0.9
         
         # Check correlations
