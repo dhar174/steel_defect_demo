@@ -431,6 +431,7 @@ class PlottingUtils:
             title=title,
             yaxis_title="Sensor Values",
             boxmode='group'
+        )
     def save_plot(self, figure: go.Figure, filename: str, 
 
                  format: str = "png") -> None:
