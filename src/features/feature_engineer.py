@@ -173,7 +173,7 @@ class CastingFeatureEngineer:
                 if mean_val != 0:
                     range_ratio = range_val / abs(mean_val)
                 else:
-                    range_ratio = np.inf if range_val > 0 else 0
+                    range_ratio = np.nan if range_val > 0 else 0
                 features[f'{sensor}_range_ratio'] = range_ratio
         
         return pd.DataFrame([features])
