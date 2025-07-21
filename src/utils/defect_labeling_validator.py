@@ -90,7 +90,7 @@ class DefectLabelingValidator(DataQualityValidator):
                 'good_casts': good_count,
                 'defect_rate': defect_rate,
                 'target_defect_rate': self.defect_config.get('defect_probability', 0.15),
-                'class_balance_ratio': good_count / defect_count if defect_count > 0 else 1e6  # Use large finite number instead of inf for downstream compatibility
+                'class_balance_ratio': good_count / defect_count if defect_count > 0 else self.LARGE_FINITE_RATIO  # Use large finite number instead of inf for downstream compatibility
             },
             'trigger_analysis': trigger_analysis,
             'grade_analysis': grade_analysis,
