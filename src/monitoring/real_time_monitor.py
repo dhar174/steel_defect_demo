@@ -137,11 +137,7 @@ class RealTimeMonitor:
         high_risk_threshold = self.thresholds.get('high_risk_threshold', 0.7)
         alert_threshold = self.thresholds.get('alert_threshold', 0.8)
         
-        # Handle case where thresholds might be None
-        if high_risk_threshold is None:
-            high_risk_threshold = 0.7
-        if alert_threshold is None:
-            alert_threshold = 0.8
+        # Thresholds are already set with default values using dict.get()
         
         if prediction >= alert_threshold:
             self.logger.error(
