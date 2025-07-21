@@ -8,8 +8,8 @@ Note: Run 'pip install -e .' from the repository root to install the package in 
 """
 
 import time
-import logging
 
+import logging
 from monitoring.alert_system import AlertSystem
 
 # Configure logging to see console output
