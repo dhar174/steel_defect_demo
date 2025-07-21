@@ -328,7 +328,7 @@ class SteelDefectLSTM(torch.nn.Module if TORCH_AVAILABLE else MockModule):
         if sequence_lengths is not None:
             # Get the last actual output for each sequence
             if TORCH_AVAILABLE:
-                indices = torch.LongTensor(sequence_lengths) - 1
+                indices = torch.LongTensor(sequence_lengths).to(lstm_out.device) - 1
                 indices = indices.view(-1, 1, 1).expand(-1, -1, lstm_out.size(-1))
                 final_output = lstm_out.gather(1, indices).squeeze(1)
             else:
