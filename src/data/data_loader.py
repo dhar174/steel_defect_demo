@@ -75,7 +75,7 @@ class DataLoader:
         """
         try:
             return pd.read_csv(file_path)
-        except (FileNotFoundError, PermissionError, OSError, pd.errors.EmptyDataError, pd.errors.ParserError, UnicodeDecodeError, IOError) as e:
+        except (FileNotFoundError, PermissionError, OSError, pd.errors.EmptyDataError, pd.errors.ParserError, UnicodeDecodeError) as e:
             # If the specific path doesn't exist or has issues, try to load sample data
             sample_path = self.data_dir / "examples" / "steel_defect_sample.csv"
             if sample_path.exists():
