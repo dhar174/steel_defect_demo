@@ -119,7 +119,13 @@ class EvaluationReports:
         <div class="metric-grid">
             {% for metric_name, metric_value in key_metrics.items() %}
             <div class="metric-card">
-                <div class="metric-value">{{ "%.3f"|format(metric_value) }}</div>
+                <div class="metric-value">
+                    {%- if metric_value is number -%}
+                        {{ "%.3f"|format(metric_value) }}
+                    {%- else -%}
+                        {{ metric_value }}
+                    {%- endif -%}
+                </div>
                 <div class="metric-label">{{ metric_name.replace('_', ' ').title() }}</div>
             </div>
             {% endfor %}
@@ -180,7 +186,7 @@ class EvaluationReports:
             <ul>
                 <li>False Positives (unnecessary inspections): {{ confusion_matrix_analysis.false_positives }}</li>
                 <li>False Negatives (missed defects): {{ confusion_matrix_analysis.false_negatives }}</li>
-                <li>Detection Rate: {{ "%.1f"|format(detection_rate) }}%</li>
+                <li>Detection Rate: {{ "%.1f"|format(detection_rate) if detection_rate is number else detection_rate }}%</li>
             </ul>
         </div>
     </div>
@@ -192,7 +198,7 @@ class EvaluationReports:
         <p>Optimal thresholds for different objectives:</p>
         <ul>
             {% for objective, threshold_data in threshold_analysis.optimal_thresholds.items() %}
-            <li><strong>{{ objective.title() }}:</strong> {{ "%.3f"|format(threshold_data[0]) }} (Score: {{ "%.3f"|format(threshold_data[1]) }})</li>
+            <li><strong>{{ objective.title() }}:</strong> {{ "%.3f"|format(threshold_data[0]) if threshold_data[0] is number else threshold_data[0] }} (Score: {{ "%.3f"|format(threshold_data[1]) if threshold_data[1] is number else threshold_data[1] }})</li>
             {% endfor %}
         </ul>
         {% if include_plots %}

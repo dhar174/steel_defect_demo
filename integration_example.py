@@ -68,11 +68,19 @@ class SteelDefectReportGenerator:
                     <h3>{{ sensor.name }}</h3>
                     {% if sensor.is_valid %}
                         <div class="sensor-valid">
-                            <strong>Value:</strong> {{ "%.2f"|format(sensor.value) }} {{ sensor.unit }}
+                            <strong>Value:</strong> 
+                            {%- if sensor.value is number -%}
+                                {{ "%.2f"|format(sensor.value) }}
+                            {%- else -%}
+                                {{ sensor.value }} (raw)
+                            {%- endif %} {{ sensor.unit }}
                         </div>
                     {% else %}
                         <div class="sensor-invalid">
                             <strong>Error:</strong> {{ sensor.error }}
+                            {%- if sensor.value is defined %}
+                            <br><strong>Raw Value:</strong> {{ sensor.value }} (for debugging)
+                            {%- endif %}
                         </div>
                     {% endif %}
                 </div>
@@ -138,7 +146,13 @@ class SteelDefectReportGenerator:
         <div class="alert {{ alert_class }}">
             <h2>🚨 Defect Probability Alert</h2>
             {% if is_probability_valid %}
-                <p><strong>Defect Probability:</strong> {{ "%.1f"|format(probability_value * 100) }}%</p>
+                <p><strong>Defect Probability:</strong> 
+                {%- if probability_value is number and probability_value is not none and probability_value|type in ['int', 'float'] -%}
+                    {{ "%.1f"|format(probability_value * 100) }}%
+                {%- else -%}
+                    {{ probability_value }} (invalid format)
+                {%- endif -%}
+                </p>
                 
                 {% if probability_value >= 0.8 %}
                     <p style="color: red;">🔥 <strong>HIGH RISK</strong> - Immediate action required!</p>
@@ -149,7 +163,13 @@ class SteelDefectReportGenerator:
                 {% endif %}
                 
                 {% if is_confidence_valid %}
-                    <p><small>Confidence: {{ "%.1f"|format(confidence_value * 100) }}%</small></p>
+                    <p><small>Confidence: 
+                    {%- if confidence_value is number and confidence_value|is_float or confidence_value|is_integer -%}
+                        {{ "%.1f"|format(confidence_value * 100) }}%
+                    {%- else -%}
+                        {{ confidence_value }} (invalid format)
+                    {%- endif -%}
+                    </small></p>
                 {% endif %}
             {% else %}
                 <p style="color: red;">❌ <strong>INVALID PREDICTION DATA</strong></p>
