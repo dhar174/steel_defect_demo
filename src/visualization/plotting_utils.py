@@ -49,8 +49,29 @@ class PlottingUtils:
         Returns:
             go.Figure: Bar chart
         """
-        # TODO: Implement defect distribution plotting
-        pass
+        # Count good vs defect cases
+        unique, counts = np.unique(labels, return_counts=True)
+        class_names = ['Good', 'Defect']
+        
+        # Create bar chart
+        fig = go.Figure(data=[
+            go.Bar(
+                x=class_names,
+                y=counts,
+                text=[f'{count} ({count/len(labels)*100:.1f}%)' for count in counts],
+                textposition='auto',
+                marker_color=['#2E8B57', '#DC143C']
+            )
+        ])
+        
+        fig.update_layout(
+            title=title,
+            xaxis_title="Class",
+            yaxis_title="Count",
+            showlegend=False
+        )
+        
+        return fig
     
     def plot_correlation_heatmap(self, data: pd.DataFrame,
                                title: str = "Feature Correlation") -> go.Figure:
@@ -64,8 +85,31 @@ class PlottingUtils:
         Returns:
             go.Figure: Heatmap
         """
-        # TODO: Implement correlation heatmap
-        pass
+        # Compute correlation matrix
+        corr_matrix = data.corr()
+        
+        # Create heatmap
+        fig = go.Figure(data=go.Heatmap(
+            z=corr_matrix.values,
+            x=corr_matrix.columns,
+            y=corr_matrix.columns,
+            colorscale='RdBu',
+            zmid=0,
+            text=np.round(corr_matrix.values, 2),
+            texttemplate="%{text}",
+            textfont={"size": 10},
+            showscale=True
+        ))
+        
+        fig.update_layout(
+            title=title,
+            xaxis_title="Features",
+            yaxis_title="Features",
+            height=600,
+            width=800
+        )
+        
+        return fig
     
     def plot_feature_importance(self, feature_names: List[str],
                               importances: np.ndarray,
@@ -162,5 +206,268 @@ class PlottingUtils:
             filename (str): Output filename
             format (str): Output format
         """
-        # TODO: Implement plot saving
-        pass
+        if format == "png":
+            figure.write_image(filename)
+        elif format == "html":
+            figure.write_html(filename)
+        else:
+            raise ValueError(f"Unsupported format: {format}")
+    
+    def plot_sensor_histograms(self, data: pd.DataFrame, sensor_name: str,
+                             class_column: str = 'defect_label',
+                             title: str = None) -> go.Figure:
+        """
+        Plot histograms for sensor values, stratified by class.
+        
+        Args:
+            data (pd.DataFrame): Data containing sensor values
+            sensor_name (str): Name of sensor to plot
+            class_column (str): Column containing class labels
+            title (str): Plot title
+            
+        Returns:
+            go.Figure: Histogram plot
+        """
+        if title is None:
+            title = f"{sensor_name} Distribution by Class"
+        
+        # Get sensor columns
+        sensor_cols = [col for col in data.columns if col.startswith(sensor_name)]
+        
+        if not sensor_cols:
+            raise ValueError(f"No columns found for sensor: {sensor_name}")
+        
+        # For demonstration, use the mean column if available
+        sensor_col = None
+        for col in sensor_cols:
+            if 'mean' in col:
+                sensor_col = col
+                break
+        
+        if sensor_col is None:
+            sensor_col = sensor_cols[0]  # Use first available column
+        
+        # Separate by class
+        good_data = data[data[class_column] == 0][sensor_col].dropna()
+        defect_data = data[data[class_column] == 1][sensor_col].dropna()
+        
+        fig = go.Figure()
+        
+        # Add histograms
+        fig.add_trace(go.Histogram(
+            x=good_data,
+            name='Good',
+            opacity=0.7,
+            marker_color='#2E8B57',
+            nbinsx=20
+        ))
+        
+        fig.add_trace(go.Histogram(
+            x=defect_data,
+            name='Defect',
+            opacity=0.7,
+            marker_color='#DC143C',
+            nbinsx=20
+        ))
+        
+        fig.update_layout(
+            title=title,
+            xaxis_title=sensor_col,
+            yaxis_title="Frequency",
+            barmode='overlay',
+            legend=dict(x=0.8, y=0.9)
+        )
+        
+        return fig
+    
+    def plot_sensor_boxplots(self, data: pd.DataFrame, sensor_names: List[str],
+                           class_column: str = 'defect_label',
+                           title: str = "Sensor Box Plots by Class") -> go.Figure:
+        """
+        Plot box plots for multiple sensors, stratified by class.
+        
+        Args:
+            data (pd.DataFrame): Data containing sensor values
+            sensor_names (List[str]): Names of sensors to plot
+            class_column (str): Column containing class labels
+            title (str): Plot title
+            
+        Returns:
+            go.Figure: Box plot
+        """
+        fig = go.Figure()
+        
+        for i, sensor_name in enumerate(sensor_names):
+            # Get sensor columns and use mean if available
+            sensor_cols = [col for col in data.columns if col.startswith(sensor_name)]
+            sensor_col = None
+            
+            for col in sensor_cols:
+                if 'mean' in col:
+                    sensor_col = col
+                    break
+            
+            if sensor_col is None and sensor_cols:
+                sensor_col = sensor_cols[0]
+            
+            if sensor_col:
+                # Good class
+                good_data = data[data[class_column] == 0][sensor_col].dropna()
+                fig.add_trace(go.Box(
+                    y=good_data,
+                    name=f'{sensor_name} - Good',
+                    marker_color='#2E8B57',
+                    legendgroup='good',
+                    showlegend=(i == 0),
+                    legendgrouptitle_text='Good'
+                ))
+                
+                # Defect class
+                defect_data = data[data[class_column] == 1][sensor_col].dropna()
+                fig.add_trace(go.Box(
+                    y=defect_data,
+                    name=f'{sensor_name} - Defect',
+                    marker_color='#DC143C',
+                    legendgroup='defect',
+                    showlegend=(i == 0),
+                    legendgrouptitle_text='Defect'
+                ))
+        
+        fig.update_layout(
+            title=title,
+            yaxis_title="Sensor Values",
+            boxmode='group'
+        )
+        
+        return fig
+    
+    def plot_outlier_detection(self, data: pd.DataFrame, outlier_results: Dict,
+                             sensor_name: str, method: str = 'iqr',
+                             title: str = None) -> go.Figure:
+        """
+        Plot outlier detection results.
+        
+        Args:
+            data (pd.DataFrame): Data containing sensor values
+            outlier_results (Dict): Results from outlier detection
+            sensor_name (str): Name of sensor to plot
+            method (str): Outlier detection method used
+            title (str): Plot title
+            
+        Returns:
+            go.Figure: Scatter plot with outliers highlighted
+        """
+        if title is None:
+            title = f"{sensor_name} Outlier Detection ({method.upper()})"
+        
+        # Get sensor columns
+        sensor_cols = [col for col in data.columns if col.startswith(sensor_name)]
+        
+        if not sensor_cols:
+            raise ValueError(f"No columns found for sensor: {sensor_name}")
+        
+        # Use mean column if available
+        sensor_col = None
+        for col in sensor_cols:
+            if 'mean' in col:
+                sensor_col = col
+                break
+        
+        if sensor_col is None:
+            sensor_col = sensor_cols[0]
+        
+        # Get outlier information
+        sensor_outliers = outlier_results.get('sensors', {}).get(sensor_name, {})
+        outlier_info = sensor_outliers.get(sensor_col, {})
+        outlier_indices = outlier_info.get('outlier_indices', [])
+        
+        # Create scatter plot
+        fig = go.Figure()
+        
+        # Plot all points
+        y_values = data[sensor_col]
+        x_values = list(range(len(y_values)))
+        
+        normal_mask = ~data.index.isin(outlier_indices)
+        outlier_mask = data.index.isin(outlier_indices)
+        
+        # Normal points
+        fig.add_trace(go.Scatter(
+            x=np.array(x_values)[normal_mask],
+            y=y_values[normal_mask],
+            mode='markers',
+            name='Normal',
+            marker=dict(color='#2E8B57', size=6),
+            hovertemplate='Index: %{x}<br>Value: %{y}<extra></extra>'
+        ))
+        
+        # Outlier points
+        if outlier_mask.any():
+            fig.add_trace(go.Scatter(
+                x=np.array(x_values)[outlier_mask],
+                y=y_values[outlier_mask],
+                mode='markers',
+                name='Outliers',
+                marker=dict(color='#DC143C', size=10, symbol='x'),
+                hovertemplate='Index: %{x}<br>Value: %{y}<br>OUTLIER<extra></extra>'
+            ))
+        
+        fig.update_layout(
+            title=title,
+            xaxis_title="Cast Index",
+            yaxis_title=sensor_col,
+            hovermode='closest'
+        )
+        
+        return fig
+    
+    def plot_ks_test_results(self, ks_results: Dict, 
+                           title: str = "Kolmogorov-Smirnov Test Results") -> go.Figure:
+        """
+        Plot KS test results showing p-values for different sensors.
+        
+        Args:
+            ks_results (Dict): Results from KS tests
+            title (str): Plot title
+            
+        Returns:
+            go.Figure: Bar chart of p-values
+        """
+        # Extract sensor results
+        sensors = list(ks_results['sensors'].keys())
+        p_values = []
+        feature_names = []
+        
+        for sensor in sensors:
+            sensor_data = ks_results['sensors'][sensor]
+            for feature, results in sensor_data.items():
+                p_values.append(results['p_value'])
+                feature_names.append(f"{sensor}_{feature.split('_', 1)[1]}")
+        
+        # Create bar chart
+        colors = ['#DC143C' if p < 0.05 else '#2E8B57' for p in p_values]
+        
+        fig = go.Figure(data=[
+            go.Bar(
+                x=feature_names,
+                y=p_values,
+                marker_color=colors,
+                text=[f'{p:.3f}' for p in p_values],
+                textposition='auto',
+                hovertemplate='Feature: %{x}<br>P-value: %{y:.4f}<extra></extra>'
+            )
+        ])
+        
+        # Add significance line
+        fig.add_hline(y=0.05, line_dash="dash", line_color="red",
+                     annotation_text="α = 0.05")
+        
+        fig.update_layout(
+            title=title,
+            xaxis_title="Sensor Features",
+            yaxis_title="P-value",
+            xaxis_tickangle=-45,
+            showlegend=False
+        )
+        
+        return fig
