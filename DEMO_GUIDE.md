@@ -84,7 +84,7 @@ python scripts/train_lstm_model.py --config configs/model_config.yaml --epochs 5
 The script supports extensive CLI options for hyperparameters, experiment tracking, checkpointing and more. Consult `LSTM_TRAINING_IMPLEMENTATION_SUMMARY.md` for details.
 
 ### Automated Training Pipeline
-The `ModelTrainer` class orchestrates end‑to‑end training (preprocessing, cross‑validation, hyperparameter search). Example usage:
+The `ModelTrainer` class orchestrates end-to-end training (preprocessing, cross-validation, hyperparameter search). Example usage:
 ```python
 from src.models import ModelTrainer
 trainer = ModelTrainer(config_path='configs/training_pipeline.yaml')
