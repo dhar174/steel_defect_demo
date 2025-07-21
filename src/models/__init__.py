@@ -46,7 +46,7 @@ except ImportError:
 
 # PyTorch imports
 try:
-    from .lstm_model import SteelDefectLSTM, import SteelDefectLSTM, CastingSequenceDataset
+    from .lstm_model import SteelDefectLSTM, CastingSequenceDataset
     PYTORCH_AVAILABLE = True
 except ImportError:
     PYTORCH_AVAILABLE = False
