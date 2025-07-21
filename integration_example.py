@@ -147,7 +147,7 @@ class SteelDefectReportGenerator:
             <h2>🚨 Defect Probability Alert</h2>
             {% if is_probability_valid %}
                 <p><strong>Defect Probability:</strong> 
-                {%- if probability_value is number -%}
+                {%- if probability_value is number and probability_value is not none and probability_value|type in ['int', 'float'] -%}
                     {{ "%.1f"|format(probability_value * 100) }}%
                 {%- else -%}
                     {{ probability_value }} (invalid format)
