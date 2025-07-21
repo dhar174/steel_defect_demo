@@ -679,7 +679,7 @@ class SystemMonitoringComponent:
             memory_percent = memory.percent
             
             # Disk usage for root partition
-            disk = psutil.disk_usage('/')
+            disk = psutil.disk_usage(os.path.abspath(os.sep))
             disk_percent = (disk.used / disk.total) * 100
             
             # Additional metrics
