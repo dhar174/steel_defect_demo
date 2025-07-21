@@ -753,7 +753,7 @@ class SensorMonitoringComponent:
                     trend = base_value * 0.05 * np.sin(current_time.timestamp() / 180)  # 3-minute cycle
                 
                 # Occasionally introduce anomalies (5% chance)
-                if np.random.random() < 0.05:
+                if np.random.random() < self.ANOMALY_CHANCE:
                     anomaly_factor = np.random.choice([-1, 1]) * np.random.uniform(0.1, 0.3)
                     noise += base_value * anomaly_factor
                 
