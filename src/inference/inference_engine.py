@@ -219,11 +219,7 @@ class DefectPredictionEngine:
                 logits = self.lstm_model(sequence_tensor)
                 
                 # Apply sigmoid to get probability
-                if hasattr(torch, 'sigmoid'):
-                    probability = torch.sigmoid(logits)
-                else:
-                    # Fallback implementation
-                    probability = 1 / (1 + torch.exp(-logits))
+                probability = torch.sigmoid(logits)
                 
                 # Convert to scalar
                 if probability.numel() == 1:
