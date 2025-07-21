@@ -800,8 +800,8 @@ class TestIntegration:
         
         # Test attention availability after forward pass
         if attention is not None:
-            print(f"Attention shape: {attention.shape}")
-            # Basic sanity check that attention weights exist
+            # Validate the attention shape
+            assert attention.shape[0] > 0 and attention.shape[1] > 0, "Attention weights must have positive dimensions."
     
     def test_freeze_layers(self):
         """Test layer freezing functionality."""
