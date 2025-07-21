@@ -74,27 +74,37 @@ class DashboardLauncher:
         self.logger.info(f"Received signal {signum}. Initiating graceful shutdown...")
         self.shutdown()
     
-    def load_config(self, config_path: str) -> Dict[str, Any]:
+    def load_config(self, config_path: str = None) -> Dict[str, Any]:
         """
         Load configuration from YAML file.
         
         Args:
-            config_path (str): Path to configuration file
+            config_path (str): Path to configuration file. If None, tries dashboard_config.yaml first
             
         Returns:
             Dict[str, Any]: Loaded configuration
         """
-        try:
-            with open(config_path, 'r') as f:
-                config = yaml.safe_load(f)
-            self.logger.info(f"Configuration loaded from {config_path}")
-            return config
-        except FileNotFoundError:
-            self.logger.warning(f"Config file {config_path} not found. Using defaults.")
-            return self._get_default_config()
-        except Exception as e:
-            self.logger.error(f"Error loading config: {e}. Using defaults.")
-            return self._get_default_config()
+        # Default config files to try in order
+        default_configs = [
+            "configs/dashboard_config.yaml",
+            "configs/inference_config.yaml"
+        ]
+        
+        configs_to_try = [config_path] if config_path else default_configs
+        
+        for config_file in configs_to_try:
+            if config_file and os.path.exists(config_file):
+                try:
+                    with open(config_file, 'r') as f:
+                        config = yaml.safe_load(f)
+                    self.logger.info(f"Configuration loaded from {config_file}")
+                    return config
+                except Exception as e:
+                    self.logger.error(f"Error loading config from {config_file}: {e}")
+                    continue
+        
+        self.logger.warning("No config file found. Using defaults.")
+        return self._get_default_config()
     
     def _get_default_config(self) -> Dict[str, Any]:
         """Get default configuration."""
