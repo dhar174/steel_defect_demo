@@ -5,7 +5,7 @@ import numpy as np
 try:
     from sklearn.model_selection import (
         train_test_split, StratifiedKFold, GridSearchCV, 
-        RandomizedSearchCV, cross_val_score
+        RandomizedSearchCV, cross_val_score, KFold
     )
     from sklearn.preprocessing import (
         StandardScaler, RobustScaler, MinMaxScaler, 
@@ -373,7 +373,7 @@ class ModelTrainer:
     
     def setup_cross_validation(self,
                               cv_folds: int = 5,
-                              stratify: bool = True) -> Optional[Union[StratifiedKFold, KFold]]:
+                              stratify: bool = True) -> Optional:
         """
         Set up cross-validation strategy
         
@@ -728,7 +728,7 @@ class ModelTrainer:
     def plot_training_history(self,
                              history: Dict[str, List[float]],
                              metrics: List[str] = ['loss', 'auc'],
-                             figsize: Tuple[int, int] = (12, 4)) -> Optional[plt.Figure]:
+                             figsize: Tuple[int, int] = (12, 4)) -> Optional:
         """
         Plot training history curves
         
