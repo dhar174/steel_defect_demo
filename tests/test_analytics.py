@@ -33,7 +33,7 @@ class TestStreamAnalyticsEngine(unittest.TestCase):
             'sensor_1': np.random.normal(100, 10, 50),
             'sensor_2': np.random.normal(200, 15, 50),
             'sensor_3': np.random.normal(50, 5, 50),
-            'timestamp': pd.date_range('2023-01-01', periods=50, freq='1h')
+            'timestamp': pd.date_range(datetime.datetime.now().strftime('%Y-%m-%d'), periods=50, freq='1h')
         })
         
         # Create data with known anomalies
