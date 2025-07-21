@@ -119,7 +119,13 @@ class EvaluationReports:
         <div class="metric-grid">
             {% for metric_name, metric_value in key_metrics.items() %}
             <div class="metric-card">
-                <div class="metric-value">{{ "%.3f"|format(metric_value) if metric_value is number else metric_value }}</div>
+                <div class="metric-value">
+                    {%- if metric_value is number -%}
+                        {{ "%.3f"|format(metric_value) }}
+                    {%- else -%}
+                        {{ metric_value }}
+                    {%- endif -%}
+                </div>
                 <div class="metric-label">{{ metric_name.replace('_', ' ').title() }}</div>
             </div>
             {% endfor %}
