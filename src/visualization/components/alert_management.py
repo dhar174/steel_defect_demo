@@ -823,12 +823,31 @@ class AlertManagementComponent:
             True if successful, False otherwise
         """
         try:
-            # Update internal config
-            self.config.update(new_config)
+            # Helper function for deep merging configuration dictionaries
+            def deep_update(target: Dict, source: Dict) -> None:
+                """Recursively update target dict with source dict values."""
+                for key, value in source.items():
+                    if isinstance(value, dict) and key in target and isinstance(target[key], dict):
+                        deep_update(target[key], value)
+                    else:
+                        target[key] = value
             
-            # In a real implementation, you would write to the config file
-            # For now, we'll just update the internal config
-            logger.info("Configuration updated successfully")
+            # Update internal config with deep merge
+            deep_update(self.config, new_config)
+            
+            # Write updated configuration to file
+            config_path = os.path.join(os.getcwd(), self.config_file)
+            
+            # Ensure the directory exists
+            config_dir = os.path.dirname(config_path)
+            if config_dir and not os.path.exists(config_dir):
+                os.makedirs(config_dir, exist_ok=True)
+            
+            # Write the updated configuration to the YAML file
+            with open(config_path, 'w') as file:
+                yaml.safe_dump(self.config, file, default_flow_style=False, sort_keys=False)
+            
+            logger.info(f"Configuration updated successfully and written to {config_path}")
             return True
         except Exception as e:
             logger.error(f"Failed to update configuration: {e}")
