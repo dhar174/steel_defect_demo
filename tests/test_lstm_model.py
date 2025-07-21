@@ -131,7 +131,7 @@ class TestSteelDefectLSTM:
         # Test bidirectional initialization
         model_bidir = SteelDefectLSTM(self.bidirectional_config)
         assert model_bidir.bidirectional
-        assert model_bidir.hidden_size == 32  # This is the LSTM hidden size, not output size
+        assert model_bidir.hidden_size == 32  # This is the LSTM hidden size per direction, not the output size
         assert model_bidir.num_layers == 2
             
 
