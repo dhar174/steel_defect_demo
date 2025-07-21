@@ -190,7 +190,8 @@ class TestSteelDefectLSTM:
         if attention_weights is not None:
             assert isinstance(attention_weights, np.ndarray)
             # Should have attention weights for each sample and time step
-            assert attention_weights.shape[0] == self.batch_size or attention_weights.shape == (1, 10)
+            expected_attention_shape = (1, model.sequence_length)  # Dynamically derive shape
+            assert attention_weights.shape[0] == self.batch_size or attention_weights.shape == expected_attention_shape
     
     def test_layer_freezing(self):
         """Test layer freezing functionality."""
