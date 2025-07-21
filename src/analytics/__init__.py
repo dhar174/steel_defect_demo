@@ -1,0 +1,1 @@
+"""Analytics module for steel defect detection system."""
