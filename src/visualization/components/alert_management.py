@@ -844,7 +844,7 @@ class AlertManagementComponent:
                 os.makedirs(config_dir, exist_ok=True)
             
             # Write the updated configuration to the YAML file
-            with open(config_path, 'w') as file:
+            with open(config_path, 'w', encoding='utf-8') as file:
                 yaml.safe_dump(self.config, file, default_flow_style=False, sort_keys=False)
             
             logger.info(f"Configuration updated successfully and written to {config_path}")
