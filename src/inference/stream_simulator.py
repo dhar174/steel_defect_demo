@@ -77,7 +77,7 @@ class RealTimeStreamSimulator:
             try:
                 row = self.data_queue.get_nowait()
                 buffer_rows.append(row)
-            except:
+            except queue.Empty:
                 break
         
         if not buffer_rows:
