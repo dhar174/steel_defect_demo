@@ -750,7 +750,7 @@ class SystemMonitoringComponent:
         simulated_latency = max(50, base_latency + latency_variation)
         
         base_throughput = 10
-        throughput_variation = np.random.normal(0, 2)
+        throughput_variation = np.random.normal(0, self.THROUGHPUT_VARIATION_STD_DEV)
         simulated_throughput = max(1, base_throughput + throughput_variation)
         
         self.add_model_performance_data(simulated_latency, simulated_throughput)
