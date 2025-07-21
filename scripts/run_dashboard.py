@@ -55,12 +55,16 @@ class DashboardLauncher:
     
     def _setup_logging(self) -> logging.Logger:
         """Setup structured logging configuration."""
+        logs_path = Path('logs')
+        if not logs_path.exists():
+            logs_path.mkdir(parents=True, exist_ok=True)
+        
         logging.basicConfig(
             level=logging.INFO,
             format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
             handlers=[
                 logging.StreamHandler(sys.stdout),
-                logging.FileHandler('logs/dashboard.log', mode='a') if Path('logs').exists() else logging.StreamHandler()
+                logging.FileHandler(logs_path / 'dashboard.log', mode='a')
             ]
         )
         return logging.getLogger(__name__)
