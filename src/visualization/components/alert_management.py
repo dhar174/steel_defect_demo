@@ -41,6 +41,7 @@ class AlertManagementComponent:
     def __init__(self, 
                  component_id: str = "alert-management",
                  config_file: str = None,
+                 base_dir: str = None,
                  max_alerts: int = 1000,
                  update_interval: int = 5000,
                  initialize_sample_data: bool = True):
@@ -50,6 +51,7 @@ class AlertManagementComponent:
         Args:
             component_id: Unique identifier for the component
             config_file: Path to inference_config.yaml
+            base_dir: Base directory for resolving relative paths (defaults to project root)
             max_alerts: Maximum number of alerts to store in memory
             update_interval: Update interval in milliseconds
             initialize_sample_data: Whether to initialize with sample data
@@ -57,6 +59,14 @@ class AlertManagementComponent:
         self.component_id = component_id
         self.max_alerts = max_alerts
         self.update_interval = update_interval
+        
+        # Set base directory for consistent file path resolution
+        if base_dir is None:
+            # Default to the project root directory (3 levels up from this file)
+            current_file_dir = os.path.dirname(os.path.abspath(__file__))
+            self.base_dir = os.path.dirname(os.path.dirname(os.path.dirname(current_file_dir)))
+        else:
+            self.base_dir = os.path.abspath(base_dir)
         
         # Load configuration
         self.config_file = config_file or "configs/inference_config.yaml"
@@ -89,7 +99,7 @@ class AlertManagementComponent:
     def _load_config(self) -> Dict:
         """Load configuration from inference_config.yaml."""
         try:
-            config_path = os.path.join(os.getcwd(), self.config_file)
+            config_path = os.path.join(self.base_dir, self.config_file)
             if os.path.exists(config_path):
                 with open(config_path, 'r') as file:
                     config = yaml.safe_load(file)
@@ -836,7 +846,7 @@ class AlertManagementComponent:
             deep_update(self.config, new_config)
             
             # Write updated configuration to file
-            config_path = os.path.join(os.getcwd(), self.config_file)
+            config_path = os.path.join(self.base_dir, self.config_file)
             
             # Ensure the directory exists
             config_dir = os.path.dirname(config_path)
