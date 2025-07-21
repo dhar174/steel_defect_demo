@@ -183,7 +183,7 @@ class TestModelComparison:
 def test_model_comparison_integration():
     """Integration test for ModelComparison with real-like data."""
     # Create more realistic test data
-    np.random.seed(123)
+    np.random.seed(42)
     n_samples = 100
     
     y_true = np.random.binomial(1, 0.2, n_samples)
