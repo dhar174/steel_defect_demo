@@ -761,50 +761,49 @@ def detect_spc_violations(data: np.ndarray, control_limits: Dict[str, float]) ->
     return list(set(violations))  # Remove duplicates
 
 
-# Visualization methods for HistoricalAnalysisComponents class
-def create_data_overview_cards(self, df: pd.DataFrame) -> html.Div:
-    """Create overview cards showing data summary statistics."""
-    if df.empty:
-        return html.Div("No data available", className="text-muted")
-    
-    total_records = len(df)
-    defect_rate = (df['defect'].sum() / len(df)) * 100 if 'defect' in df.columns else 0
-    date_range = f"{df['timestamp'].min().strftime('%Y-%m-%d')} to {df['timestamp'].max().strftime('%Y-%m-%d')}" if 'timestamp' in df.columns else "N/A"
-    unique_casts = df['cast_id'].nunique() if 'cast_id' in df.columns else 0
-    
-    cards = [
-        dbc.Card([
-            dbc.CardBody([
-                html.H4(f"{total_records:,}", className="text-primary"),
-                html.P("Total Records", className="mb-0")
-            ])
-        ], className="mb-2"),
+class HistoricalAnalysisComponents:
+    # Visualization methods for HistoricalAnalysisComponents class
+    def create_data_overview_cards(self, df: pd.DataFrame) -> html.Div:
+        """Create overview cards showing data summary statistics."""
+        if df.empty:
+            return html.Div("No data available", className="text-muted")
         
-        dbc.Card([
-            dbc.CardBody([
-                html.H4(f"{defect_rate:.1f}%", className="text-danger"),
-                html.P("Defect Rate", className="mb-0")
-            ])
-        ], className="mb-2"),
+        total_records = len(df)
+        defect_rate = (df['defect'].sum() / len(df)) * 100 if 'defect' in df.columns else 0
+        date_range = f"{df['timestamp'].min().strftime('%Y-%m-%d')} to {df['timestamp'].max().strftime('%Y-%m-%d')}" if 'timestamp' in df.columns else "N/A"
+        unique_casts = df['cast_id'].nunique() if 'cast_id' in df.columns else 0
         
-        dbc.Card([
-            dbc.CardBody([
-                html.H4(f"{unique_casts}", className="text-info"),
-                html.P("Unique Casts", className="mb-0")
-            ])
-        ], className="mb-2"),
+        cards = [
+            dbc.Card([
+                dbc.CardBody([
+                    html.H4(f"{total_records:,}", className="text-primary"),
+                    html.P("Total Records", className="mb-0")
+                ])
+            ], className="mb-2"),
+            
+            dbc.Card([
+                dbc.CardBody([
+                    html.H4(f"{defect_rate:.1f}%", className="text-danger"),
+                    html.P("Defect Rate", className="mb-0")
+                ])
+            ], className="mb-2"),
+            
+            dbc.Card([
+                dbc.CardBody([
+                    html.H4(f"{unique_casts}", className="text-info"),
+                    html.P("Unique Casts", className="mb-0")
+                ])
+            ], className="mb-2"),
+            
+            dbc.Card([
+                dbc.CardBody([
+                    html.P("Date Range", className="mb-1 font-weight-bold"),
+                    html.Small(date_range, className="text-muted")
+                ])
+            ], className="mb-2")
+        ]
         
-        dbc.Card([
-            dbc.CardBody([
-                html.P("Date Range", className="mb-1 font-weight-bold"),
-                html.Small(date_range, className="text-muted")
-            ])
-        ], className="mb-2")
-    ]
-    
-    return html.Div(cards)
-
-
+        return html.Div(cards)
 def create_distribution_plot(self, df: pd.DataFrame, feature: str) -> go.Figure:
     """Create distribution plot for selected feature."""
     if df.empty or feature not in df.columns:
