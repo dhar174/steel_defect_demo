@@ -915,7 +915,23 @@ class HistoricalAnalysisComponents:
         return fig
 
     def create_correlation_heatmap(self, df: pd.DataFrame, method: str = 'pearson') -> go.Figure:
-        """Create correlation heatmap."""
+        """
+        Create a correlation heatmap for selected sensor columns in the given DataFrame.
+        
+        This method computes the correlation matrix for up to five sensor columns in the DataFrame
+        using the specified correlation method (default is 'pearson') and visualizes it as a heatmap.
+        
+        Parameters:
+        - df (pd.DataFrame): The input DataFrame containing sensor data.
+        - method (str): The correlation method to use ('pearson', 'kendall', or 'spearman'). Default is 'pearson'.
+        
+        Returns:
+        - go.Figure: A Plotly figure object containing the correlation heatmap.
+        
+        Notes:
+        - If the DataFrame is empty, a placeholder figure is returned with a "No data available" annotation.
+        - If fewer than two sensor columns are available, a placeholder figure is returned with a "Need more sensors" annotation.
+        """
         if df.empty:
             fig = go.Figure()
             fig.add_annotation(text="No data available", xref="paper", yref="paper", x=0.5, y=0.5, showarrow=False)
