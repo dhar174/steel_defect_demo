@@ -1,0 +1,75 @@
+{
+  "analysis_type": "label_distribution",
+  "timestamp": "2025-07-21T01:36:04.566794",
+  "dataset_summary": {
+    "total_casts": 10,
+    "defect_casts": 2,
+    "good_casts": 8,
+    "defect_rate": 0.2,
+    "target_defect_rate": 0.15,
+    "class_balance_ratio": 4.0
+  },
+  "trigger_analysis": {
+    "individual_triggers": {
+      "rapid_temperature_drop": 2
+    },
+    "trigger_combinations": {
+      "('rapid_temperature_drop',)": 2
+    },
+    "defect_casts_with_triggers": 2,
+    "defect_casts_without_triggers": 0,
+    "trigger_coverage": 1.0
+  },
+  "grade_analysis": {
+    "Grade_A": {
+      "total": 3,
+      "defects": 0,
+      "defect_rate": 0.0
+    },
+    "Grade_B": {
+      "total": 1,
+      "defects": 0,
+      "defect_rate": 0.0
+    },
+    "Grade_C": {
+      "total": 3,
+      "defects": 1,
+      "defect_rate": 0.3333333333333333
+    },
+    "Grade_D": {
+      "total": 3,
+      "defects": 1,
+      "defect_rate": 0.3333333333333333
+    }
+  },
+  "temporal_analysis": {
+    "sufficient_data": true,
+    "defect_positions": [
+      7,
+      9
+    ],
+    "intervals_between_defects": {
+      "mean": 2.0,
+      "std": 0.0,
+      "min": 2,
+      "max": 2
+    }
+  },
+  "statistical_tests": {
+    "sufficient_data": true,
+    "casting_speed": {
+      "defect_mean": 1.2002511781711533,
+      "good_mean": 1.199894331950229,
+      "difference": 0.0003568462209242451
+    },
+    "mold_temperature": {
+      "defect_mean": 1520.3237998283062,
+      "good_mean": 1519.7955922767894,
+      "difference": 0.5282075515167435
+    }
+  },
+  "recommendations": [
+    "Defect rate (20.0%) significantly differs from target (15.0%). Consider adjusting base defect probability or trigger thresholds.",
+    "Significant variation in defect rates across steel grades. Consider grade-specific defect probability settings."
+  ]
+}
