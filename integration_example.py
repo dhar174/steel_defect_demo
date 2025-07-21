@@ -164,7 +164,7 @@ class SteelDefectReportGenerator:
                 
                 {% if is_confidence_valid %}
                     <p><small>Confidence: 
-                    {%- if confidence_value is number -%}
+                    {%- if confidence_value is number and confidence_value|is_float or confidence_value|is_integer -%}
                         {{ "%.1f"|format(confidence_value * 100) }}%
                     {%- else -%}
                         {{ confidence_value }} (invalid format)
