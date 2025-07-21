@@ -4,6 +4,8 @@ Unit tests for the SensorMonitoringComponent.
 This module provides comprehensive tests for all functionality of the
 sensor monitoring component including data handling, plotting, health
 monitoring, and anomaly detection.
+
+Note: Run 'pip install -e .' from the repository root to install the package in development mode.
 """
 
 import unittest
@@ -11,11 +13,6 @@ import numpy as np
 import pandas as pd
 from datetime import datetime, timedelta
 from unittest.mock import patch, MagicMock
-import sys
-import os
-
-# Add src to path for testing
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'src'))
 
 from visualization.components.sensor_monitoring import SensorMonitoringComponent
 
