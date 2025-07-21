@@ -3,16 +3,13 @@ Comprehensive usage example for the BaselineXGBoostModel.
 
 This example demonstrates all the key features and capabilities of the
 implemented XGBoost baseline model for steel casting defect prediction.
+
+Note: Run 'pip install -e .' from the repository root to install the package in development mode.
 """
 
 import numpy as np
 import pandas as pd
-from pathlib import Path
 import matplotlib.pyplot as plt
-
-# Add src to path for imports
-import sys
-sys.path.append(str(Path(__file__).parent.parent / 'src'))
 
 from models.baseline_model import BaselineXGBoostModel
 from models.model_config import ModelConfig

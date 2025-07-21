@@ -5,13 +5,11 @@ Historical Analysis Component Demo
 This script demonstrates the key features of the historical analysis component
 for steel defect detection. It can be run standalone to test functionality
 or integrated into the main dashboard.
+
+Note: Run 'pip install -e .' from the repository root to install the package in development mode.
 """
 
-import sys
-import os
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-
-from src.visualization.components.historical_analysis import HistoricalAnalysisComponents
+from visualization.components.historical_analysis import HistoricalAnalysisComponents
 import dash
 from dash import dcc, html, Input, Output, callback
 import dash_bootstrap_components as dbc

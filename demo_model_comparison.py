@@ -3,16 +3,14 @@ Example demonstrating the ModelComparison component integration.
 
 This script shows how to use the ModelComparison component with real model results
 and integrate it into a dashboard page.
-"""
 
-import sys
-import os
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+Note: Run 'pip install -e .' from the repository root to install the package in development mode.
+"""
 
 import dash
 from dash import dcc, html, Input, Output, callback
 import dash_bootstrap_components as dbc
-from src.visualization.components.model_comparison import ModelComparison, create_sample_model_results
+from visualization.components.model_comparison import ModelComparison, create_sample_model_results
 
 
 def create_model_comparison_page():
