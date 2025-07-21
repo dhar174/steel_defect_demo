@@ -73,9 +73,18 @@ class PredictionPipeline:
                 # Wait for the next prediction cycle
                 await asyncio.sleep(update_interval)
                 
+            except pd.errors.EmptyDataError as e:
+                # Handle empty data buffer error
+                self.logger.error(f"Stream {stream_id} - Empty data buffer: {e}", exc_info=True)
+            except asyncio.TimeoutError as e:
+                # Handle timeout errors
+                self.logger.error(f"Stream {stream_id} - Timeout error: {e}", exc_info=True)
+            except RuntimeError as e:
+                # Handle runtime errors specific to the prediction engine or simulator
+                self.logger.error(f"Stream {stream_id} - Runtime error: {e}", exc_info=True)
             except Exception as e:
-                # Log error but don't crash the entire pipeline
-                self.logger.error(f"Error in stream {stream_id}: {e}", exc_info=True)
+                # Log unexpected errors but don't crash the entire pipeline
+                self.logger.error(f"Stream {stream_id} - Unexpected error: {e}", exc_info=True)
                 
                 # Use a fallback prediction strategy
                 try:
