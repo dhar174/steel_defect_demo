@@ -118,7 +118,13 @@ class ModelEvaluator:
                 y_proba_raw = self.model.predict_proba(X)
                 # Handle different predict_proba output formats
                 if y_proba_raw.ndim == 2:
-                    y_proba = y_proba_raw[:, 1]  # Standard sklearn format
+                    if y_proba_raw.shape[1] == 2:  # Validate binary classification
+                        y_proba = y_proba_raw[:, 1]  # Standard sklearn format
+                    else:
+                        raise ValueError(
+                            f"Invalid predict_proba output: expected 2 classes for binary classification, "
+                            f"but got {y_proba_raw.shape[1]} classes. Ensure the model is binary."
+                        )
                 else:
                     y_proba = y_proba_raw  # BaselineXGBoostModel format (already positive class probabilities)
             else:
