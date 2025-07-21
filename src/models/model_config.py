@@ -128,9 +128,8 @@ class ModelConfig:
         
         # Check hidden size
         hidden_size = arch_config.get('hidden_size', 64)
-        valid_hidden_sizes = [32, 64, 128, 256]
-        if hidden_size not in valid_hidden_sizes:
-            self.logger.warning(f"Hidden size {hidden_size} not in recommended values: {valid_hidden_sizes}")
+        if hidden_size not in VALID_HIDDEN_SIZES:
+            self.logger.warning(f"Hidden size {hidden_size} not in recommended values: {VALID_HIDDEN_SIZES}")
         
         # Additional validation for extremely invalid values
         if hidden_size <= 0:
