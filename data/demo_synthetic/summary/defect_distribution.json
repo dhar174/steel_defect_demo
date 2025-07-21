@@ -1,0 +1,15 @@
+{
+  "total_casts": 50,
+  "defect_casts": 9,
+  "normal_casts": 41,
+  "defect_rate": 0.18,
+  "trigger_distribution": {
+    "rapid_temperature_drop": 43
+  },
+  "grade_distribution": {
+    "Grade_A": 12,
+    "Grade_B": 10,
+    "Grade_C": 12,
+    "Grade_D": 16
+  }
+}

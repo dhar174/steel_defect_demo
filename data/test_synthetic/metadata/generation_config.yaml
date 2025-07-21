@@ -1,0 +1,46 @@
+data_generation:
+  cast_duration_minutes: 120
+  defect_simulation:
+    defect_probability: 0.15
+    defect_triggers:
+      high_speed_with_low_superheat: true
+      prolonged_mold_level_deviation: 30
+      rapid_temperature_drop: 50
+    max_defect_probability: 0.8
+    trigger_probability_factor: 0.2
+  num_casts: 3
+  output:
+    metadata_format: json
+    raw_data_format: parquet
+    train_test_split: 0.8
+  random_seed: 42
+  sampling_rate_hz: 1
+  sensors:
+    casting_speed:
+      base_value: 1.2
+      max_value: 1.8
+      min_value: 0.8
+      noise_std: 0.05
+    cooling_water_flow:
+      base_value: 200
+      max_value: 250
+      min_value: 150
+      noise_std: 15.0
+    mold_level:
+      base_value: 150
+      max_value: 180
+      min_value: 120
+      noise_std: 5.0
+    mold_level_normal_range:
+    - 130
+    - 170
+    mold_temperature:
+      base_value: 1520
+      max_value: 1580
+      min_value: 1480
+      noise_std: 10.0
+    superheat:
+      base_value: 25
+      max_value: 40
+      min_value: 15
+      noise_std: 3.0

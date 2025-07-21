@@ -152,7 +152,7 @@ class SteelCastingDataGenerator:
         timestamps = pd.date_range(
             start=start_time,
             periods=num_samples,
-            freq=f'{1/sampling_rate}S'  # Use uppercase 'S' for seconds
+            freq=f'{1/sampling_rate}s'  # Use lowercase 's' for seconds
         )
         
         # Generate sensor data

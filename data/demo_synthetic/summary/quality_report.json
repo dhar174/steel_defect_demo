@@ -1,0 +1,1419 @@
+{
+  "generation_timestamp": "2025-07-21T00:39:17.584341",
+  "total_validations": 32,
+  "validation_summary": {
+    "statistical": {
+      "total": 10,
+      "passed": 10,
+      "failed": 0
+    },
+    "defect_logic": {
+      "total": 10,
+      "passed": 10,
+      "failed": 0
+    },
+    "temporal": {
+      "total": 10,
+      "passed": 10,
+      "failed": 0
+    },
+    "dataset_distribution": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    },
+    "file_integrity": {
+      "total": 1,
+      "passed": 1,
+      "failed": 0
+    }
+  },
+  "overall_passed": true,
+  "issues_summary": {
+    "statistical": {},
+    "defect_logic": {},
+    "temporal": {},
+    "dataset_distribution": {},
+    "file_integrity": {}
+  },
+  "detailed_results": [
+    {
+      "cast_id": "cast_0001",
+      "validation_type": "statistical",
+      "timestamp": "2025-07-21T00:39:17.091105",
+      "checks": {
+        "casting_speed": {
+          "range_check": {
+            "actual_min": 1.0081151115551517,
+            "actual_max": 1.3724533971972803,
+            "expected_min": 0.8,
+            "expected_max": 1.8,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 1.2021920028611948,
+            "actual_std": 0.050002122897320166,
+            "expected_base": 1.2,
+            "expected_std": 0.05,
+            "mean_deviation_pct": 0.18266690509956737,
+            "std_ratio": 1.0000424579464033,
+            "noise_reasonable": true
+          }
+        },
+        "cooling_water_flow": {
+          "range_check": {
+            "actual_min": 150.0,
+            "actual_max": 250.0,
+            "expected_min": 150,
+            "expected_max": 250,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 200.0103876566267,
+            "actual_std": 15.151244537205153,
+            "expected_base": 200,
+            "expected_std": 15.0,
+            "mean_deviation_pct": 0.0051938283133523555,
+            "std_ratio": 1.0100829691470101,
+            "noise_reasonable": true
+          }
+        },
+        "mold_level": {
+          "range_check": {
+            "actual_min": 131.22366092936196,
+            "actual_max": 167.39632526635,
+            "expected_min": 120,
+            "expected_max": 180,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 149.87197564094714,
+            "actual_std": 4.972938515691138,
+            "expected_base": 150,
+            "expected_std": 5.0,
+            "mean_deviation_pct": 0.08534957270190566,
+            "std_ratio": 0.9945877031382275,
+            "noise_reasonable": true
+          }
+        },
+        "mold_temperature": {
+          "range_check": {
+            "actual_min": 1483.6009252972958,
+            "actual_max": 1557.5776004204135,
+            "expected_min": 1480,
+            "expected_max": 1580,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 1520.4086804167068,
+            "actual_std": 9.874012448362004,
+            "expected_base": 1520,
+            "expected_std": 10.0,
+            "mean_deviation_pct": 0.02688686952018615,
+            "std_ratio": 0.9874012448362004,
+            "noise_reasonable": true
+          }
+        },
+        "superheat": {
+          "range_check": {
+            "actual_min": 15.0,
+            "actual_max": 36.010632533315764,
+            "expected_min": 15,
+            "expected_max": 40,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 25.220615198092023,
+            "actual_std": 2.9476652105292387,
+            "expected_base": 25,
+            "expected_std": 3.0,
+            "mean_deviation_pct": 0.8824607923680928,
+            "std_ratio": 0.9825550701764129,
+            "noise_reasonable": true
+          }
+        }
+      },
+      "passed": true,
+      "issues": []
+    },
+    {
+      "cast_id": "cast_0001",
+      "validation_type": "defect_logic",
+      "timestamp": "2025-07-21T00:39:17.092230",
+      "checks": {
+        "detected_triggers": [
+          "rapid_temperature_drop"
+        ],
+        "stored_triggers": [
+          "rapid_temperature_drop"
+        ],
+        "trigger_consistency": true,
+        "stored_defect_label": false,
+        "triggers_present": true,
+        "defect_logic_consistent": true
+      },
+      "passed": true,
+      "issues": []
+    },
+    {
+      "cast_id": "cast_0001",
+      "validation_type": "temporal",
+      "timestamp": "2025-07-21T00:39:17.093631",
+      "checks": {
+        "timestamp_frequency_consistent": true,
+        "correlations": {
+          "temp_superheat": 0.001014043904367987
+        },
+        "data_completeness": 1.0
+      },
+      "passed": true,
+      "issues": [
+        "Unexpectedly low correlation between temperature and superheat"
+      ]
+    },
+    {
+      "cast_id": "cast_0002",
+      "validation_type": "statistical",
+      "timestamp": "2025-07-21T00:39:17.106132",
+      "checks": {
+        "casting_speed": {
+          "range_check": {
+            "actual_min": 1.001547021701524,
+            "actual_max": 1.3930327782946312,
+            "expected_min": 0.8,
+            "expected_max": 1.8,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 1.2008006618111302,
+            "actual_std": 0.04984134171938218,
+            "expected_base": 1.2,
+            "expected_std": 0.05,
+            "mean_deviation_pct": 0.06672181759418787,
+            "std_ratio": 0.9968268343876436,
+            "noise_reasonable": true
+          }
+        },
+        "cooling_water_flow": {
+          "range_check": {
+            "actual_min": 150.0,
+            "actual_max": 250.0,
+            "expected_min": 150,
+            "expected_max": 250,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 199.4266358253761,
+            "actual_std": 14.90242855383576,
+            "expected_base": 200,
+            "expected_std": 15.0,
+            "mean_deviation_pct": 0.2866820873119451,
+            "std_ratio": 0.993495236922384,
+            "noise_reasonable": true
+          }
+        },
+        "mold_level": {
+          "range_check": {
+            "actual_min": 132.52208318233696,
+            "actual_max": 169.06118989468558,
+            "expected_min": 120,
+            "expected_max": 180,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 149.64101123605158,
+            "actual_std": 4.979874138482574,
+            "expected_base": 150,
+            "expected_std": 5.0,
+            "mean_deviation_pct": 0.23932584263227832,
+            "std_ratio": 0.9959748276965149,
+            "noise_reasonable": true
+          }
+        },
+        "mold_temperature": {
+          "range_check": {
+            "actual_min": 1482.3532763684798,
+            "actual_max": 1558.2854008840397,
+            "expected_min": 1480,
+            "expected_max": 1580,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 1519.2748363671224,
+            "actual_std": 9.95526668457272,
+            "expected_base": 1520,
+            "expected_std": 10.0,
+            "mean_deviation_pct": 0.047708133741949904,
+            "std_ratio": 0.995526668457272,
+            "noise_reasonable": true
+          }
+        },
+        "superheat": {
+          "range_check": {
+            "actual_min": 15.0,
+            "actual_max": 36.9490781762802,
+            "expected_min": 15,
+            "expected_max": 40,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 25.152393404920666,
+            "actual_std": 3.0298729235553417,
+            "expected_base": 25,
+            "expected_std": 3.0,
+            "mean_deviation_pct": 0.6095736196826635,
+            "std_ratio": 1.0099576411851139,
+            "noise_reasonable": true
+          }
+        }
+      },
+      "passed": true,
+      "issues": []
+    },
+    {
+      "cast_id": "cast_0002",
+      "validation_type": "defect_logic",
+      "timestamp": "2025-07-21T00:39:17.107228",
+      "checks": {
+        "detected_triggers": [
+          "rapid_temperature_drop"
+        ],
+        "stored_triggers": [
+          "rapid_temperature_drop"
+        ],
+        "trigger_consistency": true,
+        "stored_defect_label": false,
+        "triggers_present": true,
+        "defect_logic_consistent": true
+      },
+      "passed": true,
+      "issues": []
+    },
+    {
+      "cast_id": "cast_0002",
+      "validation_type": "temporal",
+      "timestamp": "2025-07-21T00:39:17.108519",
+      "checks": {
+        "timestamp_frequency_consistent": true,
+        "correlations": {
+          "temp_superheat": -0.0015896265302717447
+        },
+        "data_completeness": 1.0
+      },
+      "passed": true,
+      "issues": [
+        "Unexpectedly low correlation between temperature and superheat"
+      ]
+    },
+    {
+      "cast_id": "cast_0003",
+      "validation_type": "statistical",
+      "timestamp": "2025-07-21T00:39:17.119570",
+      "checks": {
+        "casting_speed": {
+          "range_check": {
+            "actual_min": 1.0364514558913023,
+            "actual_max": 1.3970296060187244,
+            "expected_min": 0.8,
+            "expected_max": 1.8,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 1.2005857892414011,
+            "actual_std": 0.048689826225376764,
+            "expected_base": 1.2,
+            "expected_std": 0.05,
+            "mean_deviation_pct": 0.04881577011676501,
+            "std_ratio": 0.9737965245075353,
+            "noise_reasonable": true
+          }
+        },
+        "cooling_water_flow": {
+          "range_check": {
+            "actual_min": 150.0,
+            "actual_max": 250.0,
+            "expected_min": 150,
+            "expected_max": 250,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 199.14184449833823,
+            "actual_std": 14.977125093614532,
+            "expected_base": 200,
+            "expected_std": 15.0,
+            "mean_deviation_pct": 0.429077750830885,
+            "std_ratio": 0.9984750062409689,
+            "noise_reasonable": true
+          }
+        },
+        "mold_level": {
+          "range_check": {
+            "actual_min": 130.20872107816894,
+            "actual_max": 169.35762995037732,
+            "expected_min": 120,
+            "expected_max": 180,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 149.76886233910162,
+            "actual_std": 5.058645902642218,
+            "expected_base": 150,
+            "expected_std": 5.0,
+            "mean_deviation_pct": 0.15409177393225568,
+            "std_ratio": 1.0117291805284436,
+            "noise_reasonable": true
+          }
+        },
+        "mold_temperature": {
+          "range_check": {
+            "actual_min": 1480.0,
+            "actual_max": 1557.9757523734754,
+            "expected_min": 1480,
+            "expected_max": 1580,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 1520.4787600255809,
+            "actual_std": 10.108495430565862,
+            "expected_base": 1520,
+            "expected_std": 10.0,
+            "mean_deviation_pct": 0.031497370104004496,
+            "std_ratio": 1.0108495430565863,
+            "noise_reasonable": true
+          }
+        },
+        "superheat": {
+          "range_check": {
+            "actual_min": 15.0,
+            "actual_max": 36.744123693866165,
+            "expected_min": 15,
+            "expected_max": 40,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 24.984254948717993,
+            "actual_std": 2.9833764787781503,
+            "expected_base": 25,
+            "expected_std": 3.0,
+            "mean_deviation_pct": 0.06298020512802793,
+            "std_ratio": 0.9944588262593834,
+            "noise_reasonable": true
+          }
+        }
+      },
+      "passed": true,
+      "issues": []
+    },
+    {
+      "cast_id": "cast_0003",
+      "validation_type": "defect_logic",
+      "timestamp": "2025-07-21T00:39:17.120455",
+      "checks": {
+        "detected_triggers": [
+          "rapid_temperature_drop"
+        ],
+        "stored_triggers": [
+          "rapid_temperature_drop"
+        ],
+        "trigger_consistency": true,
+        "stored_defect_label": false,
+        "triggers_present": true,
+        "defect_logic_consistent": true
+      },
+      "passed": true,
+      "issues": []
+    },
+    {
+      "cast_id": "cast_0003",
+      "validation_type": "temporal",
+      "timestamp": "2025-07-21T00:39:17.121680",
+      "checks": {
+        "timestamp_frequency_consistent": true,
+        "correlations": {
+          "temp_superheat": -0.004196771639198799
+        },
+        "data_completeness": 1.0
+      },
+      "passed": true,
+      "issues": [
+        "Unexpectedly low correlation between temperature and superheat"
+      ]
+    },
+    {
+      "cast_id": "cast_0004",
+      "validation_type": "statistical",
+      "timestamp": "2025-07-21T00:39:17.132041",
+      "checks": {
+        "casting_speed": {
+          "range_check": {
+            "actual_min": 1.0293037660069195,
+            "actual_max": 1.379982319898636,
+            "expected_min": 0.8,
+            "expected_max": 1.8,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 1.2008683593250726,
+            "actual_std": 0.050279341943371754,
+            "expected_base": 1.2,
+            "expected_std": 0.05,
+            "mean_deviation_pct": 0.0723632770893897,
+            "std_ratio": 1.005586838867435,
+            "noise_reasonable": true
+          }
+        },
+        "cooling_water_flow": {
+          "range_check": {
+            "actual_min": 150.0,
+            "actual_max": 250.0,
+            "expected_min": 150,
+            "expected_max": 250,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 200.37582839903416,
+            "actual_std": 14.933421917993376,
+            "expected_base": 200,
+            "expected_std": 15.0,
+            "mean_deviation_pct": 0.18791419951708122,
+            "std_ratio": 0.9955614611995585,
+            "noise_reasonable": true
+          }
+        },
+        "mold_level": {
+          "range_check": {
+            "actual_min": 132.04127869082072,
+            "actual_max": 170.780157578676,
+            "expected_min": 120,
+            "expected_max": 180,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 149.95947545857047,
+            "actual_std": 4.983963007277415,
+            "expected_base": 150,
+            "expected_std": 5.0,
+            "mean_deviation_pct": 0.02701636095302244,
+            "std_ratio": 0.9967926014554831,
+            "noise_reasonable": true
+          }
+        },
+        "mold_temperature": {
+          "range_check": {
+            "actual_min": 1484.3360493165085,
+            "actual_max": 1563.0888917454392,
+            "expected_min": 1480,
+            "expected_max": 1580,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 1520.6371997803212,
+            "actual_std": 10.062200448682072,
+            "expected_base": 1520,
+            "expected_std": 10.0,
+            "mean_deviation_pct": 0.04192103817902798,
+            "std_ratio": 1.0062200448682073,
+            "noise_reasonable": true
+          }
+        },
+        "superheat": {
+          "range_check": {
+            "actual_min": 15.0,
+            "actual_max": 36.23362909568419,
+            "expected_min": 15,
+            "expected_max": 40,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 24.974583173223653,
+            "actual_std": 2.9888455356152717,
+            "expected_base": 25,
+            "expected_std": 3.0,
+            "mean_deviation_pct": 0.1016673071053873,
+            "std_ratio": 0.9962818452050906,
+            "noise_reasonable": true
+          }
+        }
+      },
+      "passed": true,
+      "issues": []
+    },
+    {
+      "cast_id": "cast_0004",
+      "validation_type": "defect_logic",
+      "timestamp": "2025-07-21T00:39:17.132933",
+      "checks": {
+        "detected_triggers": [
+          "rapid_temperature_drop"
+        ],
+        "stored_triggers": [
+          "rapid_temperature_drop"
+        ],
+        "trigger_consistency": true,
+        "stored_defect_label": false,
+        "triggers_present": true,
+        "defect_logic_consistent": true
+      },
+      "passed": true,
+      "issues": []
+    },
+    {
+      "cast_id": "cast_0004",
+      "validation_type": "temporal",
+      "timestamp": "2025-07-21T00:39:17.134149",
+      "checks": {
+        "timestamp_frequency_consistent": true,
+        "correlations": {
+          "temp_superheat": -0.00198497633548951
+        },
+        "data_completeness": 1.0
+      },
+      "passed": true,
+      "issues": [
+        "Unexpectedly low correlation between temperature and superheat"
+      ]
+    },
+    {
+      "cast_id": "cast_0005",
+      "validation_type": "statistical",
+      "timestamp": "2025-07-21T00:39:17.144406",
+      "checks": {
+        "casting_speed": {
+          "range_check": {
+            "actual_min": 1.0003849311972748,
+            "actual_max": 1.373368675771862,
+            "expected_min": 0.8,
+            "expected_max": 1.8,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 1.194899848297186,
+            "actual_std": 0.04973683460017219,
+            "expected_base": 1.2,
+            "expected_std": 0.05,
+            "mean_deviation_pct": 0.4250126419011643,
+            "std_ratio": 0.9947366920034437,
+            "noise_reasonable": true
+          }
+        },
+        "cooling_water_flow": {
+          "range_check": {
+            "actual_min": 150.0,
+            "actual_max": 250.0,
+            "expected_min": 150,
+            "expected_max": 250,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 199.75194849600473,
+            "actual_std": 15.023617612492814,
+            "expected_base": 200,
+            "expected_std": 15.0,
+            "mean_deviation_pct": 0.12402575199763533,
+            "std_ratio": 1.0015745074995208,
+            "noise_reasonable": true
+          }
+        },
+        "mold_level": {
+          "range_check": {
+            "actual_min": 131.51616940196473,
+            "actual_max": 168.57962379217054,
+            "expected_min": 120,
+            "expected_max": 180,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 150.4131538718773,
+            "actual_std": 5.054531236020892,
+            "expected_base": 150,
+            "expected_std": 5.0,
+            "mean_deviation_pct": 0.27543591458487526,
+            "std_ratio": 1.0109062472041783,
+            "noise_reasonable": true
+          }
+        },
+        "mold_temperature": {
+          "range_check": {
+            "actual_min": 1480.0,
+            "actual_max": 1557.8592958940178,
+            "expected_min": 1480,
+            "expected_max": 1580,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 1518.998694526673,
+            "actual_std": 9.92975086890667,
+            "expected_base": 1520,
+            "expected_std": 10.0,
+            "mean_deviation_pct": 0.06587536008730036,
+            "std_ratio": 0.9929750868906669,
+            "noise_reasonable": true
+          }
+        },
+        "superheat": {
+          "range_check": {
+            "actual_min": 15.0,
+            "actual_max": 36.13863504980292,
+            "expected_min": 15,
+            "expected_max": 40,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 25.009502327582076,
+            "actual_std": 3.0199986287492733,
+            "expected_base": 25,
+            "expected_std": 3.0,
+            "mean_deviation_pct": 0.0380093103283059,
+            "std_ratio": 1.0066662095830912,
+            "noise_reasonable": true
+          }
+        }
+      },
+      "passed": true,
+      "issues": []
+    },
+    {
+      "cast_id": "cast_0005",
+      "validation_type": "defect_logic",
+      "timestamp": "2025-07-21T00:39:17.145276",
+      "checks": {
+        "detected_triggers": [
+          "rapid_temperature_drop"
+        ],
+        "stored_triggers": [
+          "rapid_temperature_drop"
+        ],
+        "trigger_consistency": true,
+        "stored_defect_label": false,
+        "triggers_present": true,
+        "defect_logic_consistent": true
+      },
+      "passed": true,
+      "issues": []
+    },
+    {
+      "cast_id": "cast_0005",
+      "validation_type": "temporal",
+      "timestamp": "2025-07-21T00:39:17.146460",
+      "checks": {
+        "timestamp_frequency_consistent": true,
+        "correlations": {
+          "temp_superheat": 0.011750857286332999
+        },
+        "data_completeness": 1.0
+      },
+      "passed": true,
+      "issues": [
+        "Unexpectedly low correlation between temperature and superheat"
+      ]
+    },
+    {
+      "cast_id": "cast_0006",
+      "validation_type": "statistical",
+      "timestamp": "2025-07-21T00:39:17.156478",
+      "checks": {
+        "casting_speed": {
+          "range_check": {
+            "actual_min": 1.0111201591280596,
+            "actual_max": 1.4019757667563961,
+            "expected_min": 0.8,
+            "expected_max": 1.8,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 1.199963648440536,
+            "actual_std": 0.051095890731036,
+            "expected_base": 1.2,
+            "expected_std": 0.05,
+            "mean_deviation_pct": 0.003029296621992472,
+            "std_ratio": 1.02191781462072,
+            "noise_reasonable": true
+          }
+        },
+        "cooling_water_flow": {
+          "range_check": {
+            "actual_min": 150.0,
+            "actual_max": 248.4246094240804,
+            "expected_min": 150,
+            "expected_max": 250,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 199.9038811716614,
+            "actual_std": 14.94672173288505,
+            "expected_base": 200,
+            "expected_std": 15.0,
+            "mean_deviation_pct": 0.04805941416930182,
+            "std_ratio": 0.99644811552567,
+            "noise_reasonable": true
+          }
+        },
+        "mold_level": {
+          "range_check": {
+            "actual_min": 127.19412216001828,
+            "actual_max": 168.03899162280382,
+            "expected_min": 120,
+            "expected_max": 180,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 149.89295000175966,
+            "actual_std": 5.047618250461519,
+            "expected_base": 150,
+            "expected_std": 5.0,
+            "mean_deviation_pct": 0.07136666549356127,
+            "std_ratio": 1.0095236500923037,
+            "noise_reasonable": true
+          }
+        },
+        "mold_temperature": {
+          "range_check": {
+            "actual_min": 1480.0,
+            "actual_max": 1553.5840938980868,
+            "expected_min": 1480,
+            "expected_max": 1580,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 1519.749757212429,
+            "actual_std": 10.108463683266555,
+            "expected_base": 1520,
+            "expected_std": 10.0,
+            "mean_deviation_pct": 0.016463341287572132,
+            "std_ratio": 1.0108463683266555,
+            "noise_reasonable": true
+          }
+        },
+        "superheat": {
+          "range_check": {
+            "actual_min": 15.0,
+            "actual_max": 35.611637348747756,
+            "expected_min": 15,
+            "expected_max": 40,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 25.275989377005903,
+            "actual_std": 3.0119443451535766,
+            "expected_base": 25,
+            "expected_std": 3.0,
+            "mean_deviation_pct": 1.103957508023612,
+            "std_ratio": 1.0039814483845255,
+            "noise_reasonable": true
+          }
+        }
+      },
+      "passed": true,
+      "issues": []
+    },
+    {
+      "cast_id": "cast_0006",
+      "validation_type": "defect_logic",
+      "timestamp": "2025-07-21T00:39:17.157344",
+      "checks": {
+        "detected_triggers": [
+          "rapid_temperature_drop"
+        ],
+        "stored_triggers": [
+          "rapid_temperature_drop"
+        ],
+        "trigger_consistency": true,
+        "stored_defect_label": false,
+        "triggers_present": true,
+        "defect_logic_consistent": true
+      },
+      "passed": true,
+      "issues": []
+    },
+    {
+      "cast_id": "cast_0006",
+      "validation_type": "temporal",
+      "timestamp": "2025-07-21T00:39:17.158557",
+      "checks": {
+        "timestamp_frequency_consistent": true,
+        "correlations": {
+          "temp_superheat": 0.017464670414020386
+        },
+        "data_completeness": 1.0
+      },
+      "passed": true,
+      "issues": [
+        "Unexpectedly low correlation between temperature and superheat"
+      ]
+    },
+    {
+      "cast_id": "cast_0007",
+      "validation_type": "statistical",
+      "timestamp": "2025-07-21T00:39:17.168525",
+      "checks": {
+        "casting_speed": {
+          "range_check": {
+            "actual_min": 1.0247459759675008,
+            "actual_max": 1.374609878930846,
+            "expected_min": 0.8,
+            "expected_max": 1.8,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 1.2035130995105694,
+            "actual_std": 0.05003441088671503,
+            "expected_base": 1.2,
+            "expected_std": 0.05,
+            "mean_deviation_pct": 0.29275829254745334,
+            "std_ratio": 1.0006882177343006,
+            "noise_reasonable": true
+          }
+        },
+        "cooling_water_flow": {
+          "range_check": {
+            "actual_min": 151.3594906907896,
+            "actual_max": 249.35957957400882,
+            "expected_min": 150,
+            "expected_max": 250,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 199.87187687145487,
+            "actual_std": 14.877689101677811,
+            "expected_base": 200,
+            "expected_std": 15.0,
+            "mean_deviation_pct": 0.06406156427256349,
+            "std_ratio": 0.9918459401118541,
+            "noise_reasonable": true
+          }
+        },
+        "mold_level": {
+          "range_check": {
+            "actual_min": 131.30562912883212,
+            "actual_max": 168.94436798641843,
+            "expected_min": 120,
+            "expected_max": 180,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 149.78439657426912,
+            "actual_std": 5.046631127782562,
+            "expected_base": 150,
+            "expected_std": 5.0,
+            "mean_deviation_pct": 0.1437356171539174,
+            "std_ratio": 1.0093262255565123,
+            "noise_reasonable": true
+          }
+        },
+        "mold_temperature": {
+          "range_check": {
+            "actual_min": 1480.8926653935746,
+            "actual_max": 1557.5757775250627,
+            "expected_min": 1480,
+            "expected_max": 1580,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 1519.0940734788098,
+            "actual_std": 10.045921745672123,
+            "expected_base": 1520,
+            "expected_std": 10.0,
+            "mean_deviation_pct": 0.059600429025668915,
+            "std_ratio": 1.0045921745672124,
+            "noise_reasonable": true
+          }
+        },
+        "superheat": {
+          "range_check": {
+            "actual_min": 15.0,
+            "actual_max": 37.47353094385587,
+            "expected_min": 15,
+            "expected_max": 40,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 24.815238203922508,
+            "actual_std": 2.9773166890334917,
+            "expected_base": 25,
+            "expected_std": 3.0,
+            "mean_deviation_pct": 0.7390471843099675,
+            "std_ratio": 0.9924388963444972,
+            "noise_reasonable": true
+          }
+        }
+      },
+      "passed": true,
+      "issues": []
+    },
+    {
+      "cast_id": "cast_0007",
+      "validation_type": "defect_logic",
+      "timestamp": "2025-07-21T00:39:17.169425",
+      "checks": {
+        "detected_triggers": [
+          "rapid_temperature_drop"
+        ],
+        "stored_triggers": [
+          "rapid_temperature_drop"
+        ],
+        "trigger_consistency": true,
+        "stored_defect_label": false,
+        "triggers_present": true,
+        "defect_logic_consistent": true
+      },
+      "passed": true,
+      "issues": []
+    },
+    {
+      "cast_id": "cast_0007",
+      "validation_type": "temporal",
+      "timestamp": "2025-07-21T00:39:17.170711",
+      "checks": {
+        "timestamp_frequency_consistent": true,
+        "correlations": {
+          "temp_superheat": -0.002894885516903586
+        },
+        "data_completeness": 1.0
+      },
+      "passed": true,
+      "issues": [
+        "Unexpectedly low correlation between temperature and superheat"
+      ]
+    },
+    {
+      "cast_id": "cast_0008",
+      "validation_type": "statistical",
+      "timestamp": "2025-07-21T00:39:17.180719",
+      "checks": {
+        "casting_speed": {
+          "range_check": {
+            "actual_min": 1.0140903112973336,
+            "actual_max": 1.3622005106227795,
+            "expected_min": 0.8,
+            "expected_max": 1.8,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 1.20134322898396,
+            "actual_std": 0.05027432267422176,
+            "expected_base": 1.2,
+            "expected_std": 0.05,
+            "mean_deviation_pct": 0.11193574866334248,
+            "std_ratio": 1.005486453484435,
+            "noise_reasonable": true
+          }
+        },
+        "cooling_water_flow": {
+          "range_check": {
+            "actual_min": 150.0,
+            "actual_max": 250.0,
+            "expected_min": 150,
+            "expected_max": 250,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 201.7667472147932,
+            "actual_std": 15.1307986944677,
+            "expected_base": 200,
+            "expected_std": 15.0,
+            "mean_deviation_pct": 0.8833736073966066,
+            "std_ratio": 1.0087199129645132,
+            "noise_reasonable": true
+          }
+        },
+        "mold_level": {
+          "range_check": {
+            "actual_min": 131.91830575301822,
+            "actual_max": 170.03988024243975,
+            "expected_min": 120,
+            "expected_max": 180,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 149.9217186817483,
+            "actual_std": 5.037107021704942,
+            "expected_base": 150,
+            "expected_std": 5.0,
+            "mean_deviation_pct": 0.05218754550113166,
+            "std_ratio": 1.0074214043409884,
+            "noise_reasonable": true
+          }
+        },
+        "mold_temperature": {
+          "range_check": {
+            "actual_min": 1483.917075629577,
+            "actual_max": 1566.2724983644189,
+            "expected_min": 1480,
+            "expected_max": 1580,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 1520.45832263411,
+            "actual_std": 10.137926980594143,
+            "expected_base": 1520,
+            "expected_std": 10.0,
+            "mean_deviation_pct": 0.030152804875650703,
+            "std_ratio": 1.0137926980594143,
+            "noise_reasonable": true
+          }
+        },
+        "superheat": {
+          "range_check": {
+            "actual_min": 15.0,
+            "actual_max": 36.010694197544396,
+            "expected_min": 15,
+            "expected_max": 40,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 24.88292784068289,
+            "actual_std": 3.0084145189126557,
+            "expected_base": 25,
+            "expected_std": 3.0,
+            "mean_deviation_pct": 0.4682886372684436,
+            "std_ratio": 1.002804839637552,
+            "noise_reasonable": true
+          }
+        }
+      },
+      "passed": true,
+      "issues": []
+    },
+    {
+      "cast_id": "cast_0008",
+      "validation_type": "defect_logic",
+      "timestamp": "2025-07-21T00:39:17.181586",
+      "checks": {
+        "detected_triggers": [
+          "rapid_temperature_drop"
+        ],
+        "stored_triggers": [
+          "rapid_temperature_drop"
+        ],
+        "trigger_consistency": true,
+        "stored_defect_label": true,
+        "triggers_present": true,
+        "defect_logic_consistent": true
+      },
+      "passed": true,
+      "issues": []
+    },
+    {
+      "cast_id": "cast_0008",
+      "validation_type": "temporal",
+      "timestamp": "2025-07-21T00:39:17.182741",
+      "checks": {
+        "timestamp_frequency_consistent": true,
+        "correlations": {
+          "temp_superheat": -0.0017333803172205437
+        },
+        "data_completeness": 1.0
+      },
+      "passed": true,
+      "issues": [
+        "Unexpectedly low correlation between temperature and superheat"
+      ]
+    },
+    {
+      "cast_id": "cast_0009",
+      "validation_type": "statistical",
+      "timestamp": "2025-07-21T00:39:17.192393",
+      "checks": {
+        "casting_speed": {
+          "range_check": {
+            "actual_min": 1.0065781553668498,
+            "actual_max": 1.4336955908293183,
+            "expected_min": 0.8,
+            "expected_max": 1.8,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 1.1963312461147415,
+            "actual_std": 0.049938232156143264,
+            "expected_base": 1.2,
+            "expected_std": 0.05,
+            "mean_deviation_pct": 0.3057294904382039,
+            "std_ratio": 0.9987646431228653,
+            "noise_reasonable": true
+          }
+        },
+        "cooling_water_flow": {
+          "range_check": {
+            "actual_min": 150.0,
+            "actual_max": 250.0,
+            "expected_min": 150,
+            "expected_max": 250,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 199.16644839607704,
+            "actual_std": 15.123262163545872,
+            "expected_base": 200,
+            "expected_std": 15.0,
+            "mean_deviation_pct": 0.416775801961478,
+            "std_ratio": 1.0082174775697248,
+            "noise_reasonable": true
+          }
+        },
+        "mold_level": {
+          "range_check": {
+            "actual_min": 133.46642687100768,
+            "actual_max": 170.65338119577962,
+            "expected_min": 120,
+            "expected_max": 180,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 150.02819323494526,
+            "actual_std": 5.001265474962366,
+            "expected_base": 150,
+            "expected_std": 5.0,
+            "mean_deviation_pct": 0.01879548996350877,
+            "std_ratio": 1.0002530949924733,
+            "noise_reasonable": true
+          }
+        },
+        "mold_temperature": {
+          "range_check": {
+            "actual_min": 1483.306318994011,
+            "actual_max": 1556.1526644994747,
+            "expected_min": 1480,
+            "expected_max": 1580,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 1519.722736406672,
+            "actual_std": 10.005985582261788,
+            "expected_base": 1520,
+            "expected_std": 10.0,
+            "mean_deviation_pct": 0.01824102587683659,
+            "std_ratio": 1.0005985582261787,
+            "noise_reasonable": true
+          }
+        },
+        "superheat": {
+          "range_check": {
+            "actual_min": 15.0,
+            "actual_max": 34.8611971383091,
+            "expected_min": 15,
+            "expected_max": 40,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 24.960180012095613,
+            "actual_std": 2.997520066269633,
+            "expected_base": 25,
+            "expected_std": 3.0,
+            "mean_deviation_pct": 0.15927995161754893,
+            "std_ratio": 0.9991733554232111,
+            "noise_reasonable": true
+          }
+        }
+      },
+      "passed": true,
+      "issues": []
+    },
+    {
+      "cast_id": "cast_0009",
+      "validation_type": "defect_logic",
+      "timestamp": "2025-07-21T00:39:17.193246",
+      "checks": {
+        "detected_triggers": [],
+        "stored_triggers": [],
+        "trigger_consistency": true,
+        "stored_defect_label": false,
+        "triggers_present": false,
+        "defect_logic_consistent": true
+      },
+      "passed": true,
+      "issues": []
+    },
+    {
+      "cast_id": "cast_0009",
+      "validation_type": "temporal",
+      "timestamp": "2025-07-21T00:39:17.194463",
+      "checks": {
+        "timestamp_frequency_consistent": true,
+        "correlations": {
+          "temp_superheat": 0.0009390404524399602
+        },
+        "data_completeness": 1.0
+      },
+      "passed": true,
+      "issues": [
+        "Unexpectedly low correlation between temperature and superheat"
+      ]
+    },
+    {
+      "cast_id": "cast_0010",
+      "validation_type": "statistical",
+      "timestamp": "2025-07-21T00:39:17.204658",
+      "checks": {
+        "casting_speed": {
+          "range_check": {
+            "actual_min": 1.0241753341543327,
+            "actual_max": 1.3898136066342681,
+            "expected_min": 0.8,
+            "expected_max": 1.8,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 1.1991591273583466,
+            "actual_std": 0.05008661825163193,
+            "expected_base": 1.2,
+            "expected_std": 0.05,
+            "mean_deviation_pct": 0.07007272013777785,
+            "std_ratio": 1.0017323650326386,
+            "noise_reasonable": true
+          }
+        },
+        "cooling_water_flow": {
+          "range_check": {
+            "actual_min": 150.0,
+            "actual_max": 250.0,
+            "expected_min": 150,
+            "expected_max": 250,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 200.1767956543947,
+            "actual_std": 15.001090311472424,
+            "expected_base": 200,
+            "expected_std": 15.0,
+            "mean_deviation_pct": 0.08839782719735467,
+            "std_ratio": 1.000072687431495,
+            "noise_reasonable": true
+          }
+        },
+        "mold_level": {
+          "range_check": {
+            "actual_min": 131.1318902413775,
+            "actual_max": 167.427944871833,
+            "expected_min": 120,
+            "expected_max": 180,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 149.86148417338583,
+            "actual_std": 5.073232971902972,
+            "expected_base": 150,
+            "expected_std": 5.0,
+            "mean_deviation_pct": 0.09234388440944485,
+            "std_ratio": 1.0146465943805945,
+            "noise_reasonable": true
+          }
+        },
+        "mold_temperature": {
+          "range_check": {
+            "actual_min": 1480.0,
+            "actual_max": 1559.7207113101426,
+            "expected_min": 1480,
+            "expected_max": 1580,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 1520.1892770225027,
+            "actual_std": 10.097122615991502,
+            "expected_base": 1520,
+            "expected_std": 10.0,
+            "mean_deviation_pct": 0.012452435690964818,
+            "std_ratio": 1.0097122615991503,
+            "noise_reasonable": true
+          }
+        },
+        "superheat": {
+          "range_check": {
+            "actual_min": 15.0,
+            "actual_max": 36.930144820910996,
+            "expected_min": 15,
+            "expected_max": 40,
+            "range_valid": true
+          },
+          "noise_check": {
+            "actual_mean": 25.219419152335607,
+            "actual_std": 3.0328743579227133,
+            "expected_base": 25,
+            "expected_std": 3.0,
+            "mean_deviation_pct": 0.87767660934243,
+            "std_ratio": 1.0109581193075712,
+            "noise_reasonable": true
+          }
+        }
+      },
+      "passed": true,
+      "issues": []
+    },
+    {
+      "cast_id": "cast_0010",
+      "validation_type": "defect_logic",
+      "timestamp": "2025-07-21T00:39:17.205487",
+      "checks": {
+        "detected_triggers": [
+          "rapid_temperature_drop"
+        ],
+        "stored_triggers": [
+          "rapid_temperature_drop"
+        ],
+        "trigger_consistency": true,
+        "stored_defect_label": true,
+        "triggers_present": true,
+        "defect_logic_consistent": true
+      },
+      "passed": true,
+      "issues": []
+    },
+    {
+      "cast_id": "cast_0010",
+      "validation_type": "temporal",
+      "timestamp": "2025-07-21T00:39:17.206808",
+      "checks": {
+        "timestamp_frequency_consistent": true,
+        "correlations": {
+          "temp_superheat": 0.01675630058444979
+        },
+        "data_completeness": 1.0
+      },
+      "passed": true,
+      "issues": [
+        "Unexpectedly low correlation between temperature and superheat"
+      ]
+    },
+    {
+      "validation_type": "dataset_distribution",
+      "timestamp": "2025-07-21T00:39:17.583553",
+      "checks": {
+        "total_casts": 50,
+        "defect_casts": 9,
+        "actual_defect_rate": 0.18,
+        "target_defect_rate": 0.15,
+        "defect_rate_within_tolerance": true,
+        "trigger_distribution": {
+          "rapid_temperature_drop": 43
+        },
+        "grade_distribution": {
+          "Grade_A": 12,
+          "Grade_B": 10,
+          "Grade_C": 12,
+          "Grade_D": 16
+        }
+      },
+      "passed": true,
+      "issues": []
+    },
+    {
+      "validation_type": "file_integrity",
+      "timestamp": "2025-07-21T00:39:17.583601",
+      "checks": {
+        "directory_structure_complete": true,
+        "missing_directories": [],
+        "file_checks": {
+          "raw_timeseries": {
+            "file_count": 50,
+            "total_size_mb": 19.442620277404785
+          },
+          "metadata": {
+            "file_count": 1,
+            "total_size_mb": 0.03630542755126953
+          }
+        }
+      },
+      "passed": true,
+      "issues": []
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "dataset_info": {
+    "total_casts": 2,
+    "defect_count": 0,
+    "defect_rate": 0.0,
+    "generation_timestamp": "2025-07-21 00:38:53",
+    "generation_time_seconds": 0.07884883880615234,
+    "partial_generation": false,
+    "configuration": {
+      "data_generation": {
+        "cast_duration_minutes": 120,
+        "defect_simulation": {
+          "defect_probability": 0.5,
+          "defect_triggers": {
+            "high_speed_with_low_superheat": true,
+            "prolonged_mold_level_deviation": 30,
+            "rapid_temperature_drop": 50
+          },
+          "max_defect_probability": 0.8,
+          "trigger_probability_factor": 0.2
+        },
+        "num_casts": 2,
+        "output": {
+          "metadata_format": "json",
+          "raw_data_format": "parquet",
+          "train_test_split": 0.8
+        },
+        "random_seed": 123,
+        "sampling_rate_hz": 1,
+        "sensors": {
+          "casting_speed": {
+            "base_value": 1.2,
+            "max_value": 1.8,
+            "min_value": 0.8,
+            "noise_std": 0.05
+          },
+          "cooling_water_flow": {
+            "base_value": 200,
+            "max_value": 250,
+            "min_value": 150,
+            "noise_std": 15.0
+          },
+          "mold_level": {
+            "base_value": 150,
+            "max_value": 180,
+            "min_value": 120,
+            "noise_std": 5.0
+          },
+          "mold_level_normal_range": [
+            130,
+            170
+          ],
+          "mold_temperature": {
+            "base_value": 1520,
+            "max_value": 1580,
+            "min_value": 1480,
+            "noise_std": 10.0
+          },
+          "superheat": {
+            "base_value": 25,
+            "max_value": 40,
+            "min_value": 15,
+            "noise_std": 3.0
+          }
+        }
+      }
+    },
+    "cli_arguments": {
+      "config": "configs/data_generation.yaml",
+      "output_dir": "data/high_defect_test",
+      "num_casts": 2,
+      "cast_duration": null,
+      "sampling_rate": null,
+      "defect_rate": 50.0,
+      "noise_level": 1.0,
+      "seed": 123,
+      "verbose": false,
+      "validate": false,
+      "continue_on_error": false
+    },
+    "generation_errors": []
+  },
+  "cast_metadata": [
+    {
+      "cast_id": "cast_0001",
+      "generation_timestamp": "2025-07-21T00:38:53.047030",
+      "steel_grade": "Grade_A",
+      "duration_minutes": 120,
+      "sampling_rate_hz": 1,
+      "num_samples": 7200,
+      "defect_label": 0,
+      "defect_trigger_events": [
+        "rapid_temperature_drop"
+      ],
+      "process_summary": {
+        "avg_casting_speed": 1.2021920028611948,
+        "avg_mold_temperature": 1520.4086804167068,
+        "avg_mold_level": 149.87197564094714,
+        "avg_cooling_water_flow": 200.0103876566267,
+        "avg_superheat": 25.220615198092023,
+        "speed_std": 0.050002122897320166,
+        "temp_std": 9.874012448362004,
+        "level_std": 4.972938515691138
+      }
+    },
+    {
+      "cast_id": "cast_0002",
+      "generation_timestamp": "2025-07-21T00:38:53.064179",
+      "steel_grade": "Grade_B",
+      "duration_minutes": 120,
+      "sampling_rate_hz": 1,
+      "num_samples": 7200,
+      "defect_label": 0,
+      "defect_trigger_events": [
+        "rapid_temperature_drop"
+      ],
+      "process_summary": {
+        "avg_casting_speed": 1.2008006618111302,
+        "avg_mold_temperature": 1519.2748363671224,
+        "avg_mold_level": 149.64101123605158,
+        "avg_cooling_water_flow": 199.4266358253761,
+        "avg_superheat": 25.152393404920666,
+        "speed_std": 0.04984134171938218,
+        "temp_std": 9.95526668457272,
+        "level_std": 4.979874138482574
+      }
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+cast_id,steel_grade,defect_label,defect_triggers,avg_casting_speed,avg_mold_temperature,avg_mold_level,generation_timestamp
+cast_0001,Grade_A,0,rapid_temperature_drop,1.2021920028611948,1520.4086804167068,149.87197564094714,2025-07-21T00:38:30.861560
+cast_0002,Grade_B,0,rapid_temperature_drop,1.2008006618111302,1519.2748363671224,149.64101123605158,2025-07-21T00:38:30.883686
+cast_0003,Grade_A,0,rapid_temperature_drop,1.2005857892414011,1520.4787600255809,149.76886233910162,2025-07-21T00:38:30.896457
