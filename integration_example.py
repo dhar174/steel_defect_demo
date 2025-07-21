@@ -106,7 +106,7 @@ class SteelDefectReportGenerator:
             is_valid = TemplateDataValidator.is_valid_metric_value(value)
             sensor_list.append({
                 'name': sensor_name.replace('_', ' ').title(),
-                'value': value if is_valid else 0,
+                'value': value,
                 'is_valid': is_valid,
                 'error': None if is_valid else "Invalid or non-numeric value",
                 'unit': sensor_units.get(sensor_name, '')
