@@ -164,8 +164,13 @@ class PredictionPipeline:
             self.logger.info(f"Running {len(self.tasks)} concurrent prediction streams")
             
             # Run all tasks concurrently
-            await asyncio.gather(*self.tasks, return_exceptions=True)
+            results = await asyncio.gather(*self.tasks, return_exceptions=True)
             
+            # Process and log exceptions from tasks
+            for i, result in enumerate(results):
+                if isinstance(result, Exception):
+                    self.logger.error(f"Exception in task {i}: {result}", exc_info=True)
+                    
         except Exception as e:
             self.logger.error(f"Error in pipeline execution: {e}", exc_info=True)
         finally:
