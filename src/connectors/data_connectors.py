@@ -477,7 +477,7 @@ class RESTConnector(BaseDataConnector):
                     self.session.headers['Authorization'] = f'Bearer {token}'
             
             # Test connection with a simple request
-            test_url = f"{self.base_url.rstrip('/')}/health"
+            test_url = f"{self.base_url.rstrip('/')}{self.health_endpoint}"
             try:
                 response = self.session.get(test_url, timeout=self.timeout)
                 self.logger.info(f"REST API connection test successful: {response.status_code}")
