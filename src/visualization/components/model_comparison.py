@@ -687,14 +687,17 @@ class ModelComparison:
         ])
 
 
-def create_sample_model_results() -> Dict[str, Dict]:
+def create_sample_model_results(seed: int = 42) -> Dict[str, Dict]:
     """
     Create sample model results for testing and demonstration.
+    
+    Args:
+        seed (int): Random seed for reproducibility. Default is 42.
     
     Returns:
         Dict: Sample model results in the expected format
     """
-    np.random.seed(42)
+    np.random.seed(seed)
     n_samples = 1000
     
     # Generate synthetic data
