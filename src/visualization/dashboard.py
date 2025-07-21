@@ -94,6 +94,8 @@ class DefectMonitoringDashboard:
             sensor_fig = self.create_sample_sensor_plot()
             
             # Create sample prediction gauge
+            # TODO: Replace with actual predictive model or data source integration.
+            # For demonstration purposes, using a random value for prediction probability.
             import random
             prediction_prob = random.uniform(0.1, 0.9)
             gauge_fig = self.create_prediction_gauge(prediction_prob)
