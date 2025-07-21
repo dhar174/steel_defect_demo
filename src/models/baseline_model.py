@@ -19,7 +19,7 @@ from typing import Dict, List, Tuple, Optional, Union, Any
 import matplotlib.pyplot as plt
 import seaborn as sns
 import warnings
-warnings.filterwarnings('ignore', category=FutureWarning)
+# Removed global suppression of FutureWarning. Use targeted suppression where necessary.
 
 class BaselineXGBoostModel:
     """XGBoost baseline model for defect prediction"""
