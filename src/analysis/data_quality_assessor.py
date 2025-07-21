@@ -726,7 +726,7 @@ class DataQualityAssessor:
         
         # Check correlations
         strong_corr_count = len(correlation_analysis.get('strong_correlations', []))
-        if strong_corr_count < 2:  # Expected some correlations in steel casting
+        if strong_corr_count < self.MIN_STRONG_CORRELATIONS:  # Expected some correlations in steel casting
             score *= 0.9
         
         # Check process behavior
