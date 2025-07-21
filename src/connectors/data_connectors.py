@@ -273,7 +273,8 @@ class MQTTConnector(BaseDataConnector):
             self.client.loop_start()
             
             # Wait a moment for connection to establish
-            time.sleep(1)
+            sleep_duration = self.config.get("connection_sleep_duration", 1)
+            time.sleep(sleep_duration)
             
             return self.is_connected
             
