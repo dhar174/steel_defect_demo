@@ -40,6 +40,9 @@ except ImportError:
 class ComprehensiveDataGenerator:
     """Comprehensive data generation with CLI interface, progress tracking, and validation"""
     
+    # Default configuration constants
+    DEFAULT_PROGRESS_REPORTING_FREQUENCY = 100
+    
     def __init__(self, args: argparse.Namespace):
         """
         Initialize the comprehensive data generator.
@@ -214,7 +217,7 @@ class ComprehensiveDataGenerator:
                             })
                     
                     # Periodic logging
-                    progress_frequency = self.config.get('progress_reporting_frequency', DEFAULT_PROGRESS_REPORTING_FREQUENCY)
+                    progress_frequency = self.config.get('progress_reporting_frequency', self.DEFAULT_PROGRESS_REPORTING_FREQUENCY)
                     if current_cast % progress_frequency == 0:
 
                         self.logger_instance.log_data_generation_progress(
