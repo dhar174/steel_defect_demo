@@ -81,7 +81,8 @@ class PredictionPipeline:
                                     f"LSTM: {lstm_pred:.4f}")
                     
                     # Log performance metrics periodically
-                    if len(self.monitor.prediction_history) % 10 == 0:  # Every 10 predictions
+                    logging_frequency = self.config.get('logging_frequency', 10)  # Default to every 10 predictions
+                    if len(self.monitor.prediction_history) % logging_frequency == 0:
                         metrics = self.monitor.get_system_performance_metrics()
                         self.logger.info(f"Stream {stream_id} - Performance: "
                                        f"Avg Latency: {metrics['avg_latency_ms']:.2f}ms, "
