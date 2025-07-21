@@ -325,12 +325,12 @@ class PlottingUtils:
         if sensors is None:
             sensors = [col for col in cast_data.columns if col not in ['cast_id', 'defect_label']]
         
-        # Create subplot layout - 3 columns, rows based on number of sensors
-        rows = max(2, (len(sensors) + 2) // 3)
+        # Create subplot layout - configurable columns and rows based on number of sensors
+        rows = max(self.MIN_ROWS, (len(sensors) + self.DEFAULT_COLUMNS - 1) // self.DEFAULT_COLUMNS)
         
         from plotly.subplots import make_subplots
         fig = make_subplots(
-            rows=rows, cols=3,
+            rows=rows, cols=self.DEFAULT_COLUMNS,
             subplot_titles=sensors + ['Summary Statistics'],
             vertical_spacing=0.08,
             horizontal_spacing=0.05
