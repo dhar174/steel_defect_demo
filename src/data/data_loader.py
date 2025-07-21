@@ -66,9 +66,9 @@ class DataLoader:
             # Return a sample dataset if loading fails
             return self._generate_sample_data()
     
-    def _generate_sample_data(self) -> pd.DataFrame:
+    def _generate_sample_data(self, random_seed: int = 42) -> pd.DataFrame:
         """Generate sample data for testing purposes."""
-        np.random.seed(42)
+        np.random.seed(random_seed)
         n_samples = 1000
         
         # Generate synthetic steel casting data
