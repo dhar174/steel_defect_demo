@@ -1,0 +1,280 @@
+$schema: "http://json-schema.org/draft-07/schema#"
+title: "Model Configuration Schema"
+description: "Schema for validating model configuration parameters"
+type: object
+required:
+  - baseline_model
+  - lstm_model
+  - evaluation
+properties:
+  baseline_model:
+    type: object
+    required:
+      - algorithm
+      - parameters
+      - feature_engineering
+      - validation
+    properties:
+      algorithm:
+        type: string
+        enum: ["xgboost", "random_forest", "gradient_boosting", "lightgbm"]
+        description: "Machine learning algorithm to use"
+      
+      parameters:
+        type: object
+        required:
+          - n_estimators
+          - max_depth
+          - learning_rate
+          - random_state
+        properties:
+          n_estimators:
+            type: integer
+            minimum: 10
+            maximum: 1000
+            description: "Number of estimators/trees"
+          
+          max_depth:
+            type: integer
+            minimum: 1
+            maximum: 20
+            description: "Maximum depth of trees"
+          
+          learning_rate:
+            type: number
+            minimum: 0.001
+            maximum: 1.0
+            description: "Learning rate"
+          
+          subsample:
+            type: number
+            minimum: 0.1
+            maximum: 1.0
+            description: "Subsample ratio"
+          
+          colsample_bytree:
+            type: number
+            minimum: 0.1
+            maximum: 1.0
+            description: "Column sample ratio"
+          
+          random_state:
+            type: integer
+            minimum: 0
+            description: "Random state for reproducibility"
+        additionalProperties: true
+      
+      feature_engineering:
+        type: object
+        required:
+          - statistical_features
+          - stability_features
+          - duration_features
+          - interaction_features
+        properties:
+          statistical_features:
+            type: boolean
+            description: "Enable statistical feature extraction"
+          
+          stability_features:
+            type: boolean
+            description: "Enable stability-based features"
+          
+          duration_features:
+            type: boolean
+            description: "Enable duration-based features"
+          
+          interaction_features:
+            type: boolean
+            description: "Enable interaction features between sensors"
+      
+      validation:
+        type: object
+        required:
+          - cv_folds
+          - eval_metric
+        properties:
+          cv_folds:
+            type: integer
+            minimum: 2
+            maximum: 10
+            description: "Number of cross-validation folds"
+          
+          early_stopping_rounds:
+            type: integer
+            minimum: 1
+            maximum: 100
+            description: "Early stopping rounds"
+          
+          eval_metric:
+            type: string
+            enum: ["auc", "accuracy", "precision", "recall", "f1"]
+            description: "Evaluation metric for model selection"
+  
+  lstm_model:
+    type: object
+    required:
+      - architecture
+      - training
+      - data_processing
+      - loss_function
+    properties:
+      architecture:
+        type: object
+        required:
+          - input_size
+          - hidden_size
+          - num_layers
+          - dropout
+        properties:
+          input_size:
+            type: integer
+            minimum: 1
+            maximum: 20
+            description: "Number of input features (sensors)"
+          
+          hidden_size:
+            type: integer
+            minimum: 8
+            maximum: 512
+            description: "Hidden layer size"
+          
+          num_layers:
+            type: integer
+            minimum: 1
+            maximum: 10
+            description: "Number of LSTM layers"
+          
+          dropout:
+            type: number
+            minimum: 0.0
+            maximum: 0.9
+            description: "Dropout rate for regularization"
+          
+          bidirectional:
+            type: boolean
+            description: "Use bidirectional LSTM"
+      
+      training:
+        type: object
+        required:
+          - batch_size
+          - learning_rate
+          - num_epochs
+        properties:
+          batch_size:
+            type: integer
+            minimum: 1
+            maximum: 1024
+            description: "Training batch size"
+          
+          learning_rate:
+            type: number
+            minimum: 0.0001
+            maximum: 0.1
+            description: "Learning rate for optimizer"
+          
+          num_epochs:
+            type: integer
+            minimum: 1
+            maximum: 1000
+            description: "Maximum number of training epochs"
+          
+          early_stopping_patience:
+            type: integer
+            minimum: 1
+            maximum: 100
+            description: "Patience for early stopping"
+          
+          weight_decay:
+            type: number
+            minimum: 0.0
+            maximum: 0.1
+            description: "Weight decay for regularization"
+      
+      data_processing:
+        type: object
+        required:
+          - sequence_length
+          - normalization
+        properties:
+          sequence_length:
+            type: integer
+            minimum: 10
+            maximum: 1000
+            description: "Sequence length for LSTM input"
+          
+          normalization:
+            type: string
+            enum: ["z_score", "min_max", "robust", "none"]
+            description: "Normalization method"
+          
+          padding:
+            type: string
+            enum: ["zero", "constant", "edge", "none"]
+            description: "Padding method for sequences"
+      
+      loss_function:
+        type: object
+        required:
+          - type
+        properties:
+          type:
+            type: string
+            enum: ["bce", "weighted_bce", "focal_loss", "cross_entropy"]
+            description: "Loss function type"
+          
+          pos_weight:
+            type: number
+            minimum: 0.1
+            maximum: 10.0
+            description: "Positive class weight for imbalanced data"
+          
+          alpha:
+            type: number
+            minimum: 0.1
+            maximum: 1.0
+            description: "Alpha parameter for focal loss"
+          
+          gamma:
+            type: number
+            minimum: 0.0
+            maximum: 5.0
+            description: "Gamma parameter for focal loss"
+  
+  evaluation:
+    type: object
+    required:
+      - metrics
+      - test_size
+      - stratify
+      - random_state
+    properties:
+      metrics:
+        type: array
+        items:
+          type: string
+          enum: [
+            "auc_roc", "auc_pr", "f1_score", "precision", 
+            "recall", "accuracy", "specificity", "balanced_accuracy"
+          ]
+        minItems: 1
+        description: "List of evaluation metrics to compute"
+      
+      test_size:
+        type: number
+        minimum: 0.1
+        maximum: 0.5
+        description: "Fraction of data for testing"
+      
+      stratify:
+        type: boolean
+        description: "Use stratified train-test split"
+      
+      random_state:
+        type: integer
+        minimum: 0
+        description: "Random state for train-test split"
+
+# Additional validation
+additionalProperties: false

@@ -60,10 +60,13 @@ class TestSteelCastingDataGenerator(unittest.TestCase):
                         'noise_std': 3,
                         'min_value': 15,
                         'max_value': 40
-                    }
+                    },
+                    'mold_level_normal_range': [130, 170]
                 },
                 'defect_simulation': {
                     'defect_probability': 0.15,
+                    'max_defect_probability': 0.8,
+                    'trigger_probability_factor': 0.2,
                     'defect_triggers': {
                         'prolonged_mold_level_deviation': 30,
                         'rapid_temperature_drop': 50,
@@ -100,14 +103,16 @@ class TestSteelCastingDataGenerator(unittest.TestCase):
         self.assertEqual(generator.data_config['num_casts'], 5)
         self.assertEqual(generator.data_config['cast_duration_minutes'], 2)
         self.assertEqual(generator.data_config['random_seed'], 42)
-        self.assertEqual(len(generator.sensor_config), 5)
+        self.assertEqual(len(generator.sensor_config), 6)  # 5 sensors + mold_level_normal_range
     
     def test_sensor_value_generation(self):
         """Test that sensor values are within specified ranges"""
         generator = SteelCastingDataGenerator(str(self.config_path))
         
-        # Test each sensor
-        for sensor_name, sensor_cfg in generator.sensor_config.items():
+        # Test each sensor (excluding mold_level_normal_range which is not a sensor)
+        sensor_names = ['casting_speed', 'mold_temperature', 'mold_level', 'cooling_water_flow', 'superheat']
+        for sensor_name in sensor_names:
+            sensor_cfg = generator.sensor_config[sensor_name]
             values = generator._generate_sensor_values(100, sensor_name)
             
             # Check that all values are within range
