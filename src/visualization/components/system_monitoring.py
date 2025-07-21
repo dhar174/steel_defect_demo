@@ -746,7 +746,7 @@ class SystemMonitoringComponent:
         
         # Simulate model performance metrics (in real implementation, these would come from actual monitoring)
         base_latency = 100
-        latency_variation = np.random.normal(0, 20)
+        latency_variation = np.random.normal(0, self.LATENCY_VARIATION_STD_DEV)
         simulated_latency = max(50, base_latency + latency_variation)
         
         base_throughput = 10
