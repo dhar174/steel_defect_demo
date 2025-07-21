@@ -563,15 +563,19 @@ class PredictionDisplayComponents:
         ))
 
 
-def create_sample_data_for_demo() -> Tuple[pd.DataFrame, Dict]:
+def create_sample_data_for_demo(seed: Optional[int] = None) -> Tuple[pd.DataFrame, Dict]:
     """
     Create sample data for demonstration purposes.
+    
+    Args:
+        seed (Optional[int]): Random seed for reproducibility. If None, no seed is set.
     
     Returns:
         Tuple[pd.DataFrame, Dict]: Sample historical data and metrics
     """
     # Generate sample historical prediction data
-    np.random.seed(42)  # For reproducible demo data
+    if seed is not None:
+        np.random.seed(seed)  # Set seed for reproducible demo data
     
     end_time = datetime.now()
     start_time = end_time - timedelta(hours=4)
