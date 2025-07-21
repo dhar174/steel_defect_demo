@@ -130,7 +130,7 @@ class PlottingUtils:
             text=np.round(corr_matrix.values, 2),
             showscale=True,
             texttemplate='%{text}',
-            colorbar=dict(title="Correlation")
+            colorbar=dict(title="Correlation"),
             textfont={"size": 10},
             hoverongaps=False
 
