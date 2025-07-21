@@ -115,7 +115,12 @@ class ModelEvaluator:
         # Generate predictions if not provided
         if y_proba is None and self.model is not None:
             if hasattr(self.model, 'predict_proba'):
-                y_proba = self.model.predict_proba(X)[:, 1]
+                y_proba_raw = self.model.predict_proba(X)
+                # Handle different predict_proba output formats
+                if y_proba_raw.ndim == 2:
+                    y_proba = y_proba_raw[:, 1]  # Standard sklearn format
+                else:
+                    y_proba = y_proba_raw  # BaselineXGBoostModel format (already positive class probabilities)
             else:
                 self.logger.warning("Model does not support probability predictions")
                 
