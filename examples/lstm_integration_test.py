@@ -11,7 +11,7 @@ import os
 
 # Ensure the src package is available when running tests directly
 REPO_ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, os.fspath(REPO_ROOT))
+sys.path.insert(0, REPO_ROOT)
 
 from src.data.sequence_dataset import CastingSequenceDataset, create_data_loaders, validate_dataset_config
 
