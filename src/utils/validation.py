@@ -283,7 +283,7 @@ class DataQualityValidator:
         target_defect_rate = self.defect_config.get('defect_probability', 0.15)
         
         # Check defect rate is within reasonable bounds
-        defect_rate_tolerance = 0.05  # 5% tolerance
+        defect_rate_tolerance = self.defect_config.get('defect_rate_tolerance', 0.05)  # Default to 5% tolerance
         defect_rate_ok = abs(actual_defect_rate - target_defect_rate) <= defect_rate_tolerance
         
         if not defect_rate_ok:
