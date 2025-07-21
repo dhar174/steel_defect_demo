@@ -546,15 +546,16 @@ class HistoricalAnalysisComponents:
                 return df
             else:
                 logger.warning(f"Sample data file not found: {data_file}")
-                return self._generate_synthetic_data()
+                return self._generate_synthetic_data(random_seed=self.random_seed)
                 
         except Exception as e:
             logger.error(f"Error loading sample data: {e}")
-            return self._generate_synthetic_data()
+            return self._generate_synthetic_data(random_seed=self.random_seed)
     
-    def _generate_synthetic_data(self, n_samples: int = 2000) -> pd.DataFrame:
+    def _generate_synthetic_data(self, n_samples: int = 2000, random_seed: Optional[int] = None) -> pd.DataFrame:
         """Generate synthetic data for demonstration purposes."""
-        np.random.seed(42)  # For reproducible results
+        if random_seed is not None:
+            np.random.seed(random_seed)  # For reproducible results
         
         # Generate timestamps over 30 days
         end_time = datetime.now()
