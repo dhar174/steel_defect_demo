@@ -772,7 +772,7 @@ class SystemMonitoringComponent:
         self.add_error_data(error_count, availability)
         
         # Update integration status (simulate occasional status changes)
-        if np.random.random() < 0.1:  # 10% chance to update status
+        if np.random.random() < self.STATUS_UPDATE_PROBABILITY:  # 10% chance to update status
             services = list(self.integration_status.keys())
             random_service = np.random.choice(services)
             statuses = ['healthy', 'warning', 'error']
