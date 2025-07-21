@@ -118,7 +118,7 @@ Assess data integrity using the dedicated module:
 ```bash
 python demo_data_quality_assessment.py
 ```
-This performs single‑cast and dataset‑wide checks (missing values, range violations, temporal continuity and realism). Detailed JSON reports are saved in the repository root. See `docs/DATA_QUALITY_ASSESSMENT.md` for full metrics and usage examples.
+This performs single-cast and dataset-wide checks (missing values, range violations, temporal continuity and realism). Detailed JSON reports are saved in the repository root. See `docs/DATA_QUALITY_ASSESSMENT.md` for full metrics and usage examples.
 
 ## Exploring the Jupyter Notebooks
 The `notebooks/` folder contains walkthrough notebooks:
