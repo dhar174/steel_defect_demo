@@ -86,8 +86,64 @@ class SensorMonitoringComponent:
         """
         Create the complete sensor monitoring dashboard layout.
         
+        This method constructs a comprehensive dashboard layout containing multiple sections
+        arranged in a hierarchical structure. The layout is designed for real-time sensor
+        monitoring with user controls, status indicators, and interactive visualizations.
+        
+        Layout Hierarchy:
+        ├── Container (html.Div): Main container with ID '{component_id}-container'
+        │   ├── Control Panel (dbc.Card): User configuration controls
+        │   │   ├── Time Range Controls: 5min/15min/30min/1hr buttons
+        │   │   ├── Display Options: Auto-scale, thresholds, anomalies checkboxes
+        │   │   ├── Update Rate Controls: 1s/5s/10s update interval buttons
+        │   │   └── Stream Controls: Pause/Reset buttons
+        │   ├── Health Status Bar (dbc.Card): Real-time sensor health indicators
+        │   │   └── Health Indicators Container: Color-coded status badges for each sensor
+        │   ├── Main Sensor Plots Container (dbc.Row):
+        │   │   └── Main Plot (dcc.Graph): Synchronized multi-sensor time series plot
+        │   ├── Individual Sensor Detail Plots (dbc.Row):
+        │   │   └── Detail Plots (dcc.Graph): 2x3 grid of individual sensor analysis
+        │   ├── Data Storage (dcc.Store): Hidden component for sensor data persistence
+        │   ├── Config Storage (dcc.Store): Hidden component for configuration state
+        │   └── Update Interval (dcc.Interval): Real-time data update trigger
+        
+        Key Component IDs (all prefixed with component_id):
+        - '{component_id}-container': Main layout container
+        - '{component_id}-main-plot': Primary synchronized sensor plot
+        - '{component_id}-detail-plots': Individual sensor detail plots
+        - '{component_id}-health-indicators': Health status indicator container
+        - '{component_id}-data-store': Client-side data storage
+        - '{component_id}-config-store': Configuration state storage
+        - '{component_id}-interval': Real-time update interval component
+        
+        Control Component IDs (time range buttons):
+        - '{component_id}-time-5min', '{component_id}-time-15min'
+        - '{component_id}-time-30min', '{component_id}-time-1hr'
+        
+        Control Component IDs (update rate buttons):
+        - '{component_id}-update-1s', '{component_id}-update-5s'
+        - '{component_id}-update-10s'
+        
+        Control Component IDs (stream controls):
+        - '{component_id}-pause': Pause streaming button
+        - '{component_id}-reset': Reset data buffer button
+        - '{component_id}-display-options': Display options checklist
+        
+        Features:
+        - Responsive Bootstrap layout with proper spacing (mb-3 classes)
+        - Interactive Plotly graphs with customized toolbar
+        - Real-time data updates via dcc.Interval component
+        - Client-side data persistence with dcc.Store components
+        - Color-coded health status indicators
+        - Configurable time ranges and display options
+        
         Returns:
-            html.Div: Complete dashboard layout with controls and plots
+            html.Div: Complete dashboard layout containing interactive controls, health monitoring, visualizations, and hidden storage components.
+        
+        Note:
+            All component IDs are dynamically generated using the component_id prefix
+            to ensure uniqueness when multiple instances are used in the same application.
+            The layout is fully responsive and adapts to different screen sizes.
         """
         return html.Div([
             # Control Panel

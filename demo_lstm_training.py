@@ -4,14 +4,11 @@ LSTM Training Pipeline Demo
 
 This script demonstrates how to use the comprehensive LSTM training pipeline
 for steel casting defect prediction.
+
+Note: Run 'pip install -e .' from the repository root to install the package in development mode.
 """
 
-import sys
 import numpy as np
-from pathlib import Path
-
-# Add src to path
-sys.path.append(str(Path(__file__).parent / 'src'))
 
 from models.model_trainer import LSTMTrainer, MockDataLoader
 

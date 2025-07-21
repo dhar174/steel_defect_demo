@@ -8,15 +8,12 @@ for steel casting defect detection including:
 - Defect class stratification 
 - Outlier detection
 - Kolmogorov-Smirnov tests
+
+Note: Run 'pip install -e .' from the repository root to install the package in development mode.
 """
 
-import sys
 import os
-from pathlib import Path
 import json
-
-# Add src to Python path
-sys.path.append(str(Path(__file__).parent / 'src'))
 
 from analysis.statistical_analyzer import StatisticalAnalyzer
 from visualization.plotting_utils import PlottingUtils

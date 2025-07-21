@@ -3,15 +3,13 @@ Dashboard Integration Example for Historical Analysis Component
 
 This script demonstrates how to integrate the historical analysis component
 into the main steel defect monitoring dashboard.
+
+Note: Run 'pip install -e .' from the repository root to install the package in development mode.
 """
 
-import sys
-import os
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))
-
-from src.visualization.components.historical_analysis import HistoricalAnalysisComponents
-from src.visualization.components.sensor_monitoring import SensorMonitoringComponent
-from src.visualization.components.prediction_display import PredictionDisplayComponents
+from visualization.components.historical_analysis import HistoricalAnalysisComponents
+from visualization.components.sensor_monitoring import SensorMonitoringComponent
+from visualization.components.prediction_display import PredictionDisplayComponents
 import dash
 from dash import dcc, html, Input, Output, State, callback
 import dash_bootstrap_components as dbc
