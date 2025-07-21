@@ -107,9 +107,9 @@ class TestDefectLabelingValidator(unittest.TestCase):
         with open(config_path, 'w') as f:
             yaml.dump(self.test_config, f)
         
-        os.chdir(self.test_dir)
-        generator = SteelCastingDataGenerator(str(config_path))
-        generator.generate_dataset()
+        with self.test_dir_context:
+            generator = SteelCastingDataGenerator(str(config_path))
+            generator.generate_dataset()
         
         # Load generated metadata
         with open('data/synthetic/dataset_metadata.json', 'r') as f:
