@@ -15,18 +15,30 @@ class DataLoader:
         """
         self.data_dir = Path(data_dir)
     
-    def load_raw_data(self, file_pattern: str = "*.parquet") -> pd.DataFrame:
+    def load_raw_data(self, file_pattern: str = "*.parquet", cast_id_col: str = "cast_id") -> pd.DataFrame:
         """
         Load raw time series data from files.
         
         Args:
             file_pattern (str): File pattern to match for loading data
+            cast_id_col (str): Name of the column to store the cast ID
             
         Returns:
             pd.DataFrame: Combined raw data from all matching files
         """
-        # TODO: Implement raw data loading
-        pass
+        raw_data_dir = self.data_dir / "raw"
+        all_files = list(raw_data_dir.glob(file_pattern))
+
+        if not all_files:
+            raise FileNotFoundError(f"No files matching pattern '{file_pattern}' found in {raw_data_dir}")
+
+        df_list = []
+        for file_path in all_files:
+            df = pd.read_parquet(file_path)
+            df[cast_id_col] = file_path.stem
+            df_list.append(df)
+
+        return pd.concat(df_list, ignore_index=True)
     
     def load_processed_data(self, split: str = "train") -> Tuple[pd.DataFrame, pd.Series]:
         """
@@ -38,8 +50,17 @@ class DataLoader:
         Returns:
             Tuple[pd.DataFrame, pd.Series]: Features and labels
         """
-        # TODO: Implement processed data loading
-        pass
+        processed_data_dir = self.data_dir / "processed"
+        features_path = processed_data_dir / f"{split}_features.parquet"
+        labels_path = processed_data_dir / f"{split}_labels.parquet"
+
+        if not features_path.exists() or not labels_path.exists():
+            raise FileNotFoundError(f"Processed data for split '{split}' not found in {processed_data_dir}")
+
+        X = pd.read_parquet(features_path)
+        y = pd.read_parquet(labels_path).squeeze()
+
+        return X, y
     
     def load_cleaned_data(self, file_path: str) -> pd.DataFrame:
         """
@@ -52,51 +73,14 @@ class DataLoader:
             pd.DataFrame: Cleaned dataset
         """
         try:
-            if Path(file_path).exists():
-                return pd.read_csv(file_path)
+            return pd.read_csv(file_path)
+        except FileNotFoundError:
+            # If the specific path doesn't exist, try to load sample data
+            sample_path = self.data_dir / "examples" / "steel_defect_sample.csv"
+            if sample_path.exists():
+                return pd.read_csv(sample_path)
             else:
-                # If the specific path doesn't exist, try to load sample data
-                sample_path = self.data_dir / "examples" / "steel_defect_sample.csv"
-                if sample_path.exists():
-                    return pd.read_csv(sample_path)
-                else:
-                    raise FileNotFoundError(f"Neither {file_path} nor {sample_path} exists")
-        except Exception as e:
-            print(f"Error loading data: {e}")
-            # Return a sample dataset if loading fails
-            return self._generate_sample_data()
-    
-    def _generate_sample_data(self, random_seed: int = 42) -> pd.DataFrame:
-        """Generate sample data for testing purposes."""
-        np.random.seed(random_seed)
-        n_samples = 1000
-        
-        # Generate synthetic steel casting data
-        data = {
-            'temperature_1': np.random.normal(0, 1, n_samples),
-            'temperature_2': np.random.normal(0, 1, n_samples),
-            'pressure_1': np.random.normal(0, 1, n_samples),
-            'pressure_2': np.random.normal(0, 1, n_samples),
-            'flow_rate': np.random.normal(0, 1, n_samples),
-            'casting_speed': np.random.normal(0, 1, n_samples),
-            'steel_composition_c': np.random.normal(0, 1, n_samples),
-            'steel_composition_si': np.random.normal(0, 1, n_samples),
-            'steel_composition_mn': np.random.normal(0, 1, n_samples),
-            'steel_composition_p': np.random.normal(0, 1, n_samples),
-            'steel_composition_s': np.random.normal(0, 1, n_samples),
-            'humidity': np.random.normal(0, 1, n_samples),
-        }
-        
-        # Create target with some correlation to features
-        defect_prob = (
-            0.3 * data['temperature_1'] + 
-            0.2 * data['pressure_1'] + 
-            0.1 * data['flow_rate'] +
-            np.random.normal(0, 1, n_samples)
-        )
-        data['defect'] = (defect_prob > np.percentile(defect_prob, 70)).astype(int)
-        
-        return pd.DataFrame(data)
+                raise FileNotFoundError(f"Neither {file_path} nor {sample_path} exists")
     
     def load_cast_metadata(self) -> pd.DataFrame:
         """
@@ -105,8 +89,14 @@ class DataLoader:
         Returns:
             pd.DataFrame: Cast metadata
         """
-        # TODO: Implement metadata loading
-        pass
+        metadata_path = self.data_dir / "synthetic" / "dataset_metadata.json"
+        if not metadata_path.exists():
+            raise FileNotFoundError(f"Metadata file not found at {metadata_path}")
+
+        with open(metadata_path, 'r') as f:
+            metadata = json.load(f)
+
+        return pd.json_normalize(metadata['cast_metadata'])
     
     def get_train_test_split(self, test_size: float = 0.2, 
                            random_state: int = 42) -> Tuple[List[str], List[str]]:
@@ -120,5 +110,25 @@ class DataLoader:
         Returns:
             Tuple[List[str], List[str]]: Train and test cast IDs
         """
-        # TODO: Implement train/test split
-        pass
+        metadata = self.load_cast_metadata()
+        cast_ids = metadata['cast_id'].unique()
+
+        # Use scikit-learn for stratified split if labels are available
+        try:
+            from sklearn.model_selection import train_test_split
+
+            labels = metadata.set_index('cast_id')['defect_label']
+            train_ids, test_ids = train_test_split(
+                cast_ids,
+                test_size=test_size,
+                random_state=random_state,
+                stratify=labels
+            )
+            return list(train_ids), list(test_ids)
+
+        except ImportError:
+            # Fallback to random split if scikit-learn is not available
+            np.random.seed(random_state)
+            np.random.shuffle(cast_ids)
+            split_idx = int(len(cast_ids) * (1 - test_size))
+            return list(cast_ids[:split_idx]), list(cast_ids[split_idx:])

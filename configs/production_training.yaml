@@ -32,6 +32,7 @@ model:
 training:
   hyperparameter_search: true
   search_method: "bayesian"  # More sophisticated search
+  early_stopping_patience: 20
   cross_validation: true
   cv_folds: 10              # More thorough validation
   early_stopping: true

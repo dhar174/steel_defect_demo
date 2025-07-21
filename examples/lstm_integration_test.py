@@ -6,7 +6,12 @@ import torch
 import torch.nn as nn
 import numpy as np
 import sys
-sys.path.append('/home/runner/work/steel_defect_demo/steel_defect_demo')
+from pathlib import Path
+import os
+
+# Ensure the src package is available when running tests directly
+REPO_ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, REPO_ROOT)
 
 from src.data.sequence_dataset import CastingSequenceDataset, create_data_loaders, validate_dataset_config
 

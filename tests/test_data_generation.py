@@ -8,21 +8,17 @@ import pandas as pd
 import yaml
 import json
 
-# Add src to Python path
-sys.path.append(str(Path(__file__).parent.parent / 'src'))
-
-from data.data_generator import SteelCastingDataGenerator
+from src.data.data_generator import SteelCastingDataGenerator
 
 
 class TestSteelCastingDataGenerator(unittest.TestCase):
     """Test cases for SteelCastingDataGenerator"""
-    
+
     def setUp(self):
         """Set up test environment"""
         # Create temporary directory for test outputs
         self.test_dir = tempfile.mkdtemp()
-        self.original_cwd = Path.cwd()
-        
+
         # Create test configuration
         self.test_config = {
             'data_generation': {
@@ -30,6 +26,7 @@ class TestSteelCastingDataGenerator(unittest.TestCase):
                 'cast_duration_minutes': 2,  # Short duration for testing
                 'sampling_rate_hz': 1,
                 'random_seed': 42,
+                'output_dir': self.test_dir,
                 'sensors': {
                     'casting_speed': {
                         'base_value': 1.2,
@@ -80,20 +77,14 @@ class TestSteelCastingDataGenerator(unittest.TestCase):
                 }
             }
         }
-        
+
         # Save test config to temporary file
         self.config_path = Path(self.test_dir) / 'test_config.yaml'
         with open(self.config_path, 'w') as f:
             yaml.dump(self.test_config, f)
-        
-        # Change to test directory
-        import os
-        os.chdir(self.test_dir)
-    
+
     def tearDown(self):
         """Clean up test environment"""
-        import os
-        os.chdir(self.original_cwd)
         shutil.rmtree(self.test_dir)
     
     def test_configuration_loading(self):
@@ -191,15 +182,16 @@ class TestSteelCastingDataGenerator(unittest.TestCase):
         generator.generate_dataset()
         
         # Check that parquet files were created
-        parquet_files = list(Path('data/raw').glob('*.parquet'))
+        output_dir = Path(self.test_dir)
+        parquet_files = list((output_dir / 'raw').glob('*.parquet'))
         self.assertEqual(len(parquet_files), 5)  # 5 test casts
         
         # Check that JSON files were created
-        self.assertTrue(Path('data/synthetic/dataset_metadata.json').exists())
-        self.assertTrue(Path('data/synthetic/generation_summary.json').exists())
+        self.assertTrue((output_dir / 'synthetic' / 'dataset_metadata.json').exists())
+        self.assertTrue((output_dir / 'synthetic' / 'generation_summary.json').exists())
         
         # Validate JSON file contents
-        with open('data/synthetic/dataset_metadata.json', 'r') as f:
+        with open(output_dir / 'synthetic' / 'dataset_metadata.json', 'r') as f:
             metadata = json.load(f)
         
         self.assertIn('dataset_info', metadata)
