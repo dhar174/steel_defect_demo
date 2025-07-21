@@ -1,3 +1,4 @@
+from __future__ import annotations
 import pandas as pd
 import numpy as np
 
@@ -850,6 +851,8 @@ try:
     import torch.nn as nn
     import torch.optim as optim
     from torch.utils.data import DataLoader
+    # Expose a mock-friendly DataLoader alias for tests
+    MockDataLoader = DataLoader
     import torch.nn.utils
     import time
     import gc
