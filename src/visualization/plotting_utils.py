@@ -678,7 +678,7 @@ class PlottingUtils:
             xaxis_title="Sensor Features",
             yaxis_title="P-value",
             xaxis_tickangle=-45,
-            showlegend=False
+            showlegend=False)
 
     def create_side_by_side_comparison(self, good_casts: List[pd.DataFrame],
                                      defect_casts: List[pd.DataFrame],
