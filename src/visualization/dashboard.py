@@ -508,7 +508,7 @@ class DefectMonitoringDashboard:
                    'threshold': {'line': {'color': "red", 'width': 4},
                                 'thickness': 0.75, 'value': 0.8}}))
         
-        fig.update_layout(height=height, template=theme)
+        fig.update_layout(height=400, template=theme)
         return fig
     
     def create_prediction_history_plot(self, history_data: pd.DataFrame, theme: str = "plotly_white") -> go.Figure:
