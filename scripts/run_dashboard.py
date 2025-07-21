@@ -449,7 +449,7 @@ class DashboardLauncher:
             
             # Log startup information
             self.logger.info("=" * 60)
-            self.logger.info("🚀 Steel Defect Monitoring Dashboard")
+            self.logger.info("[LAUNCH] Steel Defect Monitoring Dashboard")
             self.logger.info("=" * 60)
             self.logger.info(f"Mode: {'PRODUCTION' if args.production else 'DEVELOPMENT'}")
             self.logger.info(f"Host: {args.host}")
