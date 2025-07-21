@@ -1643,17 +1643,28 @@ def export_chart_to_image(self, fig: go.Figure, filename: str = None) -> Dict[st
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         filename = f"historical_analysis_chart_{timestamp}.png"
     
-    # Convert figure to image
-    img_bytes = fig.to_image(format="png", width=1200, height=800)
-    
-    # Encode as base64 for download
-    img_b64 = base64.b64encode(img_bytes).decode()
-    
-    return {
-        'content': img_b64,
-        'filename': filename,
-        'type': 'image/png'
-    }
+    try:
+        # Try to convert figure to image using kaleido
+        img_bytes = fig.to_image(format="png", width=1200, height=800)
+        
+        # Encode as base64 for download
+        img_b64 = base64.b64encode(img_bytes).decode()
+        
+        return {
+            'content': img_b64,
+            'filename': filename,
+            'type': 'image/png'
+        }
+    except Exception as e:
+        # Fallback: export as HTML
+        logger.warning(f"Image export failed ({e}), falling back to HTML export")
+        html_content = fig.to_html(include_plotlyjs='inline')
+        
+        return {
+            'content': html_content,
+            'filename': filename.replace('.png', '.html'),
+            'type': 'text/html'
+        }
 
 
 def filter_data(self, df: pd.DataFrame, 
