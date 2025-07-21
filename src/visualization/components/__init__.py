@@ -14,8 +14,15 @@ Prediction Visualization Components for Steel Defect Detection Dashboard.
 This module provides components for visualizing defect prediction outputs.
 """
 from .sensor_monitoring import SensorMonitoringComponent
-
+from .system_monitoring import SystemMonitoringComponent, create_sample_system_data
 from .prediction_display import PredictionDisplayComponents, create_sample_data_for_demo
 from .model_comparison import ModelComparison
 
-__all__ = ['PredictionDisplayComponents', 'create_sample_data_for_demo','ModelComparison','SensorMonitoringComponent']
+__all__ = [
+    'PredictionDisplayComponents', 
+    'create_sample_data_for_demo',
+    'ModelComparison',
+    'SensorMonitoringComponent',
+    'SystemMonitoringComponent',
+    'create_sample_system_data'
+]
