@@ -423,3 +423,62 @@ class TestRealTimeMonitor:
         with patch.object(monitor.logger, 'warning') as mock_warning:
             monitor.track_prediction(prediction)
             mock_warning.assert_called_once()
+
+    def test_prediction_pipeline_integration(self):
+        """Test RealTimeMonitor integration with PredictionPipeline."""
+        # Import here to avoid circular imports
+        from inference.prediction_pipeline import PredictionPipeline
+        
+        # Test config with monitoring section
+        config_with_monitoring = {
+            'inference': {
+                'model_types': ['baseline', 'lstm'],
+                'real_time_simulation': {
+                    'playback_speed_multiplier': 10,
+                    'update_interval_seconds': 30,
+                    'buffer_size_seconds': 300
+                },
+                'thresholds': {
+                    'defect_probability': 0.5,
+                    'high_risk_threshold': 0.7,
+                    'alert_threshold': 0.8
+                }
+            },
+            'monitoring': {
+                'metrics_logging': True,
+                'performance_tracking': True
+            }
+        }
+        
+        # Create pipeline with monitor integration
+        pipeline = PredictionPipeline(
+            config=config_with_monitoring,
+            cast_files=['/tmp/test_cast.csv']
+        )
+        
+        # Verify monitor is initialized and functioning
+        assert pipeline.monitor is not None
+        assert hasattr(pipeline.monitor, 'track_prediction')
+        assert hasattr(pipeline.monitor, 'check_data_quality')
+        assert hasattr(pipeline.monitor, 'get_system_performance_metrics')
+        assert pipeline.monitor.thresholds['high_risk_threshold'] == 0.7
+        
+        # Test that monitor can track predictions
+        test_prediction = {
+            'ensemble_prediction': 0.6,
+            'confidence': 0.8,
+            'latency': {'total_time': 0.05}
+        }
+        
+        pipeline.monitor.track_prediction(test_prediction)
+        assert len(pipeline.monitor.prediction_history) == 1
+        assert pipeline.monitor.prediction_history[0]['prediction'] == 0.6
+        
+        # Test that monitor can check data quality
+        test_data = pd.DataFrame({
+            'temperature': [1500, 1520, 1510],
+            'pressure': [100, 105, 102]
+        })
+        
+        issues = pipeline.monitor.check_data_quality(test_data)
+        assert isinstance(issues, list)

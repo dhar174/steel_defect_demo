@@ -16,8 +16,8 @@ class RealTimeMonitor:
         Args:
             config (Dict): The application configuration, including monitoring thresholds.
         """
-        self.config = config['monitoring']
-        self.thresholds = config['inference']['thresholds']
+        self.config = config.get('monitoring', {})
+        self.thresholds = config.get('inference', {}).get('thresholds', {})
         self.prediction_history = deque(maxlen=1000)  # Store last 1000 predictions
         self.latency_history = deque(maxlen=1000)
         logging.basicConfig(level=logging.INFO)
