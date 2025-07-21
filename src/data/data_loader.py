@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import json
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
@@ -117,7 +118,10 @@ class DataLoader:
         try:
             from sklearn.model_selection import train_test_split
 
-            labels = metadata.set_index('cast_id')['defect_label']
+            # Remove duplicates and ensure labels match cast_ids order for stratify parameter
+            metadata_unique = metadata.drop_duplicates('cast_id')
+            labels_indexed = metadata_unique.set_index('cast_id')['defect_label']
+            labels = labels_indexed.loc[cast_ids]
             train_ids, test_ids = train_test_split(
                 cast_ids,
                 test_size=test_size,
