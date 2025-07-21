@@ -17,6 +17,9 @@ joblib>=1.2.0
 matplotlib>=3.6.0
 seaborn>=0.12.0
 
+# Template Engine
+jinja2>=3.0.0
+
 # Progress and Performance Monitoring
 tqdm>=4.64.0
 psutil>=5.9.0
