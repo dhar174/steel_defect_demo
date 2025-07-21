@@ -62,3 +62,6 @@ Thumbs.db
 .coverage
 htmlcov/
 .pytest_cache/
+
+# Validation results - exclude temporary validation outputs
+validation_results/
