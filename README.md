@@ -122,7 +122,7 @@ Representative feature groups per cast:
 7. **Evaluation & Reporting:** Consolidate metrics, confusion matrices, precision-recall curves; generate brief markdown or HTML summary; identify improvement opportunities (adding new sensors, refining labeling rules, adopting transformer for longer sequences).
 
 ## 8. Real-Time Integration and Deployment Considerations
-- **Industrial Connectivity:** Replace synthetic generator with OPC UA / MQTT / Kafka ingestion microservice; secure TLS channels; topic partitioning by strand.
+- **Industrial Connectivity:** Replace synthetic generator with OPC UA / MQTT / Kafka ingestion microservice; secure TLS channels; topic partitioning by strand. **Note: Production Data Connectors module (`src/connectors/`) provides ready-to-use implementations for OPC UA, MQTT, REST APIs, and database connections - see `docs/PRODUCTION_DATA_CONNECTORS.md` for details.**
 - **Scalability & Microservices:** Containerize components: `ingestion`, `feature-service`, `inference-service`, `dashboard`, `model-monitor`; orchestrate with Docker Compose or Kubernetes (future).
 - **Model Serving:** FastAPI or TorchServe endpoint; warm-loaded model; batch or single-event inference; ONNX/runtime for portability (CPU inference expected sufficient initially).
 - **Data Throughput & Volume:** Use ring buffers for per-strand sequences; downsample low-variance signals; compress archives; partition long-term storage by date + strand.
