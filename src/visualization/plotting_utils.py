@@ -126,7 +126,7 @@ class PlottingUtils:
             colorscale='RdBu',
             zmid=0,
             text=np.round(corr_matrix.values, 2),
-            showscale=True
+            showscale=True,
             texttemplate='%{text}',
             textfont={"size": 10},
             hoverongaps=False
