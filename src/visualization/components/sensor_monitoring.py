@@ -700,8 +700,8 @@ class SensorMonitoringComponent:
                 self.data_buffers[sensor].append(sensor_data[sensor])
                 self.last_update_times[sensor] = timestamp
             else:
-                # Add None for missing sensors to maintain buffer alignment
-                self.data_buffers[sensor].append(None)
+                # Add NaN for missing sensors to maintain buffer alignment
+                self.data_buffers[sensor].append(float('nan'))
     
     def get_current_data(self) -> Tuple[Dict[str, List], List[datetime]]:
         """
