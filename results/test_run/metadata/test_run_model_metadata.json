@@ -1,0 +1,38 @@
+{
+  "artifact_type": "model",
+  "created_at": "2025-07-21T03:41:03.900951",
+  "model_name": "test_run_model",
+  "experiment_name": "test_run",
+  "version": "test_run_model_20250721_034103_auc1000",
+  "file_path": "results/test_run/models/test_run_model.pkl",
+  "file_size": 55666,
+  "checksum": "7bf283bfb792da0986e827761f098067",
+  "metrics": {
+    "accuracy": 1.0,
+    "balanced_accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1_score": 1.0,
+    "matthews_corrcoef": 1.0,
+    "specificity": 1.0,
+    "roc_auc": 1.0,
+    "average_precision": 1.0,
+    "log_loss": 0.02198337333789719,
+    "brier_score": 0.001942399700549106,
+    "class_0": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 160.0
+    },
+    "class_1": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1-score": 1.0,
+      "support": 40.0
+    }
+  },
+  "config": null,
+  "dependencies": null,
+  "description": "Trained model: test_run_model"
+}
