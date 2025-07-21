@@ -671,7 +671,6 @@ def calculate_control_limits(data: np.ndarray, method: str = 'individual') -> Di
     
     elif method == 'xbar':
         # X-bar chart for subgroups
-        subgroup_size = 5  # Default subgroup size
         n_subgroups = len(data) // subgroup_size
         
         if n_subgroups == 0:
