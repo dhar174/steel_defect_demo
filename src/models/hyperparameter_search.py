@@ -193,7 +193,7 @@ class HyperparameterSearcher:
             from skopt.utils import use_named_args
             
         except ImportError:
-            self.logger.warning("scikit-optimize not available, falling back to random search")
+            self.logger.warning("Bayesian optimization requires scikit-optimize, which is not installed. Falling back to random search for hyperparameter optimization.")
             return self.random_search(model, param_space, X, y, n_iter=n_calls, cv=cv_folds)
         
         start_time = datetime.now()
