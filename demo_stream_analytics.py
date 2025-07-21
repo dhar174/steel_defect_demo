@@ -41,7 +41,7 @@ def main():
         'temperature': np.random.normal(100, 5, 50),
         'pressure': np.random.normal(200, 10, 50),
         'vibration': np.random.normal(50, 3, 50),
-        'timestamp': pd.date_range('2023-01-01', periods=50, freq='1h')
+        'timestamp': pd.date_range(datetime.now(), periods=50, freq='1h')
     })
     
     result = engine.update_with_new_data(normal_data)
