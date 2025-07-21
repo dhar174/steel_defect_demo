@@ -8,6 +8,11 @@ from typing import Dict, Any, Optional, Union
 from pathlib import Path
 import logging
 
+# Valid configuration values
+VALID_HIDDEN_SIZES = [16, 32, 64, 128, 256, 512]
+VALID_NUM_LAYERS = [1, 2, 3, 4, 5]
+VALID_ACTIVATIONS = ['relu', 'tanh', 'sigmoid', 'leaky_relu', 'elu']
+
 
 class ModelConfig:
     """Manage model configuration and hyperparameters"""
