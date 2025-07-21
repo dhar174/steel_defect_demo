@@ -13,6 +13,7 @@ data_generation:
     metadata_format: json
     raw_data_format: parquet
     train_test_split: 0.8
+  progress_reporting_frequency: 100
   random_seed: 42
   sampling_rate_hz: 1
   sensors:

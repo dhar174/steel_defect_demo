@@ -234,7 +234,8 @@ class SteelCastingDataGenerator:
             all_metadata.append(metadata)
             
             # Progress update
-            if (i + 1) % 100 == 0:
+            progress_freq = self.data_config.get('progress_reporting_frequency', 100)
+            if (i + 1) % progress_freq == 0:
                 print(f"Generated {i + 1}/{num_casts} casts...")
         
         # Save dataset metadata
