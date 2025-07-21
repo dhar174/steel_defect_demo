@@ -2,16 +2,12 @@
 """
 Demo script to showcase RealTimeMonitor functionality.
 This script demonstrates the monitoring system capabilities.
+
+Note: Run 'pip install -e .' from the repository root to install the package in development mode.
 """
 
-import sys
-import os
 import pandas as pd
 import numpy as np
-from pathlib import Path
-
-# Add src to path
-sys.path.append(str(Path(__file__).parent / 'src'))
 
 from monitoring.real_time_monitor import RealTimeMonitor
 
