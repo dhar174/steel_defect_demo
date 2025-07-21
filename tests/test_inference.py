@@ -14,6 +14,8 @@ from inference.stream_simulator import RealTimeStreamSimulator
 class TestInference:
     """Test suite for inference components"""
     
+    STREAM_QUEUE_WAIT_TIME = 0.2  # Time to wait for data to be queued during streaming
+    
     def setup_method(self):
         """Setup test fixtures."""
         # Create sample streaming data
@@ -263,6 +265,100 @@ class TestInference:
         
         # With 50x speed, we should have gotten some data quickly
         assert len(buffer) >= 0  # Basic check that it works
+    
+    def test_data_interval_calculation_from_timestamps(self):
+        """Test that data interval is correctly calculated from timestamp data."""
+        config_path = '/home/runner/work/steel_defect_demo/steel_defect_demo/configs/inference_config.yaml'
+        inference_engine = DefectPredictionEngine(config_path)
+        
+        # Create data with 2-second intervals
+        timestamps = pd.date_range('2023-01-01', periods=5, freq='2s')
+        data_with_timestamps = pd.DataFrame({
+            'timestamp': timestamps,
+            'casting_speed': np.random.normal(1.2, 0.05, 5),
+            'mold_temperature': np.random.normal(1520, 10, 5)
+        })
+        
+        simulator = RealTimeStreamSimulator(
+            cast_data=data_with_timestamps,
+            config=self.temp_config,
+            inference_engine=inference_engine
+        )
+        
+        # Check that interval was calculated as 2.0 seconds
+        assert simulator._data_interval == 2.0
+    
+    def test_data_interval_fallback_to_config(self):
+        """Test that data interval falls back to config when no timestamps available."""
+        config_path = '/home/runner/work/steel_defect_demo/steel_defect_demo/configs/inference_config.yaml'
+        inference_engine = DefectPredictionEngine(config_path)
+        
+        # Create data without timestamp column
+        data_without_timestamps = pd.DataFrame({
+            'casting_speed': np.random.normal(1.2, 0.05, 5),
+            'mold_temperature': np.random.normal(1520, 10, 5)
+        })
+        
+        # Update config to include custom data_interval_seconds
+        config_with_custom_interval = self.temp_config.copy()
+        config_with_custom_interval['inference']['real_time_simulation']['data_interval_seconds'] = 3.0
+        
+        simulator = RealTimeStreamSimulator(
+            cast_data=data_without_timestamps,
+            config=config_with_custom_interval,
+            inference_engine=inference_engine
+        )
+        
+        # Check that interval fell back to configured value
+        assert simulator._data_interval == 3.0
+    
+    def test_data_interval_default_fallback(self):
+        """Test that data interval uses default when not configured and no timestamps."""
+        config_path = '/home/runner/work/steel_defect_demo/steel_defect_demo/configs/inference_config.yaml'
+        inference_engine = DefectPredictionEngine(config_path)
+        
+        # Create data without timestamp column
+        data_without_timestamps = pd.DataFrame({
+            'casting_speed': np.random.normal(1.2, 0.05, 5),
+            'mold_temperature': np.random.normal(1520, 10, 5)
+        })
+        
+        simulator = RealTimeStreamSimulator(
+            cast_data=data_without_timestamps,
+            config=self.temp_config,  # No data_interval_seconds in config
+            inference_engine=inference_engine
+        )
+        
+        # Check that interval fell back to default value of 1.0
+        assert simulator._data_interval == 1.0
+    
+    def test_data_interval_with_irregular_timestamps(self):
+        """Test that data interval handles irregular timestamps gracefully."""
+        config_path = '/home/runner/work/steel_defect_demo/steel_defect_demo/configs/inference_config.yaml'
+        inference_engine = DefectPredictionEngine(config_path)
+        
+        # Create data with irregular intervals: 1s, 3s, 2s, 2s
+        timestamps = pd.to_datetime([
+            '2023-01-01 00:00:00',
+            '2023-01-01 00:00:01',  # +1s
+            '2023-01-01 00:00:04',  # +3s
+            '2023-01-01 00:00:06',  # +2s
+            '2023-01-01 00:00:08'   # +2s
+        ])
+        data_with_irregular_timestamps = pd.DataFrame({
+            'timestamp': timestamps,
+            'casting_speed': np.random.normal(1.2, 0.05, 5),
+            'mold_temperature': np.random.normal(1520, 10, 5)
+        })
+        
+        simulator = RealTimeStreamSimulator(
+            cast_data=data_with_irregular_timestamps,
+            config=self.temp_config,
+            inference_engine=inference_engine
+        )
+        
+        # Should use median interval (2.0 seconds)
+        assert simulator._data_interval == 2.0
     
     def test_input_data_validation(self):
         """Test input data validation."""

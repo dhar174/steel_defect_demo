@@ -1,6 +1,7 @@
 import time
 import threading
 from queue import Queue
+import queue
 import pandas as pd
 from typing import Dict
 from src.inference.inference_engine import DefectPredictionEngine
@@ -24,6 +25,40 @@ class RealTimeStreamSimulator:
         self.running = False
         self.producer_thread = None
         self._data_finished = False
+        self._data_interval = self._calculate_data_interval()
+        
+    def _calculate_data_interval(self) -> float:
+        """
+        Calculate the time interval between data points.
+        
+        Returns:
+            float: Time interval in seconds between data points.
+                   Uses actual timestamp differences if available,
+                   otherwise falls back to configured value.
+        """
+        # Check if data has timestamp column and enough rows to calculate interval
+        if 'timestamp' in self.cast_data.columns and len(self.cast_data) >= 2:
+            try:
+                # Convert timestamp column to datetime if it's not already
+                timestamps = pd.to_datetime(self.cast_data['timestamp'])
+                
+                # Calculate differences between consecutive timestamps
+                time_diffs = timestamps.diff().dropna()
+                
+                if len(time_diffs) > 0:
+                    # Use median of time differences to handle potential irregularities
+                    median_diff = time_diffs.median()
+                    interval_seconds = median_diff.total_seconds()
+                    
+                    # Sanity check: interval should be positive and reasonable (between 0.001s and 3600s)
+                    if 0.001 <= interval_seconds <= 3600:
+                        return interval_seconds
+            except (ValueError, TypeError):
+                # If timestamp parsing fails, fall back to configured value
+                pass
+        
+        # Fallback to configured value
+        return self.config.get('data_interval_seconds', 1.0)
         
     def _produce_data(self) -> None:
         """
@@ -40,8 +75,8 @@ class RealTimeStreamSimulator:
             self.data_queue.put(row)
             
             # Sleep to simulate real-time data ingestion rate
-            # Assuming data points are 1 second apart in real time
-            time.sleep(1.0 / playback_speed)
+            # Use calculated or configured data interval
+            time.sleep(self._data_interval / playback_speed)
         
         # Mark that we've finished processing all data
         self._data_finished = True
@@ -87,9 +122,10 @@ class RealTimeStreamSimulator:
         buffer_df = pd.DataFrame(buffer_rows)
         
         # Maintain sliding window of specified size
-        # Assuming each row represents 1 second of data
-        if len(buffer_df) > buffer_size_seconds:
-            buffer_df = buffer_df.tail(buffer_size_seconds)
+        # Use calculated data interval for buffer size calculation
+        max_rows = int(buffer_size_seconds / self._data_interval)
+        if len(buffer_df) > max_rows:
+            buffer_df = buffer_df.tail(max_rows)
         
         # Reset index to maintain continuity
         buffer_df = buffer_df.reset_index(drop=True)
