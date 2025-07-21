@@ -1,0 +1,35 @@
+{
+  "experiment_name": "xgboost_20250721_025907",
+  "model_type": "xgboost",
+  "timestamp": "20250721_025907",
+  "results": {
+    "data_info": {
+      "total_samples": 1000,
+      "n_features": 10,
+      "train_samples": 600,
+      "val_samples": 200,
+      "test_samples": 200
+    },
+    "training": {
+      "training_time": 0.067745,
+      "train_auc": 1.0,
+      "n_samples": 600,
+      "n_features": 10,
+      "timestamp": "2025-07-21T02:59:07.968035",
+      "val_auc": 0.9976997699769977,
+      "total_training_time": 0.072762
+    },
+    "test_evaluation": {
+      "accuracy": 0.98,
+      "precision": 0.9801980198019802,
+      "recall": 0.9801980198019802,
+      "f1_score": 0.9801980198019802,
+      "roc_auc": 0.9981998199819981,
+      "average_precision": 0.9983281864791843,
+      "plots": {
+        "roc_curve": "Figure(800x600)",
+        "pr_curve": "Figure(800x600)"
+      }
+    }
+  }
+}
