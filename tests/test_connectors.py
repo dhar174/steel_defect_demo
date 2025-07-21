@@ -8,10 +8,8 @@ from unittest.mock import Mock, patch, MagicMock
 import pandas as pd
 from queue import Queue
 
-# Add src to Python path
-sys.path.append(str(Path(__file__).parent.parent / 'src'))
-
-from connectors.data_connectors import (
+# Import connectors from src directory
+from ..src.connectors.data_connectors import (
     BaseDataConnector,
     OPCUAConnector,
     MQTTConnector,
