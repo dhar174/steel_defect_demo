@@ -196,7 +196,7 @@ def demonstrate_configuration_loading():
     print(f"Bidirectional: {default_config['architecture']['bidirectional']}")
     
     # Try loading from config file
-    config_path = Path(__file__).parent / 'configs' / 'model_config.yaml'
+    config_path = Path(__file__).parent.parent / 'configs' / 'model_config.yaml'
     if config_path.exists():
         try:
             config_manager = ModelConfig(str(config_path))
