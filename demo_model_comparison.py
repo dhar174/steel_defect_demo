@@ -7,7 +7,7 @@ and integrate it into a dashboard page.
 
 import sys
 import os
-sys.path.insert(0, '/home/runner/work/steel_defect_demo/steel_defect_demo')
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 import dash
 from dash import dcc, html, Input, Output, callback
