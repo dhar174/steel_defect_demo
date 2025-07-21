@@ -33,11 +33,11 @@ class SteelCastingDataGenerator:
     
     def _create_output_directories(self):
         """Create necessary output directories"""
-        base_path = Path('.')
+        base_path = Path(self.data_config.get('output_dir', 'data'))
         directories = [
-            'data/raw',
-            'data/processed', 
-            'data/synthetic'
+            'raw',
+            'processed',
+            'synthetic'
         ]
         for dir_path in directories:
             (base_path / dir_path).mkdir(parents=True, exist_ok=True)
@@ -88,23 +88,11 @@ class SteelCastingDataGenerator:
         mold_level_normal_range = self.sensor_config['mold_level_normal_range']  # Configurable range
         outside_range = (df['mold_level'] < mold_level_normal_range[0]) | (df['mold_level'] > mold_level_normal_range[1])
         
-        # Find consecutive periods outside range
-        consecutive_periods = []
-        in_deviation = False
-        start_idx = 0
+        # Find consecutive periods outside range using a more efficient method
+        outside_range_int = outside_range.astype(int)
+        consecutive_counts = outside_range_int.groupby((outside_range_int != outside_range_int.shift()).cumsum()).cumsum()
         
-        for i, is_outside in enumerate(outside_range):
-            if is_outside and not in_deviation:
-                start_idx = i
-                in_deviation = True
-            elif not is_outside and in_deviation:
-                consecutive_periods.append(i - start_idx)
-                in_deviation = False
-        
-        if in_deviation:  # Handle case where deviation continues to end
-            consecutive_periods.append(len(outside_range) - start_idx)
-        
-        if any(period >= self.defect_config['defect_triggers']['prolonged_mold_level_deviation'] for period in consecutive_periods):
+        if (consecutive_counts >= self.defect_config['defect_triggers']['prolonged_mold_level_deviation']).any():
             triggers.append('prolonged_mold_level_deviation')
         
         # 2. Rapid temperature drop (>50°C drop in 60 seconds)
@@ -115,7 +103,9 @@ class SteelCastingDataGenerator:
         
         # 3. High speed with low superheat (speed >1.5 m/min with superheat <20°C)
         if self.defect_config['defect_triggers']['high_speed_with_low_superheat']:
-            high_speed_low_superheat = (df['casting_speed'] > 1.5) & (df['superheat'] < 20)
+            high_speed_threshold = self.defect_config['defect_triggers'].get('high_speed_threshold', 1.5)
+            low_superheat_threshold = self.defect_config['defect_triggers'].get('low_superheat_threshold', 20)
+            high_speed_low_superheat = (df['casting_speed'] > high_speed_threshold) & (df['superheat'] < low_superheat_threshold)
             if high_speed_low_superheat.any():
                 triggers.append('high_speed_with_low_superheat')
         
@@ -227,7 +217,8 @@ class SteelCastingDataGenerator:
                 defect_count += 1
             
             # Save time series data
-            output_file = Path(f"data/raw/cast_timeseries_{i+1:04d}.parquet")
+            output_dir = Path(self.data_config.get('output_dir', 'data'))
+            output_file = output_dir / 'raw' / f"cast_timeseries_{i+1:04d}.parquet"
             df.to_parquet(output_file)
             
             # Store metadata
@@ -252,7 +243,8 @@ class SteelCastingDataGenerator:
             'cast_metadata': all_metadata
         }
         
-        with open('data/synthetic/dataset_metadata.json', 'w') as f:
+        output_dir = Path(self.data_config.get('output_dir', 'data'))
+        with open(output_dir / 'synthetic/dataset_metadata.json', 'w') as f:
             json.dump(dataset_metadata, f, indent=2)
         
         # Save generation summary
@@ -265,7 +257,7 @@ class SteelCastingDataGenerator:
             'generation_completed_at': datetime.now().isoformat()
         }
         
-        with open('data/synthetic/generation_summary.json', 'w') as f:
+        with open(output_dir / 'synthetic/generation_summary.json', 'w') as f:
             json.dump(generation_summary, f, indent=2)
         
         print(f"\nDataset generation completed!")

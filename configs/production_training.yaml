@@ -7,7 +7,6 @@ data:
   test_size: 0.15      # Smaller test set to maximize training data
   validation_size: 0.15
   random_state: 42
-  handle_missing: true
 
 # Model Configuration
 model:
@@ -30,12 +29,10 @@ model:
 
 # Training Configuration
 training:
-  hyperparameter_search: true
   search_method: "bayesian"  # More sophisticated search
   cross_validation: true
   cv_folds: 10              # More thorough validation
-  early_stopping: true
-  early_stopping_rounds: 20
+  early_stopping_patience: 20
 
 # Preprocessing Configuration
 preprocessing:

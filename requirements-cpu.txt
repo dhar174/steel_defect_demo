@@ -14,8 +14,8 @@ scikit-learn>=1.1.0
 joblib>=1.2.0
 
 # Deep Learning
-torch>=1.13.0
-torchvision>=0.14.0
+torch>=1.13.0 --index-url https://download.pytorch.org/whl/cpu
+torchvision>=0.14.0 --index-url https://download.pytorch.org/whl/cpu
 
 # Visualization
 matplotlib>=3.6.0

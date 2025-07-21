@@ -7,7 +7,6 @@ data:
   test_size: 0.2
   validation_size: 0.2
   random_state: 42
-  handle_missing: true
 
 # Model Configuration
 model:
@@ -30,12 +29,10 @@ model:
 
 # Training Configuration
 training:
-  hyperparameter_search: true
   search_method: "grid"
   cross_validation: true
   cv_folds: 5
   early_stopping: false
-  early_stopping_rounds: 10
 
 # Preprocessing Configuration
 preprocessing:
