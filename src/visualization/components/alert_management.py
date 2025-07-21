@@ -64,7 +64,7 @@ class AlertManagementComponent:
         if base_dir is None:
             # Default to the project root directory (3 levels up from this file)
             current_file_dir = os.path.dirname(os.path.abspath(__file__))
-            self.base_dir = os.path.dirname(os.path.dirname(os.path.dirname(current_file_dir)))
+            self.base_dir = os.path.abspath(os.path.join(current_file_dir, '../../..'))
         else:
             self.base_dir = os.path.abspath(base_dir)
         
