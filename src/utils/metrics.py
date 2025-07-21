@@ -143,7 +143,6 @@ class MetricsCalculator:
             "false_positive_cost": total_fp_cost,
             "false_negative_cost": total_fn_cost,
             "total_cost": total_fp_cost + total_fn_cost
-
         }
     
     def track_metrics_over_time(self, metrics: Dict[str, float],
