@@ -88,16 +88,15 @@ class SteelCastingDataGenerator:
         mold_level_normal_range = self.sensor_config['mold_level_normal_range']  # Configurable range
         outside_range = (df['mold_level'] < mold_level_normal_range[0]) | (df['mold_level'] > mold_level_normal_range[1])
         
-        # Find consecutive periods outside range using a more efficient method
-        outside_range_int = outside_range.astype(int)
-        # Identify changes in the outside_range condition
-        range_change_groups = (outside_range_int != outside_range_int.shift()).cumsum()
+        # Find consecutive periods outside range
+        # Identify changes in the outside_range condition to group consecutive periods
+        range_change_groups = (outside_range != outside_range.shift()).cumsum()
         
-        # Group by changes and calculate cumulative counts
-        grouped_outside_range = outside_range_int.groupby(range_change_groups)
-        consecutive_counts = grouped_outside_range.cumsum()
+        # Group by changes and get sizes for periods where outside_range=True
+        outside_group_info = outside_range.groupby(range_change_groups).agg(['first', 'size'])
+        outside_period_lengths = outside_group_info[outside_group_info['first']]['size']
         
-        if (consecutive_counts >= self.defect_config['defect_triggers']['prolonged_mold_level_deviation']).any():
+        if len(outside_period_lengths) > 0 and (outside_period_lengths >= self.defect_config['defect_triggers']['prolonged_mold_level_deviation']).any():
             triggers.append('prolonged_mold_level_deviation')
         
         # 2. Rapid temperature drop (>50°C drop in 60 seconds)
