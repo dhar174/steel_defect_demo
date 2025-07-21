@@ -231,7 +231,7 @@ properties:
             description: "Path for alert log file"
           
           webhook_url:
-            type: [string, "null"]
+            type: [string, null]
             description: "URL for webhook-based alert notifications"
           
           alert_suppression_minutes:
