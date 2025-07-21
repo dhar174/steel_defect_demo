@@ -1,0 +1,82 @@
+{
+  "model_test_run_model": {
+    "artifact_type": "model",
+    "created_at": "2025-07-21T03:41:03.900951",
+    "model_name": "test_run_model",
+    "experiment_name": "test_run",
+    "version": "test_run_model_20250721_034103_auc1000",
+    "file_path": "results/test_run/models/test_run_model.pkl",
+    "file_size": 55666,
+    "checksum": "7bf283bfb792da0986e827761f098067",
+    "metrics": {
+      "accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "matthews_corrcoef": 1.0,
+      "specificity": 1.0,
+      "roc_auc": 1.0,
+      "average_precision": 1.0,
+      "log_loss": 0.02198337333789719,
+      "brier_score": 0.001942399700549106,
+      "class_0": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 160.0
+      },
+      "class_1": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 40.0
+      }
+    },
+    "config": null,
+    "dependencies": null,
+    "description": "Trained model: test_run_model"
+  },
+  "feature_engineer_test_run_feature_engineer": {
+    "artifact_type": "feature_engineer",
+    "created_at": "2025-07-21T03:41:03.901967",
+    "model_name": "test_run_feature_engineer",
+    "experiment_name": "test_run",
+    "version": "test_run_feature_engineer_20250721_034103",
+    "file_path": "results/test_run/feature_engineers/test_run_feature_engineer.joblib",
+    "file_size": 329,
+    "checksum": "1109b6913962d8fd00b5d85fe69fabc5",
+    "metrics": null,
+    "config": null,
+    "dependencies": null,
+    "description": "Feature engineering pipeline: test_run_feature_engineer"
+  },
+  "results_test_run_results": {
+    "artifact_type": "results",
+    "created_at": "2025-07-21T03:41:03.903034",
+    "model_name": "test_run_results",
+    "experiment_name": "test_run",
+    "version": "test_run_results_20250721_034103",
+    "file_path": "results/test_run/results/test_run_results.json",
+    "file_size": 7985,
+    "checksum": "eecaf7af596dd2c00d79a8af7846b768",
+    "metrics": null,
+    "config": null,
+    "dependencies": null,
+    "description": "Training results: test_run_results"
+  },
+  "config_test_run_config": {
+    "artifact_type": "config",
+    "created_at": "2025-07-21T03:41:03.904526",
+    "model_name": "test_run_config",
+    "experiment_name": "test_run",
+    "version": "test_run_config_20250721_034103",
+    "file_path": "results/test_run/configs/test_run_config.yaml",
+    "file_size": 321,
+    "checksum": "173e9391854a66be09c93206f1d8014f",
+    "metrics": null,
+    "config": null,
+    "dependencies": null,
+    "description": "Training configuration: test_run_config"
+  }
+}
