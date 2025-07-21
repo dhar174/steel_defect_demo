@@ -85,7 +85,7 @@ class StreamAnalyticsEngine:
             'spc_violations': spc_violations,
             'trends': trends,
             'anomalies': anomalies,
-            'anomaly_scores': anomaly_scores.tolist() if len(anomaly_scores) > 0 else [],
+            'anomaly_scores': anomaly_scores.tolist() if anomaly_scores.size > 0 else [],
             'summary': summary
         }
     
