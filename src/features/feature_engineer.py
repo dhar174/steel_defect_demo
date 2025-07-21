@@ -293,7 +293,7 @@ class CastingFeatureEngineer:
             if flow_mean != 0:
                 features['temp_flow_ratio'] = temp_mean / flow_mean
             else:
-                features['temp_flow_ratio'] = np.inf if temp_mean > 0 else 0
+                features['temp_flow_ratio'] = np.nan
         else:
             features['temp_flow_ratio'] = np.nan
         
