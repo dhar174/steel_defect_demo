@@ -28,6 +28,7 @@ monitoring:
   metrics_logging: true
   performance_tracking: true
   data_drift_detection: true
+  benchmark_duration: 60
   alerts:
     console_enabled: true
     file_enabled: true
