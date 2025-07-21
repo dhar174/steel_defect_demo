@@ -28,3 +28,9 @@ monitoring:
   metrics_logging: true
   performance_tracking: true
   data_drift_detection: true
+  alerts:
+    console_enabled: true
+    file_enabled: true
+    file_path: "logs/alerts.log"
+    webhook_url: null  # Set to a URL to enable webhook notifications
+    alert_suppression_minutes: 5
