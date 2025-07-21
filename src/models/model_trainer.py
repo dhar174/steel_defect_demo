@@ -1462,8 +1462,7 @@ class LSTMTrainer:
                 mode='min',
                 factor=self.scheduler_config.get('factor', 0.5),
                 patience=self.scheduler_config.get('patience', 5),
-                min_lr=self.scheduler_config.get('min_lr', 1e-6),
-                verbose=True
+                min_lr=self.scheduler_config.get('min_lr', 1e-6)
             )
         elif scheduler_type == 'cosine_annealing':
             T_max = self.scheduler_config.get('T_max', 50)

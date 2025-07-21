@@ -629,7 +629,7 @@ def main():
         },
         'early_stopping': {
             'enabled': True,
-            'patience': training_section.get('early_stopping_patience', 15),
+            'patience': lstm_config['training'].get('early_stopping_patience', 15),
             'min_delta': 1e-4,
             'monitor': 'val_loss',
             'restore_best_weights': True

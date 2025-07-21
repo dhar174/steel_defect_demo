@@ -425,15 +425,27 @@ class SteelDefectLSTM(torch.nn.Module if TORCH_AVAILABLE else MockModule):
                 return np.ones(attention_shape)  # Mock attention weights
         return None
     
-    def freeze_layers(self, layer_names: List[str]) -> None:
+    def freeze_layers(self, layer_names: List[str] = None, freeze_lstm: bool = False, freeze_classifier: bool = False) -> None:
         """
         Freeze specified layers for transfer learning.
         
         Args:
             layer_names: List of layer names to freeze
+            freeze_lstm: If True, freeze LSTM layers
+            freeze_classifier: If True, freeze classifier layers
         """
         if not TORCH_AVAILABLE:
             return
+        
+        # Build layer names list from keyword arguments
+        if layer_names is None:
+            layer_names = []
+        
+        if freeze_lstm:
+            layer_names.extend(['lstm', 'input_norm', 'lstm_norm'])
+        
+        if freeze_classifier:
+            layer_names.extend(['classifier'])
             
         for name, param in self.named_parameters():
             if any(layer_name in name for layer_name in layer_names):
@@ -465,6 +477,45 @@ class SteelDefectLSTM(torch.nn.Module if TORCH_AVAILABLE else MockModule):
         
         # For other layers, would need more complex implementation
         return None
+    
+    def get_model_info(self) -> Dict[str, Any]:
+        """
+        Get comprehensive model information.
+        
+        Returns:
+            Dictionary with model architecture and parameter information
+        """
+        info = {
+            'architecture': {
+                'input_size': self.input_size,
+                'hidden_size': self.hidden_size,
+                'num_layers': self.num_layers,
+                'bidirectional': self.bidirectional,
+                'dropout': self.dropout
+            },
+            'classifier': {
+                'hidden_dims': self.classifier_hidden_dims,
+                'activation': self.classifier_activation,
+                'dropout': self.classifier_dropout
+            },
+            'normalization': {
+                'batch_norm': self.use_batch_norm,
+                'layer_norm': self.use_layer_norm,
+                'input_norm': self.use_input_norm
+            }
+        }
+        
+        if TORCH_AVAILABLE:
+            # Add parameter count information
+            total_params = sum(p.numel() for p in self.parameters())
+            trainable_params = sum(p.numel() for p in self.parameters() if p.requires_grad)
+            info['parameters'] = {
+                'total': total_params,
+                'trainable': trainable_params,
+                'frozen': total_params - trainable_params
+            }
+        
+        return info
 
 
 
