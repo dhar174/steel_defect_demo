@@ -270,8 +270,8 @@ class TestInference:
     
     def test_data_interval_calculation_from_timestamps(self):
         """Test that data interval is correctly calculated from timestamp data."""
-        config_path = '/home/runner/work/steel_defect_demo/steel_defect_demo/configs/inference_config.yaml'
-        inference_engine = DefectPredictionEngine(config_path)
+        config_path = Path(__file__).parent.parent / 'configs' / 'inference_config.yaml'
+        inference_engine = DefectPredictionEngine(str(config_path))
         
         # Create data with 2-second intervals
         timestamps = pd.date_range('2023-01-01', periods=5, freq='2s')
