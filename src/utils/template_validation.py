@@ -178,17 +178,13 @@ SAFE_METRIC_TEMPLATE = """
 
 SENSOR_DASHBOARD_TEMPLATE = """
 <div class="sensor-dashboard">
-{%- for sensor_name in sensor_names %}
-    {%- set value_key = sensor_name + '_value' %}
-    {%- set valid_key = 'is_' + sensor_name + '_valid' %}
-    {%- set error_key = sensor_name + '_error' %}
-    
+{%- for sensor in sensors %}
     <div class="sensor-panel">
-        <h3>{{ sensor_name.replace('_', ' ').title() }}</h3>
-        {%- if valid_key in locals() and locals()[valid_key] %}
-        <div class="sensor-value valid">{{ locals()[value_key] }}</div>
+        <h3>{{ sensor.name.replace('_', ' ').title() }}</h3>
+        {%- if sensor.is_valid %}
+        <div class="sensor-value valid">{{ sensor.value }}</div>
         {%- else %}
-        <div class="sensor-value invalid">{{ locals()[error_key] }}</div>
+        <div class="sensor-value invalid">{{ sensor.error }}</div>
         {%- endif %}
     </div>
 {%- endfor %}
