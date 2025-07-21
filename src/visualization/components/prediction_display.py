@@ -44,12 +44,13 @@ class PredictionDisplayComponents:
         self.alert_threshold = thresholds.get('alert_threshold', 0.8)
         
         # Color scheme for risk levels
-        self.risk_colors = {
+        default_risk_colors = {
             'safe': '#2E8B57',      # Green
             'warning': '#FFD700',   # Yellow  
             'high_risk': '#FF6B35', # Orange
             'alert': '#DC143C'      # Red
         }
+        self.risk_colors = self.config.get('risk_colors', default_risk_colors)
     
     def create_prediction_gauge(self, 
                               prediction_prob: float, 
