@@ -1,0 +1,206 @@
+{
+  "analysis_metadata": {
+    "sensor_columns": [
+      "casting_speed",
+      "mold_temperature",
+      "mold_level",
+      "cooling_water_flow",
+      "superheat"
+    ],
+    "num_casts_analyzed": 8,
+    "analysis_timestamp": "2025-07-21T01:38:10.476574"
+  },
+  "cross_sensor_correlations": {
+    "casting_speed": {
+      "casting_speed": 1.0,
+      "mold_temperature": 0.019819068605601807,
+      "mold_level": -0.002883276989700705,
+      "cooling_water_flow": -0.012581298180131836,
+      "superheat": -0.013992050767061844
+    },
+    "mold_temperature": {
+      "casting_speed": 0.019819068605601807,
+      "mold_temperature": 1.0,
+      "mold_level": -0.005923887519207237,
+      "cooling_water_flow": -0.006525686394013009,
+      "superheat": 0.0010140439043598239
+    },
+    "mold_level": {
+      "casting_speed": -0.002883276989700705,
+      "mold_temperature": -0.005923887519207237,
+      "mold_level": 1.0,
+      "cooling_water_flow": 0.007589680206298722,
+      "superheat": 0.018003762985504962
+    },
+    "cooling_water_flow": {
+      "casting_speed": -0.012581298180131836,
+      "mold_temperature": -0.006525686394013009,
+      "mold_level": 0.007589680206298722,
+      "cooling_water_flow": 1.0,
+      "superheat": -0.003578005942942522
+    },
+    "superheat": {
+      "casting_speed": -0.013992050767061844,
+      "mold_temperature": 0.0010140439043598239,
+      "mold_level": 0.018003762985504962,
+      "cooling_water_flow": -0.003578005942942522,
+      "superheat": 1.0
+    }
+  },
+  "defect_specific_correlations": {
+    "good_casts": {
+      "casting_speed": {
+        "casting_speed": 1.0,
+        "cooling_water_flow": -0.0029190551162528978,
+        "mold_level": 0.0023545928582036258,
+        "mold_temperature": 0.003065539478273542,
+        "superheat": -0.007276464908951901
+      },
+      "mold_temperature": {
+        "casting_speed": 0.003065539478273542,
+        "cooling_water_flow": -0.005153105695572589,
+        "mold_level": 0.006071361412441078,
+        "mold_temperature": 1.0,
+        "superheat": 0.0027947587975495464
+      },
+      "mold_level": {
+        "casting_speed": 0.0023545928582036258,
+        "cooling_water_flow": 0.005092223155120076,
+        "mold_level": 1.0,
+        "mold_temperature": 0.006071361412441078,
+        "superheat": -0.0017446794666859577
+      },
+      "cooling_water_flow": {
+        "casting_speed": -0.0029190551162528978,
+        "cooling_water_flow": 1.0,
+        "mold_level": 0.005092223155120076,
+        "mold_temperature": -0.005153105695572589,
+        "superheat": -0.000856931456259695
+      },
+      "superheat": {
+        "casting_speed": -0.007276464908951901,
+        "cooling_water_flow": -0.000856931456259695,
+        "mold_level": -0.0017446794666859577,
+        "mold_temperature": 0.0027947587975495464,
+        "superheat": 1.0
+      }
+    },
+    "defect_casts": {
+      "casting_speed": {
+        "casting_speed": 1.0,
+        "cooling_water_flow": -0.00460862118238856,
+        "mold_level": -0.0012639460045911878,
+        "mold_temperature": 0.004111103926189699,
+        "superheat": 0.0078866252758853
+      },
+      "mold_temperature": {
+        "casting_speed": 0.004111103926189699,
+        "cooling_water_flow": -0.0008984795921225618,
+        "mold_level": 0.01500975264339413,
+        "mold_temperature": 1.0,
+        "superheat": -0.0017333803172264236
+      },
+      "mold_level": {
+        "casting_speed": -0.0012639460045911878,
+        "cooling_water_flow": 0.0018810207982887497,
+        "mold_level": 1.0,
+        "mold_temperature": 0.01500975264339413,
+        "superheat": -0.005853189134675614
+      },
+      "cooling_water_flow": {
+        "casting_speed": -0.00460862118238856,
+        "cooling_water_flow": 1.0,
+        "mold_level": 0.0018810207982887497,
+        "mold_temperature": -0.0008984795921225618,
+        "superheat": 0.006491632811031364
+      },
+      "superheat": {
+        "casting_speed": 0.0078866252758853,
+        "cooling_water_flow": 0.006491632811031364,
+        "mold_level": -0.005853189134675614,
+        "mold_temperature": -0.0017333803172264236,
+        "superheat": 1.0
+      }
+    },
+    "difference": {
+      "casting_speed": {
+        "casting_speed": 0.0,
+        "cooling_water_flow": -0.0016895660661356625,
+        "mold_level": -0.0036185388627948136,
+        "mold_temperature": 0.0010455644479161574,
+        "superheat": 0.015163090184837202
+      },
+      "mold_temperature": {
+        "casting_speed": 0.0010455644479161574,
+        "cooling_water_flow": 0.004254626103450027,
+        "mold_level": 0.008938391230953052,
+        "mold_temperature": 0.0,
+        "superheat": -0.0045281391147759704
+      },
+      "mold_level": {
+        "casting_speed": -0.0036185388627948136,
+        "cooling_water_flow": -0.0032112023568313264,
+        "mold_level": 0.0,
+        "mold_temperature": 0.008938391230953052,
+        "superheat": -0.004108509667989656
+      },
+      "cooling_water_flow": {
+        "casting_speed": -0.0016895660661356625,
+        "cooling_water_flow": 0.0,
+        "mold_level": -0.0032112023568313264,
+        "mold_temperature": 0.004254626103450027,
+        "superheat": 0.007348564267291059
+      },
+      "superheat": {
+        "casting_speed": 0.015163090184837202,
+        "cooling_water_flow": 0.007348564267291059,
+        "mold_level": -0.004108509667989656,
+        "mold_temperature": -0.0045281391147759704,
+        "superheat": 0.0
+      }
+    }
+  },
+  "predictive_combinations": [
+    {
+      "feature": "casting_speed_max",
+      "importance": 0.1428571428571428
+    },
+    {
+      "feature": "mold_temperature_max",
+      "importance": 0.10119047619047628
+    },
+    {
+      "feature": "cooling_water_flow_mean",
+      "importance": 0.09077380952380953
+    },
+    {
+      "feature": "cooling_water_flow_std",
+      "importance": 0.08333333333333326
+    },
+    {
+      "feature": "mold_level_max",
+      "importance": 0.04166666666666652
+    },
+    {
+      "feature": "mold_temperature_std",
+      "importance": 0.04166666666666652
+    },
+    {
+      "feature": "corr_mold_temperature_mold_level",
+      "importance": 0.04166666666666652
+    },
+    {
+      "feature": "corr_cooling_water_flow_superheat",
+      "importance": 0.04166666666666652
+    },
+    {
+      "feature": "corr_mold_temperature_cooling_water_flow",
+      "importance": 0.017857142857143016
+    },
+    {
+      "feature": "mold_temperature_mean",
+      "importance": 0.0
+    }
+  ],
+  "time_lagged_analysis": {}
+}

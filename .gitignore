@@ -35,6 +35,9 @@ data/processed/
 data/features/
 data/synthetic/
 
+# Demo outputs (except for examples)
+demo_output/
+correlation_analysis/
 
 # Models and artifacts
 models/baseline/
