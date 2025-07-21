@@ -303,7 +303,7 @@ class TestInference:
         
         # Update config to include custom data_interval_seconds
         config_with_custom_interval = self.temp_config.copy()
-        config_with_custom_interval['inference']['real_time_simulation']['data_interval_seconds'] = 3.0
+        config_with_custom_interval.setdefault('inference', {}).setdefault('real_time_simulation', {})['data_interval_seconds'] = 3.0
         
         simulator = RealTimeStreamSimulator(
             cast_data=data_without_timestamps,
