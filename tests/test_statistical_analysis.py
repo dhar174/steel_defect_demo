@@ -302,6 +302,36 @@ class TestPlottingUtilsStatistical(unittest.TestCase):
         
         # Check that it's a heatmap
         self.assertEqual(fig.data[0].type, 'heatmap')
+    
+    def test_plot_correlation_heatmap_empty_numeric_data(self):
+        """Test correlation heatmap plotting with non-numeric data"""
+        # Create a DataFrame with only non-numeric columns
+        non_numeric_data = pd.DataFrame({
+            'cast_id': ['C001', 'C002', 'C003'],
+            'material': ['Steel', 'Iron', 'Steel'],
+            'operator': ['John', 'Jane', 'Bob']
+        })
+        
+        # This should handle the empty numeric data gracefully
+        with self.assertRaises(ValueError) as context:
+            self.plotter.plot_correlation_heatmap(non_numeric_data)
+        
+        # Check that the error message is descriptive
+        self.assertIn("numeric", str(context.exception).lower())
+    
+    def test_plot_correlation_heatmap_single_numeric_column(self):
+        """Test correlation heatmap plotting with single numeric column"""
+        # Create a DataFrame with only one numeric column
+        single_numeric_data = pd.DataFrame({
+            'cast_id': ['C001', 'C002', 'C003'],
+            'temperature': [1500, 1520, 1480]
+        })
+        
+        # This should work (correlation matrix will be 1x1 with value 1.0)
+        fig = self.plotter.plot_correlation_heatmap(single_numeric_data)
+        self.assertIsNotNone(fig)
+        self.assertEqual(len(fig.data), 1)
+        self.assertEqual(fig.data[0].type, 'heatmap')
 
 
 if __name__ == '__main__':
