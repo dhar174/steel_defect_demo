@@ -5,8 +5,9 @@ import numpy as np
 # Conditional sklearn imports
 try:
     from sklearn.model_selection import (
-        train_test_split, StratifiedKFold, GridSearchCV, 
-        RandomizedSearchCV, cross_val_score, KFold
+        train_test_split, StratifiedKFold, KFold, GridSearchCV,
+        RandomizedSearchCV, cross_val_score
+
     )
     from sklearn.preprocessing import (
         StandardScaler, RobustScaler, MinMaxScaler, 
@@ -851,6 +852,9 @@ try:
     import torch.nn as nn
     import torch.optim as optim
     from torch.utils.data import DataLoader
+    class MockDataLoader(DataLoader):
+        """Fallback dataloader used for testing when PyTorch is available."""
+        pass
     # Expose a mock-friendly DataLoader alias for tests
     MockDataLoader = DataLoader
     import torch.nn.utils
