@@ -93,7 +93,7 @@ results = trainer.train_pipeline(data_path='data/processed/steel_defect_features
 See `MODEL_TRAINER_GUIDE.md` for the full configuration structure.
 
 ## Running Inference
-The `PredictionPipeline` provides near real‑time inference on streaming or pre-recorded data.
+The `PredictionPipeline` provides near real-time inference on streaming or pre-recorded data.
 ```bash
 python scripts/run_inference_demo.py --config configs/inference_config.yaml --cast-file data/examples/steel_defect_sample.csv
 ```
