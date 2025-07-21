@@ -75,13 +75,13 @@ class DataLoader:
         """
         try:
             return pd.read_csv(file_path)
-        except FileNotFoundError:
-            # If the specific path doesn't exist, try to load sample data
+        except (FileNotFoundError, PermissionError, OSError, pd.errors.EmptyDataError, pd.errors.ParserError, UnicodeDecodeError) as e:
+            # If the specific path doesn't exist or has issues, try to load sample data
             sample_path = self.data_dir / "examples" / "steel_defect_sample.csv"
             if sample_path.exists():
                 return pd.read_csv(sample_path)
             else:
-                raise FileNotFoundError(f"Neither {file_path} nor {sample_path} exists")
+                raise FileNotFoundError(f"Neither {file_path} nor {sample_path} exists. Original error: {e}")
     
     def load_cast_metadata(self) -> pd.DataFrame:
         """
