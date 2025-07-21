@@ -8,15 +8,14 @@ import yaml
 class DefectPredictionEngine:
     """Unified inference engine for both models"""
     
-    def __init__(self, config_path: str):
+    def __init__(self, config: dict):
         """
         Initialize prediction engine.
         
         Args:
-            config_path (str): Path to inference configuration file
+            config (dict): Inference configuration dictionary
         """
-        with open(config_path, 'r') as f:
-            self.config = yaml.safe_load(f)
+        self.config = config
         
         self.baseline_model = None
         self.lstm_model = None

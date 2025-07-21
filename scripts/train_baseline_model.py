@@ -12,12 +12,11 @@ from utils.logger import get_logger
 import argparse
 import pandas as pd
 
+from configs.schemas.model_config_schema import ModelConfig
+
 def main():
     """Main function to train baseline model."""
     parser = argparse.ArgumentParser(description='Train baseline XGBoost model')
-    parser.add_argument('--config', 
-                       default='configs/model_config.yaml',
-                       help='Path to model configuration file')
     parser.add_argument('--data-dir',
                        default='data/processed',
                        help='Directory containing processed training data')
@@ -34,14 +33,13 @@ def main():
     logger = get_logger(__name__)
     
     if args.verbose:
-        logger.info(f"Loading configuration from: {args.config}")
         logger.info(f"Data directory: {args.data_dir}")
         logger.info(f"Output directory: {args.output_dir}")
     
     try:
         # Load configuration
         config_loader = ConfigLoader()
-        config = config_loader.load_yaml(args.config)
+        config = config_loader.load_config("model_config", ModelConfig)
         
         # Load and process training data
         logger.info("Loading training data...")
@@ -63,8 +61,8 @@ def main():
         
         logger.info("Baseline model training completed successfully.")
         
-    except Exception as e:
-        logger.error(f"Error during model training: {e}")
+    except (FileNotFoundError, ValueError) as e:
+        logger.error(f"Error: {e}", file=sys.stderr)
         sys.exit(1)
 
 if __name__ == "__main__":

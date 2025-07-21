@@ -14,12 +14,11 @@ import argparse
 import torch
 from torch.utils.data import DataLoader
 
+from configs.schemas.model_config_schema import ModelConfig
+
 def main():
     """Main function to train LSTM model."""
     parser = argparse.ArgumentParser(description='Train LSTM model for defect prediction')
-    parser.add_argument('--config', 
-                       default='configs/model_config.yaml',
-                       help='Path to model configuration file')
     parser.add_argument('--data-dir',
                        default='data/processed',
                        help='Directory containing processed training data')
@@ -46,14 +45,13 @@ def main():
     
     if args.verbose:
         logger.info(f"Using device: {device}")
-        logger.info(f"Loading configuration from: {args.config}")
         logger.info(f"Data directory: {args.data_dir}")
         logger.info(f"Output directory: {args.output_dir}")
     
     try:
         # Load configuration
         config_loader = ConfigLoader()
-        config = config_loader.load_yaml(args.config)
+        config = config_loader.load_config("model_config", ModelConfig)
         lstm_config = config['lstm_model']
         
         # Load and prepare sequence data
@@ -83,8 +81,8 @@ def main():
         
         logger.info("LSTM model training completed successfully.")
         
-    except Exception as e:
-        logger.error(f"Error during LSTM training: {e}")
+    except (FileNotFoundError, ValueError) as e:
+        logger.error(f"Error: {e}", file=sys.stderr)
         sys.exit(1)
 
 if __name__ == "__main__":

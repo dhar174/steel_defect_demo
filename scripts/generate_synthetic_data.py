@@ -10,25 +10,24 @@ sys.path.append(str(Path(__file__).parent.parent / 'src'))
 from data.data_generator import SteelCastingDataGenerator
 
 
+from utils.config_loader import ConfigLoader
+from configs.schemas.data_generation_schema import DataGenerationConfig
+
 def main():
     """Main function to generate synthetic dataset"""
     print("Steel Casting Synthetic Data Generator")
     print("=" * 40)
     
-    # Initialize generator with configuration
-    config_path = Path(__file__).parent.parent / 'configs' / 'data_generation.yaml'
-    
-    if not config_path.exists():
-        print(f"Error: Configuration file not found at {config_path}")
-        sys.exit(1)
+    config_loader = ConfigLoader()
     
     try:
-        generator = SteelCastingDataGenerator(str(config_path))
+        config = config_loader.load_config("data_generation", DataGenerationConfig)
+        generator = SteelCastingDataGenerator(config)
         generator.generate_dataset()
         print("\nSynthetic data generation completed successfully!")
         
-    except Exception as e:
-        print(f"Error during data generation: {e}")
+    except (FileNotFoundError, ValueError) as e:
+        print(f"Error: {e}", file=sys.stderr)
         sys.exit(1)
 
 

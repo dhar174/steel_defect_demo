@@ -11,17 +11,15 @@ from datetime import datetime, timedelta
 class SteelCastingDataGenerator:
     """Generates synthetic steel casting process data with realistic defect simulation"""
     
-    def __init__(self, config_path: str):
+    def __init__(self, config: Dict):
         """
         Initialize the data generator with configuration settings.
         
         Parameters:
-            config_path (str): Path to the YAML configuration file
+            config (dict): Configuration dictionary
         """
-        with open(config_path, 'r') as f:
-            self.config = yaml.safe_load(f)
-        
-        self.data_config = self.config['data_generation']
+        self.config = config
+        self.data_config = self.config
         self.sensor_config = self.data_config['sensors']
         self.defect_config = self.data_config['defect_simulation']
         

@@ -15,12 +15,11 @@ import pandas as pd
 import threading
 import time
 
+from configs.schemas.inference_config_schema import FullInferenceConfig
+
 def main():
     """Main function to run real-time inference demo."""
     parser = argparse.ArgumentParser(description='Run real-time inference demonstration')
-    parser.add_argument('--config', 
-                       default='configs/inference_config.yaml',
-                       help='Path to inference configuration file')
     parser.add_argument('--test-data',
                        default='data/synthetic/test_cast.parquet',
                        help='Path to test cast data for streaming simulation')
@@ -44,7 +43,6 @@ def main():
     logger = get_logger(__name__)
     
     if args.verbose:
-        logger.info(f"Loading configuration from: {args.config}")
         logger.info(f"Test data: {args.test_data}")
         logger.info(f"Model directory: {args.model_dir}")
         logger.info(f"Simulation duration: {args.duration} seconds")
@@ -52,11 +50,11 @@ def main():
     try:
         # Load configuration
         config_loader = ConfigLoader()
-        config = config_loader.load_yaml(args.config)
+        config = config_loader.load_config("inference_config", FullInferenceConfig)
         
         # Initialize inference engine
         logger.info("Initializing inference engine...")
-        inference_engine = DefectPredictionEngine(args.config)
+        inference_engine = DefectPredictionEngine(config)
         inference_engine.load_models()
         
         # Load test cast data for simulation
@@ -117,8 +115,8 @@ def main():
         
         logger.info("Real-time inference demo completed successfully.")
         
-    except Exception as e:
-        logger.error(f"Error during inference demo: {e}")
+    except (FileNotFoundError, ValueError) as e:
+        logger.error(f"Error: {e}", file=sys.stderr)
         sys.exit(1)
 
 if __name__ == "__main__":
