@@ -9,7 +9,7 @@ from pathlib import Path
 
 # Set PYTHONPATH for imports
 import sys
-sys.path.append('/home/runner/work/steel_defect_demo/steel_defect_demo')
+sys.path.append(str(Path(__file__).resolve().parent.parent / 'steel_defect_demo'))
 
 from src.data.sequence_dataset import (
     CastingSequenceDataset,
