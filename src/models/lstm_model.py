@@ -303,7 +303,8 @@ class SteelDefectLSTM(torch.nn.Module if TORCH_AVAILABLE else MockModule):
             elif 'bias' in name:
                 torch.nn.init.zeros_(param)
             elif 'weight' in name and param.dim() == 1:
-                # Handle 1D weight parameters (if any)
+                # Initialize 1D weight parameters (e.g., bias terms in linear layers or batch normalization layers)
+                # These parameters are typically used for additive adjustments and benefit from small random initialization.
                 torch.nn.init.normal_(param, std=0.01)
     
     def forward(self, x, sequence_lengths: Optional[List[int]] = None):
