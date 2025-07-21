@@ -138,14 +138,7 @@ class SensorMonitoringComponent:
         - Configurable time ranges and display options
         
         Returns:
-            html.Div: Complete dashboard layout with the following structure:
-                - Main container div with all child components
-                - Interactive controls for user configuration
-                - Health monitoring and status display
-                - Primary multi-sensor visualization
-                - Detailed individual sensor analysis
-                - Hidden data and configuration storage
-                - Real-time update mechanism
+            html.Div: Complete dashboard layout containing interactive controls, health monitoring, visualizations, and hidden storage components.
         
         Note:
             All component IDs are dynamically generated using the component_id prefix
