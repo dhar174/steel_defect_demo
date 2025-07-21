@@ -114,9 +114,12 @@ async def main():
             
             # Start the pipeline
             task = asyncio.create_task(pipeline.run_pipeline())
-            
+
+
             # Run for a fixed duration in benchmark mode (e.g., 60 seconds)
             benchmark_duration = 60
+            if hasattr(config, 'benchmark_duration') and isinstance(config.benchmark_duration, (int, float)) and config.benchmark_duration > 0:
+                benchmark_duration = min(config.benchmark_duration, 3600)  # Cap duration to 1 hour for safety
             await asyncio.sleep(benchmark_duration)
             
             # Stop the pipeline
