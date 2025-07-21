@@ -124,7 +124,7 @@ async def main():
             
             # Wait for the task to complete cleanup
             try:
-                await asyncio.wait_for(task, timeout=10)
+                await asyncio.wait_for(task, timeout=PIPELINE_CLEANUP_TIMEOUT)
             except asyncio.TimeoutError:
                 logging.warning("Pipeline cleanup took longer than expected")
             
