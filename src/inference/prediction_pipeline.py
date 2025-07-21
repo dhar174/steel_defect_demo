@@ -185,8 +185,11 @@ class PredictionPipeline:
             # Create stream instances for each cast file
             for i, cast_file in enumerate(self.cast_files):
                 try:
-                    # Load cast data
-                    cast_data = pd.read_csv(cast_file)
+                    # Load cast data - handle both CSV and Parquet files
+                    if cast_file.endswith('.parquet'):
+                        cast_data = pd.read_parquet(cast_file)
+                    else:
+                        cast_data = pd.read_csv(cast_file)
                     
                     # Use shared DefectPredictionEngine instance instead of creating new ones
                     # This is much more efficient as model loading is expensive
