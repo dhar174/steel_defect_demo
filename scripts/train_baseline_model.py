@@ -37,9 +37,16 @@ from scripts.artifact_manager import ArtifactManager
 from scripts.training_utils import TrainingUtils
 
 import warnings
-warnings.filterwarnings('ignore')
 
+def configure_warnings(verbose: bool):
+    """Configure warnings based on verbosity."""
+    if verbose:
+        warnings.filterwarnings('default')  # Show all warnings in verbose mode
+    else:
+        warnings.filterwarnings('ignore', category=DeprecationWarning)  # Suppress specific warnings
 
+# Example usage: configure warnings based on verbosity
+configure_warnings(verbose=True)  # Replace True with actual verbosity flag from config
 @dataclass
 class TrainingConfig:
     """Training configuration dataclass"""
