@@ -728,7 +728,7 @@ class ModelTrainer:
     def plot_training_history(self,
                              history: Dict[str, List[float]],
                              metrics: List[str] = ['loss', 'auc'],
-                             figsize: Tuple[int, int] = (12, 4)) -> Any:
+                             figsize: Tuple[int, int] = (12, 4)) -> Optional[plt.Figure]:
         """
         Plot training history curves
         
