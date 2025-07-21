@@ -53,6 +53,12 @@ class DefectLabelingValidator(DataQualityValidator):
             
         Returns:
             Dict containing detailed distribution analysis
+            
+        Note:
+            class_balance_ratio is calculated as good_count / defect_count.
+            When defect_count is 0 (no defects in dataset), we use 1e6 (1,000,000)
+            instead of infinity to ensure downstream numerical operations remain stable
+            and to provide a meaningful representation of perfect class imbalance.
         """
         total_casts = len(metadata_list)
         defect_casts = [m for m in metadata_list if m.get('defect_label', 0)]
@@ -84,7 +90,7 @@ class DefectLabelingValidator(DataQualityValidator):
                 'good_casts': good_count,
                 'defect_rate': defect_rate,
                 'target_defect_rate': self.defect_config.get('defect_probability', 0.15),
-                'class_balance_ratio': good_count / defect_count if defect_count > 0 else float('inf')
+                'class_balance_ratio': good_count / defect_count if defect_count > 0 else self.LARGE_FINITE_RATIO  # Use large finite number instead of inf for downstream compatibility
             },
             'trigger_analysis': trigger_analysis,
             'grade_analysis': grade_analysis,

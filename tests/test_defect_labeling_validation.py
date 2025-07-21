@@ -147,6 +147,37 @@ class TestDefectLabelingValidator(unittest.TestCase):
         self.assertIn('trigger_coverage', trigger_analysis)
         self.assertIsInstance(trigger_analysis['trigger_coverage'], float)
     
+    def test_class_balance_ratio_edge_cases(self):
+        """Test class balance ratio handling for edge cases (Issue #41)"""
+        # Test case 1: No defects (should not be infinity)
+        metadata_no_defects = [
+            {'defect_label': 0, 'defect_trigger_events': []},
+            {'defect_label': 0, 'defect_trigger_events': []},
+            {'defect_label': 0, 'defect_trigger_events': []}
+        ]
+        
+        result = self.validator.analyze_label_distribution(metadata_no_defects)
+        class_balance_ratio = result['dataset_summary']['class_balance_ratio']
+        
+        # Should be 1e6 instead of infinity
+        self.assertEqual(class_balance_ratio, 1e6)
+        self.assertNotEqual(class_balance_ratio, float('inf'))
+        self.assertIsInstance(class_balance_ratio, float)
+        
+        # Test case 2: Normal case with defects
+        metadata_with_defects = [
+            {'defect_label': 1, 'defect_trigger_events': ['prolonged_mold_level_deviation']},
+            {'defect_label': 0, 'defect_trigger_events': []},
+            {'defect_label': 0, 'defect_trigger_events': []}
+        ]
+        
+        result2 = self.validator.analyze_label_distribution(metadata_with_defects)
+        class_balance_ratio2 = result2['dataset_summary']['class_balance_ratio']
+        
+        # Should be good_count / defect_count = 2 / 1 = 2.0
+        self.assertEqual(class_balance_ratio2, 2.0)
+        self.assertNotEqual(class_balance_ratio2, float('inf'))
+    
     def test_validate_domain_knowledge_alignment(self):
         """Test domain knowledge validation"""
         # Get a test cast
