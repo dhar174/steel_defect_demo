@@ -12,7 +12,6 @@ import json
 import warnings
 from sklearn.model_selection import learning_curve, validation_curve
 from sklearn.metrics import roc_auc_score, average_precision_score
-import matplotlib.pyplot as plt
 from scipy import stats
 
 
