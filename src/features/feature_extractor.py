@@ -58,8 +58,10 @@ class SequenceFeatureExtractor:
         
         if n_samples < self.sequence_length:
             warnings.warn(f"Data length ({n_samples}) is less than sequence_length ({self.sequence_length}). "
-                         "Consider using padding or reducing sequence_length.")
-            return np.array([])
+                         "Padding will be applied to match the required sequence length.")
+            # Apply padding to the data
+            padding_width = self.sequence_length - n_samples
+            values = np.pad(values, ((0, padding_width), (0, 0)), mode='constant', constant_values=0)
         
         # Calculate number of sequences that can be extracted
         n_sequences = (n_samples - self.sequence_length) // self.stride + 1
