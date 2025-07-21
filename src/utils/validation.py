@@ -166,7 +166,7 @@ class DataQualityValidator:
         triggers = []
         
         # 1. Prolonged mold level deviation
-        mold_level_normal_range = self.sensor_config.get('mold_level_normal_range', [130, 170])
+        mold_level_normal_range = self.sensor_config.get('mold_level_normal_range', self.DEFAULT_MOLD_LEVEL_NORMAL_RANGE)
         outside_range = (df['mold_level'] < mold_level_normal_range[0]) | (df['mold_level'] > mold_level_normal_range[1])
         
         consecutive_periods = []
