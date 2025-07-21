@@ -337,7 +337,7 @@ class CastingFeatureEngineer:
             if power_mean != 0:
                 features['vibration_power_ratio'] = vibration_mean / power_mean
             else:
-                features['vibration_power_ratio'] = np.inf if vibration_mean > 0 else 0
+                features['vibration_power_ratio'] = np.nan
         else:
             features['vibration_power_ratio'] = np.nan
         
