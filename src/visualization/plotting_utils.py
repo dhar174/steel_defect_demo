@@ -143,7 +143,6 @@ class PlottingUtils:
             yaxis_title="Sensors",
             width=600,
             height=500
-            template="plotly_white",
         )
         
         return fig
