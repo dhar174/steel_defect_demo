@@ -15,16 +15,36 @@ from src.models.lstm_model import SteelDefectLSTM
 class DefectPredictionEngine:
     """Unified inference engine for both models"""
     
-    def __init__(self, config_path: str):
+    # Constants for data validation
+    TEMPERATURE_RANGE = [1200, 1700]  # Valid temperature range
+    TEMPERATURE_OUTLIER_THRESHOLD = 0.1  # 10% outlier threshold
+    
+    def __init__(self, config_path: str = None):
         """
         Initialize prediction engine.
         
         Args:
-            config_path (str): Path to inference configuration file
+            config_path (str): Path to inference configuration file (optional)
         """
         # Load and parse configuration
-        with open(config_path, 'r') as f:
-            self.config = yaml.safe_load(f)
+        if config_path:
+            with open(config_path, 'r') as f:
+                self.config = yaml.safe_load(f)
+        else:
+            # Default configuration if no path provided
+            self.config = {
+                'inference': {
+                    'ensemble': {
+                        'baseline_weight': 0.4,
+                        'lstm_weight': 0.6
+                    },
+                    'thresholds': {
+                        'defect_probability': 0.5,
+                        'high_risk_threshold': 0.7,
+                        'alert_threshold': 0.8
+                    }
+                }
+            }
         
         # Initialize models and processors to None
         self.baseline_model = None

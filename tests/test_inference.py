@@ -10,9 +10,13 @@ sys.path.append(str(Path(__file__).parent.parent / 'src'))
 
 from inference.inference_engine import DefectPredictionEngine
 from inference.stream_simulator import RealTimeStreamSimulator
+from inference.prediction_pipeline import PredictionPipeline
 
 class TestInference:
     """Test suite for inference components"""
+    
+    # Test constants
+    STREAM_QUEUE_WAIT_TIME = 0.1
     
     def setup_method(self):
         """Setup test fixtures."""
@@ -278,6 +282,167 @@ class TestInference:
         """Test complete end-to-end inference pipeline."""
         # TODO: Implement test for complete pipeline
         pass
+    
+    def test_prediction_pipeline_initialization(self):
+        """Test PredictionPipeline initialization."""
+        cast_files = ['/tmp/test_cast1.csv', '/tmp/test_cast2.csv']
+        
+        pipeline = PredictionPipeline(
+            config=self.temp_config,
+            cast_files=cast_files
+        )
+        
+        # Verify initialization
+        assert pipeline.config == self.temp_config
+        assert pipeline.cast_files == cast_files
+        assert pipeline.streams == []
+        assert pipeline.tasks == []
+        assert not pipeline.running
+        assert pipeline.logger is not None
+    
+    def test_prediction_pipeline_single_stream(self):
+        """Test PredictionPipeline with single stream."""
+        import tempfile
+        import os
+        import asyncio
+        
+        # Create temporary cast file
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.csv', delete=False) as f:
+            # Write sample data to CSV
+            f.write('timestamp,casting_speed,mold_temperature,mold_level,cooling_water_flow,superheat\n')
+            for i in range(10):
+                f.write(f'2023-01-01 00:00:{i:02d},1.2,1520,150,200,25\n')
+            temp_file = f.name
+        
+        try:
+            # Create pipeline with single cast file
+            pipeline = PredictionPipeline(
+                config=self.temp_config,
+                cast_files=[temp_file]
+            )
+            
+            # Test that pipeline initializes correctly
+            assert not pipeline.running
+            assert len(pipeline.cast_files) == 1
+            
+        finally:
+            # Clean up temporary file
+            if os.path.exists(temp_file):
+                os.unlink(temp_file)
+    
+    def test_prediction_pipeline_stop(self):
+        """Test PredictionPipeline stop functionality."""
+        pipeline = PredictionPipeline(
+            config=self.temp_config,
+            cast_files=[]
+        )
+        
+        # Test stop when not running
+        pipeline.stop_pipeline()  # Should not raise an error
+        assert not pipeline.running
+        
+        # Test stop when running
+        pipeline.running = True
+        pipeline.stop_pipeline()
+        assert not pipeline.running
+    
+    def test_prediction_pipeline_multi_stream_setup(self):
+        """Test multi-stream orchestration setup."""
+        import tempfile
+        import os
+        
+        temp_files = []
+        try:
+            # Create multiple temporary cast files
+            for i in range(3):
+                with tempfile.NamedTemporaryFile(mode='w', suffix='.csv', delete=False) as f:
+                    f.write('timestamp,casting_speed,mold_temperature,mold_level,cooling_water_flow,superheat\n')
+                    for j in range(5):
+                        f.write(f'2023-01-01 00:00:{j:02d},1.2,1520,150,200,25\n')
+                    temp_files.append(f.name)
+            
+            # Create pipeline with multiple cast files
+            pipeline = PredictionPipeline(
+                config=self.temp_config,
+                cast_files=temp_files
+            )
+            
+            # Verify setup
+            assert len(pipeline.cast_files) == 3
+            assert not pipeline.running
+            assert len(pipeline.streams) == 0
+            assert len(pipeline.tasks) == 0
+            
+        finally:
+            # Clean up temporary files
+            for temp_file in temp_files:
+                if os.path.exists(temp_file):
+                    os.unlink(temp_file)
+    
+    def test_prediction_pipeline_error_handling(self):
+        """Test error handling in prediction pipeline."""
+        # Test with invalid cast file
+        pipeline = PredictionPipeline(
+            config=self.temp_config,
+            cast_files=['/nonexistent/file.csv']
+        )
+        
+        # Pipeline should handle missing files gracefully
+        assert not pipeline.running
+        assert len(pipeline.cast_files) == 1
+    
+    def test_prediction_pipeline_integration(self):
+        """Test integration between PredictionPipeline and existing components."""
+        import tempfile
+        import os
+        import asyncio
+        
+        # Create temporary cast file with comprehensive data
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.csv', delete=False) as f:
+            # Write more realistic data structure
+            f.write('timestamp,temperature,pressure,flow_rate,vibration,power_consumption\n')
+            for i in range(20):
+                f.write(f'2023-01-01 00:00:{i:02d},1520,100,200,0.5,500\n')
+            temp_file = f.name
+        
+        try:
+            # Create a minimal test config
+            test_config = {
+                'inference': {
+                    'real_time_simulation': {
+                        'playback_speed_multiplier': 100,  # Very fast for testing
+                        'update_interval_seconds': 0.1,  # Very short interval
+                        'buffer_size_seconds': 5
+                    },
+                    'ensemble': {
+                        'baseline_weight': 0.4,
+                        'lstm_weight': 0.6
+                    },
+                    'thresholds': {
+                        'defect_probability': 0.5
+                    }
+                }
+            }
+            
+            # Create pipeline
+            pipeline = PredictionPipeline(
+                config=test_config,
+                cast_files=[temp_file]
+            )
+            
+            # Test pipeline setup
+            assert pipeline.config == test_config
+            assert len(pipeline.cast_files) == 1
+            assert not pipeline.running
+            
+            # Test stop functionality (should work even when not running)
+            pipeline.stop_pipeline()
+            assert not pipeline.running
+            
+        finally:
+            # Clean up
+            if os.path.exists(temp_file):
+                os.unlink(temp_file)
     
     def test_concurrent_predictions(self):
         """Test handling of concurrent prediction requests."""
