@@ -1,0 +1,310 @@
+{
+  "parent_issue": {
+    "number": 10,
+    "url": "https://github.com/dhar174/steel_defect_demo/issues/10",
+    "title": "Phase 6: Production Deployment and Infrastructure"
+  },
+  "sub_issues": [
+    {
+      "title": "6.1 Containerization and Orchestration",
+      "body": "# 6.1 Containerization and Orchestration\n\n**Parent Issue:** #10 - Phase 6: Production Deployment and Infrastructure\n**URL:** https://github.com/dhar174/steel_defect_demo/issues/10\n\n## Overview\n- Multi-stage Docker builds for optimized production images - Separate containers for inference engine, dashboard, and API services - Environment-specific configuration management\n\n## Technical Specifications\n\n### Files to be Created/Modified\n```\n`Dockerfile`, `docker-compose.yml`, `docker-compose.prod.yml`\n```\n\n### Dependencies\n```\ndocker, docker-compose\n```\n\n### Detailed Requirements\n- **Files**: `Dockerfile`, `docker-compose.yml`, `docker-compose.prod.yml`\n- **Dependencies**: docker, docker-compose\n- **Key Features**:\n  - Multi-stage Docker builds for optimized production images\n  - Separate containers for inference engine, dashboard, and API services\n  - Environment-specific configuration management\n  - Volume management for persistent data and model artifacts\n  - Network configuration for secure inter-service communication\n  - Health checks and restart policies for container reliability\n\n## Acceptance Criteria\n\n- [ ] Multi-stage Dockerfile created with optimized production images\n- [ ] docker-compose.yml for development environment implemented\n- [ ] docker-compose.prod.yml for production deployment created\n- [ ] Separate containers configured for inference engine, dashboard, and API services\n- [ ] Environment-specific configuration management implemented\n- [ ] Volume management for persistent data and model artifacts configured\n- [ ] Network configuration for secure inter-service communication established\n- [ ] Health checks and restart policies implemented for all containers\n- [ ] Container builds successfully and runs without errors\n- [ ] Production deployment tested and validated\n\n## Testing Requirements\n\n- [ ] Unit tests implemented for all new functionality\n- [ ] Integration tests cover component interactions\n- [ ] Performance tests validate requirements are met\n- [ ] Security tests verify access controls and data protection\n- [ ] Documentation tests ensure completeness and accuracy\n\n## Definition of Done\n\n- [ ] All acceptance criteria completed\n- [ ] Code review completed and approved\n- [ ] All tests passing (unit, integration, performance)\n- [ ] Security review completed\n- [ ] Documentation updated and reviewed\n- [ ] Production deployment tested\n- [ ] Monitoring and alerting configured\n- [ ] Rollback procedures tested\n- [ ] Knowledge transfer completed\n\n## Resources and References\n\n- [Phase 6 Parent Issue](https://github.com/dhar174/steel_defect_demo/issues/10)\n- [Technical Implementation Spec](/TECHNICAL_IMPLEMENTATION_SPEC.md)\n- [Production Deployment Guide](/docs/deployment_guide.md)\n- [Steel Defect Demo Repository](https://github.com/dhar174/steel_defect_demo)\n\n## Notes\n\nThis issue is part of Phase 6: Production Deployment and Infrastructure. Please ensure coordination with other Phase 6 sub-issues and maintain consistency with the overall system architecture.\n",
+      "labels": [
+        "Phase 6",
+        "Production",
+        "Infrastructure",
+        "6-1"
+      ],
+      "assignees": [],
+      "milestone": "Phase 6: Production Deployment",
+      "parent_issue": {
+        "number": 10,
+        "url": "https://github.com/dhar174/steel_defect_demo/issues/10"
+      },
+      "metadata": {
+        "section_number": "6.1",
+        "files": "`Dockerfile`, `docker-compose.yml`, `docker-compose.prod.yml`",
+        "dependencies": "docker, docker-compose",
+        "estimated_effort": "Small (3-5 days)",
+        "priority": "High",
+        "prerequisites": []
+      }
+    },
+    {
+      "title": "6.2 Production API Services",
+      "body": "# 6.2 Production API Services\n\n**Parent Issue:** #10 - Phase 6: Production Deployment and Infrastructure\n**URL:** https://github.com/dhar174/steel_defect_demo/issues/10\n\n## Overview\n- RESTful API endpoints for prediction services - WebSocket connections for real-time data streaming - Authentication and authorization middleware\n\n## Technical Specifications\n\n### Files to be Created/Modified\n```\n`src/api/main.py`\n```\n\n### Dependencies\n```\nfastapi, uvicorn, pydantic, sqlalchemy\n```\n\n### Detailed Requirements\n- **File**: `src/api/main.py`\n- **Dependencies**: fastapi, uvicorn, pydantic, sqlalchemy\n- **Functionality**:\n  - RESTful API endpoints for prediction services\n  - WebSocket connections for real-time data streaming\n  - Authentication and authorization middleware\n  - Request validation and response serialization\n  - Rate limiting and request throttling\n  - API documentation with OpenAPI/Swagger integration\n  - Comprehensive error handling and logging\n\n## Acceptance Criteria\n\n- [ ] FastAPI application structure created in src/api/main.py\n- [ ] RESTful API endpoints for prediction services implemented\n- [ ] WebSocket connections for real-time data streaming functional\n- [ ] Authentication and authorization middleware integrated\n- [ ] Request validation and response serialization working\n- [ ] Rate limiting and request throttling implemented\n- [ ] OpenAPI/Swagger documentation automatically generated\n- [ ] Comprehensive error handling and logging implemented\n- [ ] API performance meets <500ms response time requirement\n- [ ] API documentation accessible and complete\n\n## Testing Requirements\n\n- [ ] Unit tests implemented for all new functionality\n- [ ] Integration tests cover component interactions\n- [ ] Performance tests validate requirements are met\n- [ ] Security tests verify access controls and data protection\n- [ ] Documentation tests ensure completeness and accuracy\n\n## Definition of Done\n\n- [ ] All acceptance criteria completed\n- [ ] Code review completed and approved\n- [ ] All tests passing (unit, integration, performance)\n- [ ] Security review completed\n- [ ] Documentation updated and reviewed\n- [ ] Production deployment tested\n- [ ] Monitoring and alerting configured\n- [ ] Rollback procedures tested\n- [ ] Knowledge transfer completed\n\n## Resources and References\n\n- [Phase 6 Parent Issue](https://github.com/dhar174/steel_defect_demo/issues/10)\n- [Technical Implementation Spec](/TECHNICAL_IMPLEMENTATION_SPEC.md)\n- [Production Deployment Guide](/docs/deployment_guide.md)\n- [Steel Defect Demo Repository](https://github.com/dhar174/steel_defect_demo)\n\n## Notes\n\nThis issue is part of Phase 6: Production Deployment and Infrastructure. Please ensure coordination with other Phase 6 sub-issues and maintain consistency with the overall system architecture.\n",
+      "labels": [
+        "Phase 6",
+        "Production",
+        "Infrastructure",
+        "6-2"
+      ],
+      "assignees": [],
+      "milestone": "Phase 6: Production Deployment",
+      "parent_issue": {
+        "number": 10,
+        "url": "https://github.com/dhar174/steel_defect_demo/issues/10"
+      },
+      "metadata": {
+        "section_number": "6.2",
+        "files": "`src/api/main.py`",
+        "dependencies": "fastapi, uvicorn, pydantic, sqlalchemy",
+        "estimated_effort": "Medium (1-2 weeks)",
+        "priority": "High",
+        "prerequisites": [
+          "6.1"
+        ]
+      }
+    },
+    {
+      "title": "6.3 Database Integration and Data Management",
+      "body": "# 6.3 Database Integration and Data Management\n\n**Parent Issue:** #10 - Phase 6: Production Deployment and Infrastructure\n**URL:** https://github.com/dhar174/steel_defect_demo/issues/10\n\n## Overview\n- PostgreSQL database setup for production data storage - Database schema design for predictions, alerts, and system metrics - Migration scripts for schema updates and data transformations\n\n## Technical Specifications\n\n### Files to be Created/Modified\n```\n`src/database/`, `migrations/`\n```\n\n### Dependencies\n```\nsqlalchemy, alembic, postgresql\n```\n\n### Detailed Requirements\n- **Files**: `src/database/`, `migrations/`\n- **Dependencies**: sqlalchemy, alembic, postgresql\n- **Capabilities**:\n  - PostgreSQL database setup for production data storage\n  - Database schema design for predictions, alerts, and system metrics\n  - Migration scripts for schema updates and data transformations\n  - Connection pooling and performance optimization\n  - Backup and recovery procedures\n  - Data retention policies and archival strategies\n\n## Acceptance Criteria\n\n- [ ] PostgreSQL database setup for production data storage completed\n- [ ] Database schema design for predictions, alerts, and system metrics implemented\n- [ ] Migration scripts created in migrations/ directory\n- [ ] Alembic integration for schema updates configured\n- [ ] Connection pooling and performance optimization implemented\n- [ ] Backup and recovery procedures documented and tested\n- [ ] Data retention policies and archival strategies implemented\n- [ ] Database performance meets throughput requirements\n- [ ] Database security and access controls configured\n- [ ] Migration rollback procedures tested and validated\n\n## Testing Requirements\n\n- [ ] Unit tests implemented for all new functionality\n- [ ] Integration tests cover component interactions\n- [ ] Performance tests validate requirements are met\n- [ ] Security tests verify access controls and data protection\n- [ ] Documentation tests ensure completeness and accuracy\n\n## Definition of Done\n\n- [ ] All acceptance criteria completed\n- [ ] Code review completed and approved\n- [ ] All tests passing (unit, integration, performance)\n- [ ] Security review completed\n- [ ] Documentation updated and reviewed\n- [ ] Production deployment tested\n- [ ] Monitoring and alerting configured\n- [ ] Rollback procedures tested\n- [ ] Knowledge transfer completed\n\n## Resources and References\n\n- [Phase 6 Parent Issue](https://github.com/dhar174/steel_defect_demo/issues/10)\n- [Technical Implementation Spec](/TECHNICAL_IMPLEMENTATION_SPEC.md)\n- [Production Deployment Guide](/docs/deployment_guide.md)\n- [Steel Defect Demo Repository](https://github.com/dhar174/steel_defect_demo)\n\n## Notes\n\nThis issue is part of Phase 6: Production Deployment and Infrastructure. Please ensure coordination with other Phase 6 sub-issues and maintain consistency with the overall system architecture.\n",
+      "labels": [
+        "Phase 6",
+        "Production",
+        "Infrastructure",
+        "6-3"
+      ],
+      "assignees": [],
+      "milestone": "Phase 6: Production Deployment",
+      "parent_issue": {
+        "number": 10,
+        "url": "https://github.com/dhar174/steel_defect_demo/issues/10"
+      },
+      "metadata": {
+        "section_number": "6.3",
+        "files": "`src/database/`, `migrations/`",
+        "dependencies": "sqlalchemy, alembic, postgresql",
+        "estimated_effort": "Medium (1-2 weeks)",
+        "priority": "High",
+        "prerequisites": [
+          "6.1"
+        ]
+      }
+    },
+    {
+      "title": "6.4 Monitoring and Observability Stack",
+      "body": "# 6.4 Monitoring and Observability Stack\n\n**Parent Issue:** #10 - Phase 6: Production Deployment and Infrastructure\n**URL:** https://github.com/dhar174/steel_defect_demo/issues/10\n\n## Overview\n- Prometheus metrics collection for system and application monitoring - Grafana dashboards for infrastructure and application metrics - Elasticsearch and Kibana for centralized log management\n\n## Technical Specifications\n\n### Files to be Created/Modified\n```\n`monitoring/`, `configs/monitoring.yaml`\n```\n\n### Dependencies\n```\nprometheus, grafana, elasticsearch, kibana\n```\n\n### Detailed Requirements\n- **Files**: `monitoring/`, `configs/monitoring.yaml`\n- **Dependencies**: prometheus, grafana, elasticsearch, kibana\n- **Features**:\n  - Prometheus metrics collection for system and application monitoring\n  - Grafana dashboards for infrastructure and application metrics\n  - Elasticsearch and Kibana for centralized log management\n  - Custom metrics for ML model performance and prediction accuracy\n  - Alert rules for system failures and performance degradation\n  - Distributed tracing for request flow analysis\n\n## Acceptance Criteria\n\n- [ ] Prometheus metrics collection configured for system monitoring\n- [ ] Grafana dashboards created for infrastructure and application metrics\n- [ ] Elasticsearch and Kibana deployed for centralized log management\n- [ ] Custom metrics for ML model performance implemented\n- [ ] Alert rules for system failures and performance degradation configured\n- [ ] Distributed tracing for request flow analysis implemented\n- [ ] Monitoring stack integrated with existing infrastructure\n- [ ] Alert notifications properly configured and tested\n- [ ] Dashboard accessibility and usability validated\n- [ ] Monitoring data retention policies implemented\n\n## Testing Requirements\n\n- [ ] Unit tests implemented for all new functionality\n- [ ] Integration tests cover component interactions\n- [ ] Performance tests validate requirements are met\n- [ ] Security tests verify access controls and data protection\n- [ ] Documentation tests ensure completeness and accuracy\n\n## Definition of Done\n\n- [ ] All acceptance criteria completed\n- [ ] Code review completed and approved\n- [ ] All tests passing (unit, integration, performance)\n- [ ] Security review completed\n- [ ] Documentation updated and reviewed\n- [ ] Production deployment tested\n- [ ] Monitoring and alerting configured\n- [ ] Rollback procedures tested\n- [ ] Knowledge transfer completed\n\n## Resources and References\n\n- [Phase 6 Parent Issue](https://github.com/dhar174/steel_defect_demo/issues/10)\n- [Technical Implementation Spec](/TECHNICAL_IMPLEMENTATION_SPEC.md)\n- [Production Deployment Guide](/docs/deployment_guide.md)\n- [Steel Defect Demo Repository](https://github.com/dhar174/steel_defect_demo)\n\n## Notes\n\nThis issue is part of Phase 6: Production Deployment and Infrastructure. Please ensure coordination with other Phase 6 sub-issues and maintain consistency with the overall system architecture.\n",
+      "labels": [
+        "Phase 6",
+        "Production",
+        "Infrastructure",
+        "6-4"
+      ],
+      "assignees": [],
+      "milestone": "Phase 6: Production Deployment",
+      "parent_issue": {
+        "number": 10,
+        "url": "https://github.com/dhar174/steel_defect_demo/issues/10"
+      },
+      "metadata": {
+        "section_number": "6.4",
+        "files": "`monitoring/`, `configs/monitoring.yaml`",
+        "dependencies": "prometheus, grafana, elasticsearch, kibana",
+        "estimated_effort": "Small (3-5 days)",
+        "priority": "Medium",
+        "prerequisites": [
+          "6.1",
+          "6.2",
+          "6.3"
+        ]
+      }
+    },
+    {
+      "title": "6.5 Security and Access Control",
+      "body": "# 6.5 Security and Access Control\n\n**Parent Issue:** #10 - Phase 6: Production Deployment and Infrastructure\n**URL:** https://github.com/dhar174/steel_defect_demo/issues/10\n\n## Overview\n- JWT-based authentication system with refresh tokens - Role-based access control (RBAC) for different user types - API key management for external system integrations\n\n## Technical Specifications\n\n### Files to be Created/Modified\n```\n`src/security/`, `configs/security.yaml`\n```\n\n### Dependencies\n```\noauth2, jwt, cryptography, sqlalchemy\n```\n\n### Detailed Requirements\n- **Files**: `src/security/`, `configs/security.yaml`\n- **Dependencies**: oauth2, jwt, cryptography, sqlalchemy\n- **Implementation**:\n  - JWT-based authentication system with refresh tokens\n  - Role-based access control (RBAC) for different user types\n  - API key management for external system integrations\n  - Data encryption at rest and in transit\n  - Security headers and CORS configuration\n  - Audit logging for security events and user actions\n\n## Acceptance Criteria\n\n- [ ] JWT-based authentication system with refresh tokens implemented\n- [ ] Role-based access control (RBAC) for different user types configured\n- [ ] API key management for external system integrations created\n- [ ] Data encryption at rest and in transit implemented\n- [ ] Security headers and CORS configuration applied\n- [ ] Audit logging for security events and user actions implemented\n- [ ] Security vulnerability scanning integrated\n- [ ] Penetration testing completed and vulnerabilities addressed\n- [ ] Security policies and procedures documented\n- [ ] Compliance with relevant security standards validated\n\n## Testing Requirements\n\n- [ ] Unit tests implemented for all new functionality\n- [ ] Integration tests cover component interactions\n- [ ] Performance tests validate requirements are met\n- [ ] Security tests verify access controls and data protection\n- [ ] Documentation tests ensure completeness and accuracy\n\n## Definition of Done\n\n- [ ] All acceptance criteria completed\n- [ ] Code review completed and approved\n- [ ] All tests passing (unit, integration, performance)\n- [ ] Security review completed\n- [ ] Documentation updated and reviewed\n- [ ] Production deployment tested\n- [ ] Monitoring and alerting configured\n- [ ] Rollback procedures tested\n- [ ] Knowledge transfer completed\n\n## Resources and References\n\n- [Phase 6 Parent Issue](https://github.com/dhar174/steel_defect_demo/issues/10)\n- [Technical Implementation Spec](/TECHNICAL_IMPLEMENTATION_SPEC.md)\n- [Production Deployment Guide](/docs/deployment_guide.md)\n- [Steel Defect Demo Repository](https://github.com/dhar174/steel_defect_demo)\n\n## Notes\n\nThis issue is part of Phase 6: Production Deployment and Infrastructure. Please ensure coordination with other Phase 6 sub-issues and maintain consistency with the overall system architecture.\n",
+      "labels": [
+        "Phase 6",
+        "Production",
+        "Infrastructure",
+        "6-5"
+      ],
+      "assignees": [],
+      "milestone": "Phase 6: Production Deployment",
+      "parent_issue": {
+        "number": 10,
+        "url": "https://github.com/dhar174/steel_defect_demo/issues/10"
+      },
+      "metadata": {
+        "section_number": "6.5",
+        "files": "`src/security/`, `configs/security.yaml`",
+        "dependencies": "oauth2, jwt, cryptography, sqlalchemy",
+        "estimated_effort": "Medium (1-2 weeks)",
+        "priority": "Medium",
+        "prerequisites": [
+          "6.2"
+        ]
+      }
+    },
+    {
+      "title": "6.6 CI/CD Pipeline and Automation",
+      "body": "# 6.6 CI/CD Pipeline and Automation\n\n**Parent Issue:** #10 - Phase 6: Production Deployment and Infrastructure\n**URL:** https://github.com/dhar174/steel_defect_demo/issues/10\n\n## Overview\n- Automated testing pipeline with unit, integration, and performance tests - Code quality checks with linting, type checking, and security scanning - Automated Docker image building and registry publishing\n\n## Technical Specifications\n\n### Files to be Created/Modified\n```\n`.github/workflows/`, `scripts/deploy.sh`\n```\n\n### Dependencies\n```\ngithub-actions, pytest, docker\n```\n\n### Detailed Requirements\n- **Files**: `.github/workflows/`, `scripts/deploy.sh`\n- **Dependencies**: github-actions, pytest, docker\n- **Capabilities**:\n  - Automated testing pipeline with unit, integration, and performance tests\n  - Code quality checks with linting, type checking, and security scanning\n  - Automated Docker image building and registry publishing\n  - Environment-specific deployment automation\n  - Blue-green deployment strategies for zero-downtime updates\n  - Rollback procedures and deployment validation\n\n## Acceptance Criteria\n\n- [ ] GitHub Actions workflows created for automated testing\n- [ ] Code quality checks with linting, type checking, and security scanning implemented\n- [ ] Automated Docker image building and registry publishing configured\n- [ ] Environment-specific deployment automation implemented\n- [ ] Blue-green deployment strategies for zero-downtime updates configured\n- [ ] Rollback procedures and deployment validation implemented\n- [ ] CI/CD pipeline tested with sample deployments\n- [ ] Deployment automation scripts created and tested\n- [ ] Pipeline performance meets deployment time requirements\n- [ ] CI/CD documentation and runbooks created\n\n## Testing Requirements\n\n- [ ] Unit tests implemented for all new functionality\n- [ ] Integration tests cover component interactions\n- [ ] Performance tests validate requirements are met\n- [ ] Security tests verify access controls and data protection\n- [ ] Documentation tests ensure completeness and accuracy\n\n## Definition of Done\n\n- [ ] All acceptance criteria completed\n- [ ] Code review completed and approved\n- [ ] All tests passing (unit, integration, performance)\n- [ ] Security review completed\n- [ ] Documentation updated and reviewed\n- [ ] Production deployment tested\n- [ ] Monitoring and alerting configured\n- [ ] Rollback procedures tested\n- [ ] Knowledge transfer completed\n\n## Resources and References\n\n- [Phase 6 Parent Issue](https://github.com/dhar174/steel_defect_demo/issues/10)\n- [Technical Implementation Spec](/TECHNICAL_IMPLEMENTATION_SPEC.md)\n- [Production Deployment Guide](/docs/deployment_guide.md)\n- [Steel Defect Demo Repository](https://github.com/dhar174/steel_defect_demo)\n\n## Notes\n\nThis issue is part of Phase 6: Production Deployment and Infrastructure. Please ensure coordination with other Phase 6 sub-issues and maintain consistency with the overall system architecture.\n",
+      "labels": [
+        "Phase 6",
+        "Production",
+        "Infrastructure",
+        "6-6"
+      ],
+      "assignees": [],
+      "milestone": "Phase 6: Production Deployment",
+      "parent_issue": {
+        "number": 10,
+        "url": "https://github.com/dhar174/steel_defect_demo/issues/10"
+      },
+      "metadata": {
+        "section_number": "6.6",
+        "files": "`.github/workflows/`, `scripts/deploy.sh`",
+        "dependencies": "github-actions, pytest, docker",
+        "estimated_effort": "Medium (1-2 weeks)",
+        "priority": "Medium",
+        "prerequisites": [
+          "6.1",
+          "6.2"
+        ]
+      }
+    },
+    {
+      "title": "6.7 Configuration Management and Secrets",
+      "body": "# 6.7 Configuration Management and Secrets\n\n**Parent Issue:** #10 - Phase 6: Production Deployment and Infrastructure\n**URL:** https://github.com/dhar174/steel_defect_demo/issues/10\n\n## Overview\n- Environment-specific configuration management - Secrets management with HashiCorp Vault integration - Configuration validation and schema enforcement\n\n## Technical Specifications\n\n### Files to be Created/Modified\n```\n`configs/production/`, `scripts/config_management.py`\n```\n\n### Dependencies\n```\npyyaml, python-dotenv, vault\n```\n\n### Detailed Requirements\n- **Files**: `configs/production/`, `scripts/config_management.py`\n- **Dependencies**: pyyaml, python-dotenv, vault\n- **Features**:\n  - Environment-specific configuration management\n  - Secrets management with HashiCorp Vault integration\n  - Configuration validation and schema enforcement\n  - Runtime configuration updates without service restart\n  - Configuration versioning and change tracking\n  - Secure credential storage and rotation procedures\n\n## Acceptance Criteria\n\n- [ ] Environment-specific configuration management implemented\n- [ ] HashiCorp Vault integration for secrets management configured\n- [ ] Configuration validation and schema enforcement implemented\n- [ ] Runtime configuration updates without service restart capability added\n- [ ] Configuration versioning and change tracking implemented\n- [ ] Secure credential storage and rotation procedures implemented\n- [ ] Configuration management tools tested and validated\n- [ ] Configuration backup and recovery procedures documented\n- [ ] Configuration security and access controls implemented\n- [ ] Configuration management documentation completed\n\n## Testing Requirements\n\n- [ ] Unit tests implemented for all new functionality\n- [ ] Integration tests cover component interactions\n- [ ] Performance tests validate requirements are met\n- [ ] Security tests verify access controls and data protection\n- [ ] Documentation tests ensure completeness and accuracy\n\n## Definition of Done\n\n- [ ] All acceptance criteria completed\n- [ ] Code review completed and approved\n- [ ] All tests passing (unit, integration, performance)\n- [ ] Security review completed\n- [ ] Documentation updated and reviewed\n- [ ] Production deployment tested\n- [ ] Monitoring and alerting configured\n- [ ] Rollback procedures tested\n- [ ] Knowledge transfer completed\n\n## Resources and References\n\n- [Phase 6 Parent Issue](https://github.com/dhar174/steel_defect_demo/issues/10)\n- [Technical Implementation Spec](/TECHNICAL_IMPLEMENTATION_SPEC.md)\n- [Production Deployment Guide](/docs/deployment_guide.md)\n- [Steel Defect Demo Repository](https://github.com/dhar174/steel_defect_demo)\n\n## Notes\n\nThis issue is part of Phase 6: Production Deployment and Infrastructure. Please ensure coordination with other Phase 6 sub-issues and maintain consistency with the overall system architecture.\n",
+      "labels": [
+        "Phase 6",
+        "Production",
+        "Infrastructure",
+        "6-7"
+      ],
+      "assignees": [],
+      "milestone": "Phase 6: Production Deployment",
+      "parent_issue": {
+        "number": 10,
+        "url": "https://github.com/dhar174/steel_defect_demo/issues/10"
+      },
+      "metadata": {
+        "section_number": "6.7",
+        "files": "`configs/production/`, `scripts/config_management.py`",
+        "dependencies": "pyyaml, python-dotenv, vault",
+        "estimated_effort": "Medium (1-2 weeks)",
+        "priority": "Medium",
+        "prerequisites": [
+          "6.1"
+        ]
+      }
+    },
+    {
+      "title": "6.8 Operational Tools and Maintenance",
+      "body": "# 6.8 Operational Tools and Maintenance\n\n**Parent Issue:** #10 - Phase 6: Production Deployment and Infrastructure\n**URL:** https://github.com/dhar174/steel_defect_demo/issues/10\n\n## Overview\n- Health check scripts for all system components - Backup and restore utilities for data and models - Performance tuning and optimization scripts\n\n## Technical Specifications\n\n### Files to be Created/Modified\n```\n`scripts/operations/`, `docs/operations/`\n```\n\n### Dependencies\n```\npsutil, click, requests\n```\n\n### Detailed Requirements\n- **Files**: `scripts/operations/`, `docs/operations/`\n- **Dependencies**: psutil, click, requests\n- **Tools**:\n  - Health check scripts for all system components\n  - Backup and restore utilities for data and models\n  - Performance tuning and optimization scripts\n  - Log analysis and troubleshooting tools\n  - Capacity planning and resource monitoring utilities\n  - Incident response procedures and runbooks\n\n## Acceptance Criteria\n\n- [ ] Health check scripts for all system components created\n- [ ] Backup and restore utilities for data and models implemented\n- [ ] Performance tuning and optimization scripts developed\n- [ ] Log analysis and troubleshooting tools created\n- [ ] Capacity planning and resource monitoring utilities implemented\n- [ ] Incident response procedures and runbooks documented\n- [ ] Operational tools tested and validated in production-like environment\n- [ ] Maintenance schedules and procedures documented\n- [ ] Operational monitoring and alerting configured\n- [ ] Staff training materials for operational procedures created\n\n## Testing Requirements\n\n- [ ] Unit tests implemented for all new functionality\n- [ ] Integration tests cover component interactions\n- [ ] Performance tests validate requirements are met\n- [ ] Security tests verify access controls and data protection\n- [ ] Documentation tests ensure completeness and accuracy\n\n## Definition of Done\n\n- [ ] All acceptance criteria completed\n- [ ] Code review completed and approved\n- [ ] All tests passing (unit, integration, performance)\n- [ ] Security review completed\n- [ ] Documentation updated and reviewed\n- [ ] Production deployment tested\n- [ ] Monitoring and alerting configured\n- [ ] Rollback procedures tested\n- [ ] Knowledge transfer completed\n\n## Resources and References\n\n- [Phase 6 Parent Issue](https://github.com/dhar174/steel_defect_demo/issues/10)\n- [Technical Implementation Spec](/TECHNICAL_IMPLEMENTATION_SPEC.md)\n- [Production Deployment Guide](/docs/deployment_guide.md)\n- [Steel Defect Demo Repository](https://github.com/dhar174/steel_defect_demo)\n\n## Notes\n\nThis issue is part of Phase 6: Production Deployment and Infrastructure. Please ensure coordination with other Phase 6 sub-issues and maintain consistency with the overall system architecture.\n",
+      "labels": [
+        "Phase 6",
+        "Production",
+        "Infrastructure",
+        "6-8"
+      ],
+      "assignees": [],
+      "milestone": "Phase 6: Production Deployment",
+      "parent_issue": {
+        "number": 10,
+        "url": "https://github.com/dhar174/steel_defect_demo/issues/10"
+      },
+      "metadata": {
+        "section_number": "6.8",
+        "files": "`scripts/operations/`, `docs/operations/`",
+        "dependencies": "psutil, click, requests",
+        "estimated_effort": "Small (3-5 days)",
+        "priority": "Medium",
+        "prerequisites": [
+          "6.1",
+          "6.2",
+          "6.3",
+          "6.4"
+        ]
+      }
+    },
+    {
+      "title": "6.9 Industrial Integration Connectors",
+      "body": "# 6.9 Industrial Integration Connectors\n\n**Parent Issue:** #10 - Phase 6: Production Deployment and Infrastructure\n**URL:** https://github.com/dhar174/steel_defect_demo/issues/10\n\n## Overview\n- OPC UA client for SCADA system integration - MQTT subscriber for IoT sensor networks - Modbus TCP/IP for legacy equipment connectivity\n\n## Technical Specifications\n\n### Files to be Created/Modified\n```\n`src/connectors/industrial/`\n```\n\n### Dependencies\n```\nTBD\n```\n\n### Detailed Requirements\n- **Files**: `src/connectors/industrial/`\n- **Protocols**:\n  - OPC UA client for SCADA system integration\n  - MQTT subscriber for IoT sensor networks\n  - Modbus TCP/IP for legacy equipment connectivity\n  - REST API adapters for modern industrial systems\n  - Database connectors for historian systems\n\n## Acceptance Criteria\n\n- [ ] OPC UA client for SCADA system integration implemented\n- [ ] MQTT subscriber for IoT sensor networks created\n- [ ] Modbus TCP/IP connectivity for legacy equipment established\n- [ ] REST API adapters for modern industrial systems implemented\n- [ ] Database connectors for historian systems created\n- [ ] Industrial protocol security and authentication implemented\n- [ ] Integration testing with simulated industrial systems completed\n- [ ] Error handling and reconnection logic for industrial connections implemented\n- [ ] Industrial integration documentation and configuration guides created\n- [ ] Performance testing of industrial data ingestion completed\n\n## Testing Requirements\n\n- [ ] Unit tests implemented for all new functionality\n- [ ] Integration tests cover component interactions\n- [ ] Performance tests validate requirements are met\n- [ ] Security tests verify access controls and data protection\n- [ ] Documentation tests ensure completeness and accuracy\n\n## Definition of Done\n\n- [ ] All acceptance criteria completed\n- [ ] Code review completed and approved\n- [ ] All tests passing (unit, integration, performance)\n- [ ] Security review completed\n- [ ] Documentation updated and reviewed\n- [ ] Production deployment tested\n- [ ] Monitoring and alerting configured\n- [ ] Rollback procedures tested\n- [ ] Knowledge transfer completed\n\n## Resources and References\n\n- [Phase 6 Parent Issue](https://github.com/dhar174/steel_defect_demo/issues/10)\n- [Technical Implementation Spec](/TECHNICAL_IMPLEMENTATION_SPEC.md)\n- [Production Deployment Guide](/docs/deployment_guide.md)\n- [Steel Defect Demo Repository](https://github.com/dhar174/steel_defect_demo)\n\n## Notes\n\nThis issue is part of Phase 6: Production Deployment and Infrastructure. Please ensure coordination with other Phase 6 sub-issues and maintain consistency with the overall system architecture.\n",
+      "labels": [
+        "Phase 6",
+        "Production",
+        "Infrastructure",
+        "6-9"
+      ],
+      "assignees": [],
+      "milestone": "Phase 6: Production Deployment",
+      "parent_issue": {
+        "number": 10,
+        "url": "https://github.com/dhar174/steel_defect_demo/issues/10"
+      },
+      "metadata": {
+        "section_number": "6.9",
+        "files": "`src/connectors/industrial/`",
+        "dependencies": "TBD",
+        "estimated_effort": "Medium (1-2 weeks)",
+        "priority": "Low",
+        "prerequisites": [
+          "6.1",
+          "6.2",
+          "6.3"
+        ]
+      }
+    },
+    {
+      "title": "6.10 Edge Computing Deployment",
+      "body": "# 6.10 Edge Computing Deployment\n\n**Parent Issue:** #10 - Phase 6: Production Deployment and Infrastructure\n**URL:** https://github.com/dhar174/steel_defect_demo/issues/10\n\n## Overview\n- Lightweight containerized deployment for edge devices - Offline operation capabilities with data synchronization - Edge-specific model optimization and quantization\n\n## Technical Specifications\n\n### Files to be Created/Modified\n```\n`edge/`, `configs/edge.yaml`\n```\n\n### Dependencies\n```\nTBD\n```\n\n### Detailed Requirements\n- **Files**: `edge/`, `configs/edge.yaml`\n- **Features**:\n  - Lightweight containerized deployment for edge devices\n  - Offline operation capabilities with data synchronization\n  - Edge-specific model optimization and quantization\n  - Local data processing and filtering\n  - Secure edge-to-cloud communication channels\n\n## Acceptance Criteria\n\n- [ ] Lightweight containerized deployment for edge devices created\n- [ ] Offline operation capabilities with data synchronization implemented\n- [ ] Edge-specific model optimization and quantization completed\n- [ ] Local data processing and filtering capabilities implemented\n- [ ] Secure edge-to-cloud communication channels established\n- [ ] Edge deployment testing on representative hardware completed\n- [ ] Edge device management and monitoring tools implemented\n- [ ] Edge-specific configuration management created\n- [ ] Edge deployment documentation and procedures documented\n- [ ] Edge computing performance requirements validated\n\n## Testing Requirements\n\n- [ ] Unit tests implemented for all new functionality\n- [ ] Integration tests cover component interactions\n- [ ] Performance tests validate requirements are met\n- [ ] Security tests verify access controls and data protection\n- [ ] Documentation tests ensure completeness and accuracy\n\n## Definition of Done\n\n- [ ] All acceptance criteria completed\n- [ ] Code review completed and approved\n- [ ] All tests passing (unit, integration, performance)\n- [ ] Security review completed\n- [ ] Documentation updated and reviewed\n- [ ] Production deployment tested\n- [ ] Monitoring and alerting configured\n- [ ] Rollback procedures tested\n- [ ] Knowledge transfer completed\n\n## Resources and References\n\n- [Phase 6 Parent Issue](https://github.com/dhar174/steel_defect_demo/issues/10)\n- [Technical Implementation Spec](/TECHNICAL_IMPLEMENTATION_SPEC.md)\n- [Production Deployment Guide](/docs/deployment_guide.md)\n- [Steel Defect Demo Repository](https://github.com/dhar174/steel_defect_demo)\n\n## Notes\n\nThis issue is part of Phase 6: Production Deployment and Infrastructure. Please ensure coordination with other Phase 6 sub-issues and maintain consistency with the overall system architecture.\n",
+      "labels": [
+        "Phase 6",
+        "Production",
+        "Infrastructure",
+        "6-10"
+      ],
+      "assignees": [],
+      "milestone": "Phase 6: Production Deployment",
+      "parent_issue": {
+        "number": 10,
+        "url": "https://github.com/dhar174/steel_defect_demo/issues/10"
+      },
+      "metadata": {
+        "section_number": "6.10",
+        "files": "`edge/`, `configs/edge.yaml`",
+        "dependencies": "TBD",
+        "estimated_effort": "Small (3-5 days)",
+        "priority": "Low",
+        "prerequisites": [
+          "6.1",
+          "6.2"
+        ]
+      }
+    },
+    {
+      "title": "6.11 Multi-Site Deployment Management",
+      "body": "# 6.11 Multi-Site Deployment Management\n\n**Parent Issue:** #10 - Phase 6: Production Deployment and Infrastructure\n**URL:** https://github.com/dhar174/steel_defect_demo/issues/10\n\n## Overview\n- Centralized management for multiple steel plants - Site-specific configuration and model deployment - Cross-site data aggregation and analysis\n\n## Technical Specifications\n\n### Files to be Created/Modified\n```\n`deployment/multi-site/`\n```\n\n### Dependencies\n```\nTBD\n```\n\n### Detailed Requirements\n- **Files**: `deployment/multi-site/`\n- **Capabilities**:\n  - Centralized management for multiple steel plants\n  - Site-specific configuration and model deployment\n  - Cross-site data aggregation and analysis\n  - Federated learning for model improvement\n  - Global monitoring and alerting coordination\n\n## Acceptance Criteria\n\n- [ ] Centralized management for multiple steel plants implemented\n- [ ] Site-specific configuration and model deployment capabilities created\n- [ ] Cross-site data aggregation and analysis functionality implemented\n- [ ] Federated learning for model improvement framework established\n- [ ] Global monitoring and alerting coordination implemented\n- [ ] Multi-site deployment testing completed\n- [ ] Site isolation and security measures implemented\n- [ ] Multi-site configuration management tools created\n- [ ] Cross-site communication and data sharing protocols established\n- [ ] Multi-site operational procedures and documentation completed\n\n## Testing Requirements\n\n- [ ] Unit tests implemented for all new functionality\n- [ ] Integration tests cover component interactions\n- [ ] Performance tests validate requirements are met\n- [ ] Security tests verify access controls and data protection\n- [ ] Documentation tests ensure completeness and accuracy\n\n## Definition of Done\n\n- [ ] All acceptance criteria completed\n- [ ] Code review completed and approved\n- [ ] All tests passing (unit, integration, performance)\n- [ ] Security review completed\n- [ ] Documentation updated and reviewed\n- [ ] Production deployment tested\n- [ ] Monitoring and alerting configured\n- [ ] Rollback procedures tested\n- [ ] Knowledge transfer completed\n\n## Resources and References\n\n- [Phase 6 Parent Issue](https://github.com/dhar174/steel_defect_demo/issues/10)\n- [Technical Implementation Spec](/TECHNICAL_IMPLEMENTATION_SPEC.md)\n- [Production Deployment Guide](/docs/deployment_guide.md)\n- [Steel Defect Demo Repository](https://github.com/dhar174/steel_defect_demo)\n\n## Notes\n\nThis issue is part of Phase 6: Production Deployment and Infrastructure. Please ensure coordination with other Phase 6 sub-issues and maintain consistency with the overall system architecture.\n",
+      "labels": [
+        "Phase 6",
+        "Production",
+        "Infrastructure",
+        "6-11"
+      ],
+      "assignees": [],
+      "milestone": "Phase 6: Production Deployment",
+      "parent_issue": {
+        "number": 10,
+        "url": "https://github.com/dhar174/steel_defect_demo/issues/10"
+      },
+      "metadata": {
+        "section_number": "6.11",
+        "files": "`deployment/multi-site/`",
+        "dependencies": "TBD",
+        "estimated_effort": "Medium (1-2 weeks)",
+        "priority": "Low",
+        "prerequisites": [
+          "6.1",
+          "6.2",
+          "6.3",
+          "6.4"
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "generated_at": "2025-07-21T20:34:50.491781",
+    "total_sub_issues": 11,
+    "generator": "steel_defect_demo.scripts.issue_manager"
+  }
+}
