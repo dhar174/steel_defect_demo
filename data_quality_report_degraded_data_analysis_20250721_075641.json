@@ -1,0 +1,280 @@
+{
+  "summary": {
+    "overall_quality_score": 0.861245602946304,
+    "quality_level": "Good",
+    "component_scores": {
+      "missing_values": 0.998326359832636,
+      "consistency": 0.9995258019525802,
+      "temporal_continuity": 0.855,
+      "realism": 0.59213025
+    },
+    "assessment_timestamp": "2025-07-21T07:56:41.526550",
+    "data_scope": "single_cast"
+  },
+  "missing_value_analysis": {
+    "total_missing_percentage": 0.16736401673640167,
+    "missing_by_sensor": {
+      "casting_speed": {
+        "count": 50,
+        "percentage": 0.697350069735007
+      },
+      "mold_temperature": {
+        "count": 10,
+        "percentage": 0.1394700139470014
+      },
+      "mold_level": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "cooling_water_flow": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "superheat": {
+        "count": 0,
+        "percentage": 0.0
+      }
+    },
+    "missing_patterns": {},
+    "temporal_gaps": [
+      {
+        "start_time": "2023-01-01 01:23:19",
+        "end_time": "2023-01-01 01:23:50",
+        "duration_seconds": 31.0,
+        "missing_samples": 30
+      }
+    ],
+    "quality_score": 0.998326359832636
+  },
+  "consistency_analysis": {
+    "range_violations": {
+      "casting_speed": {
+        "hard_violations": 1,
+        "hard_violation_percentage": 0.01394700139470014,
+        "typical_violations": 3,
+        "typical_violation_percentage": 0.04184100418410042,
+        "value_range": [
+          0.5766082998920833,
+          10.0
+        ],
+        "expected_range": [
+          0.5,
+          2.5
+        ]
+      },
+      "mold_temperature": {
+        "hard_violations": 4,
+        "hard_violation_percentage": 0.05578800557880056,
+        "typical_violations": 4,
+        "typical_violation_percentage": 0.05578800557880056,
+        "value_range": [
+          750.0276657763525,
+          3016.950177575888
+        ],
+        "expected_range": [
+          1400,
+          1650
+        ]
+      },
+      "mold_level": {
+        "hard_violations": 8,
+        "hard_violation_percentage": 0.11157601115760112,
+        "typical_violations": 8,
+        "typical_violation_percentage": 0.11157601115760112,
+        "value_range": [
+          72.2277507600336,
+          500.0
+        ],
+        "expected_range": [
+          100,
+          200
+        ]
+      },
+      "cooling_water_flow": {
+        "hard_violations": 4,
+        "hard_violation_percentage": 0.05578800557880056,
+        "typical_violations": 5,
+        "typical_violation_percentage": 0.0697350069735007,
+        "value_range": [
+          77.56616848635997,
+          406.0489984334112
+        ],
+        "expected_range": [
+          100,
+          300
+        ]
+      },
+      "superheat": {
+        "hard_violations": 0,
+        "hard_violation_percentage": 0.0,
+        "typical_violations": 2,
+        "typical_violation_percentage": 0.02789400278940028,
+        "value_range": [
+          11.87718732720737,
+          36.010632533315764
+        ],
+        "expected_range": [
+          10,
+          50
+        ]
+      }
+    },
+    "physics_violations": {
+      "superheat": {
+        "violations": 6816,
+        "violation_percentage": 95.06276150627615,
+        "max_rate_observed": 888.0668861922484,
+        "max_rate_allowed": 15
+      }
+    },
+    "outlier_analysis": {
+      "casting_speed": {
+        "z_score_outliers": 3,
+        "z_score_outlier_percentage": 0.042134831460674156,
+        "iqr_outliers": 64,
+        "iqr_outlier_percentage": 0.8988764044943821
+      },
+      "mold_temperature": {
+        "z_score_outliers": 4,
+        "z_score_outlier_percentage": 0.055865921787709494,
+        "iqr_outliers": 44,
+        "iqr_outlier_percentage": 0.6145251396648044
+      },
+      "mold_level": {
+        "z_score_outliers": 8,
+        "z_score_outlier_percentage": 0.11157601115760112,
+        "iqr_outliers": 46,
+        "iqr_outlier_percentage": 0.6415620641562064
+      },
+      "cooling_water_flow": {
+        "z_score_outliers": 24,
+        "z_score_outlier_percentage": 0.33472803347280333,
+        "iqr_outliers": 50,
+        "iqr_outlier_percentage": 0.697350069735007
+      },
+      "superheat": {
+        "z_score_outliers": 24,
+        "z_score_outlier_percentage": 0.33472803347280333,
+        "iqr_outliers": 55,
+        "iqr_outlier_percentage": 0.7670850767085077
+      }
+    },
+    "consistency_score": 0.9995258019525802
+  },
+  "temporal_continuity": {
+    "sampling_rate_analysis": {
+      "expected_interval_seconds": 1.0,
+      "mean_interval_seconds": 1.0041846840563537,
+      "std_interval_seconds": 0.35431697911702215,
+      "min_interval_seconds": 1.0,
+      "max_interval_seconds": 31.0,
+      "irregular_intervals": 1,
+      "irregular_percentage": 0.013948946854512484
+    },
+    "time_sequence_analysis": {
+      "is_monotonic_increasing": true,
+      "has_duplicate_timestamps": false,
+      "total_duration_seconds": 7199.0,
+      "expected_duration_seconds": 7169.0,
+      "coverage_percentage": 99.58327545492429
+    },
+    "continuity_score": 0.855
+  },
+  "realism_analysis": {
+    "distribution_analysis": {
+      "casting_speed": {
+        "mean": 1.203524813118501,
+        "std": 0.11663914570441407,
+        "skewness": 60.37612594043643,
+        "kurtosis": 4546.395892810881,
+        "coefficient_of_variation": 0.09691461649401788
+      },
+      "mold_temperature": {
+        "mean": 1520.3228553793065,
+        "std": 24.718011824785385,
+        "skewness": 21.48350192224171,
+        "kurtosis": 2157.8463628388126,
+        "coefficient_of_variation": 0.0162583965223745
+      },
+      "mold_level": {
+        "mean": 149.95750090225417,
+        "std": 6.851073805428032,
+        "skewness": 19.00221397120438,
+        "kurtosis": 962.2575523119847,
+        "coefficient_of_variation": 0.045686769679455536
+      },
+      "cooling_water_flow": {
+        "mean": 200.0484383850569,
+        "std": 15.5458779594183,
+        "skewness": 0.24092289452724533,
+        "kurtosis": 5.403170575600695,
+        "coefficient_of_variation": 0.07771056892478866
+      },
+      "superheat": {
+        "mean": 25.222767750343696,
+        "std": 2.955663933413522,
+        "skewness": -0.006125413500739698,
+        "kurtosis": 0.08433578799077113,
+        "coefficient_of_variation": 0.1171823791373271
+      }
+    },
+    "correlation_analysis": {
+      "correlation_matrix": {
+        "casting_speed": {
+          "casting_speed": 1.0,
+          "mold_temperature": 0.007242094339357685,
+          "mold_level": 0.007882860107147996,
+          "cooling_water_flow": -0.012950730203498734,
+          "superheat": -0.01092696368909948
+        },
+        "mold_temperature": {
+          "casting_speed": 0.007242094339357685,
+          "mold_temperature": 1.0,
+          "mold_level": 0.00993652491840602,
+          "cooling_water_flow": -0.017544208701370405,
+          "superheat": 0.00020537998192226312
+        },
+        "mold_level": {
+          "casting_speed": 0.007882860107147996,
+          "mold_temperature": 0.00993652491840602,
+          "mold_level": 1.0,
+          "cooling_water_flow": 0.007333572301376971,
+          "superheat": 0.02245276626540347
+        },
+        "cooling_water_flow": {
+          "casting_speed": -0.012950730203498734,
+          "mold_temperature": -0.017544208701370405,
+          "mold_level": 0.007333572301376971,
+          "cooling_water_flow": 1.0,
+          "superheat": -0.0014492467192394527
+        },
+        "superheat": {
+          "casting_speed": -0.01092696368909948,
+          "mold_temperature": 0.00020537998192226312,
+          "mold_level": 0.02245276626540347,
+          "cooling_water_flow": -0.0014492467192394527,
+          "superheat": 1.0
+        }
+      },
+      "strong_correlations": []
+    },
+    "process_behavior_analysis": {
+      "temperature_stability": {
+        "variation_std": 24.718011824785385,
+        "is_stable": "False",
+        "trend": "increasing"
+      },
+      "speed_consistency": {
+        "variation_std": 0.11663914570441404,
+        "is_consistent": "False",
+        "trend": "increasing"
+      },
+      "mold_level_control": {
+        "variation_std": 6.851073805428032,
+        "is_well_controlled": "True",
+        "excursions": 8
+      }
+    },
+    "realism_score": 0.59213025
+  }
+}
