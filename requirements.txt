@@ -16,6 +16,7 @@ joblib>=1.2.0
 # Visualization
 matplotlib>=3.6.0
 seaborn>=0.12.0
+plotly>=5.15.0
 
 # Progress and Performance Monitoring
 tqdm>=4.64.0
@@ -23,6 +24,13 @@ psutil>=5.9.0
 
 # Configuration Validation
 jsonschema>=4.0.0
+
+# Statistical Analysis
+statsmodels>=0.13.0
+
+# Report Generation
+jinja2>=3.1.0
+openpyxl>=3.1.0
 
 # Testing
 pytest>=7.2.0
