@@ -20,7 +20,6 @@ class RealTimeMonitor:
         self.thresholds = config.get('inference', {}).get('thresholds', {})
         self.prediction_history = deque(maxlen=1000)  # Store last 1000 predictions
         self.latency_history = deque(maxlen=1000)
-        logging.basicConfig(level=logging.INFO)
         self.logger = logging.getLogger(__name__)
 
     def track_prediction(self, prediction_result: Dict):
