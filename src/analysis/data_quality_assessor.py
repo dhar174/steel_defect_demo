@@ -595,7 +595,7 @@ class DataQualityAssessor:
             for j, col2 in enumerate(correlation_matrix.columns):
                 if i < j:  # Avoid duplicates
                     corr_value = correlation_matrix.loc[col1, col2]
-                    if abs(corr_value) > 0.3:  # Threshold for "strong" correlation
+                    if abs(corr_value) > self.STRONG_CORRELATION_THRESHOLD:  # Threshold for "strong" correlation
                         correlation_analysis['strong_correlations'].append({
                             'sensor_pair': [col1, col2],
                             'correlation': float(corr_value)
