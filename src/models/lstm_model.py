@@ -140,7 +140,7 @@ from pathlib import Path
 class SteelDefectLSTM(torch.nn.Module if TORCH_AVAILABLE else MockModule):
     """Enhanced LSTM model for sequence-based defect prediction with bidirectional support"""
     
-    def __init__(self, config: Dict[str, Any]):
+    def __init__(self, config: Dict[str, Any], skip_init_weights: bool = False):
         """
         Initialize enhanced LSTM model with comprehensive configuration.
         
@@ -150,6 +150,8 @@ class SteelDefectLSTM(torch.nn.Module if TORCH_AVAILABLE else MockModule):
                 - classifier: Classifier head parameters  
                 - normalization: Normalization options
                 - regularization: Regularization parameters
+            skip_init_weights (bool): If True, skip weight initialization.
+                Useful when loading pre-trained weights. Defaults to False.
         """
         super(SteelDefectLSTM, self).__init__()
         
@@ -227,8 +229,8 @@ class SteelDefectLSTM(torch.nn.Module if TORCH_AVAILABLE else MockModule):
         # Store attention weights for interpretability
         self.attention_weights = None
         
-        # Initialize weights
-        if TORCH_AVAILABLE:
+        # Initialize weights only if not skipped
+        if TORCH_AVAILABLE and not skip_init_weights:
             self._init_weights()
     
     def _build_classifier(self, input_dim: int) -> torch.nn.Sequential if TORCH_AVAILABLE else MockSequential:
@@ -291,7 +293,7 @@ class SteelDefectLSTM(torch.nn.Module if TORCH_AVAILABLE else MockModule):
             return
             
         for name, param in self.named_parameters():
-            if 'weight' in name:
+            if 'weight' in name and param.dim() >= 2:
                 if 'lstm' in name:
                     # LSTM weight initialization
                     torch.nn.init.xavier_uniform_(param)
@@ -300,6 +302,10 @@ class SteelDefectLSTM(torch.nn.Module if TORCH_AVAILABLE else MockModule):
                     torch.nn.init.kaiming_normal_(param)
             elif 'bias' in name:
                 torch.nn.init.zeros_(param)
+            elif 'weight' in name and param.dim() == 1:
+                # Initialize 1D weight parameters (e.g., bias terms in linear layers or batch normalization layers)
+                # These parameters are typically used for additive adjustments and benefit from small random initialization.
+                torch.nn.init.normal_(param, std=0.01)
     
     def forward(self, x, sequence_lengths: Optional[List[int]] = None):
         """

@@ -117,12 +117,9 @@ class DefectPredictionEngine:
             else:
                 model_state = checkpoint
             
-            # Temporarily disable weight initialization to avoid the error
-            class MockLSTM(SteelDefectLSTM):
-                def _init_weights(self):
-                    pass  # Skip weight initialization
-            
-            self.lstm_model = MockLSTM(lstm_config)
+            # Create LSTM model with skip initialization to avoid unnecessary computation
+            # when loading pre-trained weights
+            self.lstm_model = SteelDefectLSTM(lstm_config, skip_init_weights=True)
             
             # Only load state dict if it exists and is valid
             if model_state is not None:
