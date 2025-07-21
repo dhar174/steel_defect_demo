@@ -90,11 +90,14 @@ async def main():
         
         # For benchmark mode, multiply the files to create concurrent streams
         if args.benchmark and args.streams > 1:
-            # Replicate files to create multiple streams
+            # Generate unique identifiers for each stream
+            import uuid
             original_files = cast_files.copy()
             cast_files = []
             for i in range(args.streams):
-                cast_files.extend(original_files)
+                for file in original_files:
+                    unique_id = uuid.uuid4().hex
+                    cast_files.append(f"{file}_stream_{unique_id}")
 
     logging.info(f"Processing {len(cast_files)} cast files across {args.streams if args.benchmark else 1} streams")
 
