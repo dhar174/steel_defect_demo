@@ -52,6 +52,10 @@ evaluation:
     - "recall"
     - "accuracy"
   
+  cost_sensitive_defaults:
+    false_positive_cost: 1.0
+    false_negative_cost: 10.0
+  
   test_size: 0.2
   stratify: true
   random_state: 42
