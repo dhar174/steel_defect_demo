@@ -3,17 +3,14 @@
 Example demonstrating the AlertSystem functionality.
 
 This script shows how to use the AlertSystem to send alerts with suppression logic.
+
+Note: Run 'pip install -e .' from the repository root to install the package in development mode.
 """
 
-import sys
 import time
-from pathlib import Path
-
-# Add src to path for imports
-sys.path.append(str(Path(__file__).parent / 'src'))
+import logging
 
 from monitoring.alert_system import AlertSystem
-import logging
 
 # Configure logging to see console output
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')

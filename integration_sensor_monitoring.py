@@ -4,17 +4,15 @@ within the existing dashboard structure.
 
 This demonstrates how the sensor monitoring component can be integrated
 into the main DefectMonitoringDashboard from dashboard.py.
-"""
 
-import sys
-import os
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
+Note: Run 'pip install -e .' from the repository root to install the package in development mode.
+"""
 
 from dash import html, dcc, Input, Output, callback
 import dash_bootstrap_components as dbc
 from datetime import datetime
 
-from src.visualization.components.sensor_monitoring import SensorMonitoringComponent
+from visualization.components.sensor_monitoring import SensorMonitoringComponent
 
 def create_enhanced_realtime_layout(sensor_monitor: SensorMonitoringComponent) -> html.Div:
     """
