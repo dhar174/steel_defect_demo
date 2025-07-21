@@ -233,14 +233,14 @@ def calculate_stability_metrics(series: pd.Series,
     if mean_val != 0:
         metrics['cv'] = std_val / abs(mean_val)
     else:
-        metrics['cv'] = np.inf if std_val > 0 else 0
+        metrics['cv'] = np.nan if std_val > 0 else 0
     
     # Range ratio
     range_val = max_val - min_val
     if mean_val != 0:
         metrics['range_ratio'] = range_val / abs(mean_val)
     else:
-        metrics['range_ratio'] = np.inf if range_val > 0 else 0
+        metrics['range_ratio'] = np.nan if range_val > 0 else 0
     
     return metrics
 
