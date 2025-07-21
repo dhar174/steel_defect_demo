@@ -113,7 +113,7 @@ class TestInference:
         assert simulator.producer_thread.is_alive()
         
         # Wait a bit for some data to be queued
-        time.sleep(0.2)
+        time.sleep(self.STREAM_QUEUE_WAIT_TIME)  # Allow time for data to be queued during streaming simulation
         
         # Stop streaming
         simulator.stop_stream()
