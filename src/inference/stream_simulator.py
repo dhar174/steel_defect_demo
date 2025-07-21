@@ -59,7 +59,7 @@ class RealTimeStreamSimulator:
                 pass
         
         # Fallback to configured value
-        return self.config.get('inference', {}).get('real_time_simulation', {}).get('data_interval_seconds', 1.0)
+        return self.config.get('data_interval_seconds', 1.0)
         
     def _produce_data(self) -> None:
         """

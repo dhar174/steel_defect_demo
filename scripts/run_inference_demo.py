@@ -6,6 +6,9 @@ from pathlib import Path
 import sys
 import glob
 
+# Constants
+PIPELINE_CLEANUP_TIMEOUT = 30  # seconds
+
 # Add src to python path
 sys.path.append(str((Path(__file__).parent.parent / 'src').resolve()))
 
@@ -66,11 +69,13 @@ async def main():
     else:
         # Logic to get a default list of test cast files
         test_data_patterns = [
+            'data/test_csv/*.csv',
             'data/examples/*.csv',
             'data/test/*.csv',
             'data/test/*.parquet',
             'data/synthetic/*.csv',
-            'data/synthetic/*.parquet'
+            'data/synthetic/*.parquet',
+            'data/test_synthetic/raw_timeseries/*.parquet'
         ]
         cast_files = []
         for pattern in test_data_patterns:
@@ -103,6 +108,59 @@ async def main():
 
     # Initialize and run the pipeline
     pipeline = PredictionPipeline(config, cast_files)
+    
+    # Load models - check for models in standard locations
+    baseline_model_path = None
+    lstm_model_path = None
+    
+    # Look for models in standard locations
+    model_search_paths = [
+        'results/test_run/models/',
+        'results/integration_test/integration_test/models/',
+        'results/test_training/test_baseline/models/',
+        'experiments/steel_defect_example/models/',
+        'experiments/xgboost_20250721_025907/models/',
+        'models/'
+    ]
+    
+    # Find baseline model
+    for search_path in model_search_paths:
+        for pattern in ['*model*.pkl', '*model*.joblib', '*baseline*.pkl', '*xgboost*.pkl']:
+            models = list(Path(search_path).glob(pattern))
+            if models:
+                baseline_model_path = str(models[0])
+                break
+        if baseline_model_path:
+            break
+    
+    # Find LSTM model
+    for search_path in model_search_paths:
+        for pattern in ['*lstm*.pth', '*LSTM*.pth', '*model*.pth']:
+            models = list(Path(search_path).glob(pattern))
+            if models:
+                lstm_model_path = str(models[0])
+                break
+        if lstm_model_path:
+            break
+    
+    if not baseline_model_path:
+        logging.error("No baseline model found. Please train a baseline model first.")
+        sys.exit(1)
+    
+    if not lstm_model_path:
+        logging.error("No LSTM model found. Please train an LSTM model first.")
+        sys.exit(1)
+    
+    logging.info(f"Using baseline model: {baseline_model_path}")
+    logging.info(f"Using LSTM model: {lstm_model_path}")
+    
+    # Load models on shared engine
+    try:
+        pipeline.load_shared_models(baseline_model_path, lstm_model_path)
+        logging.info("Models loaded successfully")
+    except Exception as e:
+        logging.error(f"Failed to load models: {e}")
+        sys.exit(1)
     
     try:
         logging.info("Starting inference pipeline. Press Ctrl+C to exit.")
