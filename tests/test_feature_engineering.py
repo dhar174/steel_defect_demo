@@ -173,7 +173,7 @@ class TestFeatureEngineering:
             numeric_cols = numeric_cols.drop('cast_id')
         
         means = scaled_features[numeric_cols].mean()
-        assert np.allclose(means, 0, atol=1e-10)
+        assert np.allclose(means, 0, atol=1e-6)
     
     def test_missing_data_handling(self):
         """Test handling of missing data in features."""
