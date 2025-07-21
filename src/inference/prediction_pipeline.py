@@ -4,6 +4,7 @@ from typing import List, Dict
 import pandas as pd
 from src.inference.inference_engine import DefectPredictionEngine
 from src.inference.stream_simulator import RealTimeStreamSimulator
+from src.monitoring.real_time_monitor import RealTimeMonitor
 
 class PredictionPipeline:
     """Orchestrates multiple real-time prediction streams."""
@@ -21,6 +22,9 @@ class PredictionPipeline:
         self.streams = []
         self.tasks = []
         self.running = False
+        
+        # Initialize real-time monitor
+        self.monitor = RealTimeMonitor(config)
         
         # Setup logging
         self.logger = logging.getLogger(__name__)
@@ -51,8 +55,16 @@ class PredictionPipeline:
                 data_buffer = simulator.get_data_buffer()
                 
                 if data_buffer is not None and not data_buffer.empty:
+                    # Check data quality before prediction
+                    quality_issues = self.monitor.check_data_quality(data_buffer)
+                    if quality_issues:
+                        self.logger.warning(f"Stream {stream_id} - Data quality issues: {quality_issues}")
+                    
                     # Run prediction in thread pool to avoid blocking the event loop
                     prediction_result = await asyncio.to_thread(engine.predict_ensemble, data_buffer)
+                    
+                    # Track prediction with monitor
+                    self.monitor.track_prediction(prediction_result)
                     
                     # Log prediction results
                     ensemble_score = prediction_result.get('ensemble_prediction', 0.0)
@@ -67,6 +79,15 @@ class PredictionPipeline:
                     lstm_pred = prediction_result.get('lstm_prediction', 0.0)
                     self.logger.debug(f"Stream {stream_id} - Baseline: {baseline_pred:.4f}, "
                                     f"LSTM: {lstm_pred:.4f}")
+                    
+                    # Log performance metrics periodically
+                    logging_frequency = self.config.get('logging_frequency', 10)  # Default to every 10 predictions
+                    if len(self.monitor.prediction_history) % logging_frequency == 0:
+                        metrics = self.monitor.get_system_performance_metrics()
+                        self.logger.info(f"Stream {stream_id} - Performance: "
+                                       f"Avg Latency: {metrics['avg_latency_ms']:.2f}ms, "
+                                       f"Throughput: {metrics['throughput_preds_per_sec']:.2f} pred/s, "
+                                       f"High Risk: {metrics['high_risk_predictions']}/{metrics['total_predictions']}")
                 else:
                     self.logger.debug(f"Stream {stream_id} - No data available in buffer")
                 
