@@ -1437,7 +1437,7 @@ def create_batch_comparison(self, df: pd.DataFrame, selected_batches: List[str],
                 if not batch_subset.empty and sensor in batch_subset.columns:
                     fig.add_trace(
                         go.Scatter(
-                            x=list(batch_subset.index),  # Convert to list
+                            x=batch_subset.index,  # Use pandas index directly
                             y=batch_subset[sensor],
                             mode='lines',
                             name=batch_id if i == 0 else None,  # Show legend only for first subplot
