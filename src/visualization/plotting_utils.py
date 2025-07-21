@@ -138,8 +138,7 @@ class PlottingUtils:
         
         fig.update_layout(
             title=title,
-
-            template="plotly_white"
+            template="plotly_white",
             xaxis_title="Sensors",
             yaxis_title="Sensors",
             width=600,
