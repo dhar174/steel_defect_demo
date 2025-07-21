@@ -123,9 +123,9 @@ async def main():
         'models/'
     ]
     
-    # Find baseline model
+    # Find baseline model - prioritize compatible models
     for search_path in model_search_paths:
-        for pattern in ['*model*.pkl', '*model*.joblib', '*baseline*.pkl', '*xgboost*.pkl']:
+        for pattern in ['*quick_baseline*.pkl', '*compatible*.pkl', '*model*.pkl', '*model*.joblib', '*baseline*.pkl', '*xgboost*.pkl']:
             models = list(Path(search_path).glob(pattern))
             if models:
                 baseline_model_path = str(models[0])
