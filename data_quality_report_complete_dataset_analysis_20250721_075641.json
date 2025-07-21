@@ -1,0 +1,148 @@
+{
+  "summary": {
+    "overall_quality_score": 0.9750000000000001,
+    "quality_level": "Excellent",
+    "component_scores": {
+      "missing_values": 1.0,
+      "consistency": 1.0,
+      "temporal_continuity": 1.0,
+      "realism": 0.9000000000000005
+    },
+    "assessment_timestamp": "2025-07-21T07:56:41.460592",
+    "data_scope": "all_casts"
+  },
+  "missing_value_analysis": {
+    "total_missing_percentage": 0.0,
+    "missing_by_sensor": {
+      "casting_speed": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "mold_temperature": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "mold_level": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "cooling_water_flow": {
+        "count": 0,
+        "percentage": 0.0
+      },
+      "superheat": {
+        "count": 0,
+        "percentage": 0.0
+      }
+    },
+    "missing_patterns": {},
+    "temporal_gaps": [],
+    "quality_score": 1.0,
+    "casts_analyzed": 100
+  },
+  "consistency_analysis": {
+    "range_violations": {
+      "casting_speed": {
+        "hard_violations": 0,
+        "typical_violations": 0,
+        "total_values": 720000,
+        "hard_violation_percentage": 0.0,
+        "typical_violation_percentage": 0.0
+      },
+      "mold_temperature": {
+        "hard_violations": 0,
+        "typical_violations": 0,
+        "total_values": 720000,
+        "hard_violation_percentage": 0.0,
+        "typical_violation_percentage": 0.0
+      },
+      "mold_level": {
+        "hard_violations": 0,
+        "typical_violations": 0,
+        "total_values": 720000,
+        "hard_violation_percentage": 0.0,
+        "typical_violation_percentage": 0.0
+      },
+      "cooling_water_flow": {
+        "hard_violations": 0,
+        "typical_violations": 0,
+        "total_values": 720000,
+        "hard_violation_percentage": 0.0,
+        "typical_violation_percentage": 0.0
+      },
+      "superheat": {
+        "hard_violations": 0,
+        "typical_violations": 0,
+        "total_values": 720000,
+        "hard_violation_percentage": 0.0,
+        "typical_violation_percentage": 0.0
+      }
+    },
+    "physics_violations": {},
+    "outlier_analysis": {},
+    "consistency_score": 1.0,
+    "casts_analyzed": 100
+  },
+  "temporal_continuity": {
+    "sampling_rate_analysis": {
+      "mean_interval_seconds": 1.0,
+      "std_interval_seconds": 0.0,
+      "irregular_percentage": 0.0,
+      "worst_irregular_percentage": 0.0
+    },
+    "time_sequence_analysis": {
+      "casts_with_non_monotonic_time": 0,
+      "casts_with_duplicate_timestamps": 0,
+      "percentage_problematic_casts": 0.0
+    },
+    "continuity_score": 1.0,
+    "casts_analyzed": 100
+  },
+  "realism_analysis": {
+    "distribution_analysis": {
+      "casting_speed": {
+        "mean_of_means": 1.1999440753516262,
+        "std_of_means": 0.0024855459834669793,
+        "mean_of_stds": 0.04998036857546729,
+        "mean_skewness": 0.004500136759523296,
+        "mean_kurtosis": 0.0062912488576024475
+      },
+      "mold_temperature": {
+        "mean_of_means": 1520.0342431253448,
+        "std_of_means": 0.5398165701649325,
+        "mean_of_stds": 10.010413077961605,
+        "mean_skewness": 0.0051697246969110025,
+        "mean_kurtosis": 0.0018006699872808785
+      },
+      "mold_level": {
+        "mean_of_means": 149.99295313145842,
+        "std_of_means": 0.24611650246234987,
+        "mean_of_stds": 5.005166579294826,
+        "mean_skewness": -0.0014558282239754612,
+        "mean_kurtosis": -0.0064775401428104565
+      },
+      "cooling_water_flow": {
+        "mean_of_means": 200.1561912771559,
+        "std_of_means": 0.6807811672728441,
+        "mean_of_stds": 14.998479872587133,
+        "mean_skewness": 0.00422572961662987,
+        "mean_kurtosis": -0.027701042581061472
+      },
+      "superheat": {
+        "mean_of_means": 24.998117788532177,
+        "std_of_means": 0.14288627059067036,
+        "mean_of_stds": 2.999313116590035,
+        "mean_skewness": 0.0015727174024896876,
+        "mean_kurtosis": -0.012662701159424201
+      }
+    },
+    "correlation_analysis": {
+      "average_strong_correlations": 0.0
+    },
+    "process_behavior_analysis": {
+      "analyzed_casts": 100
+    },
+    "realism_score": 0.9000000000000005,
+    "casts_analyzed": 100
+  }
+}

@@ -5,7 +5,7 @@ try:
     from torch.utils.data import Dataset, DataLoader
     TORCH_AVAILABLE = True
 except ImportError:
-    # Create mock classes for development when PyTorch is not available
+    # Mock classes for development when PyTorch is not available
     TORCH_AVAILABLE = False
     class MockModule:
         def __init__(self):
@@ -17,6 +17,9 @@ except ImportError:
         def load_state_dict(self, state): pass
         def to(self, device): return self
         def named_parameters(self): return [('mock_param', type('MockParam', (), {'requires_grad': True})())]
+        def __call__(self, *args, **kwargs): 
+            # Return mock tensor for forward pass
+            return MockTensor((32, 1))  # Mock output shape for binary classification
     
     class MockTensor:
         def __init__(self, *args, **kwargs):
@@ -120,7 +123,14 @@ except ImportError:
             return MockTensor(x.shape)
 
 
-from torch.nn.utils.rnn import pad_packed_sequence, pack_padded_sequence
+try:
+    from torch.nn.utils.rnn import pad_packed_sequence, pack_padded_sequence
+except ImportError:
+    # Mock implementations for when PyTorch is not available
+    def pad_packed_sequence(*args, **kwargs):
+        return args[0], None
+    def pack_padded_sequence(*args, **kwargs):
+        return args[0]
 import numpy as np
 import math
 from typing import Dict, Any, Optional, Tuple, Union, List
@@ -368,7 +378,7 @@ class SteelDefectLSTM(torch.nn.Module if TORCH_AVAILABLE else MockModule):
         return prediction
     
 
-    def init_hidden(self, batch_size: int, device: Optional[torch.device] = None) -> Tuple[torch.Tensor, torch.Tensor]:
+    def init_hidden(self, batch_size: int, device = None) -> Tuple:
         """
         Initialize hidden and cell states.
         
@@ -462,8 +472,16 @@ def load_lstm_config(config_path: str) -> Dict[str, Any]:
     Returns:
         LSTM configuration dictionary
     """
-    config_manager = ModelConfig(config_path)
-    return config_manager.get_lstm_config()
+    try:
+        from .model_config import ModelConfig
+        config_manager = ModelConfig(config_path)
+        return config_manager.get_lstm_config()
+    except ImportError:
+        # Fallback when model_config is not available
+        import yaml
+        with open(config_path, 'r') as f:
+            config = yaml.safe_load(f)
+        return config.get('lstm_model', create_default_lstm_config())
 
 
 def create_default_lstm_config() -> Dict[str, Any]:

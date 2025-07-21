@@ -122,7 +122,7 @@ Representative feature groups per cast:
 7. **Evaluation & Reporting:** Consolidate metrics, confusion matrices, precision-recall curves; generate brief markdown or HTML summary; identify improvement opportunities (adding new sensors, refining labeling rules, adopting transformer for longer sequences).
 
 ## 8. Real-Time Integration and Deployment Considerations
-- **Industrial Connectivity:** Replace synthetic generator with OPC UA / MQTT / Kafka ingestion microservice; secure TLS channels; topic partitioning by strand.
+- **Industrial Connectivity:** Replace synthetic generator with OPC UA / MQTT / Kafka ingestion microservice; secure TLS channels; topic partitioning by strand. **Note: Production Data Connectors module (`src/connectors/`) provides ready-to-use implementations for OPC UA, MQTT, REST APIs, and database connections - see `docs/PRODUCTION_DATA_CONNECTORS.md` for details.**
 - **Scalability & Microservices:** Containerize components: `ingestion`, `feature-service`, `inference-service`, `dashboard`, `model-monitor`; orchestrate with Docker Compose or Kubernetes (future).
 - **Model Serving:** FastAPI or TorchServe endpoint; warm-loaded model; batch or single-event inference; ONNX/runtime for portability (CPU inference expected sufficient initially).
 - **Data Throughput & Volume:** Use ring buffers for per-strand sequences; downsample low-variance signals; compress archives; partition long-term storage by date + strand.
@@ -141,3 +141,75 @@ The specified PoC delivers a production-aligned prototype for predictive quality
 - General ML deployment best practices (microservices, monitoring, drift detection, model serving frameworks).
 
 *Note: Reference URLs from the original source document can be appended or hyperlinked here as needed.*
+
+## 11. Data Quality Assessment System
+
+The repository includes a comprehensive **Data Quality Assessment** system specifically designed for steel casting sensor data validation. This system provides automated quality assurance through four core assessment components:
+
+### 11.1 Assessment Components
+
+1. **Missing Value Analysis**
+   - Detects gaps in sensor data and temporal discontinuities
+   - Analyzes missing value patterns per sensor
+   - Calculates data completeness scores
+
+2. **Data Consistency Checks**
+   - Validates sensor readings against expected operational ranges
+   - Detects physics constraint violations (unrealistic rate of change)
+   - Performs outlier detection using statistical methods
+
+3. **Temporal Continuity Validation**
+   - Ensures proper time sequencing with 1Hz sampling rate validation
+   - Detects duplicate timestamps and non-monotonic sequences
+   - Calculates temporal coverage percentages
+
+4. **Synthetic Data Realism Assessment**
+   - Compares generated patterns to expected steel casting behavior
+   - Analyzes statistical distributions and sensor correlations
+   - Validates process behavior patterns (temperature stability, speed consistency)
+
+### 11.2 Key Features
+
+- **Comprehensive Scoring**: Overall quality score (0-1) with interpretable quality levels (Excellent/Good/Acceptable/Poor/Unacceptable)
+- **Flexible Analysis**: Support for both single-cast and dataset-wide assessment
+- **Domain-Specific Validation**: Steel casting physics constraints and operational ranges
+- **Automated Reporting**: JSON format reports with detailed metrics and recommendations
+- **Production-Ready**: Error handling, edge case management, and configurable thresholds
+
+### 11.3 Usage
+
+```python
+from analysis.data_quality_assessor import DataQualityAssessor
+
+# Initialize assessor
+assessor = DataQualityAssessor(data_path='data')
+
+# Comprehensive assessment
+results = assessor.comprehensive_quality_assessment(cast_data)
+print(f"Quality Score: {results['summary']['overall_quality_score']:.3f}")
+print(f"Quality Level: {results['summary']['quality_level']}")
+
+# Generate report
+report_path = assessor.generate_quality_report(results)
+```
+
+### 11.4 Demo and Testing
+
+Run the comprehensive demonstration:
+```bash
+python demo_data_quality_assessment.py
+```
+
+Run the test suite:
+```bash
+python -m pytest tests/test_data_quality_assessment.py -v
+```
+
+For detailed documentation, see [docs/DATA_QUALITY_ASSESSMENT.md](docs/DATA_QUALITY_ASSESSMENT.md).
+
+### 11.5 Integration Benefits
+
+- **Data Pipeline Validation**: Automated quality checks before model training/inference
+- **Continuous Monitoring**: Real-time assessment of incoming sensor data
+- **Quality Assurance**: Systematic validation of synthetic data generation
+- **Production Readiness**: Quality gates for operational deployment

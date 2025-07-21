@@ -32,9 +32,7 @@ data_generation:
       max_value: 180
       min_value: 120
       noise_std: 5
-    mold_level_normal_range:
-    - 130
-    - 170
+    mold_level_normal_range: [130, 170]
     mold_temperature:
       base_value: 1520
       max_value: 1580
