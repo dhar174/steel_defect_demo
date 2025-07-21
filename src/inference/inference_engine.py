@@ -366,7 +366,7 @@ class DefectPredictionEngine:
             if 'temperature' in data.columns:
                 temp_outliers = ((data['temperature'] < self.TEMPERATURE_RANGE[0]) | 
                                (data['temperature'] > self.TEMPERATURE_RANGE[1])).sum()
-                if temp_outliers > len(data) * 0.1:  # More than 10% outliers
+                if temp_outliers > len(data) * self.TEMPERATURE_OUTLIER_THRESHOLD:  # More than 10% outliers
                     self.logger.warning(f"Temperature has {temp_outliers} outliers")
                     return False
             
