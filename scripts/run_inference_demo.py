@@ -7,7 +7,7 @@ import sys
 import glob
 
 # Add src to python path
-sys.path.append(str(Path(__file__).resolve().parents[1]))
+sys.path.append(str((Path(__file__).parent.parent / 'src').resolve()))
 
 from src.inference.prediction_pipeline import PredictionPipeline
 
