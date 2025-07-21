@@ -53,19 +53,213 @@ class PlottingUtils:
         pass
     
     def plot_correlation_heatmap(self, data: pd.DataFrame,
-                               title: str = "Feature Correlation") -> go.Figure:
+                               title: str = "Feature Correlation",
+                               correlation_matrix: pd.DataFrame = None) -> go.Figure:
         """
         Plot correlation heatmap.
         
         Args:
-            data (pd.DataFrame): Data for correlation analysis
+            data (pd.DataFrame): Data for correlation analysis (if correlation_matrix not provided)
             title (str): Plot title
+            correlation_matrix (pd.DataFrame): Pre-computed correlation matrix
             
         Returns:
             go.Figure: Heatmap
         """
-        # TODO: Implement correlation heatmap
-        pass
+        # Compute correlation matrix if not provided
+        if correlation_matrix is None:
+            corr_matrix = data.corr()
+        else:
+            corr_matrix = correlation_matrix
+        
+        # Create heatmap
+        fig = go.Figure(data=go.Heatmap(
+            z=corr_matrix.values,
+            x=corr_matrix.columns,
+            y=corr_matrix.index,
+            colorscale='RdBu',
+            zmid=0,
+            colorbar=dict(title="Correlation"),
+            text=np.round(corr_matrix.values, 3),
+            texttemplate="%{text}",
+            textfont={"size": 10},
+            hoverongaps=False
+        ))
+        
+        fig.update_layout(
+            title=title,
+            xaxis_title="Sensors",
+            yaxis_title="Sensors",
+            width=600,
+            height=500
+        )
+        
+        return fig
+    
+    def plot_defect_correlation_comparison(self, 
+                                         good_corr: pd.DataFrame,
+                                         defect_corr: pd.DataFrame,
+                                         difference_corr: pd.DataFrame = None) -> go.Figure:
+        """
+        Plot comparison of correlations between good and defective casts.
+        
+        Args:
+            good_corr (pd.DataFrame): Correlation matrix for good casts
+            defect_corr (pd.DataFrame): Correlation matrix for defective casts
+            difference_corr (pd.DataFrame): Difference matrix (defect - good)
+            
+        Returns:
+            go.Figure: Subplot figure with comparison heatmaps
+        """
+        from plotly.subplots import make_subplots
+        
+        # Create subplots
+        n_plots = 3 if difference_corr is not None else 2
+        fig = make_subplots(
+            rows=1, cols=n_plots,
+            subplot_titles=("Good Casts", "Defective Casts", "Difference (Defect - Good)") if n_plots == 3
+                          else ("Good Casts", "Defective Casts"),
+            horizontal_spacing=0.1
+        )
+        
+        # Good casts heatmap
+        fig.add_trace(
+            go.Heatmap(
+                z=good_corr.values,
+                x=good_corr.columns,
+                y=good_corr.index,
+                colorscale='RdBu',
+                zmid=0,
+                showscale=False,
+                text=np.round(good_corr.values, 3),
+                texttemplate="%{text}",
+                textfont={"size": 8}
+            ),
+            row=1, col=1
+        )
+        
+        # Defective casts heatmap
+        fig.add_trace(
+            go.Heatmap(
+                z=defect_corr.values,
+                x=defect_corr.columns,
+                y=defect_corr.index,
+                colorscale='RdBu',
+                zmid=0,
+                showscale=False,
+                text=np.round(defect_corr.values, 3),
+                texttemplate="%{text}",
+                textfont={"size": 8}
+            ),
+            row=1, col=2
+        )
+        
+        # Difference heatmap
+        if difference_corr is not None:
+            fig.add_trace(
+                go.Heatmap(
+                    z=difference_corr.values,
+                    x=difference_corr.columns,
+                    y=difference_corr.index,
+                    colorscale='RdBu',
+                    zmid=0,
+                    colorbar=dict(title="Correlation Difference"),
+                    text=np.round(difference_corr.values, 3),
+                    texttemplate="%{text}",
+                    textfont={"size": 8}
+                ),
+                row=1, col=3
+            )
+        
+        fig.update_layout(
+            title="Correlation Comparison: Good vs Defective Casts",
+            height=400,
+            width=1200 if n_plots == 3 else 800
+        )
+        
+        return fig
+    
+    def plot_time_lagged_correlations(self, 
+                                    lagged_correlations: Dict[str, pd.DataFrame],
+                                    sensor_pair: str = None) -> go.Figure:
+        """
+        Plot time-lagged correlations showing delayed relationships.
+        
+        Args:
+            lagged_correlations (Dict): Output from compute_time_lagged_correlations
+            sensor_pair (str): Specific sensor pair to plot, or None for all
+            
+        Returns:
+            go.Figure: Line plot of lagged correlations
+        """
+        fig = go.Figure()
+        
+        pairs_to_plot = [sensor_pair] if sensor_pair else list(lagged_correlations.keys())
+        
+        for pair in pairs_to_plot:
+            if pair in lagged_correlations:
+                lag_data = lagged_correlations[pair]
+                fig.add_trace(go.Scatter(
+                    x=lag_data['lag'],
+                    y=lag_data['correlation'],
+                    mode='lines+markers',
+                    name=pair.replace('_', ' → '),
+                    line=dict(width=2),
+                    marker=dict(size=4)
+                ))
+        
+        fig.add_hline(y=0, line_dash="dash", line_color="gray", opacity=0.5)
+        
+        fig.update_layout(
+            title="Time-Lagged Correlations Between Sensors",
+            xaxis_title="Lag (seconds)",
+            yaxis_title="Correlation",
+            hovermode='x unified',
+            height=500,
+            width=800
+        )
+        
+        return fig
+    
+    def plot_feature_importance_ranking(self, 
+                                      importance_df: pd.DataFrame,
+                                      title: str = "Sensor Feature Importance for Defect Prediction") -> go.Figure:
+        """
+        Plot feature importance ranking for predictive sensor combinations.
+        
+        Args:
+            importance_df (pd.DataFrame): Output from identify_predictive_sensor_combinations
+            title (str): Plot title
+            
+        Returns:
+            go.Figure: Horizontal bar chart of feature importance
+        """
+        # Sort by importance (should already be sorted)
+        sorted_df = importance_df.sort_values('importance', ascending=True)
+        
+        fig = go.Figure(go.Bar(
+            x=sorted_df['importance'],
+            y=sorted_df['feature'],
+            orientation='h',
+            marker=dict(
+                color=sorted_df['importance'],
+                colorscale='Viridis',
+                colorbar=dict(title="Importance Score")
+            ),
+            text=np.round(sorted_df['importance'], 4),
+            textposition='outside'
+        ))
+        
+        fig.update_layout(
+            title=title,
+            xaxis_title="Mutual Information Score",
+            yaxis_title="Feature",
+            height=max(400, len(sorted_df) * 25),
+            width=800,
+            margin=dict(l=200)  # Extra margin for feature names
+        )
+        
+        return fig
     
     def plot_feature_importance(self, feature_names: List[str],
                               importances: np.ndarray,
@@ -160,7 +354,23 @@ class PlottingUtils:
         Args:
             figure (go.Figure): Plotly figure to save
             filename (str): Output filename
-            format (str): Output format
+            format (str): Output format ('png', 'html', 'pdf', 'svg')
         """
-        # TODO: Implement plot saving
-        pass
+        from pathlib import Path
+        
+        # Create output directory if it doesn't exist
+        output_path = Path(filename)
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        
+        if format.lower() == 'html':
+            figure.write_html(filename)
+        elif format.lower() == 'png':
+            figure.write_image(filename, format='png')
+        elif format.lower() == 'pdf':
+            figure.write_image(filename, format='pdf')
+        elif format.lower() == 'svg':
+            figure.write_image(filename, format='svg')
+        else:
+            raise ValueError(f"Unsupported format: {format}")
+        
+        print(f"Plot saved to {filename}")
