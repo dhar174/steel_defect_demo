@@ -1,0 +1,52 @@
+Defaulting to user installation because normal site-packages is not writeable
+Collecting torch
+  Downloading torch-2.7.1-cp312-cp312-manylinux_2_28_x86_64.whl.metadata
+     - 29.3 kB 236.5 MB/s 0:00:00
+Collecting torchvision
+  Downloading torchvision-0.22.1-cp312-cp312-manylinux_2_28_x86_64.whl.metadata
+     - 6.1 kB ? 0:00:00
+Collecting filelock (from torch)
+  Downloading filelock-3.18.0-py3-none-any.whl.metadata
+     - 2.9 kB ? 0:00:00
+Requirement already satisfied: typing-extensions>=4.10.0 in /usr/lib/python3/dist-packages (from torch) (4.10.0)
+Requirement already satisfied: setuptools in /usr/lib/python3/dist-packages (from torch) (68.1.2)
+Collecting sympy>=1.13.3 (from torch)
+  Downloading sympy-1.14.0-py3-none-any.whl.metadata
+     - 12.8 kB 119.5 MB/s 0:00:00
+Collecting networkx (from torch)
+  Downloading networkx-3.5-py3-none-any.whl.metadata
+     - 6.3 kB ? 0:00:00
+Requirement already satisfied: jinja2 in /usr/lib/python3/dist-packages (from torch) (3.1.2)
+Collecting fsspec (from torch)
+  Downloading fsspec-2025.7.0-py3-none-any.whl.metadata
+     - 12.2 kB 86.3 MB/s 0:00:00
+Collecting nvidia-cuda-nvrtc-cu12==12.6.77 (from torch)
+  Downloading nvidia_cuda_nvrtc_cu12-12.6.77-py3-none-manylinux2014_x86_64.whl.metadata
+     - 1.5 kB ? 0:00:00
+Collecting nvidia-cuda-runtime-cu12==12.6.77 (from torch)
+  Downloading nvidia_cuda_runtime_cu12-12.6.77-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata
+     - 1.5 kB ? 0:00:00
+Collecting nvidia-cuda-cupti-cu12==12.6.80 (from torch)
+  Downloading nvidia_cuda_cupti_cu12-12.6.80-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata
+     - 1.6 kB ? 0:00:00
+Collecting nvidia-cudnn-cu12==9.5.1.17 (from torch)
+  Downloading nvidia_cudnn_cu12-9.5.1.17-py3-none-manylinux_2_28_x86_64.whl.metadata
+     - 1.6 kB ? 0:00:00
+Collecting nvidia-cublas-cu12==12.6.4.1 (from torch)
+  Downloading nvidia_cublas_cu12-12.6.4.1-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata
+     - 1.5 kB ? 0:00:00
+Collecting nvidia-cufft-cu12==11.3.0.4 (from torch)
+  Downloading nvidia_cufft_cu12-11.3.0.4-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata
+     - 1.5 kB ? 0:00:00
+Collecting nvidia-curand-cu12==10.3.7.77 (from torch)
+  Downloading nvidia_curand_cu12-10.3.7.77-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata
+     - 1.5 kB ? 0:00:00
+Collecting nvidia-cusolver-cu12==11.7.1.2 (from torch)
+  Downloading nvidia_cusolver_cu12-11.7.1.2-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata
+     - 1.6 kB ? 0:00:00
+Collecting nvidia-cusparse-cu12==12.5.4.2 (from torch)
+  Downloading nvidia_cusparse_cu12-12.5.4.2-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata
+     - 1.6 kB ? 0:00:00
+Collecting nvidia-cusparselt-cu12==0.6.3 (from torch)
+  Downloading nvidia_cusparselt_cu12-0.6.3-py3-none-manylinux2014_x86_64.whl.metadata
+     - 6.8 kB ? 0:00:00
