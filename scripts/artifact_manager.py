@@ -124,7 +124,7 @@ class ArtifactManager:
         hash_md5 = hashlib.md5()
         try:
             with open(file_path, "rb") as f:
-                for chunk in iter(lambda: f.read(1048576), b""):
+                for chunk in iter(lambda: f.read(HASH_CHUNK_SIZE), b""):
                     hash_md5.update(chunk)
             return hash_md5.hexdigest()
         except Exception as e:
