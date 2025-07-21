@@ -263,9 +263,17 @@ class StreamAnalyticsEngine:
         mean_val = series.mean()
         std_val = series.std()
         
-        self.control_limits[column] = {
-            'mean': mean_val,
-            'std': std_val,
-            'upper_control_limit': mean_val + self.spc_sigma_threshold * std_val,
-            'lower_control_limit': mean_val - self.spc_sigma_threshold * std_val
-        }
+        if std_val < 1e-6:  # Handle zero or near-zero standard deviation
+            self.control_limits[column] = {
+                'mean': mean_val,
+                'std': std_val,
+                'upper_control_limit': mean_val,  # No variability, limits equal to mean
+                'lower_control_limit': mean_val
+            }
+        else:
+            self.control_limits[column] = {
+                'mean': mean_val,
+                'std': std_val,
+                'upper_control_limit': mean_val + self.spc_sigma_threshold * std_val,
+                'lower_control_limit': mean_val - self.spc_sigma_threshold * std_val
+            }
