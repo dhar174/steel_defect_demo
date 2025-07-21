@@ -6,13 +6,13 @@ and validates the fix for the Jinja2 'is number' issue.
 """
 
 import sys
-import os
 import unittest
 import math
+from pathlib import Path
 
 # Add the project root to the path
-project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0, project_root)
+project_root = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(project_root))
 
 from src.utils.template_validation import (
     TemplateDataValidator, 
