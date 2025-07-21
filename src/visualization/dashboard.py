@@ -175,7 +175,7 @@ class DefectMonitoringDashboard:
                 ], width=4),
             ], className="mb-3"),
             
-            # Prediction history
+            # Prediction history and alerts
             dbc.Row([
                 dbc.Col([
                     dbc.Card([
@@ -184,7 +184,15 @@ class DefectMonitoringDashboard:
                             dcc.Graph(id='prediction-history')
                         ])
                     ])
-                ], width=12)
+                ], width=8),
+                dbc.Col([
+                    dbc.Card([
+                        dbc.CardBody([
+                            html.H4("Recent Alerts", className="card-title"),
+                            html.Div(id='alert-feed')
+                        ])
+                    ])
+                ], width=4),
             ])
         ])
     
@@ -342,7 +350,8 @@ class DefectMonitoringDashboard:
         @self.app.callback(
             [Output('sensor-timeseries', 'figure'),
              Output('prediction-gauge', 'figure'),
-             Output('prediction-history', 'figure')],
+             Output('prediction-history', 'figure'),
+             Output('alert-feed', 'children')],
             [Input('global-interval', 'n_intervals')],
             [State('theme-store', 'data'),
              State('url', 'pathname')]
@@ -352,7 +361,7 @@ class DefectMonitoringDashboard:
             try:
                 # Only update if on the real-time monitoring page
                 if pathname != '/' and pathname != '/real-time-monitoring':
-                    return {}, {}, {}
+                    return {}, {}, {}, html.Div()
                 
                 # Create sample sensor plot
                 sensor_fig = self.create_sample_sensor_plot(theme)
@@ -365,13 +374,16 @@ class DefectMonitoringDashboard:
                 # Create sample prediction history
                 history_fig = self.create_sample_prediction_history(theme)
                 
-                return sensor_fig, gauge_fig, history_fig
+                # Create sample alert feed
+                alert_feed = self.create_sample_alert_feed(n_intervals, prediction_prob)
+                
+                return sensor_fig, gauge_fig, history_fig, alert_feed
             except Exception as e:
                 logger.error(f"Error updating real-time data: {str(e)}")
                 # Return empty figures on error to prevent crashes
                 empty_fig = go.Figure()
                 empty_fig.update_layout(title="Data unavailable", template=theme)
-                return empty_fig, empty_fig, empty_fig
+                return empty_fig, empty_fig, empty_fig, html.Div("Alert feed unavailable")
         
         # Model comparison update callback
         @self.app.callback(
@@ -679,6 +691,57 @@ class DefectMonitoringDashboard:
             
         except Exception as e:
             return dbc.Alert(f"Error getting system status: {str(e)}", color="warning")
+    
+    def create_sample_alert_feed(self, n_intervals: int, current_prob: float) -> html.Div:
+        """Create sample alert feed for demonstration."""
+        from datetime import datetime, timedelta
+        import random
+        
+        # Generate sample alerts based on current prediction probability
+        alerts = []
+        
+        # Add current alert if probability is high
+        if current_prob > 0.7:
+            severity = "high" if current_prob > 0.8 else "medium"
+            color = "danger" if severity == "high" else "warning"
+            alerts.append(
+                dbc.Alert([
+                    html.H6(f"🚨 {severity.upper()} Risk Alert", className="mb-1"),
+                    html.P(f"Defect probability: {current_prob:.1%}", className="mb-1"),
+                    html.Small(f"Generated: {datetime.now().strftime('%H:%M:%S')}")
+                ], color=color, className="mb-2")
+            )
+        
+        # Add some historical alerts
+        for i in range(min(3, n_intervals // 10)):
+            time_ago = datetime.now() - timedelta(minutes=random.randint(5, 60))
+            prob = random.uniform(0.7, 0.95)
+            severity = "high" if prob > 0.8 else "medium"
+            color = "danger" if severity == "high" else "warning"
+            status = random.choice(["Resolved", "Acknowledged", "Active"])
+            
+            alerts.append(
+                dbc.Alert([
+                    html.H6(f"⚠️ {severity.upper()} Risk Alert", className="mb-1"),
+                    html.P(f"Defect probability: {prob:.1%}", className="mb-1"),
+                    html.Small([
+                        f"Time: {time_ago.strftime('%H:%M:%S')} | ",
+                        html.Span(f"Status: {status}", 
+                                 style={"color": "green" if status == "Resolved" else "orange"})
+                    ])
+                ], color=color, is_open=(status == "Active"), className="mb-2")
+            )
+        
+        if not alerts:
+            alerts.append(
+                dbc.Alert([
+                    html.H6("✅ All Clear", className="mb-1"),
+                    html.P("No active alerts", className="mb-1"),
+                    html.Small(f"Last check: {datetime.now().strftime('%H:%M:%S')}")
+                ], color="success", className="mb-2")
+            )
+        
+        return html.Div(alerts[:5])  # Show max 5 alerts
     
     def run(self, debug: bool = False, host: str = "127.0.0.1") -> None:
         """
