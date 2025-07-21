@@ -1,0 +1,82 @@
+{
+  "model_integration_test_model": {
+    "artifact_type": "model",
+    "created_at": "2025-07-21T19:03:56.762016",
+    "model_name": "integration_test_model",
+    "experiment_name": "integration_test",
+    "version": "integration_test_model_20250721_190356_auc1000",
+    "file_path": "results/integration_test/integration_test/models/integration_test_model.pkl",
+    "file_size": 94031,
+    "checksum": "",
+    "metrics": {
+      "accuracy": 1.0,
+      "balanced_accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1_score": 1.0,
+      "matthews_corrcoef": 1.0,
+      "specificity": 1.0,
+      "roc_auc": 1.0,
+      "average_precision": 1.0,
+      "log_loss": 0.02477701516420421,
+      "brier_score": 0.002255133439719761,
+      "class_0": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 320.0
+      },
+      "class_1": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 80.0
+      }
+    },
+    "config": null,
+    "dependencies": null,
+    "description": "Trained model: integration_test_model"
+  },
+  "feature_engineer_integration_test_feature_engineer": {
+    "artifact_type": "feature_engineer",
+    "created_at": "2025-07-21T19:03:56.763151",
+    "model_name": "integration_test_feature_engineer",
+    "experiment_name": "integration_test",
+    "version": "integration_test_feature_engineer_20250721_190356",
+    "file_path": "results/integration_test/integration_test/feature_engineers/integration_test_feature_engineer.joblib",
+    "file_size": 329,
+    "checksum": "",
+    "metrics": null,
+    "config": null,
+    "dependencies": null,
+    "description": "Feature engineering pipeline: integration_test_feature_engineer"
+  },
+  "results_integration_test_results": {
+    "artifact_type": "results",
+    "created_at": "2025-07-21T19:03:56.764252",
+    "model_name": "integration_test_results",
+    "experiment_name": "integration_test",
+    "version": "integration_test_results_20250721_190356",
+    "file_path": "results/integration_test/integration_test/results/integration_test_results.json",
+    "file_size": 8271,
+    "checksum": "",
+    "metrics": null,
+    "config": null,
+    "dependencies": null,
+    "description": "Training results: integration_test_results"
+  },
+  "config_integration_test_config": {
+    "artifact_type": "config",
+    "created_at": "2025-07-21T19:03:56.765759",
+    "model_name": "integration_test_config",
+    "experiment_name": "integration_test",
+    "version": "integration_test_config_20250721_190356",
+    "file_path": "results/integration_test/integration_test/configs/integration_test_config.yaml",
+    "file_size": 362,
+    "checksum": "",
+    "metrics": null,
+    "config": null,
+    "dependencies": null,
+    "description": "Training configuration: integration_test_config"
+  }
+}
