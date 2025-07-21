@@ -691,7 +691,7 @@ class DefectMonitoringDashboard:
         try:
             port = self.config.get('inference', {}).get('dashboard_port', 8050)
             logger.info(f"Starting dashboard on {host}:{port}")
-            self.app.run(debug=debug, host=host, port=port)
+            self.app.run_server(debug=debug, host=host, port=port)
         except Exception as e:
             logger.error(f"Error starting dashboard: {str(e)}")
             raise
