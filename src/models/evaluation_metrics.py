@@ -40,7 +40,8 @@ class CustomMetrics:
         try:
             tn, fp, fn, tp = confusion_matrix(y_true, y_pred).ravel()
             return fp / (fp + tn) if (fp + tn) > 0 else 0.0
-        except ValueError:
+        except ValueError as e:
+            logging.error(f"ValueError in false_alarm_rate: {e}")
             return 0.0
     
     @staticmethod
