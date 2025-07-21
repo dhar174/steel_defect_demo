@@ -128,8 +128,20 @@ class MetricsCalculator:
         fp_cost = false_positive_cost if false_positive_cost is not None else self.default_false_positive_cost
         fn_cost = false_negative_cost if false_negative_cost is not None else self.default_false_negative_cost
         
-        # TODO: Implement cost-sensitive metrics calculation
-        pass
+        # Calculate false positives and false negatives
+        false_positives = np.sum((y_pred == 1) & (y_true == 0))
+        false_negatives = np.sum((y_pred == 0) & (y_true == 1))
+        
+        # Calculate total costs
+        total_fp_cost = false_positives * fp_cost
+        total_fn_cost = false_negatives * fn_cost
+        
+        # Return cost-sensitive metrics
+        return {
+            "false_positive_cost": total_fp_cost,
+            "false_negative_cost": total_fn_cost,
+            "total_cost": total_fp_cost + total_fn_cost
+        }
     
     def track_metrics_over_time(self, metrics: Dict[str, float],
                               timestamp: str = None) -> None:
