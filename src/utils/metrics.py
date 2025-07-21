@@ -109,8 +109,18 @@ class MetricsCalculator:
         Returns:
             Dict[str, float]: Cost-sensitive metrics
         """
-        # TODO: Implement cost-sensitive metrics calculation
-        pass
+        # Placeholder implementation for cost-sensitive metrics
+        false_positives = np.sum((y_pred == 1) & (y_true == 0))
+        false_negatives = np.sum((y_pred == 0) & (y_true == 1))
+        cost_sensitive_metric = (
+            (false_positives * false_positive_cost) +
+            (false_negatives * false_negative_cost)
+        )
+        return {
+            "false_positive_cost": false_positives * false_positive_cost,
+            "false_negative_cost": false_negatives * false_negative_cost,
+            "total_cost": cost_sensitive_metric
+        }
     
     def track_metrics_over_time(self, metrics: Dict[str, float],
                               timestamp: str = None) -> None:
