@@ -43,7 +43,7 @@ class MockDataStream:
                     data[sensor][i] *= np.random.uniform(2.0, 3.0)
         
         # Add timestamp
-        start_time = pd.Timestamp('2023-01-01') + pd.Timedelta(minutes=self.time_step * 5)
+        start_time = self.start_date + pd.Timedelta(minutes=self.time_step * 5)
         data['timestamp'] = pd.date_range(start_time, periods=batch_size, freq='5min')
         
         self.time_step += 1
