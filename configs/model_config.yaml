@@ -21,6 +21,7 @@ baseline_model:
 
 lstm_model:
   architecture:
+
     input_size: 5  # Number of sensor channels
     hidden_size: 64  # Hidden state dimension
     num_layers: 2  # Number of LSTM layers
@@ -38,8 +39,8 @@ lstm_model:
     input_norm: true  # Enable input normalization
     
   regularization:
-    weight_decay: 1e-4  # L2 regularization
-    gradient_clip: 1.0  # Gradient clipping threshold
+    weight_decay: 0.0001
+    gradient_clip: 1.0
     
   training:
     batch_size: 32
