@@ -1,0 +1,12 @@
+site_name: Steel Casting Defect Detection
+repo_url: https://github.com/dhar174/steel_defect_demo/
+theme:
+  name: material
+nav:
+  - Home: index.md
+  # Add additional nav items here if you have more documentation pages.
+markdown_extensions:
+  - admonition
+  - codehilite
+  - toc:
+      permalink: true
