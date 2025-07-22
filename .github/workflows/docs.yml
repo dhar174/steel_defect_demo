@@ -114,13 +114,9 @@ jobs:
       uses: DavidAnson/markdownlint-cli2-action@v16.0.0
       with:
         files: 'docs_site/**/*.md'
-        config: |
-          {
-            "MD013": {"line_length": 120},
-            "MD033": false,
-            "MD041": false
-          }
         continue-on-error: true
+        config: .markdownlint-cli2.jsonc
+        globs: "*.{md,markdown}"
 
     - name: Check for broken relative links
       run: |
