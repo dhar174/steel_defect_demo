@@ -73,3 +73,7 @@ validation_results/
 # Demo outputs and temporary visualization files
 demo_outputs/
 temp_viz/
+
+# Documentation build output
+site/
+docs_build/
