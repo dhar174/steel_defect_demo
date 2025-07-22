@@ -901,6 +901,48 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#docker-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker Requirements
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verification-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verification Commands
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2512,6 +2554,48 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#docker-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker Requirements
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Issues
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verification-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verification Commands
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2916,31 +3000,37 @@ prometheus-client&gt;=0.14.0
 </table>
 <h2 id="cloud-deployment">Cloud Deployment<a class="headerlink" href="#cloud-deployment" title="Permanent link">&para;</a></h2>
 <h3 id="aws-requirements">AWS Requirements<a class="headerlink" href="#aws-requirements" title="Permanent link">&para;</a></h3>
-<p>```yaml</p>
-<h1 id="minimum-ec2-instance">Minimum EC2 instance<a class="headerlink" href="#minimum-ec2-instance" title="Permanent link">&para;</a></h1>
-<p>Instance: t3.medium
+<div class="language-text highlight"><pre><span></span><code># Minimum EC2 instance
+
+Instance: t3.medium
 vCPUs: 2
 RAM: 4GB
-Storage: 20GB GP2</p>
-<h1 id="recommended-ec2-instance">Recommended EC2 instance<a class="headerlink" href="#recommended-ec2-instance" title="Permanent link">&para;</a></h1>
-<p>Instance: c5.xlarge
+Storage: 20GB GP2
+
+# Recommended EC2 instance
+
+Instance: c5.xlarge
 vCPUs: 4
 RAM: 8GB
 Storage: 50GB GP3
-```text</p>
+</code></pre></div>
 <h3 id="docker-requirements">Docker Requirements<a class="headerlink" href="#docker-requirements" title="Permanent link">&para;</a></h3>
-<p>```dockerfile</p>
-<h1 id="base-requirements">Base requirements<a class="headerlink" href="#base-requirements" title="Permanent link">&para;</a></h1>
-<p>FROM python:3.9-slim</p>
-<h1 id="system-packages">System packages<a class="headerlink" href="#system-packages" title="Permanent link">&para;</a></h1>
-<p>RUN apt-get update &amp;&amp; apt-get install -y \
+<div class="language-text highlight"><pre><span></span><code># Base requirements
+
+FROM python:3.9-slim
+
+# System packages
+
+RUN apt-get update &amp;&amp; apt-get install -y \
     gcc \
     g++ \
-    &amp;&amp; rm -rf /var/lib/apt/lists/*</p>
-<h1 id="memory-limits">Memory limits<a class="headerlink" href="#memory-limits" title="Permanent link">&para;</a></h1>
-<p>--memory=2g
+    &amp;&amp; rm -rf /var/lib/apt/lists/*
+
+# Memory limits
+
+--memory=2g
 --memory-swap=4g
-```text</p>
+</code></pre></div>
 <h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <h3 id="common-issues">Common Issues<a class="headerlink" href="#common-issues" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
@@ -2971,17 +3061,23 @@ Storage: 50GB GP3
 </ul>
 </div>
 <h3 id="verification-commands">Verification Commands<a class="headerlink" href="#verification-commands" title="Permanent link">&para;</a></h3>
-<p>```bash</p>
-<h1 id="check-python-version">Check Python version<a class="headerlink" href="#check-python-version" title="Permanent link">&para;</a></h1>
-<p>python --version</p>
-<h1 id="verify-installation">Verify installation<a class="headerlink" href="#verify-installation" title="Permanent link">&para;</a></h1>
-<p>python -c "import steel_defect_demo; print('Installation OK')"</p>
-<h1 id="check-memory-and-cpu">Check memory and CPU<a class="headerlink" href="#check-memory-and-cpu" title="Permanent link">&para;</a></h1>
-<p>python -c "import psutil; print(f'RAM: {psutil.virtual_memory().total//1e9:.1f}GB')"
-python -c "import os; print(f'CPU cores: {os.cpu_count()}')"</p>
-<h1 id="test-gpu-if-available">Test GPU (if available)<a class="headerlink" href="#test-gpu-if-available" title="Permanent link">&para;</a></h1>
-<p>python -c "import torch; print(f'CUDA available: {torch.cuda.is_available()}')"
-```text</p>
+<div class="language-text highlight"><pre><span></span><code># Check Python version
+
+python --version
+
+# Verify installation
+
+python -c &quot;import steel_defect_demo; print(&#39;Installation OK&#39;)&quot;
+
+# Check memory and CPU
+
+python -c &quot;import psutil; print(f&#39;RAM: {psutil.virtual_memory().total//1e9:.1f}GB&#39;)&quot;
+python -c &quot;import os; print(f&#39;CPU cores: {os.cpu_count()}&#39;)&quot;
+
+# Test GPU (if available)
+
+python -c &quot;import torch; print(f&#39;CUDA available: {torch.cuda.is_available()}&#39;)&quot;
+</code></pre></div>
 <hr />
 <p>Next: <a href="../../installation/development-setup/">Development Setup →</a></p>
 

@@ -2,7 +2,7 @@
 
 <div class="grid cards" markdown>
 
--   :material-rocket-launch:{ .lg .middle } __Getting Started__
+- :material-rocket-launch:{ .lg .middle } __Getting Started__
 
     ---
 
@@ -10,7 +10,7 @@
 
     [:octicons-arrow-right-24: Quick Start](getting-started/quick-start.md)
 
--   :material-view-dashboard:{ .lg .middle } __User Guide__
+- :material-view-dashboard:{ .lg .middle } __User Guide__
 
     ---
 
@@ -18,7 +18,7 @@
 
     [:octicons-arrow-right-24: Dashboard Overview](user-guide/dashboard-overview.md)
 
--   :material-api:{ .lg .middle } __API Reference__
+- :material-api:{ .lg .middle } __API Reference__
 
     ---
 
@@ -26,7 +26,7 @@
 
     [:octicons-arrow-right-24: API Docs](api-reference/dashboard-integration.md)
 
--   :material-sitemap:{ .lg .middle } __Architecture__
+- :material-sitemap:{ .lg .middle } __Architecture__
 
     ---
 
@@ -38,16 +38,18 @@
 
 ## Overview
 
-The **Steel Defect Prediction System** is a comprehensive machine learning solution designed for continuous steel casting operations.
-It provides real-time defect prediction, quality monitoring, and advanced analytics to help optimize casting processes and reduce product defects.
+The __Steel Defect Prediction System__ is a comprehensive machine learning solution designed for
+continuous steel casting operations.
+It provides real-time defect prediction, quality monitoring, and advanced analytics to help optimize
+casting processes and reduce product defects.
 
 ### Key Features
 
-- **Real-time Prediction**: ML-powered defect prediction using multiple model types (XGBoost, LSTM)
-- **Interactive Dashboard**: Comprehensive monitoring interface with Dash framework
-- **Historical Analysis**: Advanced analytics for process optimization
-- **Alert Management**: Configurable alerting system for proactive quality control
-- **Multi-model Comparison**: Side-by-side model performance evaluation
+- __Real-time Prediction__: ML-powered defect prediction using multiple model types (XGBoost, LSTM)
+- __Interactive Dashboard__: Comprehensive monitoring interface with Dash framework
+- __Historical Analysis__: Advanced analytics for process optimization
+- __Alert Management__: Configurable alerting system for proactive quality control
+- __Multi-model Comparison__: Side-by-side model performance evaluation
 
 ## Quick Navigation
 

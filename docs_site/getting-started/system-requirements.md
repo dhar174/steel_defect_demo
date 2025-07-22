@@ -191,43 +191,37 @@ This page outlines the hardware and software requirements for running the Steel 
 
 ### AWS Requirements
 
-```yaml
-
-# Minimum EC2 instance
-
-Instance: t3.medium
-vCPUs: 2
-RAM: 4GB
-Storage: 20GB GP2
-
-# Recommended EC2 instance  
-
-Instance: c5.xlarge
-vCPUs: 4
-RAM: 8GB
-Storage: 50GB GP3
-```text
+    # Minimum EC2 instance
+    
+    Instance: t3.medium
+    vCPUs: 2
+    RAM: 4GB
+    Storage: 20GB GP2
+    
+    # Recommended EC2 instance  
+    
+    Instance: c5.xlarge
+    vCPUs: 4
+    RAM: 8GB
+    Storage: 50GB GP3
 
 ### Docker Requirements
 
-```dockerfile
-
-# Base requirements
-
-FROM python:3.9-slim
-
-# System packages
-
-RUN apt-get update && apt-get install -y \
-    gcc \
-    g++ \
-    && rm -rf /var/lib/apt/lists/*
-
-# Memory limits
-
---memory=2g
---memory-swap=4g
-```text
+    # Base requirements
+    
+    FROM python:3.9-slim
+    
+    # System packages
+    
+    RUN apt-get update && apt-get install -y \
+        gcc \
+        g++ \
+        && rm -rf /var/lib/apt/lists/*
+    
+    # Memory limits
+    
+    --memory=2g
+    --memory-swap=4g
 
 ## Troubleshooting
 
@@ -256,25 +250,22 @@ RUN apt-get update && apt-get install -y \
 
 ### Verification Commands
 
-```bash
-
-# Check Python version
-
-python --version
-
-# Verify installation
-
-python -c "import steel_defect_demo; print('Installation OK')"
-
-# Check memory and CPU
-
-python -c "import psutil; print(f'RAM: {psutil.virtual_memory().total//1e9:.1f}GB')"
-python -c "import os; print(f'CPU cores: {os.cpu_count()}')"
-
-# Test GPU (if available)
-
-python -c "import torch; print(f'CUDA available: {torch.cuda.is_available()}')"
-```text
+    # Check Python version
+    
+    python --version
+    
+    # Verify installation
+    
+    python -c "import steel_defect_demo; print('Installation OK')"
+    
+    # Check memory and CPU
+    
+    python -c "import psutil; print(f'RAM: {psutil.virtual_memory().total//1e9:.1f}GB')"
+    python -c "import os; print(f'CPU cores: {os.cpu_count()}')"
+    
+    # Test GPU (if available)
+    
+    python -c "import torch; print(f'CUDA available: {torch.cuda.is_available()}')"
 
 ---
 
