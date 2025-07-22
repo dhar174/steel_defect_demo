@@ -110,13 +110,12 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    - name: Validate Markdown files
+    - name: Lint Markdown
       uses: DavidAnson/markdownlint-cli2-action@v16.0.0
       with:
-        files: 'docs_site/**/*.md'
-        continue-on-error: true
         config: .markdownlint-cli2.jsonc
-        globs: "*.{md,markdown}"
+        globs: 'docs_site/**/*.{md,markdown}'
+        separator: '\n'
 
     - name: Check for broken relative links
       run: |
