@@ -109,7 +109,8 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-
+    - name: List files at root
+      run: ls -l
     - name: Lint Markdown
       uses: DavidAnson/markdownlint-cli2-action@v16.0.0
       with:
