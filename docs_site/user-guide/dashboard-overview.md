@@ -292,7 +292,6 @@ console.log('Dashboard loaded successfully');
 ---
 
 Next: [API Reference →](../api-reference/dashboard-integration.md)
-=======
 
 ## Introduction
 
