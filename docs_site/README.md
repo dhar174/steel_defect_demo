@@ -24,7 +24,7 @@ processes.
 ### Installation
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/organization/steel-defect-detection.git
 cd steel_defect_demo
 pip install -r requirements.txt
 ```
