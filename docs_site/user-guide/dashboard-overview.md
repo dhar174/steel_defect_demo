@@ -13,7 +13,7 @@ in real-time. This guide covers all aspects of using the dashboard effectively.
 The dashboard is accessible through a web browser at the configured URL.
 Default local access is typically available at:
 
-```text
+```http
 http://localhost:8501
 ```
 
