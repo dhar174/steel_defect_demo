@@ -63,7 +63,7 @@ The real-time monitoring view provides:
 
 #### Key Metrics Cards
 
-```
+```text
 ┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐
 │ Current Defect  │ │ Avg Confidence  │ │ Active Alerts   │
 │ Probability     │ │                 │ │                 │
@@ -96,7 +96,7 @@ Compare performance between different ML models:
 
 #### Side-by-side Comparison
 
-```
+```text
 Model Performance Comparison
                     XGBoost    LSTM     Ensemble
 Accuracy            0.87       0.89     0.91
@@ -141,7 +141,7 @@ Configure and manage the alerting system:
 
 #### Active Alerts Dashboard
 
-```
+```text
 Current Alerts
 ┌─────────────────────────────────────────────────────────┐
 │ 🔴 HIGH: Defect probability 0.85 (Threshold: 0.8)      │
@@ -156,19 +156,19 @@ Current Alerts
 
 Most views include time range controls:
 
-```
+```text
 [Last Hour] [Last 4 Hours] [Last Day] [Custom Range]
 ```
 
 ### Refresh Controls
 
-```
+```text
 Auto-refresh: [ON/OFF]  Interval: [5s] [15s] [30s] [1m]
 ```
 
 ### Export Options
 
-```
+```text
 [Export CSV] [Export PNG] [Generate Report]
 ```
 
