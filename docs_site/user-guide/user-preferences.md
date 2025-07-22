@@ -53,7 +53,7 @@ dashboard_config = {
         }
     ]
 }
-```text
+```
 
 ### Layout Templates
 
@@ -82,7 +82,7 @@ from src.preferences.dashboard_manager import DashboardManager
 
 dashboard_mgr = DashboardManager()
 dashboard_mgr.apply_template('operator_view', user_id='operator_001')
-```text
+```
 
 ## Notification Preferences
 
@@ -110,7 +110,7 @@ alert_preferences = {
         'escalate_to': 'manager@company.com'
     }
 }
-```text
+```
 
 ### Custom Alert Rules
 
@@ -135,7 +135,7 @@ custom_alerts = {
         }
     ]
 }
-```text
+```
 
 ## Data Visualization Preferences
 
@@ -161,7 +161,7 @@ viz_preferences = {
         'missing_data_handling': 'interpolate'  # or 'skip', 'zero'
     }
 }
-```text
+```
 
 ### Custom Metrics
 
@@ -188,7 +188,7 @@ custom_metrics = {
         }
     ]
 }
-```text
+```
 
 ## Report Templates
 
@@ -226,7 +226,7 @@ report_templates = {
         }
     ]
 }
-```text
+```
 
 ### Report Filters
 
@@ -248,7 +248,7 @@ report_filters = {
         'seasonal_adjustment': True
     }
 }
-```text
+```
 
 ## Accessibility and Localization
 
@@ -277,7 +277,7 @@ accessibility_settings = {
         'double_click_delay': 500  # milliseconds
     }
 }
-```text
+```
 
 ### Language and Localization
 
@@ -298,7 +298,7 @@ localization_settings = {
         'currency_symbol': '$'
     }
 }
-```text
+```
 
 ## Theme and UI Preferences
 
@@ -324,7 +324,7 @@ theme_preferences = {
         'transitions': True
     }
 }
-```text
+```
 
 ### Custom CSS
 
@@ -335,8 +335,8 @@ theme_preferences = {
     --warning-color: #ff9800; 
     --danger-color: #f44336;
     --chart-background: #263238;
-    --text-primary: #ffffff;
-    --text-secondary: #b0bec5;
+    ---primary: #ffffff;
+    ---secondary: #b0bec5;
 }
 
 .user-custom-010 .dashboard-widget {
@@ -347,7 +347,7 @@ theme_preferences = {
 .user-custom-010 .alert-critical {
     animation: pulse 2s infinite;
 }
-```text
+```
 
 ## Preferences Management
 
@@ -379,7 +379,7 @@ user_prefs = pref_manager.load_preferences('operator_001')
 # Apply preferences to session
 
 pref_manager.apply_preferences(user_prefs)
-```text
+```
 
 ### Preference Inheritance
 
@@ -405,7 +405,7 @@ role_hierarchy = {
 # Apply role-based preferences
 
 pref_manager.apply_role_preferences(user_id='new_operator', role='operator')
-```text
+```
 
 ## Backup and Sync
 
@@ -424,7 +424,7 @@ backup_data = pref_manager.export_preferences(
 
 with open('user_preferences_backup.json', 'w') as f:
     json.dump(backup_data, f, indent=2)
-```text
+```
 
 ### Cross-device Sync
 
@@ -446,7 +446,7 @@ sync_config = {
 # Perform sync
 
 pref_manager.sync_across_devices(sync_config)
-```text
+```
 
 ## API Endpoints
 
@@ -473,7 +473,7 @@ GET /api/v1/users/{user_id}/preferences/export
 # Import preferences
 
 POST /api/v1/users/{user_id}/preferences/import
-```text
+```
 
 ### Example API Usage
 
@@ -494,6 +494,6 @@ response = requests.patch(
 
 if response.status_code == 200:
     print("Preferences updated successfully")
-```text
+```
 
 This comprehensive preference system ensures that each user can tailor the Steel Defect Prediction System to their specific needs and workflow requirements.
