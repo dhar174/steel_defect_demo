@@ -77,3 +77,7 @@ temp_viz/
 # Documentation build output
 site/
 docs_build/
+
+# Node.js
+node_modules/
+package-lock.json

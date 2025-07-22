@@ -38,7 +38,8 @@
 
 ## Overview
 
-The **Steel Defect Prediction System** is a comprehensive machine learning solution designed for continuous steel casting operations. It provides real-time defect prediction, quality monitoring, and advanced analytics to help optimize casting processes and reduce product defects.
+The **Steel Defect Prediction System** is a comprehensive machine learning solution designed for continuous steel casting operations.
+It provides real-time defect prediction, quality monitoring, and advanced analytics to help optimize casting processes and reduce product defects.
 
 ### Key Features
 
@@ -51,18 +52,22 @@ The **Steel Defect Prediction System** is a comprehensive machine learning solut
 ## Quick Navigation
 
 ### For New Users
+
 - [Quick Start Guide](getting-started/quick-start.md) - Get running in 5 minutes
 - [System Requirements](getting-started/system-requirements.md) - Hardware and software prerequisites
 - [First Prediction](getting-started/first-prediction.md) - Your first defect prediction
 
 ### For Operators
+
 - [Dashboard Overview](user-guide/dashboard-overview.md) - Navigate the monitoring interface
 
 ### For Developers
+
 - [Development Setup](installation/development-setup.md) - Set up development environment
 - [Contributing Guide](development/contributing.md) - How to contribute
 
 ### For System Administrators
+
 - [System Overview](architecture/system-overview.md) - Understand the architecture
 
 ## System Architecture
@@ -85,7 +90,7 @@ graph TB
     style A fill:#e1f5fe
     style F fill:#e8f5e8
     style G fill:#fff3e0
-```
+```text
 
 ## Technology Stack
 
@@ -98,6 +103,7 @@ graph TB
 ## Latest Updates
 
 !!! tip "Version 0.1.0"
+
     - Initial release with baseline XGBoost and LSTM models
     - Complete dashboard interface with real-time monitoring
     - Comprehensive alerting system

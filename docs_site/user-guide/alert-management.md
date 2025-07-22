@@ -1,6 +1,7 @@
 # Alert Management
 
-The Alert Management system provides comprehensive monitoring and notification capabilities for the Steel Defect Prediction System, ensuring timely response to critical conditions.
+The Alert Management system provides comprehensive monitoring and notification capabilities for the Steel Defect
+Prediction System, ensuring timely response to critical conditions.
 
 ## Overview
 
@@ -17,6 +18,7 @@ Alert management features include:
 ### Defect Probability Alerts
 
 **Critical Alert**: Defect probability > 80%
+
 ```python
 {
     "alert_id": "CRIT-001",
@@ -26,9 +28,10 @@ Alert management features include:
     "threshold": 0.80,
     "message": "High defect probability detected in casting line 1"
 }
-```
+```text
 
 **Warning Alert**: Defect probability 60-80%
+
 ```python
 {
     "alert_id": "WARN-002", 
@@ -38,11 +41,12 @@ Alert management features include:
     "threshold": 0.60,
     "message": "Elevated defect risk in casting line 1"
 }
-```
+```text
 
 ### Process Parameter Alerts
 
-**Temperature Deviation**
+#### Temperature Deviation
+
 ```python
 {
     "alert_id": "TEMP-003",
@@ -53,9 +57,10 @@ Alert management features include:
     "deviation": 55.5,
     "message": "Mold temperature exceeds target by 55°C"
 }
-```
+```text
 
-**Flow Rate Alert**
+#### Flow Rate Alert
+
 ```python
 {
     "alert_id": "FLOW-004",
@@ -65,7 +70,7 @@ Alert management features include:
     "min_threshold": 180.0,
     "message": "Cooling water flow below minimum threshold"
 }
-```
+```text
 
 ## Alert Configuration
 
@@ -75,9 +80,11 @@ Alert management features include:
 from src.alerts.alert_manager import AlertManager
 
 # Initialize alert manager
+
 alert_manager = AlertManager()
 
 # Configure defect probability alerts
+
 alert_manager.add_rule({
     'name': 'high_defect_probability',
     'condition': 'defect_probability > 0.8',
@@ -87,6 +94,7 @@ alert_manager.add_rule({
 })
 
 # Configure process parameter alerts
+
 alert_manager.add_rule({
     'name': 'temperature_deviation',
     'condition': 'abs(mold_temperature - target_temperature) > 50',
@@ -94,12 +102,14 @@ alert_manager.add_rule({
     'cooldown': 600,  # 10 minutes
     'notifications': ['email', 'dashboard']
 })
-```
+```text
 
 ### Threshold Management
 
 ```yaml
+
 # alerts.yml configuration
+
 alert_thresholds:
   defect_probability:
     warning: 0.6
@@ -120,14 +130,16 @@ alert_thresholds:
   cooling_water_flow:
     min_warning: 180
     min_critical: 160
-```
+```text
 
 ## Notification Channels
 
 ### Email Notifications
 
 ```python
+
 # Email configuration
+
 email_config = {
     'smtp_server': 'smtp.company.com',
     'smtp_port': 587,
@@ -141,6 +153,7 @@ email_config = {
 }
 
 # Send email alert
+
 from src.alerts.email_notifier import EmailNotifier
 
 notifier = EmailNotifier(email_config)
@@ -150,12 +163,14 @@ notifier.send_alert({
     'message': 'High defect probability detected. Immediate attention required.',
     'data': sensor_data
 })
-```
+```text
 
 ### SMS Notifications
 
 ```python
+
 # SMS configuration using Twilio
+
 sms_config = {
     'account_sid': '${TWILIO_ACCOUNT_SID}',
     'auth_token': '${TWILIO_AUTH_TOKEN}',
@@ -167,6 +182,7 @@ sms_config = {
 }
 
 # Send SMS alert
+
 from src.alerts.sms_notifier import SMSNotifier
 
 sms_notifier = SMSNotifier(sms_config)
@@ -174,7 +190,7 @@ sms_notifier.send_alert({
     'level': 'critical',
     'message': 'URGENT: Critical defect alert on Line 1. Defect probability: 85%'
 })
-```
+```text
 
 ### Dashboard Notifications
 
@@ -199,14 +215,16 @@ function displayAlert(alert) {
     
     document.getElementById('alerts-container').appendChild(alertElement);
 }
-```
+```text
 
 ## Alert Escalation
 
 ### Escalation Rules
 
 ```python
+
 # Define escalation chain
+
 escalation_config = {
     'levels': [
         {
@@ -228,11 +246,12 @@ escalation_config = {
 }
 
 # Implement escalation
+
 from src.alerts.escalation_manager import EscalationManager
 
 escalation_manager = EscalationManager(escalation_config)
 escalation_manager.start_escalation(alert_id='CRIT-001')
-```
+```text
 
 ### Auto-escalation Logic
 
@@ -246,6 +265,7 @@ class AlertEscalator:
         escalation_id = self.start_escalation(alert)
         
         # Schedule escalation steps
+
         for level in self.rules['levels']:
             threading.Timer(
                 level['timeout'],
@@ -257,14 +277,16 @@ class AlertEscalator:
         if not self.is_acknowledged(escalation_id):
             self.send_notifications(level['notifications'])
             logging.info(f"Escalated alert {escalation_id} to {level['name']}")
-```
+```text
 
 ## Alert Dashboard
 
 ### Alert Status Overview
 
 ```python
+
 # Get current alert status
+
 from src.alerts.alert_dashboard import AlertDashboard
 
 dashboard = AlertDashboard()
@@ -274,12 +296,14 @@ print(f"Active alerts: {status['active_count']}")
 print(f"Critical alerts: {status['critical_count']}")
 print(f"Acknowledged alerts: {status['acknowledged_count']}")
 print(f"Average response time: {status['avg_response_time']} minutes")
-```
+```text
 
 ### Alert History
 
 ```python
+
 # Query alert history
+
 alert_history = dashboard.get_alert_history(
     start_date='2024-01-01',
     end_date='2024-01-31',
@@ -288,18 +312,21 @@ alert_history = dashboard.get_alert_history(
 )
 
 # Generate alert statistics
+
 stats = dashboard.generate_alert_statistics(alert_history)
 print(f"Total alerts: {stats['total_alerts']}")
 print(f"Most common alert type: {stats['most_common_type']}")
 print(f"Average response time: {stats['avg_response_time']}")
-```
+```text
 
 ## Alert Acknowledgment
 
 ### Manual Acknowledgment
 
 ```python
+
 # Acknowledge alert via API
+
 import requests
 
 response = requests.post(
@@ -310,12 +337,14 @@ response = requests.post(
         'acknowledgment_note': 'Investigated and taking corrective action'
     }
 )
-```
+```text
 
 ### Auto-acknowledgment Rules
 
 ```python
+
 # Configure auto-acknowledgment
+
 auto_ack_rules = {
     'defect_probability_resolved': {
         'condition': 'defect_probability < 0.5',
@@ -328,11 +357,12 @@ auto_ack_rules = {
 }
 
 # Apply auto-acknowledgment
+
 from src.alerts.auto_acknowledger import AutoAcknowledger
 
 auto_ack = AutoAcknowledger(auto_ack_rules)
 auto_ack.check_for_resolution(current_sensor_data)
-```
+```text
 
 ## Alert Analytics
 
@@ -343,10 +373,12 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Analyze alert patterns
+
 alert_df = pd.DataFrame(alert_history)
 alert_df['timestamp'] = pd.to_datetime(alert_df['timestamp'])
 
 # Alert frequency by hour
+
 hourly_alerts = alert_df.groupby(alert_df['timestamp'].dt.hour).size()
 
 plt.figure(figsize=(12, 6))
@@ -355,32 +387,37 @@ plt.xlabel('Hour of Day')
 plt.ylabel('Alert Count')
 plt.title('Alert Frequency by Hour')
 plt.show()
-```
+```text
 
 ### Response Time Analysis
 
 ```python
+
 # Calculate response times
+
 alert_df['response_time'] = (
     pd.to_datetime(alert_df['acknowledged_at']) - 
     pd.to_datetime(alert_df['created_at'])
 ).dt.total_seconds() / 60  # Convert to minutes
 
 # Response time by alert level
+
 response_by_level = alert_df.groupby('level')['response_time'].agg([
     'mean', 'median', 'std'
 ])
 
 print("Response Time Statistics (minutes):")
 print(response_by_level)
-```
+```text
 
 ## Integration Examples
 
 ### SCADA Integration
 
 ```python
+
 # Send alerts to SCADA system
+
 from src.integrations.scada_alerts import SCADAAlertSender
 
 scada_alerts = SCADAAlertSender(
@@ -389,18 +426,21 @@ scada_alerts = SCADAAlertSender(
 )
 
 # Send alert to SCADA alarm system
+
 scada_alerts.send_alarm({
     'alarm_id': 'ALM_001',
     'description': 'High defect probability',
     'severity': 'HIGH',
     'area': 'Casting_Line_1'
 })
-```
+```text
 
 ### Third-party Systems
 
 ```python
+
 # Send alerts to external monitoring systems
+
 webhook_config = {
     'url': 'https://monitoring.company.com/webhooks/alerts',
     'headers': {
@@ -410,6 +450,7 @@ webhook_config = {
 }
 
 # Send webhook notification
+
 import requests
 
 def send_webhook_alert(alert_data):
@@ -419,7 +460,7 @@ def send_webhook_alert(alert_data):
         headers=webhook_config['headers']
     )
     return response.status_code == 200
-```
+```text
 
 ## Troubleshooting
 
@@ -433,11 +474,14 @@ def send_webhook_alert(alert_data):
 ### Debug Tools
 
 ```python
+
 # Enable alert debugging
+
 import logging
 logging.getLogger('alerts').setLevel(logging.DEBUG)
 
 # Test alert configuration
+
 from src.alerts.tester import AlertTester
 
 tester = AlertTester()
@@ -445,6 +489,6 @@ test_results = tester.test_all_rules(test_data)
 
 for rule, result in test_results.items():
     print(f"{rule}: {'PASS' if result['success'] else 'FAIL'}")
-```
+```text
 
 This alert management system ensures prompt response to critical conditions and maintains operational safety in your steel casting operations.

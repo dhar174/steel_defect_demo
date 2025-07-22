@@ -15,53 +15,65 @@ This guide covers deploying the Steel Defect Prediction System in a production e
 ### Option 1: Docker Compose (Recommended)
 
 ```bash
+
 # Clone the repository
+
 git clone https://github.com/dhar174/steel_defect_demo.git
 cd steel_defect_demo
 
 # Copy production configuration
+
 cp configs/production.yml.example configs/production.yml
 
 # Edit configuration for your environment
+
 nano configs/production.yml
 
 # Deploy with Docker Compose
+
 docker-compose -f docker-compose.prod.yml up -d
-```
+```text
 
 ### Option 2: Kubernetes
 
 ```bash
+
 # Apply Kubernetes manifests
+
 kubectl apply -f k8s/namespace.yml
 kubectl apply -f k8s/configmap.yml
 kubectl apply -f k8s/deployment.yml
 kubectl apply -f k8s/service.yml
 kubectl apply -f k8s/ingress.yml
-```
+```text
 
 ## Configuration
 
 ### Environment Variables
 
 ```bash
+
 # Database Configuration
+
 DATABASE_URL=postgresql://user:password@localhost:5432/steel_defects
 REDIS_URL=redis://localhost:6379/0
 
 # API Configuration
+
 API_HOST=0.0.0.0
 API_PORT=8000
 SECRET_KEY=your-secret-key-here
 
 # Model Configuration
+
 MODEL_PATH=/app/models/production_model.pth
 PREDICTION_THRESHOLD=0.7
 
 # Monitoring
+
 ENABLE_METRICS=true
 PROMETHEUS_PORT=9090
-```
+```text
 
 ### SSL Configuration
 
@@ -79,7 +91,7 @@ server {
         proxy_set_header X-Real-IP $remote_addr;
     }
 }
-```
+```text
 
 ## Health Checks
 
@@ -94,19 +106,22 @@ The system provides health check endpoints:
 ### Database Backup
 
 ```bash
+
 # Daily backup script
 #!/bin/bash
 pg_dump steel_defects > backup_$(date +%Y%m%d).sql
 aws s3 cp backup_$(date +%Y%m%d).sql s3://your-backup-bucket/
-```
+```text
 
 ### Model Backup
 
 ```bash
+
 # Backup trained models
+
 tar -czf models_backup_$(date +%Y%m%d).tar.gz models/
 aws s3 cp models_backup_$(date +%Y%m%d).tar.gz s3://your-model-bucket/
-```
+```text
 
 ## Security Considerations
 
@@ -125,16 +140,18 @@ aws s3 cp models_backup_$(date +%Y%m%d).tar.gz s3://your-model-bucket/
 -- Index optimization for frequent queries
 CREATE INDEX idx_sensor_data_timestamp ON sensor_data(timestamp);
 CREATE INDEX idx_predictions_cast_id ON predictions(cast_id);
-```
+```text
 
 ### Model Serving Optimization
 
 ```python
+
 # Batch prediction configuration
+
 BATCH_SIZE = 32
 MAX_BATCH_WAIT_TIME = 100  # milliseconds
 WORKER_THREADS = 4
-```
+```text
 
 ## Monitoring and Alerting
 
@@ -166,15 +183,19 @@ Set up monitoring for:
 ### Horizontal Scaling
 
 ```yaml
+
 # docker-compose.prod.yml
+
 services:
   api:
     image: steel-defect-prediction:latest
     deploy:
       replicas: 3
     environment:
+
       - LOAD_BALANCER=nginx
-```
+
+```text
 
 ### Auto-scaling
 

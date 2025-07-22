@@ -962,7 +962,8 @@
 </ul>
 </div>
 <h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">¶</a></h2>
-<p>The <strong>Steel Defect Prediction System</strong> is a comprehensive machine learning solution designed for continuous steel casting operations. It provides real-time defect prediction, quality monitoring, and advanced analytics to help optimize casting processes and reduce product defects.</p>
+<p>The <strong>Steel Defect Prediction System</strong> is a comprehensive machine learning solution designed for continuous steel casting operations.
+It provides real-time defect prediction, quality monitoring, and advanced analytics to help optimize casting processes and reduce product defects.</p>
 <h3 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">¶</a></h3>
 <ul>
 <li><strong>Real-time Prediction</strong>: ML-powered defect prediction using multiple model types (XGBoost, LSTM)</li>
@@ -992,23 +993,25 @@
 <li><a href="architecture/system-overview/">System Overview</a> - Understand the architecture</li>
 </ul>
 <h2 id="system-architecture">System Architecture<a class="headerlink" href="#system-architecture" title="Permanent link">¶</a></h2>
-<pre class="mermaid"><code>graph TB
-    A[Sensor Data] --&gt; B[Data Pipeline]
-    B --&gt; C[Feature Engineering]
-    C --&gt; D[ML Models]
-    D --&gt; E[Prediction Engine]
-    E --&gt; F[Dashboard]
-    E --&gt; G[Alert System]
+<p>```mermaid
+graph TB
+    A[Sensor Data] → B[Data Pipeline]
+    B → C[Feature Engineering]
+    C → D[ML Models]
+    D → E[Prediction Engine]
+    E → F[Dashboard]
+    E → G[Alert System]</p>
+<div class="language-text highlight"><pre><span></span><code>D1[XGBoost Model] --&gt; E
+D2[LSTM Model] --&gt; E
 
-    D1[XGBoost Model] --&gt; E
-    D2[LSTM Model] --&gt; E
+H[Historical Data] --&gt; I[Model Training]
+I --&gt; D
 
-    H[Historical Data] --&gt; I[Model Training]
-    I --&gt; D
-
-    style A fill:#e1f5fe
-    style F fill:#e8f5e8
-    style G fill:#fff3e0</code></pre>
+style A fill:#e1f5fe
+style F fill:#e8f5e8
+style G fill:#fff3e0
+</code></pre></div>
+<p>```text</p>
 <h2 id="technology-stack">Technology Stack<a class="headerlink" href="#technology-stack" title="Permanent link">¶</a></h2>
 <ul>
 <li><strong>Machine Learning</strong>: XGBoost, PyTorch, scikit-learn</li>

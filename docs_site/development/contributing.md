@@ -1,6 +1,7 @@
 # Contributing Guide
 
-Thank you for your interest in contributing to the Steel Defect Prediction System! This guide provides everything you need to know to contribute effectively.
+Thank you for your interest in contributing to the Steel Defect Prediction System! This guide provides everything
+you need to know to contribute effectively.
 
 ## Table of Contents
 
@@ -25,46 +26,64 @@ Thank you for your interest in contributing to the Steel Defect Prediction Syste
 ### Development Setup
 
 1. **Fork and Clone**
+
    ```bash
+
    # Fork the repository on GitHub, then clone your fork
+
    git clone https://github.com/YOUR_USERNAME/steel_defect_demo.git
    cd steel_defect_demo
    
    # Add upstream remote
+
    git remote add upstream https://github.com/dhar174/steel_defect_demo.git
    ```
 
 2. **Create Virtual Environment**
+
    ```bash
+
    # Using venv
+
    python -m venv steel_defect_env
    source steel_defect_env/bin/activate  # Linux/macOS
+
    # steel_defect_env\Scripts\activate   # Windows
    
    # Using conda
+
    conda create -n steel_defect_env python=3.9
    conda activate steel_defect_env
    ```
 
 3. **Install Dependencies**
+
    ```bash
+
    # Install in development mode
+
    pip install -e .
    
    # Install development dependencies
+
    pip install -r requirements-docs.txt
    
    # Install pre-commit hooks (optional but recommended)
+
    pip install pre-commit
    pre-commit install
    ```
 
 4. **Verify Setup**
+
    ```bash
+
    # Run tests
+
    python -m pytest tests/ -v
    
    # Run demo to verify installation
+
    python demo_model_comparison.py
    ```
 
@@ -74,27 +93,31 @@ Thank you for your interest in contributing to the Steel Defect Prediction Syste
 
 We use a **feature branch workflow**:
 
-```
+```text
 main branch (stable)
 ├── feature/new-model-type
 ├── bugfix/dashboard-loading-issue
 ├── docs/api-documentation
 └── enhancement/alert-system-improvements
-```
+```text
 
 ### Creating a Feature Branch
 
 ```bash
+
 # Update main branch
+
 git checkout main
 git pull upstream main
 
 # Create and switch to feature branch
+
 git checkout -b feature/your-feature-name
 
 # Push feature branch to your fork
+
 git push -u origin feature/your-feature-name
-```
+```text
 
 ### Branch Naming Convention
 
@@ -111,7 +134,9 @@ git push -u origin feature/your-feature-name
 We follow **PEP 8** with some modifications:
 
 ```python
+
 # Good: Clear, descriptive names
+
 def calculate_defect_probability(sensor_data: Dict[str, float]) -> float:
     """
     Calculate defect probability based on sensor readings.
@@ -129,51 +154,63 @@ def calculate_defect_probability(sensor_data: Dict[str, float]) -> float:
         raise ValueError("Sensor data cannot be empty")
     
     # Implementation here
+
     return probability
 
 # Bad: Unclear names and missing documentation
+
 def calc(data):
     if not data:
         return 0
+
     # What does this do?
+
     return result
-```
+```text
 
 ### Code Formatting
 
 We use **Black** for code formatting:
 
 ```bash
+
 # Format all Python files
+
 black .
 
 # Check formatting without changes
+
 black --check .
 
 # Format specific file
+
 black src/models/baseline_model.py
-```
+```text
 
 ### Import Organization
 
 ```python
+
 # Standard library imports
+
 import os
 import sys
 from typing import Dict, List, Optional
 from dataclasses import dataclass
 
 # Third-party imports
+
 import numpy as np
 import pandas as pd
 import torch
 from sklearn.ensemble import RandomForestClassifier
 
 # Local imports
+
 from src.models.base_model import BaseModel
 from src.utils.config import Config
 from src.data.preprocessor import DataPreprocessor
-```
+```text
 
 ### Type Hints
 
@@ -188,9 +225,11 @@ def process_sensor_data(
     normalize: bool = True
 ) -> Tuple[np.ndarray, Dict[str, float]]:
     """Process sensor data with proper type hints."""
+
     # Implementation
+
     return processed_data, metadata
-```
+```text
 
 ### Docstring Style
 
@@ -218,8 +257,10 @@ def train_model(
     
     Returns:
         A tuple containing:
+
             - Trained model instance
             - Dictionary of validation metrics including accuracy, precision,
+
               recall, and F1-score
     
     Raises:
@@ -233,15 +274,17 @@ def train_model(
         >>> print(f"Accuracy: {metrics['accuracy']:.3f}")
         Accuracy: 0.876
     """
+
     # Implementation here
+
     pass
-```
+```text
 
 ## Testing Guidelines
 
 ### Test Structure
 
-```
+```text
 tests/
 ├── unit/                   # Unit tests
 │   ├── test_models/
@@ -254,7 +297,7 @@ tests/
 │   ├── sample_data.csv
 │   └── mock_models/
 └── conftest.py            # Shared test configuration
-```
+```text
 
 ### Writing Unit Tests
 
@@ -335,7 +378,7 @@ class TestBaselineModel:
         
         assert model.is_trained is True
         mock_load.assert_called_once_with('path/to/model.pkl')
-```
+```text
 
 ### Integration Tests
 
@@ -349,28 +392,35 @@ class TestPredictionPipeline:
     
     def test_end_to_end_prediction(self):
         """Test complete prediction pipeline from data to result."""
+
         # Setup
+
         engine = PredictionEngine()
         connector = DataConnector()
         
         # Get test data
+
         test_data = connector.get_test_data()
         
         # Make prediction
+
         result = engine.predict(test_data)
         
         # Verify result structure
+
         assert 'defect_probability' in result
         assert 'confidence_score' in result
         assert 'model_predictions' in result
         assert result['defect_probability'] >= 0
         assert result['defect_probability'] <= 1
-```
+```text
 
 ### Test Data Management
 
 ```python
+
 # conftest.py - Shared test fixtures
+
 import pytest
 import pandas as pd
 import numpy as np
@@ -404,29 +454,36 @@ def mock_model():
     model.is_trained = True
     
     return model
-```
+```text
 
 ### Running Tests
 
 ```bash
+
 # Run all tests
+
 pytest
 
 # Run with coverage
+
 pytest --cov=src --cov-report=html
 
 # Run specific test file
+
 pytest tests/unit/test_models/test_baseline_model.py
 
 # Run with verbose output
+
 pytest -v
 
 # Run tests matching pattern
+
 pytest -k "test_prediction"
 
 # Run only failed tests from last run
+
 pytest --lf
-```
+```text
 
 ## Documentation
 
@@ -474,6 +531,7 @@ pytest --lf
 ### Documentation Style
 
 ```markdown
+
 # Page Title
 
 Brief introduction paragraph explaining the purpose and scope.
@@ -487,12 +545,14 @@ Detailed explanation with examples.
 More specific information.
 
 ```python
+
 # Code example with comments
+
 def example_function():
     """Example with proper documentation."""
     return "result"
-```
 
+```text
 !!! note "Important Note"
     Use admonitions for important information.
 
@@ -501,47 +561,54 @@ def example_function():
 
 !!! tip "Pro Tip"
     Use tips for helpful suggestions.
-```
+```text
 
 ## Pull Request Process
 
 ### Before Submitting
 
 1. **Ensure all tests pass**
+
    ```bash
    pytest
    ```
 
-2. **Code formatting**
+1. **Code formatting**
+
    ```bash
    black .
    flake8 .
    ```
 
-3. **Update documentation** if needed
+1. **Update documentation** if needed
 
-4. **Update changelog** in `CHANGELOG.md`
+1. **Update changelog** in `CHANGELOG.md`
 
 ### Pull Request Template
 
 When creating a pull request, include:
 
 ```markdown
+
 ## Description
+
 Brief description of changes made.
 
 ## Type of Change
+
 - [ ] Bug fix (non-breaking change that fixes an issue)
 - [ ] New feature (non-breaking change that adds functionality)
 - [ ] Breaking change (fix or feature that causes existing functionality to change)
 - [ ] Documentation update
 
 ## Testing
+
 - [ ] I have added tests that prove my fix is effective or that my feature works
 - [ ] New and existing unit tests pass locally with my changes
 - [ ] I have tested the changes in the dashboard interface
 
 ## Checklist
+
 - [ ] My code follows the style guidelines of this project
 - [ ] I have performed a self-review of my own code
 - [ ] I have commented my code, particularly in hard-to-understand areas
@@ -549,8 +616,9 @@ Brief description of changes made.
 - [ ] My changes generate no new warnings
 
 ## Screenshots (if applicable)
+
 Add screenshots to help explain your changes.
-```
+```text
 
 ### Review Process
 

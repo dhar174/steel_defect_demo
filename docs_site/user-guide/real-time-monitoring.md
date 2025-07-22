@@ -1,6 +1,7 @@
 # Real-time Monitoring
 
-The Steel Defect Prediction System provides comprehensive real-time monitoring capabilities for continuous steel casting operations.
+The Steel Defect Prediction System provides comprehensive real-time monitoring capabilities for continuous steel
+casting operations.
 
 ## Overview
 
@@ -19,7 +20,9 @@ Real-time monitoring allows operators to:
 The monitoring dashboard displays real-time data from multiple sensors:
 
 ```python
+
 # Example sensor data structure
+
 sensor_data = {
     "timestamp": "2024-01-15T10:30:00Z",
     "mold_temperature": 1525.4,
@@ -28,7 +31,7 @@ sensor_data = {
     "oxygen_content": 0.025,
     "steel_grade": "304L"
 }
-```
+```text
 
 ### Real-time Metrics
 
@@ -61,33 +64,41 @@ Real-time charts show:
 ### 1. Configure Data Sources
 
 ```yaml
+
 # config/monitoring.yml
+
 data_sources:
   primary_sensors:
+
     - mold_temperature
     - casting_speed
     - cooling_water_flow
+
   secondary_sensors:
+
     - oxygen_content
     - steel_grade
     - tundish_temperature
 
 update_frequency: 1  # seconds
 buffer_size: 1000   # data points
-```
+```text
 
 ### 2. Start Monitoring Service
 
 ```bash
+
 # Start the monitoring service
+
 python -m src.monitoring.real_time_monitor
 
 # Or with Docker
+
 docker run -d --name steel-monitor \
   -p 8001:8001 \
   steel-defect-prediction:latest \
   python -m src.monitoring.real_time_monitor
-```
+```text
 
 ### 3. Access Monitoring Dashboard
 
@@ -101,17 +112,20 @@ Navigate to `http://localhost:8001/monitoring` to access the real-time dashboard
 from src.monitoring.data_collector import RealTimeCollector
 
 # Initialize collector
+
 collector = RealTimeCollector(
     sensors=['mold_temp', 'casting_speed', 'cooling_flow'],
     update_interval=1.0  # seconds
 )
 
 # Start data collection
+
 collector.start()
 
 # Get latest data
+
 latest_data = collector.get_latest()
-```
+```text
 
 ### Prediction Engine
 
@@ -119,16 +133,18 @@ latest_data = collector.get_latest()
 from src.inference.real_time_predictor import RealTimePredictor
 
 # Initialize predictor
+
 predictor = RealTimePredictor(
     model_path='models/production_model.pth',
     threshold=0.7
 )
 
 # Process incoming data
+
 prediction = predictor.predict(sensor_data)
 print(f"Defect probability: {prediction['probability']:.3f}")
 print(f"Confidence: {prediction['confidence']:.3f}")
-```
+```text
 
 ### Alert System
 
@@ -136,6 +152,7 @@ print(f"Confidence: {prediction['confidence']:.3f}")
 from src.monitoring.alert_manager import AlertManager
 
 # Configure alerts
+
 alert_manager = AlertManager(
     rules=[
         {
@@ -154,8 +171,9 @@ alert_manager = AlertManager(
 )
 
 # Process alerts
+
 alert_manager.evaluate(sensor_data, prediction)
-```
+```text
 
 ## Configuration Options
 
@@ -164,26 +182,32 @@ alert_manager.evaluate(sensor_data, prediction)
 Control how often data is refreshed:
 
 ```python
+
 # High frequency for critical operations
+
 MONITOR_UPDATE_INTERVAL = 0.5  # 500ms
 
 # Standard frequency for normal operations
+
 MONITOR_UPDATE_INTERVAL = 1.0  # 1 second
 
 # Low frequency for overview monitoring
+
 MONITOR_UPDATE_INTERVAL = 5.0  # 5 seconds
-```
+```text
 
 ### Data Retention
 
 Configure how long data is kept in memory:
 
 ```python
+
 # Monitoring configuration
+
 REALTIME_BUFFER_SIZE = 3600    # 1 hour of data at 1Hz
 HISTORY_RETENTION_DAYS = 7     # Keep 7 days of detailed history
 ARCHIVE_RETENTION_MONTHS = 12  # Keep 12 months of summary data
-```
+```text
 
 ### Display Preferences
 
@@ -199,7 +223,7 @@ const dashboardConfig = {
     showPredictionBands: true,   // Show confidence intervals
     enableSounds: true          // Audio alerts
 };
-```
+```text
 
 ## Alert Configuration
 
@@ -226,7 +250,7 @@ alert_levels:
     sound: true
     auto_dismiss: false
     requires_acknowledgment: true
-```
+```text
 
 ### Notification Channels
 
@@ -238,6 +262,7 @@ notifications:
     enabled: true
     smtp_server: smtp.company.com
     recipients:
+
       - operator@company.com
       - supervisor@company.com
   
@@ -245,6 +270,7 @@ notifications:
     enabled: true
     provider: twilio
     numbers:
+
       - "+1234567890"
   
   webhook:
@@ -252,14 +278,16 @@ notifications:
     url: https://api.company.com/alerts
     headers:
       Authorization: "Bearer ${API_TOKEN}"
-```
+```text
 
 ## Performance Optimization
 
 ### Efficient Data Handling
 
 ```python
+
 # Use efficient data structures
+
 import collections
 import numpy as np
 
@@ -274,19 +302,23 @@ class CircularBuffer:
         return np.array(self.buffer)
 
 # Batch processing for efficiency
+
 def process_sensor_batch(sensor_batch):
     """Process multiple sensor readings at once"""
     predictions = model.predict_batch(sensor_batch)
     return predictions
-```
+```text
 
 ### Memory Management
 
 ```python
+
 # Limit memory usage
+
 MAX_MEMORY_MB = 512
 
 # Monitor memory usage
+
 import psutil
 import gc
 
@@ -298,7 +330,7 @@ def check_memory():
         gc.collect()  # Force garbage collection
         
     return memory_mb
-```
+```text
 
 ## Troubleshooting
 
@@ -312,43 +344,53 @@ def check_memory():
 ### Debugging Tools
 
 ```python
+
 # Enable debug logging
+
 import logging
 logging.basicConfig(level=logging.DEBUG)
 
 # Monitor performance
+
 from src.monitoring.performance_monitor import PerformanceMonitor
 
 perf_monitor = PerformanceMonitor()
 perf_monitor.start()
 
 # Check metrics
+
 metrics = perf_monitor.get_metrics()
 print(f"Average processing time: {metrics['avg_processing_time']:.3f}s")
 print(f"Predictions per second: {metrics['predictions_per_second']:.1f}")
-```
+```text
 
 ### System Status
 
 Check real-time monitoring system status:
 
 ```bash
+
 # Check service status
+
 systemctl status steel-defect-monitor
 
 # View service logs
+
 journalctl -u steel-defect-monitor -f
 
 # Check resource usage
+
 htop
-```
+```text
 
 ## Integration Examples
 
 ### SCADA Integration
 
 ```python
+
 # Connect to SCADA system
+
 from src.integrations.scada_connector import SCADAConnector
 
 scada = SCADAConnector(
@@ -358,17 +400,20 @@ scada = SCADAConnector(
 )
 
 # Read sensor values
+
 sensor_values = scada.read_sensors([
     'mold_temp_tag',
     'casting_speed_tag',
     'cooling_flow_tag'
 ])
-```
+```text
 
 ### PLC Integration
 
 ```python
+
 # Connect to PLC
+
 from src.integrations.plc_connector import PLCConnector
 
 plc = PLCConnector(
@@ -378,11 +423,12 @@ plc = PLCConnector(
 )
 
 # Read process data
+
 process_data = plc.read_data_block(
     db_number=1,
     start_address=0,
     size=100
 )
-```
+```text
 
 This real-time monitoring system provides comprehensive visibility into your steel casting operations, enabling proactive quality management and immediate response to potential defects.

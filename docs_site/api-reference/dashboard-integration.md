@@ -1,10 +1,12 @@
 # Dashboard Integration API
 
-The Steel Defect Prediction System provides a Dash-based dashboard with programmatic access through Python modules and callback interfaces. This page documents the integration patterns and programmatic APIs.
+The Steel Defect Prediction System provides a Dash-based dashboard with programmatic access through Python modules and
+callback interfaces. This page documents the integration patterns and programmatic APIs.
 
 ## Architecture Overview
 
-The system uses **Dash** (Plotly) for the web interface rather than traditional REST APIs. Integration is achieved through:
+The system uses **Dash** (Plotly) for the web interface rather than traditional REST APIs.
+Integration is achieved through:
 
 - **Python Module APIs**: Direct Python integration
 - **Dashboard Callbacks**: Real-time updates via Dash callbacks
@@ -23,12 +25,14 @@ from src.models.baseline_model import BaselineModel
 from src.models.lstm_model import LSTMModel
 
 # Initialize prediction engine
+
 engine = PredictionEngine()
 
 # Make predictions
+
 prediction = engine.predict(sensor_data)
 print(f"Defect probability: {prediction['defect_probability']}")
-```
+```text
 
 #### PredictionEngine Class
 
@@ -65,7 +69,7 @@ class PredictionEngine:
         Returns:
             List of prediction results
         """
-```
+```text
 
 ### Data Interface API
 
@@ -76,13 +80,15 @@ from src.data.data_connectors import DataConnector
 from src.features.feature_engineering import FeatureEngineer
 
 # Data access
+
 connector = DataConnector()
 data = connector.get_latest_data(limit=100)
 
 # Feature engineering
+
 engineer = FeatureEngineer()
 features = engineer.transform(data)
-```
+```text
 
 ## Dashboard Component APIs
 
@@ -99,11 +105,12 @@ from src.visualization.components import (
 )
 
 # Create component instances
+
 prediction_display = PredictionDisplay()
 model_comparison = ModelComparison()
 sensor_monitoring = SensorMonitoring()
 alert_management = AlertManagement()
-```
+```text
 
 ### PredictionDisplay Component
 
@@ -134,29 +141,36 @@ class PredictionDisplay:
         Returns:
             Updated component state
         """
-```
+```text
 
 #### Usage Example
 
 ```python
+
 # Initialize component
+
 display = PredictionDisplay()
 
 # Get layout for embedding
+
 layout = display.get_layout()
 
 # In Dash callback
+
 @app.callback(
     Output('prediction-display', 'children'),
     [Input('interval-component', 'n_intervals')]
 )
 def update_display(n):
+
     # Get latest predictions
+
     predictions = prediction_engine.get_latest_predictions()
     
     # Update display
+
     return display.update_predictions(predictions)
-```
+```text
 
 ### ModelComparison Component
 
@@ -182,7 +196,7 @@ class ModelComparison:
     
     def create_feature_importance(self, model_results: Dict) -> go.Figure:
         """Create feature importance comparison"""
-```
+```text
 
 #### Model Results Format
 
@@ -196,7 +210,9 @@ model_results = {
             'temperature': 0.35,
             'pressure': 0.28,
             'flow_rate': 0.20,
+
             # ...
+
         },
         'metrics': {                                      # Performance metrics
             'accuracy': 0.87,
@@ -206,11 +222,13 @@ model_results = {
         }
     },
     'LSTM': {
+
         # Similar structure for LSTM model
+
         'attention_weights': np.array([...])  # Additional for LSTM
     }
 }
-```
+```text
 
 ### SensorMonitoring Component
 
@@ -241,7 +259,7 @@ class SensorMonitoring:
         Returns:
             Alert status dictionary
         """
-```
+```text
 
 ## Data Formats
 
@@ -261,7 +279,9 @@ sensor_data = {
         "secondary_cooling_zones": [       # Multiple zones
             {"zone": 1, "water_flow": 50.2, "temperature": 800.1},
             {"zone": 2, "water_flow": 45.8, "temperature": 650.3},
+
             # ...
+
         ],
         "oscillation_frequency": 180.0,    # cycles/min
         "oscillation_amplitude": 4.5       # mm
@@ -273,7 +293,7 @@ sensor_data = {
         "tundish_temperature": 1545.2      # °C
     }
 }
-```
+```text
 
 ### Prediction Response Format
 
@@ -317,7 +337,7 @@ prediction_response = {
         "Check cooling water flow consistency"
     ]
 }
-```
+```text
 
 ## Dashboard Callbacks
 
@@ -344,17 +364,22 @@ def update_realtime_display(n_intervals, theme):
     Returns:
         Tuple of updated components
     """
+
     # Get latest predictions
+
     predictions = prediction_engine.get_latest_predictions()
     
     # Update chart
+
     fig = create_prediction_chart(predictions, theme)
     
     # Update confidence indicator
+
     confidence = predictions.get('confidence_score', 0)
     confidence_text = f"Confidence: {confidence:.1%}"
     
     # Update alert status
+
     alert_level = predictions.get('alert_level', 'low')
     alert_color = {
         'low': 'success',
@@ -363,7 +388,7 @@ def update_realtime_display(n_intervals, theme):
     }.get(alert_level, 'secondary')
     
     return fig, confidence_text, alert_color
-```
+```text
 
 ### Interactive Controls
 
@@ -389,7 +414,7 @@ def update_model_comparison(selected_models, selected_metric, model_results):
     return model_comparison.create_comparison_chart(
         selected_models, selected_metric, model_results
     )
-```
+```text
 
 ## Configuration API
 
@@ -417,7 +442,7 @@ dashboard_config = {
         "historical_days": 365
     }
 }
-```
+```text
 
 ### Model Configuration
 
@@ -446,7 +471,7 @@ model_config = {
         }
     }
 }
-```
+```text
 
 ## Integration Examples
 
@@ -459,17 +484,21 @@ import dash_bootstrap_components as dbc
 from src.visualization.components import ModelComparison, PredictionDisplay
 
 # Create custom dashboard
+
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 
 # Initialize components
+
 prediction_display = PredictionDisplay()
 model_comparison = ModelComparison()
 
 # Custom layout
+
 app.layout = dbc.Container([
     html.H1("Custom Steel Defect Dashboard"),
     
     # Real-time predictions
+
     dbc.Row([
         dbc.Col([
             html.H3("Real-time Predictions"),
@@ -477,6 +506,7 @@ app.layout = dbc.Container([
         ], width=8),
         
         # Alert panel
+
         dbc.Col([
             html.H3("Alerts"),
             html.Div(id="alert-panel")
@@ -484,6 +514,7 @@ app.layout = dbc.Container([
     ]),
     
     # Model comparison
+
     dbc.Row([
         dbc.Col([
             html.H3("Model Performance"),
@@ -492,6 +523,7 @@ app.layout = dbc.Container([
     ]),
     
     # Auto-refresh
+
     dcc.Interval(
         id='interval-component',
         interval=5000,  # Update every 5 seconds
@@ -501,7 +533,7 @@ app.layout = dbc.Container([
 
 if __name__ == '__main__':
     app.run_server(debug=True)
-```
+```text
 
 ### Programmatic Prediction
 
@@ -510,24 +542,28 @@ from src.inference.prediction_engine import PredictionEngine
 import pandas as pd
 
 # Initialize engine
+
 engine = PredictionEngine()
 
 # Load sensor data
+
 sensor_data = pd.read_csv('sensor_readings.csv')
 
 # Generate predictions
+
 predictions = []
 for _, row in sensor_data.iterrows():
     prediction = engine.predict(row.to_dict())
     predictions.append(prediction)
 
 # Analyze results
+
 results_df = pd.DataFrame(predictions)
 high_risk_casts = results_df[results_df['defect_probability'] > 0.8]
 
 print(f"High risk casts: {len(high_risk_casts)}")
 print(f"Average confidence: {results_df['confidence_score'].mean():.2f}")
-```
+```text
 
 ## Error Handling
 
@@ -548,7 +584,7 @@ except DataValidationError as e:
     print(f"Invalid data format: {e}")
 except ModelNotFoundError as e:
     print(f"Model not available: {e}")
-```
+```text
 
 ### Graceful Degradation
 
@@ -565,7 +601,7 @@ def safe_prediction(sensor_data):
             "alert_level": "unknown",
             "error": str(e)
         }
-```
+```text
 
 ---
 

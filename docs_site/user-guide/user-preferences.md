@@ -1,6 +1,7 @@
 # User Preferences
 
-The User Preferences system allows operators and administrators to customize their experience with the Steel Defect Prediction System according to their roles, responsibilities, and workflow needs.
+The User Preferences system allows operators and administrators to customize their experience with the Steel Defect
+Prediction System according to their roles, responsibilities, and workflow needs.
 
 ## Overview
 
@@ -18,7 +19,9 @@ User preferences cover:
 ### Widget Configuration
 
 ```python
+
 # Configure dashboard widgets
+
 dashboard_config = {
     'user_id': 'operator_001',
     'layout': 'grid',
@@ -50,12 +53,14 @@ dashboard_config = {
         }
     ]
 }
-```
+```text
 
 ### Layout Templates
 
 ```python
+
 # Predefined layout templates
+
 layout_templates = {
     'operator_view': {
         'description': 'Focused on real-time monitoring',
@@ -72,18 +77,21 @@ layout_templates = {
 }
 
 # Apply template
+
 from src.preferences.dashboard_manager import DashboardManager
 
 dashboard_mgr = DashboardManager()
 dashboard_mgr.apply_template('operator_view', user_id='operator_001')
-```
+```text
 
 ## Notification Preferences
 
 ### Alert Notification Settings
 
 ```python
+
 # Configure personal alert preferences
+
 alert_preferences = {
     'user_id': 'supervisor_002',
     'channels': {
@@ -102,12 +110,14 @@ alert_preferences = {
         'escalate_to': 'manager@company.com'
     }
 }
-```
+```text
 
 ### Custom Alert Rules
 
 ```python
+
 # User-specific alert conditions
+
 custom_alerts = {
     'user_id': 'quality_engineer_003',
     'custom_rules': [
@@ -125,14 +135,16 @@ custom_alerts = {
         }
     ]
 }
-```
+```text
 
 ## Data Visualization Preferences
 
 ### Chart Preferences
 
 ```python
+
 # Visualization preferences
+
 viz_preferences = {
     'user_id': 'analyst_004',
     'chart_settings': {
@@ -149,12 +161,14 @@ viz_preferences = {
         'missing_data_handling': 'interpolate'  # or 'skip', 'zero'
     }
 }
-```
+```text
 
 ### Custom Metrics
 
 ```python
+
 # Define user-specific metrics
+
 custom_metrics = {
     'user_id': 'process_engineer_005',
     'metrics': [
@@ -174,14 +188,16 @@ custom_metrics = {
         }
     ]
 }
-```
+```text
 
 ## Report Templates
 
 ### Custom Report Configuration
 
 ```python
+
 # Personal report templates
+
 report_templates = {
     'user_id': 'manager_006',
     'templates': [
@@ -210,12 +226,14 @@ report_templates = {
         }
     ]
 }
-```
+```text
 
 ### Report Filters
 
 ```python
+
 # Custom data filters for reports
+
 report_filters = {
     'user_id': 'quality_manager_007',
     'default_filters': {
@@ -230,14 +248,16 @@ report_filters = {
         'seasonal_adjustment': True
     }
 }
-```
+```text
 
 ## Accessibility and Localization
 
 ### Accessibility Settings
 
 ```python
+
 # Accessibility preferences
+
 accessibility_settings = {
     'user_id': 'operator_008',
     'visual': {
@@ -257,12 +277,14 @@ accessibility_settings = {
         'double_click_delay': 500  # milliseconds
     }
 }
-```
+```text
 
 ### Language and Localization
 
 ```python
+
 # Language preferences
+
 localization_settings = {
     'user_id': 'operator_009',
     'language': 'es',  # Spanish
@@ -276,14 +298,16 @@ localization_settings = {
         'currency_symbol': '$'
     }
 }
-```
+```text
 
 ## Theme and UI Preferences
 
 ### Theme Configuration
 
 ```python
+
 # UI theme preferences
+
 theme_preferences = {
     'user_id': 'night_operator_010',
     'theme': {
@@ -300,7 +324,7 @@ theme_preferences = {
         'transitions': True
     }
 }
-```
+```text
 
 ### Custom CSS
 
@@ -323,7 +347,7 @@ theme_preferences = {
 .user-custom-010 .alert-critical {
     animation: pulse 2s infinite;
 }
-```
+```text
 
 ## Preferences Management
 
@@ -333,9 +357,11 @@ theme_preferences = {
 from src.preferences.preference_manager import PreferenceManager
 
 # Initialize preference manager
+
 pref_manager = PreferenceManager()
 
 # Save user preferences
+
 pref_manager.save_preferences(
     user_id='operator_001',
     preferences={
@@ -347,16 +373,20 @@ pref_manager.save_preferences(
 )
 
 # Load user preferences
+
 user_prefs = pref_manager.load_preferences('operator_001')
 
 # Apply preferences to session
+
 pref_manager.apply_preferences(user_prefs)
-```
+```text
 
 ### Preference Inheritance
 
 ```python
+
 # Role-based preference inheritance
+
 role_hierarchy = {
     'operator': {
         'inherits_from': 'base_user',
@@ -373,29 +403,35 @@ role_hierarchy = {
 }
 
 # Apply role-based preferences
+
 pref_manager.apply_role_preferences(user_id='new_operator', role='operator')
-```
+```text
 
 ## Backup and Sync
 
 ### Preference Backup
 
 ```python
+
 # Backup user preferences
+
 backup_data = pref_manager.export_preferences(
     user_id='operator_001',
     include_personal_data=False  # Exclude sensitive information
 )
 
 # Save backup
+
 with open('user_preferences_backup.json', 'w') as f:
     json.dump(backup_data, f, indent=2)
-```
+```text
 
 ### Cross-device Sync
 
 ```python
+
 # Sync preferences across devices
+
 sync_config = {
     'user_id': 'mobile_operator_011',
     'devices': ['desktop_workstation', 'tablet_001', 'mobile_phone'],
@@ -408,29 +444,36 @@ sync_config = {
 }
 
 # Perform sync
+
 pref_manager.sync_across_devices(sync_config)
-```
+```text
 
 ## API Endpoints
 
 ### REST API for Preferences
 
 ```python
+
 # Get user preferences
+
 GET /api/v1/users/{user_id}/preferences
 
 # Update specific preference section
+
 PATCH /api/v1/users/{user_id}/preferences/dashboard
 
 # Reset to defaults
+
 POST /api/v1/users/{user_id}/preferences/reset
 
 # Export preferences
+
 GET /api/v1/users/{user_id}/preferences/export
 
 # Import preferences
+
 POST /api/v1/users/{user_id}/preferences/import
-```
+```text
 
 ### Example API Usage
 
@@ -438,6 +481,7 @@ POST /api/v1/users/{user_id}/preferences/import
 import requests
 
 # Update dashboard preferences
+
 response = requests.patch(
     'http://localhost:8000/api/v1/users/operator_001/preferences/dashboard',
     json={
@@ -450,6 +494,6 @@ response = requests.patch(
 
 if response.status_code == 200:
     print("Preferences updated successfully")
-```
+```text
 
 This comprehensive preference system ensures that each user can tailor the Steel Defect Prediction System to their specific needs and workflow requirements.

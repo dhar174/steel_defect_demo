@@ -1,12 +1,13 @@
 # Data Endpoints
 
-The Data API provides access to sensor data, historical records, and data management capabilities for the Steel Defect Prediction System.
+The Data API provides access to sensor data, historical records, and data management capabilities for the Steel
+Defect Prediction System.
 
 ## Base URL
 
-```
+```text
 http://localhost:8000/api/v1/data
-```
+```text
 
 ## Endpoints Overview
 
@@ -53,7 +54,7 @@ Get the most recent sensor readings from all production lines.
     }
   }
 }
-```
+```text
 
 ### Query Parameters
 
@@ -97,7 +98,7 @@ response = requests.get(
 )
 
 data = response.json()
-```
+```text
 
 ### Response
 
@@ -123,7 +124,7 @@ data = response.json()
     "parameters": ["mold_temperature", "casting_speed"]
   }
 }
-```
+```text
 
 ## Submit Sensor Data
 
@@ -151,7 +152,7 @@ Submit new sensor readings to the system.
     "flow_sensor": "warning"
   }
 }
-```
+```text
 
 ### Response
 
@@ -166,7 +167,7 @@ Submit new sensor readings to the system.
     "errors": []
   }
 }
-```
+```text
 
 ## Casting Information
 
@@ -208,7 +209,7 @@ Retrieve information about casting operations.
     "offset": 0
   }
 }
-```
+```text
 
 ## Quality Data
 
@@ -251,7 +252,7 @@ Access quality inspection data and test results.
     }
   ]
 }
-```
+```text
 
 ## Data Export
 
@@ -277,7 +278,7 @@ Export data in various formats for analysis or reporting.
     "compression": "gzip"
   }
 }
-```
+```text
 
 ### Response
 
@@ -289,7 +290,7 @@ Export data in various formats for analysis or reporting.
   "download_url": null,
   "file_size_estimate": "2.5 MB"
 }
-```
+```text
 
 ### Check Export Status
 
@@ -303,7 +304,7 @@ Export data in various formats for analysis or reporting.
   "file_size": "2.3 MB",
   "expires_at": "2024-01-16T10:35:00Z"
 }
-```
+```text
 
 ## Data Validation
 
@@ -322,7 +323,7 @@ Validate sensor data before submission.
   },
   "validation_rules": ["range_check", "trend_analysis", "anomaly_detection"]
 }
-```
+```text
 
 ### Response
 
@@ -349,7 +350,7 @@ Validate sensor data before submission.
     ]
   }
 }
-```
+```text
 
 ## Data Statistics
 
@@ -390,7 +391,7 @@ Get statistical summaries of sensor data.
     "r_squared": 0.15
   }
 }
-```
+```text
 
 ## Real-time Data Stream
 
@@ -409,7 +410,9 @@ def on_message(ws, message):
     print(f"Line {data['line_id']}: Temp={data['mold_temperature']}")
 
 def on_open(ws):
+
     # Subscribe to specific parameters
+
     ws.send(json.dumps({
         "action": "subscribe",
         "line_id": "LINE_01",
@@ -424,7 +427,7 @@ ws = websocket.WebSocketApp(
 )
 
 ws.run_forever()
-```
+```text
 
 ## Error Handling
 
@@ -452,6 +455,6 @@ ws.run_forever()
   },
   "request_id": "req_67890"
 }
-```
+```text
 
 This Data API provides comprehensive access to all sensor data and operational information needed for effective steel defect monitoring and analysis.

@@ -1,12 +1,13 @@
 # Monitoring Endpoints
 
-The Monitoring API provides system health, performance metrics, and operational monitoring capabilities for the Steel Defect Prediction System.
+The Monitoring API provides system health, performance metrics, and operational monitoring capabilities for the
+Steel Defect Prediction System.
 
 ## Base URL
 
-```
+```text
 http://localhost:8000/api/v1/monitoring
-```
+```text
 
 ## Endpoints Overview
 
@@ -39,7 +40,7 @@ Basic health check endpoint for load balancers and monitoring systems.
     "message_queue": "healthy"
   }
 }
-```
+```text
 
 ### Status Codes
 
@@ -101,7 +102,7 @@ Comprehensive health information including component details.
     "notification_service": "connected"
   }
 }
-```
+```text
 
 ## Performance Metrics
 
@@ -151,25 +152,32 @@ Retrieve system performance metrics in Prometheus format.
     }
   }
 }
-```
+```text
 
 ### Response (Prometheus Format)
 
-```
+```text
+
 # HELP steel_predictions_total Total number of predictions made
+
 # TYPE steel_predictions_total counter
+
 steel_predictions_total 25689
 
 # HELP steel_prediction_accuracy Current model accuracy
+
 # TYPE steel_prediction_accuracy gauge  
+
 steel_prediction_accuracy 0.923
 
 # HELP steel_response_time_seconds Response time in seconds
+
 # TYPE steel_response_time_seconds histogram
+
 steel_response_time_seconds_bucket{le="0.1"} 12450
 steel_response_time_seconds_bucket{le="0.5"} 24890
 steel_response_time_seconds_bucket{le="1.0"} 25689
-```
+```text
 
 ## System Status
 
@@ -218,7 +226,7 @@ Overall system operational status with summary information.
     "data_points_received": 15600
   }
 }
-```
+```text
 
 ## Active Alerts
 
@@ -275,7 +283,7 @@ Retrieve current system alerts and notifications.
     "unacknowledged": 3
   }
 }
-```
+```text
 
 ## Acknowledge Alerts
 
@@ -291,7 +299,7 @@ Acknowledge one or more system alerts.
   "acknowledged_by": "operator_001",
   "note": "Investigating sensor communication issue"
 }
-```
+```text
 
 ### Response
 
@@ -312,7 +320,7 @@ Acknowledge one or more system alerts.
     }
   ]
 }
-```
+```text
 
 ## Performance History
 
@@ -359,7 +367,7 @@ Historical performance metrics for trend analysis.
     "trend": "increasing"
   }
 }
-```
+```text
 
 ## System Logs
 
@@ -412,7 +420,7 @@ Access system logs for troubleshooting and analysis.
     "offset": 0
   }
 }
-```
+```text
 
 ## WebSocket Monitoring
 
@@ -434,7 +442,9 @@ def on_message(ws, message):
         print(f"New alert: {data['severity']} - {data['title']}")
 
 def on_open(ws):
+
     # Subscribe to specific monitoring channels
+
     ws.send(json.dumps({
         "action": "subscribe",
         "channels": ["system_metrics", "alerts", "performance"]
@@ -448,7 +458,7 @@ ws = websocket.WebSocketApp(
 )
 
 ws.run_forever()
-```
+```text
 
 ## Custom Monitoring
 
@@ -472,7 +482,7 @@ Submit custom application metrics.
     }
   ]
 }
-```
+```text
 
 ### Response
 
@@ -482,6 +492,6 @@ Submit custom application metrics.
   "rejected_metrics": 0,
   "processing_time_ms": 12
 }
-```
+```text
 
 This monitoring API provides comprehensive observability into the Steel Defect Prediction System, enabling proactive maintenance and optimization of system performance.

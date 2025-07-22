@@ -1,6 +1,7 @@
 # System Architecture Overview
 
-This document provides a comprehensive overview of the Steel Defect Prediction System architecture, including components, data flow, and integration patterns.
+This document provides a comprehensive overview of the Steel Defect Prediction System architecture, including
+components, data flow, and integration patterns.
 
 ## High-Level Architecture
 
@@ -65,27 +66,29 @@ graph TB
     style P fill:#e8f5e8
     style K fill:#fff3e0
     style N fill:#ffebee
-```
+```text
 
 ## Component Architecture
 
 ### 1. Data Layer
 
 #### Data Sources
+
 - **Sensor Systems**: Real-time sensor data streams
 - **Historical Database**: Historical casting data
 - **Configuration Store**: System and model configurations
 - **External Systems**: ERP, MES integration
 
 #### Data Storage
-```
+
+```text
 data/
 ├── raw/                 # Raw sensor data
 ├── processed/          # Cleaned and validated data
 ├── features/           # Engineered features
 ├── models/             # Trained model artifacts
 └── results/            # Prediction results
-```
+```text
 
 ### 2. Processing Layer
 
@@ -108,9 +111,10 @@ graph LR
     B --> G
     B --> H
     B --> I
-```
+```text
 
 #### Key Components
+
 - **Data Ingestion**: `src/connectors/data_connectors.py`
 - **Feature Engineering**: `src/features/feature_engineering.py`
 - **Data Validation**: `src/data/data_validation.py`
@@ -160,9 +164,10 @@ graph TB
     
     J --> K
     J --> L
-```
+```text
 
 #### Model Components
+
 - **Baseline Model**: XGBoost classifier with engineered features
 - **Deep Learning**: LSTM for sequence modeling
 - **Ensemble**: Weighted combination of multiple models
@@ -173,7 +178,9 @@ graph TB
 #### Service Architecture
 
 ```python
+
 # Core application structure
+
 src/
 ├── models/              # ML model implementations
 │   ├── baseline_model.py
@@ -191,7 +198,7 @@ src/
 └── utils/              # Shared utilities
     ├── config.py
     └── logging.py
-```
+```text
 
 #### API Design
 
@@ -229,7 +236,7 @@ graph LR
     F --> J
     G --> K
     H --> J
-```
+```text
 
 ### 5. User Interface Layer
 
@@ -238,7 +245,9 @@ graph LR
 The dashboard is built using Dash (Plotly) with a component-based architecture:
 
 ```python
+
 # Dashboard component structure
+
 src/visualization/
 ├── dashboard.py         # Main dashboard app
 ├── components/          # Reusable UI components
@@ -251,7 +260,7 @@ src/visualization/
 ├── layouts/            # Page layouts
 ├── callbacks/          # Interactive callbacks
 └── utils/             # UI utilities
-```
+```text
 
 ## Data Flow Architecture
 
@@ -277,7 +286,7 @@ sequenceDiagram
     
     Note over IE: Multiple model<br/>ensemble
     Note over AS: Configurable<br/>thresholds
-```
+```text
 
 ### Batch Processing Flow
 
@@ -297,7 +306,7 @@ sequenceDiagram
     MR->>IE: Updated models
     
     Note over MT: Cross-validation<br/>and hyperparameter<br/>optimization
-```
+```text
 
 ## Technology Stack
 
@@ -328,25 +337,33 @@ sequenceDiagram
 ### Development Environment
 
 ```yaml
+
 # Local development stack
+
 services:
   app:
     build: .
     ports:
+
       - "8050:8050"
+
     volumes:
+
       - .:/app
+
     environment:
+
       - ENV=development
       
   database:
     image: postgres:13
     environment:
+
       - POSTGRES_DB=steel_defect
       
   redis:
     image: redis:6-alpine
-```
+```text
 
 ### Production Environment
 
@@ -394,7 +411,7 @@ graph TB
     
     H --> I
     H --> J
-```
+```text
 
 ## Security Architecture
 
@@ -426,7 +443,7 @@ graph LR
     E --> F
     E --> G
     E --> H
-```
+```text
 
 ### Security Measures
 
@@ -479,7 +496,7 @@ graph LR
     
     B --> C
     A --> C
-```
+```text
 
 ### Integration Methods
 

@@ -1,15 +1,18 @@
 # Dashboard Overview
 
-The Steel Defect Prediction System dashboard provides a comprehensive real-time monitoring interface for steel casting operations. This guide walks you through all major features and components.
+The Steel Defect Prediction System dashboard provides a comprehensive real-time monitoring interface for steel casting operations.
+This guide walks you through all major features and components.
 
 ## Dashboard Access
 
 The dashboard is accessible at `http://localhost:8050` when running locally, or at your configured production URL.
 
 ```bash
+
 # Start the dashboard
+
 python scripts/run_dashboard.py
-```
+```text
 
 ## Main Interface Layout
 
@@ -32,6 +35,7 @@ The central area displays the selected dashboard view with interactive charts, t
 ### Side Panel (when applicable)
 
 Some views include a side panel with:
+
 - Filter controls
 - Configuration options
 - Additional metrics
@@ -44,19 +48,22 @@ Some views include a side panel with:
 The real-time monitoring view provides:
 
 #### Live Sensor Readings
+
 - **Temperature**: Mold temperature readings
 - **Pressure**: Casting pressure metrics
 - **Flow Rates**: Cooling water and steel flow
 - **Speed**: Casting speed monitoring
 
 #### Prediction Display
+
 - **Defect Probability**: Real-time defect likelihood (0-1 scale)
 - **Confidence Score**: Model confidence in predictions
 - **Alert Level**: Visual indicators (Green/Yellow/Red)
 - **Trend Indicators**: Directional arrows showing trends
 
 #### Key Metrics Cards
-```
+
+```text
 ┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐
 │ Current Defect  │ │ Avg Confidence  │ │ Active Alerts   │
 │ Probability     │ │                 │ │                 │
@@ -64,7 +71,7 @@ The real-time monitoring view provides:
 │     0.15        │ │     0.89        │ │       2         │
 │                 │ │                 │ │                 │
 └─────────────────┘ └─────────────────┘ └─────────────────┘
-```
+```text
 
 ### 2. Model Comparison
 
@@ -73,6 +80,7 @@ The real-time monitoring view provides:
 Compare performance between different ML models:
 
 #### Performance Metrics
+
 - **Accuracy**: Overall prediction accuracy
 - **Precision**: True positive rate
 - **Recall**: Sensitivity measure
@@ -80,13 +88,15 @@ Compare performance between different ML models:
 - **AUC-ROC**: Area under ROC curve
 
 #### Visualization Charts
+
 - **ROC Curves**: Model discrimination ability
 - **Precision-Recall Curves**: Performance trade-offs
 - **Feature Importance**: Variable significance
 - **Confusion Matrix**: Classification accuracy breakdown
 
 #### Side-by-side Comparison
-```
+
+```text
 Model Performance Comparison
                     XGBoost    LSTM     Ensemble
 Accuracy            0.87       0.89     0.91
@@ -94,7 +104,7 @@ Precision           0.84       0.88     0.90
 Recall              0.82       0.86     0.89
 F1-Score            0.83       0.87     0.89
 Training Time       2.3 min    8.7 min  11.2 min
-```
+```text
 
 ### 3. Historical Analysis
 
@@ -103,12 +113,14 @@ Training Time       2.3 min    8.7 min  11.2 min
 Analyze trends and patterns over time:
 
 #### Time Series Charts
+
 - **Defect Rate Trends**: Historical defect rates
 - **Sensor Pattern Analysis**: Long-term sensor behavior
 - **Model Performance**: Accuracy trends over time
 - **Process Stability**: Variance and consistency metrics
 
 #### Interactive Features
+
 - **Date Range Selection**: Choose analysis period
 - **Zoom and Pan**: Detailed chart exploration
 - **Data Export**: Download analysis results
@@ -121,20 +133,22 @@ Analyze trends and patterns over time:
 Configure and manage the alerting system:
 
 #### Alert Configuration
+
 - **Threshold Settings**: Defect probability limits
 - **Notification Methods**: Email, SMS, dashboard
 - **Escalation Rules**: Multi-level alert hierarchy
 - **Time-based Rules**: Different thresholds by shift/time
 
 #### Active Alerts Dashboard
-```
+
+```text
 Current Alerts
 ┌─────────────────────────────────────────────────────────┐
 │ 🔴 HIGH: Defect probability 0.85 (Threshold: 0.8)      │
 │ 🟡 MED:  Temperature variance above normal              │
 │ 🟡 MED:  Model confidence below 0.7                    │
 └─────────────────────────────────────────────────────────┘
-```
+```text
 
 ## Interactive Controls
 
@@ -142,21 +156,21 @@ Current Alerts
 
 Most views include time range controls:
 
-```
+```text
 [Last Hour] [Last 4 Hours] [Last Day] [Custom Range]
-```
+```text
 
 ### Refresh Controls
 
-```
+```text
 Auto-refresh: [ON/OFF]  Interval: [5s] [15s] [30s] [1m]
-```
+```text
 
 ### Export Options
 
-```
+```text
 [Export CSV] [Export PNG] [Generate Report]
-```
+```text
 
 ## Dashboard Configuration
 
@@ -187,16 +201,19 @@ The dashboard supports multiple themes:
 The dashboard is optimized for various screen sizes:
 
 ### Desktop (>1200px)
+
 - Full feature set
 - Multi-panel layout
 - Detailed charts and tables
 
 ### Tablet (768px - 1200px)
+
 - Responsive layout
 - Simplified navigation
 - Touch-friendly controls
 
 ### Mobile (< 768px)
+
 - Essential features only
 - Vertical layout
 - Large touch targets
@@ -215,6 +232,7 @@ The dashboard implements several performance optimizations:
 ### Browser Requirements
 
 For optimal performance:
+
 - **RAM**: 2GB+ available memory
 - **Network**: Stable internet connection
 - **Browser**: Modern browser with JavaScript enabled
@@ -234,17 +252,20 @@ For optimal performance:
 ### Common Issues
 
 !!! warning "Dashboard Not Loading"
+
     - Check that the dashboard service is running
     - Verify port 8050 is not blocked by firewall
     - Clear browser cache and cookies
 
 !!! warning "Slow Performance"
+
     - Reduce auto-refresh frequency
     - Clear browser cache
     - Check network connectivity
     - Restart dashboard service
 
 !!! warning "Data Not Updating"
+
     - Check data source connections
     - Verify auto-refresh is enabled
     - Check for JavaScript errors in browser console
@@ -259,7 +280,7 @@ console.log(window.WebSocket);
 
 // Check for JavaScript errors
 console.log('Dashboard loaded successfully');
-```
+```text
 
 ## Getting Help
 
@@ -272,6 +293,7 @@ console.log('Dashboard loaded successfully');
 
 Next: [API Reference →](../api-reference/dashboard-integration.md)
 =======
+
 ## Introduction
 
 The Steel Defect Detection Dashboard provides a comprehensive interface for
@@ -287,7 +309,7 @@ Default local access is typically available at:
 
 ```http
 http://localhost:8501
-```
+```text
 
 ### Authentication
 

@@ -1,6 +1,7 @@
 # Historical Analysis
 
-The Historical Analysis module provides comprehensive tools for analyzing past casting operations, identifying patterns, and improving future predictions based on historical data trends.
+The Historical Analysis module provides comprehensive tools for analyzing past casting operations, identifying patterns,
+and improving future predictions based on historical data trends.
 
 ## Overview
 
@@ -22,6 +23,7 @@ Historical data is collected from multiple sources:
 from src.analysis.historical_analyzer import HistoricalAnalyzer
 
 # Initialize analyzer with data sources
+
 analyzer = HistoricalAnalyzer(
     data_sources=[
         'sensor_data',
@@ -31,12 +33,14 @@ analyzer = HistoricalAnalyzer(
     ],
     date_range=('2023-01-01', '2024-01-01')
 )
-```
+```text
 
 ### Data Loading
 
 ```python
+
 # Load historical dataset
+
 historical_data = analyzer.load_data(
     table='production_history',
     filters={
@@ -48,20 +52,23 @@ historical_data = analyzer.load_data(
 
 print(f"Loaded {len(historical_data)} records")
 print(f"Date range: {historical_data['timestamp'].min()} to {historical_data['timestamp'].max()}")
-```
+```text
 
 ## Trend Analysis
 
 ### Defect Rate Trends
 
 ```python
+
 # Analyze defect rate trends over time
+
 defect_trends = analyzer.analyze_defect_trends(
     groupby='month',
     metrics=['defect_rate', 'severity_level', 'defect_type']
 )
 
 # Visualize trends
+
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -70,12 +77,14 @@ sns.lineplot(data=defect_trends, x='month', y='defect_rate')
 plt.title('Monthly Defect Rate Trends')
 plt.ylabel('Defect Rate (%)')
 plt.show()
-```
+```text
 
 ### Process Parameter Trends
 
 ```python
+
 # Analyze key process parameters over time
+
 parameter_trends = analyzer.analyze_parameter_trends(
     parameters=[
         'mold_temperature',
@@ -87,6 +96,7 @@ parameter_trends = analyzer.analyze_parameter_trends(
 )
 
 # Multi-parameter trend visualization
+
 fig, axes = plt.subplots(2, 2, figsize=(15, 10))
 parameters = ['mold_temperature', 'casting_speed', 'cooling_water_flow', 'steel_composition']
 
@@ -98,14 +108,16 @@ for i, param in enumerate(parameters):
 
 plt.tight_layout()
 plt.show()
-```
+```text
 
 ## Correlation Analysis
 
 ### Parameter Correlation
 
 ```python
+
 # Calculate correlation between process parameters and defect occurrence
+
 correlation_matrix = analyzer.calculate_correlations(
     target='defect_probability',
     features=[
@@ -118,16 +130,19 @@ correlation_matrix = analyzer.calculate_correlations(
 )
 
 # Visualize correlation matrix
+
 plt.figure(figsize=(10, 8))
 sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', center=0)
 plt.title('Process Parameter Correlations with Defect Probability')
 plt.show()
-```
+```text
 
 ### Cross-correlation Analysis
 
 ```python
+
 # Time-lagged correlation analysis
+
 cross_correlations = analyzer.cross_correlation_analysis(
     primary_signal='mold_temperature',
     secondary_signal='defect_rate',
@@ -135,6 +150,7 @@ cross_correlations = analyzer.cross_correlation_analysis(
 )
 
 # Plot cross-correlation
+
 plt.figure(figsize=(10, 6))
 plt.plot(cross_correlations['lag'], cross_correlations['correlation'])
 plt.axhline(y=0, color='k', linestyle='--', alpha=0.5)
@@ -143,7 +159,7 @@ plt.ylabel('Cross-correlation')
 plt.title('Cross-correlation: Mold Temperature vs Defect Rate')
 plt.grid(True, alpha=0.3)
 plt.show()
-```
+```text
 
 ## Pattern Detection
 
@@ -153,6 +169,7 @@ plt.show()
 from src.analysis.pattern_detector import SeasonalPatternDetector
 
 # Detect seasonal patterns in defect occurrence
+
 seasonal_detector = SeasonalPatternDetector()
 seasonal_patterns = seasonal_detector.detect_patterns(
     data=historical_data,
@@ -161,6 +178,7 @@ seasonal_patterns = seasonal_detector.detect_patterns(
 )
 
 # Visualize seasonal patterns
+
 fig, axes = plt.subplots(2, 2, figsize=(15, 10))
 periods = ['hourly', 'daily', 'weekly', 'monthly']
 
@@ -173,7 +191,7 @@ for i, period in enumerate(periods):
 
 plt.tight_layout()
 plt.show()
-```
+```text
 
 ### Anomaly Detection
 
@@ -181,6 +199,7 @@ plt.show()
 from src.analysis.anomaly_detector import HistoricalAnomalyDetector
 
 # Detect historical anomalies
+
 anomaly_detector = HistoricalAnomalyDetector(
     method='isolation_forest',
     contamination=0.1  # 10% expected anomalies
@@ -192,6 +211,7 @@ anomalies = anomaly_detector.detect_anomalies(
 )
 
 # Visualize anomalies
+
 plt.figure(figsize=(12, 8))
 plt.scatter(historical_data['timestamp'], historical_data['defect_rate'], 
            c='blue', alpha=0.6, label='Normal')
@@ -203,7 +223,7 @@ plt.title('Historical Anomalies in Defect Rate')
 plt.legend()
 plt.xticks(rotation=45)
 plt.show()
-```
+```text
 
 ## Root Cause Analysis
 
@@ -213,12 +233,15 @@ plt.show()
 from src.analysis.root_cause_analyzer import RootCauseAnalyzer
 
 # Perform root cause analysis for high defect periods
+
 rca_analyzer = RootCauseAnalyzer()
 
 # Identify periods with high defect rates
+
 high_defect_periods = historical_data[historical_data['defect_rate'] > 15]
 
 # Analyze contributing factors
+
 root_causes = rca_analyzer.analyze_factors(
     high_defect_data=high_defect_periods,
     normal_data=historical_data[historical_data['defect_rate'] <= 5],
@@ -233,10 +256,11 @@ root_causes = rca_analyzer.analyze_factors(
 )
 
 # Display top contributing factors
+
 print("Top Contributing Factors to High Defect Rates:")
 for factor, importance in root_causes.items():
     print(f"  {factor}: {importance:.3f}")
-```
+```text
 
 ### Decision Tree Analysis
 
@@ -244,6 +268,7 @@ for factor, importance in root_causes.items():
 from sklearn.tree import DecisionTreeClassifier, plot_tree
 
 # Build decision tree for defect prediction
+
 features = ['mold_temperature', 'casting_speed', 'cooling_water_flow', 
            'oxygen_content', 'carbon_content']
 
@@ -254,12 +279,13 @@ dt_model = DecisionTreeClassifier(max_depth=5, random_state=42)
 dt_model.fit(X, y)
 
 # Visualize decision tree
+
 plt.figure(figsize=(20, 10))
 plot_tree(dt_model, feature_names=features, class_names=['Normal', 'High Defect'],
           filled=True, fontsize=10)
 plt.title('Decision Tree for Defect Prediction')
 plt.show()
-```
+```text
 
 ## Time Series Analysis
 
@@ -269,11 +295,13 @@ plt.show()
 from statsmodels.tsa.seasonal import seasonal_decompose
 
 # Decompose time series into trend, seasonal, and residual components
+
 defect_ts = historical_data.set_index('timestamp')['defect_rate'].resample('D').mean()
 
 decomposition = seasonal_decompose(defect_ts, model='additive', period=7)
 
 # Plot decomposition
+
 fig, axes = plt.subplots(4, 1, figsize=(12, 10))
 decomposition.observed.plot(ax=axes[0], title='Original')
 decomposition.trend.plot(ax=axes[1], title='Trend')
@@ -281,7 +309,7 @@ decomposition.seasonal.plot(ax=axes[2], title='Seasonal')
 decomposition.resid.plot(ax=axes[3], title='Residual')
 plt.tight_layout()
 plt.show()
-```
+```text
 
 ### Forecast Analysis
 
@@ -289,15 +317,18 @@ plt.show()
 from statsmodels.tsa.arima.model import ARIMA
 
 # ARIMA forecasting for defect rates
+
 model = ARIMA(defect_ts, order=(2, 1, 2))
 fitted_model = model.fit()
 
 # Generate forecast
+
 forecast = fitted_model.forecast(steps=30)  # 30 days ahead
 forecast_index = pd.date_range(start=defect_ts.index[-1] + pd.Timedelta(days=1), 
                               periods=30, freq='D')
 
 # Plot historical data and forecast
+
 plt.figure(figsize=(12, 6))
 plt.plot(defect_ts.index[-90:], defect_ts[-90:], label='Historical', color='blue')
 plt.plot(forecast_index, forecast, label='Forecast', color='red', linestyle='--')
@@ -311,14 +342,16 @@ plt.title('Defect Rate Forecast')
 plt.legend()
 plt.grid(True, alpha=0.3)
 plt.show()
-```
+```text
 
 ## Performance Analysis
 
 ### Production Efficiency
 
 ```python
+
 # Analyze production efficiency metrics
+
 efficiency_metrics = analyzer.calculate_efficiency_metrics(
     metrics=[
         'overall_equipment_effectiveness',
@@ -331,6 +364,7 @@ efficiency_metrics = analyzer.calculate_efficiency_metrics(
 )
 
 # Efficiency trend analysis
+
 plt.figure(figsize=(12, 8))
 for steel_grade in efficiency_metrics['steel_grade'].unique():
     grade_data = efficiency_metrics[efficiency_metrics['steel_grade'] == steel_grade]
@@ -343,12 +377,14 @@ plt.title('OEE Trends by Steel Grade')
 plt.legend()
 plt.grid(True, alpha=0.3)
 plt.show()
-```
+```text
 
 ### Quality Benchmarking
 
 ```python
+
 # Benchmark against industry standards or internal targets
+
 benchmarks = {
     'defect_rate_target': 5.0,  # Target: < 5%
     'first_pass_yield_target': 95.0,  # Target: > 95%
@@ -362,6 +398,7 @@ performance_vs_benchmark = analyzer.benchmark_performance(
 )
 
 # Visualize performance vs benchmarks
+
 fig, axes = plt.subplots(1, 3, figsize=(15, 5))
 metrics = ['defect_rate', 'first_pass_yield', 'oee']
 
@@ -379,7 +416,7 @@ for i, metric in enumerate(metrics):
 
 plt.tight_layout()
 plt.show()
-```
+```text
 
 ## Report Generation
 
@@ -389,6 +426,7 @@ plt.show()
 from src.reporting.historical_reporter import HistoricalReporter
 
 # Generate comprehensive historical analysis report
+
 reporter = HistoricalReporter()
 report = reporter.generate_report(
     data=historical_data,
@@ -404,13 +442,16 @@ report = reporter.generate_report(
 )
 
 # Save report
+
 reporter.save_report(report, 'reports/historical_analysis_2023.html')
-```
+```text
 
 ### Custom Analysis Templates
 
 ```python
+
 # Create custom analysis template
+
 template = {
     'title': 'Monthly Quality Review',
     'sections': [
@@ -433,7 +474,8 @@ template = {
 }
 
 # Generate report from template
+
 custom_report = reporter.generate_from_template(template, historical_data)
-```
+```text
 
 This historical analysis framework provides deep insights into your steel casting operations, enabling data-driven improvements and proactive quality management.

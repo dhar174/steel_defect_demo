@@ -4,9 +4,9 @@ The Prediction API provides real-time defect prediction capabilities for continu
 
 ## Base URL
 
-```
+```text
 http://localhost:8000/api/v1/predictions
-```
+```text
 
 ## Endpoints Overview
 
@@ -44,7 +44,7 @@ Create a new defect prediction based on sensor data.
     "timestamp": "2024-01-15T10:30:00Z"
   }
 }
-```
+```text
 
 ### Response
 
@@ -71,7 +71,7 @@ Create a new defect prediction based on sensor data.
   },
   "timestamp": "2024-01-15T10:30:00.123Z"
 }
-```
+```text
 
 ### Example Usage
 
@@ -79,6 +79,7 @@ Create a new defect prediction based on sensor data.
 import requests
 
 # Prediction request
+
 response = requests.post(
     'http://localhost:8000/api/v1/predictions',
     headers={
@@ -104,7 +105,7 @@ response = requests.post(
 prediction = response.json()
 print(f"Defect probability: {prediction['defect_probability']:.3f}")
 print(f"Risk level: {prediction['risk_level']}")
-```
+```text
 
 ## Get Prediction by ID
 
@@ -128,7 +129,7 @@ Retrieve a specific prediction by its ID.
   "created_at": "2024-01-15T10:30:00.123Z",
   "model_version": "v2.1.0"
 }
-```
+```text
 
 ## List Predictions
 
@@ -153,7 +154,9 @@ Retrieve a list of predictions with optional filtering.
 ### Example Request
 
 ```python
+
 # List recent high-risk predictions
+
 response = requests.get(
     'http://localhost:8000/api/v1/predictions',
     headers={'Authorization': 'Bearer your_access_token'},
@@ -165,7 +168,7 @@ response = requests.get(
 )
 
 predictions = response.json()
-```
+```text
 
 ### Response
 
@@ -186,7 +189,7 @@ predictions = response.json()
     "has_next": true
   }
 }
-```
+```text
 
 ## Batch Predictions
 
@@ -221,7 +224,7 @@ Process multiple sensor readings in a single request for improved efficiency.
     "async_processing": false
   }
 }
-```
+```text
 
 ### Response
 
@@ -247,7 +250,7 @@ Process multiple sensor readings in a single request for improved efficiency.
     }
   ]
 }
-```
+```text
 
 ## Real-time Prediction Stream
 
@@ -266,13 +269,16 @@ def on_message(ws, message):
     print(f"New prediction: {prediction['defect_probability']:.3f}")
 
 def on_open(ws):
+
     # Subscribe to specific production line
+
     ws.send(json.dumps({
         "action": "subscribe",
         "line_id": "LINE_01"
     }))
 
 # Connect to WebSocket
+
 ws = websocket.WebSocketApp(
     "ws://localhost:8000/api/v1/predictions/stream",
     header={"Authorization": "Bearer your_access_token"},
@@ -281,7 +287,7 @@ ws = websocket.WebSocketApp(
 )
 
 ws.run_forever()
-```
+```text
 
 ### SSE Connection
 
@@ -289,6 +295,7 @@ ws.run_forever()
 import requests
 
 # Stream predictions via SSE
+
 response = requests.get(
     'http://localhost:8000/api/v1/predictions/stream',
     headers={
@@ -302,7 +309,7 @@ for line in response.iter_lines():
     if line.startswith(b'data: '):
         data = json.loads(line[6:])
         print(f"Prediction: {data['defect_probability']:.3f}")
-```
+```text
 
 ## Model Information
 
@@ -325,7 +332,7 @@ Get information about the current prediction model.
   "supported_steel_grades": ["304L", "316L", "410"],
   "update_frequency": "weekly"
 }
-```
+```text
 
 ## Feature Importance
 
@@ -348,7 +355,7 @@ Get global feature importance for the prediction model.
   "model_version": "v2.1.0",
   "calculation_date": "2024-01-15T12:00:00Z"
 }
-```
+```text
 
 ## Error Responses
 
@@ -378,7 +385,7 @@ Get global feature importance for the prediction model.
   "request_id": "req_12345",
   "timestamp": "2024-01-15T10:30:00Z"
 }
-```
+```text
 
 ## Rate Limiting
 
@@ -390,11 +397,11 @@ Rate limits apply to prediction endpoints:
 
 Rate limit headers are included in responses:
 
-```
+```text
 X-RateLimit-Limit: 1000
 X-RateLimit-Remaining: 997
 X-RateLimit-Reset: 1640995200
-```
+```text
 
 ## SDK Examples
 
@@ -409,6 +416,7 @@ client = SteelDefectClient(
 )
 
 # Simple prediction
+
 prediction = client.predictions.create({
     'mold_temperature': 1525.4,
     'casting_speed': 1.12,
@@ -416,15 +424,17 @@ prediction = client.predictions.create({
 })
 
 # Batch predictions
+
 batch_result = client.predictions.create_batch([
     {'mold_temperature': 1525.4, 'casting_speed': 1.12},
     {'mold_temperature': 1530.1, 'casting_speed': 1.08}
 ])
 
 # Stream predictions
+
 for prediction in client.predictions.stream():
     print(f"Real-time prediction: {prediction.defect_probability}")
-```
+```text
 
 ### JavaScript SDK
 
@@ -450,6 +460,6 @@ const stream = api.predictions.stream();
 stream.on('prediction', (data) => {
     console.log('New prediction:', data.defect_probability);
 });
-```
+```text
 
 This prediction API provides comprehensive capabilities for integrating defect prediction into your steel casting operations with high performance and reliability.

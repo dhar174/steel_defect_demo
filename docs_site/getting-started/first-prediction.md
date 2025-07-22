@@ -1,6 +1,7 @@
 # First Prediction Tutorial
 
-This tutorial walks you through making your first defect prediction with the Steel Defect Prediction System. You'll learn to load data, run models, and interpret results.
+This tutorial walks you through making your first defect prediction with the Steel Defect Prediction System.
+You'll learn to load data, run models, and interpret results.
 
 ## Prerequisites
 
@@ -11,6 +12,7 @@ This tutorial walks you through making your first defect prediction with the Ste
 ## Tutorial Overview
 
 We'll cover:
+
 1. [Loading sample data](#loading-sample-data)
 2. [Running a prediction](#running-a-prediction)
 3. [Understanding the output](#understanding-the-output)
@@ -27,24 +29,28 @@ from src.data.data_connectors import DataConnector
 import pandas as pd
 
 # Initialize data connector
+
 connector = DataConnector()
 
 # Load sample sensor data
+
 sample_data = connector.get_sample_data()
 print(f"Loaded {len(sample_data)} data points")
 
 # View first few rows
+
 print(sample_data.head())
-```
+```text
 
 Expected output:
-```
+
+```text
 Loaded 1000 data points
    timestamp  mold_temperature  mold_level  casting_speed  cooling_water_flow  superheat
 0 2024-01-01               1520      150.0            1.2               200.0       25.0
 1 2024-01-01               1522      149.8            1.2               201.2       24.8
 2 2024-01-01               1521      150.2            1.1               199.8       25.2
-```
+```text
 
 ### Understanding the Data Format
 
@@ -68,9 +74,11 @@ Make a prediction for current sensor readings:
 from src.inference.prediction_engine import PredictionEngine
 
 # Initialize prediction engine
+
 engine = PredictionEngine()
 
 # Sample sensor readings
+
 sensor_data = {
     "mold_temperature": 1525.0,
     "mold_level": 152.5,
@@ -82,26 +90,30 @@ sensor_data = {
 }
 
 # Make prediction
+
 result = engine.predict(sensor_data)
 print("Prediction Result:")
 print(result)
-```
+```text
 
 ### Batch Predictions
 
 Process multiple readings at once:
 
 ```python
+
 # Load multiple readings
+
 readings = connector.get_latest_readings(limit=10)
 
 # Make batch predictions
+
 batch_results = engine.predict_batch(readings.to_dict('records'))
 
 print(f"Processed {len(batch_results)} predictions")
 for i, result in enumerate(batch_results[:3]):  # Show first 3
     print(f"Prediction {i+1}: {result['defect_probability']:.3f}")
-```
+```text
 
 ## Understanding the Output
 
@@ -142,7 +154,7 @@ Each prediction returns a structured result:
         }
     ]
 }
-```
+```text
 
 ### Interpreting Defect Probability
 
@@ -166,7 +178,7 @@ Start the interactive dashboard:
 
 ```bash
 python scripts/run_dashboard.py
-```
+```text
 
 Open your browser to `http://localhost:8050`
 
@@ -221,21 +233,23 @@ custom_data = {
 prediction = engine.predict(custom_data)
 print(f"Defect probability: {prediction['defect_probability']:.3f}")
 print(f"Alert level: {prediction['alert_level']}")
-```
+```text
 
 ### Analyzing Risk Factors
 
 Understand what drives the predictions:
 
 ```python
+
 # Get detailed risk analysis
+
 prediction = engine.predict(sensor_data)
 
 print("Risk Factors:")
 for factor in prediction['risk_factors']:
     print(f"- {factor['factor']}: {factor['impact']:.3f}")
     print(f"  {factor['description']}")
-```
+```text
 
 ### Model Performance Comparison
 
@@ -245,19 +259,22 @@ Compare how different models perform:
 from src.visualization.components import ModelComparison
 
 # Load test data
+
 test_data = connector.get_test_data()
 
 # Get predictions from all models
+
 results = {}
 for model_name in ['baseline_xgboost', 'lstm_sequence']:
     model_results = engine.evaluate_model(model_name, test_data)
     results[model_name] = model_results
 
 # Create comparison
+
 comparison = ModelComparison()
 comparison_chart = comparison.create_roc_curves(results)
 comparison_chart.show()
-```
+```text
 
 ## Troubleshooting
 
@@ -265,12 +282,14 @@ comparison_chart.show()
 
 !!! warning "Low Confidence Predictions"
     If you see consistently low confidence scores:
+
     - Check data quality
     - Ensure all required sensors are working
     - Verify timestamp format
 
 !!! warning "Unexpected High Defect Probability"
     For surprisingly high defect predictions:
+
     - Review sensor readings for outliers
     - Check if conditions are outside normal ranges
     - Consider recalibration if readings seem wrong
@@ -291,7 +310,7 @@ else:
     print("❌ Data quality issues:")
     for issue in quality_report['issues']:
         print(f"- {issue}")
-```
+```text
 
 ### Getting Help
 
@@ -313,4 +332,5 @@ Now that you've made your first prediction:
 
 ---
 
-**Congratulations!** 🎉 You've successfully made your first steel defect prediction. The system is now ready for more advanced usage and integration into your casting operations.
+**Congratulations!** 🎉 You've successfully made your first steel defect prediction.
+The system is now ready for more advanced usage and integration into your casting operations.

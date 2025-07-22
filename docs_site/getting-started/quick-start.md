@@ -16,24 +16,29 @@ Get up and running with the Steel Defect Prediction System in just 5 minutes!
 ```bash
 git clone https://github.com/dhar174/steel_defect_demo.git
 cd steel_defect_demo
-```
+```text
 
 ### 2. Install Dependencies
 
 ```bash
+
 # Install core dependencies
+
 pip install -r requirements.txt
 
 # Install the package in development mode
+
 pip install -e .
-```
+```text
 
 ### 3. Verify Installation
 
 ```bash
+
 # Test the installation
+
 python demo_model_comparison.py
-```
+```text
 
 You should see output showing model comparison results and charts being generated.
 
@@ -45,7 +50,7 @@ Launch the interactive dashboard to explore the system:
 
 ```bash
 python scripts/run_dashboard.py
-```
+```text
 
 Then open your browser to `http://localhost:8050` to access the dashboard.
 
@@ -54,15 +59,19 @@ Then open your browser to `http://localhost:8050` to access the dashboard.
 Run a quick prediction demo:
 
 ```bash
+
 # Run model comparison demo
+
 python demo_model_comparison.py
 
 # Run sensor monitoring demo  
+
 python demo_sensor_visualization.py
 
 # Run historical analysis demo
+
 python demo_historical_analysis.py
-```
+```text
 
 ## Understanding the Output
 
@@ -82,7 +91,7 @@ The system provides predictions in this format:
     "alert_level": "low",
     "timestamp": "2025-07-20T22:18:46Z"
 }
-```
+```text
 
 ### Dashboard Features
 
@@ -116,12 +125,14 @@ The system includes synthetic sample data for testing:
 
 !!! warning "Module Import Errors"
     If you encounter import errors, ensure you've installed the package in development mode:
+
     ```bash
     pip install -e .
     ```
 
 !!! warning "Missing Dependencies"
     Some demos require additional packages. Install documentation dependencies:
+
     ```bash
     pip install -r requirements-docs.txt
     ```
@@ -141,4 +152,5 @@ The system includes synthetic sample data for testing:
 
 ---
 
-**Congratulations!** 🎉 You now have the Steel Defect Prediction System running. Continue to the [Dashboard Overview](../user-guide/dashboard-overview.md) to learn about all available features.
+**Congratulations!** 🎉 You now have the Steel Defect Prediction System running.
+Continue to the [Dashboard Overview](../user-guide/dashboard-overview.md) to learn about all available features.
