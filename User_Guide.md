@@ -33,7 +33,7 @@ cd steel_defect_demo
 
 **2. Install dependencies:**
 
-The project provides two `requirements.txt` files: `requirements.txt` (for GPU) and `requirements-cpu.txt` (for CPU). If you have a compatible GPU, you can use the `requirements.txt` file. Otherwise, use the `requirements-cpu.txt` file.
+The project provides two `requirements.txt` files: `requirements.txt` (for GPU) and `requirements-minimal.txt` (for CPU). If you have a compatible GPU, you can use the `requirements.txt` file. Otherwise, use the `requirements-minimal.txt` file.
 
 ```bash
 # For GPU
