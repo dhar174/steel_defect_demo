@@ -482,10 +482,10 @@ pip freeze > requirements-current.txt
 
 Once your development environment is ready:
 
-1. **Explore the Codebase**: Review [Code Structure](code-structure.md)
-2. **Understand Testing**: Read [Testing Guidelines](testing-guidelines.md)
-3. **Follow Standards**: Check [Coding Standards](coding-standards.md)
-4. **Start Contributing**: See [Contributing Guide](contributing.md)
+1. **Explore the Architecture**: Review [System Overview](../architecture/system-overview.md)
+2. **Understand the Dashboard**: Read [Dashboard Overview](../user-guide/dashboard-overview.md)
+3. **Learn the API**: Check [Dashboard Integration](../api-reference/dashboard-integration.md)
+4. **Start Contributing**: See [Contributing Guide](../development/contributing.md)
 
 ---
 

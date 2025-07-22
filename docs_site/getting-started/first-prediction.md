@@ -297,7 +297,7 @@ else:
 
 If you encounter issues:
 
-1. Check the [Troubleshooting Guide](../installation/troubleshooting.md)
+1. Check the [Development Setup Guide](../installation/development-setup.md)
 2. Review [System Requirements](system-requirements.md)
 3. Examine error logs in the `logs/` directory
 4. [Open an issue](https://github.com/dhar174/steel_defect_demo/issues) on GitHub
@@ -308,7 +308,7 @@ Now that you've made your first prediction:
 
 - **Learn More**: Read the [User Guide](../user-guide/dashboard-overview.md)
 - **Integrate**: Explore [API Integration](../api-reference/dashboard-integration.md)
-- **Customize**: Try [Advanced Tutorials](../tutorials/advanced-features.md)
+- **Customize**: Try the [Contributing Guide](../development/contributing.md)
 - **Contribute**: Check the [Contributing Guide](../development/contributing.md)
 
 ---

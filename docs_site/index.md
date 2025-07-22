@@ -24,7 +24,7 @@
 
     Comprehensive API documentation with interactive examples
 
-    [:octicons-arrow-right-24: API Docs](api-reference/prediction-endpoints.md)
+    [:octicons-arrow-right-24: API Docs](api-reference/dashboard-integration.md)
 
 -   :material-sitemap:{ .lg .middle } __Architecture__
 
@@ -57,18 +57,13 @@ The **Steel Defect Prediction System** is a comprehensive machine learning solut
 
 ### For Operators
 - [Dashboard Overview](user-guide/dashboard-overview.md) - Navigate the monitoring interface
-- [Real-time Monitoring](user-guide/real-time-monitoring.md) - Live process monitoring
-- [Alert Management](user-guide/alert-management.md) - Configure and manage alerts
 
 ### For Developers
 - [Development Setup](installation/development-setup.md) - Set up development environment
-- [Code Structure](development/code-structure.md) - Understand the codebase
 - [Contributing Guide](development/contributing.md) - How to contribute
 
 ### For System Administrators
-- [Production Deployment](installation/production-deployment.md) - Deploy to production
-- [Operations Guide](operations/monitoring.md) - Monitor and maintain the system
-- [Security Model](architecture/security-model.md) - Security considerations
+- [System Overview](architecture/system-overview.md) - Understand the architecture
 
 ## System Architecture
 

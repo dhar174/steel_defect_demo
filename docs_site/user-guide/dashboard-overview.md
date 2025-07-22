@@ -41,8 +41,6 @@ Some views include a side panel with:
 
 ### 1. Real-time Monitoring
 
-![Real-time Dashboard](../assets/images/screenshots/dashboard-realtime.png)
-
 The real-time monitoring view provides:
 
 #### Live Sensor Readings
@@ -70,7 +68,7 @@ The real-time monitoring view provides:
 
 ### 2. Model Comparison
 
-![Model Comparison](../assets/images/screenshots/dashboard-comparison.png)
+### 2. Model Comparison
 
 Compare performance between different ML models:
 
@@ -100,7 +98,7 @@ Training Time       2.3 min    8.7 min  11.2 min
 
 ### 3. Historical Analysis
 
-![Historical Analysis](../assets/images/screenshots/dashboard-history.png)
+### 3. Historical Analysis
 
 Analyze trends and patterns over time:
 
@@ -118,7 +116,7 @@ Analyze trends and patterns over time:
 
 ### 4. Alert Management
 
-![Alert Management](../assets/images/screenshots/dashboard-alerts.png)
+### 4. Alert Management
 
 Configure and manage the alerting system:
 
@@ -272,7 +270,7 @@ console.log('Dashboard loaded successfully');
 
 ---
 
-Next: [Real-time Monitoring →](real-time-monitoring.md)
+Next: [API Reference →](../api-reference/dashboard-integration.md)
 =======
 ## Introduction
 

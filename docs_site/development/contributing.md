@@ -596,4 +596,4 @@ Thank you for contributing to the Steel Defect Prediction System! 🚀
 
 ---
 
-Next: [Code Structure →](code-structure.md)
+Next: [Changelog →](../releases/changelog.md)

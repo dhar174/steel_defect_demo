@@ -569,4 +569,4 @@ def safe_prediction(sensor_data):
 
 ---
 
-Next: [Prediction Endpoints →](prediction-endpoints.md)
+Next: [System Overview →](../architecture/system-overview.md)

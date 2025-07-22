@@ -99,8 +99,8 @@ Once you have the system running:
 
 1. **Explore the Dashboard**: Navigate through different monitoring views
 2. **Review Architecture**: Understand the [system design](../architecture/system-overview.md)
-3. **Configure Alerts**: Set up [alert thresholds](../user-guide/alert-management.md)
-4. **Integration**: Learn about [API endpoints](../api-reference/prediction-endpoints.md)
+3. **Explore Dashboard**: Use the [dashboard overview](../user-guide/dashboard-overview.md)
+4. **Integration**: Learn about [API integration](../api-reference/dashboard-integration.md)
 
 ## Sample Data
 
@@ -134,7 +134,7 @@ The system includes synthetic sample data for testing:
 
 ## Getting Help
 
-- Check the [Troubleshooting Guide](../installation/troubleshooting.md)
+- Check the [Development Setup Guide](../installation/development-setup.md)
 - Review [System Requirements](system-requirements.md)
 - Browse the [User Guide](../user-guide/dashboard-overview.md)
 - [Open an issue](https://github.com/dhar174/steel_defect_demo/issues) for bugs
