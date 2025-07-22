@@ -45,7 +45,7 @@ jobs:
 
     - name: Validate MkDocs configuration
       run: |
-        mkdocs config-file mkdocs.yml
+        mkdocs build --config-file path/to/mkdocs.yml
 
     - name: Build documentation
       run: |
