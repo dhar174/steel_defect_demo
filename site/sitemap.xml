@@ -5,7 +5,39 @@
          <lastmod>2025-07-22</lastmod>
     </url>
     <url>
+         <loc>https://dhar174.github.io/steel_defect_demo/api-reference/authentication/</loc>
+         <lastmod>2025-07-22</lastmod>
+    </url>
+    <url>
          <loc>https://dhar174.github.io/steel_defect_demo/api-reference/dashboard-integration/</loc>
+         <lastmod>2025-07-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dhar174.github.io/steel_defect_demo/api-reference/data-endpoints/</loc>
+         <lastmod>2025-07-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dhar174.github.io/steel_defect_demo/api-reference/monitoring-endpoints/</loc>
+         <lastmod>2025-07-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dhar174.github.io/steel_defect_demo/api-reference/prediction-endpoints/</loc>
+         <lastmod>2025-07-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dhar174.github.io/steel_defect_demo/architecture/data-pipeline/</loc>
+         <lastmod>2025-07-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dhar174.github.io/steel_defect_demo/architecture/deployment-topology/</loc>
+         <lastmod>2025-07-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dhar174.github.io/steel_defect_demo/architecture/ml-pipeline/</loc>
+         <lastmod>2025-07-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dhar174.github.io/steel_defect_demo/architecture/security-model/</loc>
          <lastmod>2025-07-22</lastmod>
     </url>
     <url>
@@ -13,7 +45,23 @@
          <lastmod>2025-07-22</lastmod>
     </url>
     <url>
+         <loc>https://dhar174.github.io/steel_defect_demo/development/code-structure/</loc>
+         <lastmod>2025-07-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dhar174.github.io/steel_defect_demo/development/coding-standards/</loc>
+         <lastmod>2025-07-22</lastmod>
+    </url>
+    <url>
          <loc>https://dhar174.github.io/steel_defect_demo/development/contributing/</loc>
+         <lastmod>2025-07-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dhar174.github.io/steel_defect_demo/development/development-workflow/</loc>
+         <lastmod>2025-07-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dhar174.github.io/steel_defect_demo/development/testing-guidelines/</loc>
          <lastmod>2025-07-22</lastmod>
     </url>
     <url>
@@ -33,11 +81,87 @@
          <lastmod>2025-07-22</lastmod>
     </url>
     <url>
+         <loc>https://dhar174.github.io/steel_defect_demo/installation/docker-installation/</loc>
+         <lastmod>2025-07-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dhar174.github.io/steel_defect_demo/installation/production-deployment/</loc>
+         <lastmod>2025-07-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dhar174.github.io/steel_defect_demo/installation/troubleshooting/</loc>
+         <lastmod>2025-07-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dhar174.github.io/steel_defect_demo/operations/backup-recovery/</loc>
+         <lastmod>2025-07-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dhar174.github.io/steel_defect_demo/operations/incident-response/</loc>
+         <lastmod>2025-07-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dhar174.github.io/steel_defect_demo/operations/maintenance/</loc>
+         <lastmod>2025-07-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dhar174.github.io/steel_defect_demo/operations/monitoring/</loc>
+         <lastmod>2025-07-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dhar174.github.io/steel_defect_demo/operations/performance-tuning/</loc>
+         <lastmod>2025-07-22</lastmod>
+    </url>
+    <url>
          <loc>https://dhar174.github.io/steel_defect_demo/releases/changelog/</loc>
          <lastmod>2025-07-22</lastmod>
     </url>
     <url>
+         <loc>https://dhar174.github.io/steel_defect_demo/releases/compatibility/</loc>
+         <lastmod>2025-07-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dhar174.github.io/steel_defect_demo/releases/migration-guides/</loc>
+         <lastmod>2025-07-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dhar174.github.io/steel_defect_demo/tutorials/advanced-features/</loc>
+         <lastmod>2025-07-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dhar174.github.io/steel_defect_demo/tutorials/basic-usage/</loc>
+         <lastmod>2025-07-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dhar174.github.io/steel_defect_demo/tutorials/customization/</loc>
+         <lastmod>2025-07-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dhar174.github.io/steel_defect_demo/tutorials/integration-examples/</loc>
+         <lastmod>2025-07-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dhar174.github.io/steel_defect_demo/user-guide/alert-management/</loc>
+         <lastmod>2025-07-22</lastmod>
+    </url>
+    <url>
          <loc>https://dhar174.github.io/steel_defect_demo/user-guide/dashboard-overview/</loc>
+         <lastmod>2025-07-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dhar174.github.io/steel_defect_demo/user-guide/historical-analysis/</loc>
+         <lastmod>2025-07-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dhar174.github.io/steel_defect_demo/user-guide/model-comparison/</loc>
+         <lastmod>2025-07-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dhar174.github.io/steel_defect_demo/user-guide/real-time-monitoring/</loc>
+         <lastmod>2025-07-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dhar174.github.io/steel_defect_demo/user-guide/user-preferences/</loc>
          <lastmod>2025-07-22</lastmod>
     </url>
 </urlset>

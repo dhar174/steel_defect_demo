@@ -437,6 +437,32 @@ pytest --lf
 - **Include examples in docstrings for complex functions**
 - **Document exceptions that can be raised**
 
+## Pull Request Process
+
+### Creating a Pull Request
+
+1. **Push your feature branch** to your fork
+2. **Open a pull request** against the main repository
+3. **Fill out the PR template** with detailed information
+4. **Link related issues** using keywords (fixes #123)
+5. **Request review** from appropriate team members
+
+### PR Requirements
+
+- All tests must pass
+- Code coverage must not decrease
+- Documentation must be updated
+- Code must follow style guidelines
+- Commit messages must be descriptive
+
+### Review Process
+
+1. **Automated checks** run on all PRs
+2. **Code review** by at least one team member
+3. **Testing** in staging environment
+4. **Approval** required before merging
+5. **Squash and merge** to maintain clean history
+
 ### Adding New Documentation
 
 1. **Create markdown files** in the appropriate `docs_site/` subdirectory

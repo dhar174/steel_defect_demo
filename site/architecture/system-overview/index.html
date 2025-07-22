@@ -9,7 +9,7 @@
 <meta content="Steel Defect Prediction Team" name="author"/>
 <link href="https://dhar174.github.io/steel_defect_demo/architecture/system-overview/" rel="canonical"/>
 <link href="../../api-reference/dashboard-integration/" rel="prev"/>
-<link href="../../development/contributing/" rel="next"/>
+<link href="../data-pipeline/" rel="next"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.6.1, mkdocs-material-9.6.15" name="generator"/>
 <title>System Overview - Steel Defect Prediction System Documentation</title>
@@ -155,7 +155,7 @@
         </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../../api-reference/dashboard-integration/">
+<a class="md-tabs__link" href="../../api-reference/authentication/">
           
   
   
@@ -173,11 +173,29 @@
         </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../../development/contributing/">
+<a class="md-tabs__link" href="../../operations/monitoring/">
+          
+  
+  
+  Operations
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../development/code-structure/">
           
   
   
   Development
+
+        </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../tutorials/basic-usage/">
+          
+  
+  
+  Tutorials
 
         </a>
 </li>
@@ -291,6 +309,30 @@
   </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../installation/production-deployment/">
+<span class="md-ellipsis">
+    Production Deployment
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../installation/docker-installation/">
+<span class="md-ellipsis">
+    Docker Installation
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../installation/troubleshooting/">
+<span class="md-ellipsis">
+    Troubleshooting
+    
+  </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -317,6 +359,46 @@
   </span>
 </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../user-guide/real-time-monitoring/">
+<span class="md-ellipsis">
+    Real-time Monitoring
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../user-guide/model-comparison/">
+<span class="md-ellipsis">
+    Model Comparison
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../user-guide/historical-analysis/">
+<span class="md-ellipsis">
+    Historical Analysis
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../user-guide/alert-management/">
+<span class="md-ellipsis">
+    Alert Management
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../user-guide/user-preferences/">
+<span class="md-ellipsis">
+    User Preferences
+    
+  </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -335,6 +417,38 @@
             API Reference
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../api-reference/authentication/">
+<span class="md-ellipsis">
+    Authentication
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../api-reference/prediction-endpoints/">
+<span class="md-ellipsis">
+    Prediction Endpoints
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../api-reference/data-endpoints/">
+<span class="md-ellipsis">
+    Data Endpoints
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../api-reference/monitoring-endpoints/">
+<span class="md-ellipsis">
+    Monitoring Endpoints
+    
+  </span>
+</a>
+</li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../api-reference/dashboard-integration/">
 <span class="md-ellipsis">
@@ -671,6 +785,38 @@
 </ul>
 </nav>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../data-pipeline/">
+<span class="md-ellipsis">
+    Data Pipeline
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../ml-pipeline/">
+<span class="md-ellipsis">
+    ML Pipeline
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../security-model/">
+<span class="md-ellipsis">
+    Security Model
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../deployment-topology/">
+<span class="md-ellipsis">
+    Deployment Topology
+    
+  </span>
+</a>
+</li>
 </ul>
 </nav>
 </li>
@@ -678,7 +824,7 @@
 <input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_7" type="checkbox"/>
 <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
 <span class="md-ellipsis">
-    Development
+    Operations
     
   </span>
 <span class="md-nav__icon md-icon"></span>
@@ -686,9 +832,99 @@
 <nav aria-expanded="false" aria-labelledby="__nav_7_label" class="md-nav" data-md-level="1">
 <label class="md-nav__title" for="__nav_7">
 <span class="md-nav__icon md-icon"></span>
+            Operations
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operations/monitoring/">
+<span class="md-ellipsis">
+    Monitoring
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operations/maintenance/">
+<span class="md-ellipsis">
+    Maintenance
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operations/backup-recovery/">
+<span class="md-ellipsis">
+    Backup &amp; Recovery
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operations/performance-tuning/">
+<span class="md-ellipsis">
+    Performance Tuning
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../operations/incident-response/">
+<span class="md-ellipsis">
+    Incident Response
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+<span class="md-ellipsis">
+    Development
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_8_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_8">
+<span class="md-nav__icon md-icon"></span>
             Development
           </label>
 <ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../development/code-structure/">
+<span class="md-ellipsis">
+    Code Structure
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../development/development-workflow/">
+<span class="md-ellipsis">
+    Development Workflow
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../development/testing-guidelines/">
+<span class="md-ellipsis">
+    Testing Guidelines
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../development/coding-standards/">
+<span class="md-ellipsis">
+    Coding Standards
+    
+  </span>
+</a>
+</li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../development/contributing/">
 <span class="md-ellipsis">
@@ -701,16 +937,66 @@
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_8" type="checkbox"/>
-<label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_9" type="checkbox"/>
+<label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+<span class="md-ellipsis">
+    Tutorials
+    
+  </span>
+<span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-expanded="false" aria-labelledby="__nav_9_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_9">
+<span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorials/basic-usage/">
+<span class="md-ellipsis">
+    Basic Usage
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorials/advanced-features/">
+<span class="md-ellipsis">
+    Advanced Features
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorials/integration-examples/">
+<span class="md-ellipsis">
+    Integration Examples
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../tutorials/customization/">
+<span class="md-ellipsis">
+    Customization
+    
+  </span>
+</a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle md-toggle--indeterminate" id="__nav_10" type="checkbox"/>
+<label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
 <span class="md-ellipsis">
     Releases
     
   </span>
 <span class="md-nav__icon md-icon"></span>
 </label>
-<nav aria-expanded="false" aria-labelledby="__nav_8_label" class="md-nav" data-md-level="1">
-<label class="md-nav__title" for="__nav_8">
+<nav aria-expanded="false" aria-labelledby="__nav_10_label" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_10">
 <span class="md-nav__icon md-icon"></span>
             Releases
           </label>
@@ -719,6 +1005,22 @@
 <a class="md-nav__link" href="../../releases/changelog/">
 <span class="md-ellipsis">
     Changelog
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../releases/migration-guides/">
+<span class="md-ellipsis">
+    Migration Guides
+    
+  </span>
+</a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../releases/compatibility/">
+<span class="md-ellipsis">
+    Compatibility
     
   </span>
 </a>
