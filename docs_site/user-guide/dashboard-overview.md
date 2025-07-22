@@ -12,7 +12,7 @@ The dashboard is accessible at `http://localhost:8050` when running locally, or 
 # Start the dashboard
 
 python scripts/run_dashboard.py
-```text
+```
 
 ## Main Interface Layout
 
@@ -63,7 +63,7 @@ The real-time monitoring view provides:
 
 #### Key Metrics Cards
 
-```text
+```
 ┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐
 │ Current Defect  │ │ Avg Confidence  │ │ Active Alerts   │
 │ Probability     │ │                 │ │                 │
@@ -71,7 +71,7 @@ The real-time monitoring view provides:
 │     0.15        │ │     0.89        │ │       2         │
 │                 │ │                 │ │                 │
 └─────────────────┘ └─────────────────┘ └─────────────────┘
-```text
+```
 
 ### 2. Model Comparison
 
@@ -96,7 +96,7 @@ Compare performance between different ML models:
 
 #### Side-by-side Comparison
 
-```text
+```
 Model Performance Comparison
                     XGBoost    LSTM     Ensemble
 Accuracy            0.87       0.89     0.91
@@ -104,7 +104,7 @@ Precision           0.84       0.88     0.90
 Recall              0.82       0.86     0.89
 F1-Score            0.83       0.87     0.89
 Training Time       2.3 min    8.7 min  11.2 min
-```text
+```
 
 ### 3. Historical Analysis
 
@@ -141,14 +141,14 @@ Configure and manage the alerting system:
 
 #### Active Alerts Dashboard
 
-```text
+```
 Current Alerts
 ┌─────────────────────────────────────────────────────────┐
 │ 🔴 HIGH: Defect probability 0.85 (Threshold: 0.8)      │
 │ 🟡 MED:  Temperature variance above normal              │
 │ 🟡 MED:  Model confidence below 0.7                    │
 └─────────────────────────────────────────────────────────┘
-```text
+```
 
 ## Interactive Controls
 
@@ -156,21 +156,21 @@ Current Alerts
 
 Most views include time range controls:
 
-```text
+```
 [Last Hour] [Last 4 Hours] [Last Day] [Custom Range]
-```text
+```
 
 ### Refresh Controls
 
-```text
+```
 Auto-refresh: [ON/OFF]  Interval: [5s] [15s] [30s] [1m]
-```text
+```
 
 ### Export Options
 
-```text
+```
 [Export CSV] [Export PNG] [Generate Report]
-```text
+```
 
 ## Dashboard Configuration
 
@@ -280,12 +280,12 @@ console.log(window.WebSocket);
 
 // Check for JavaScript errors
 console.log('Dashboard loaded successfully');
-```text
+```
 
 ## Getting Help
 
 - **Tooltips**: Hover over charts and controls for help
-- **Help Menu**: Click the `?` icon for context-sensitive help
+- **Help Menu**: Click the `?` icon for con-sensitive help
 - **Documentation**: This guide and [API Reference](../api-reference/dashboard-integration.md)
 - **Support**: [GitHub Issues](https://github.com/dhar174/steel_defect_demo/issues)
 
@@ -309,7 +309,7 @@ Default local access is typically available at:
 
 ```http
 http://localhost:8501
-```text
+```
 
 ### Authentication
 
@@ -366,7 +366,7 @@ Charts and visualizations provide detailed insights:
 - **Time series plots** for sensor data trends
 - **Correlation matrices** showing parameter relationships
 - **Distribution plots** for quality metrics
-- **Prediction timelines** with historical context
+- **Prediction timelines** with historical con
 
 ## Alert Management
 
