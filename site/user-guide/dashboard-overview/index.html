@@ -1,0 +1,2580 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Comprehensive documentation for the predictive quality monitoring system for continuous steel casting">
+      
+      
+        <meta name="author" content="Steel Defect Prediction Team">
+      
+      
+        <link rel="canonical" href="https://dhar174.github.io/steel_defect_demo/user-guide/dashboard-overview/">
+      
+      
+        <link rel="prev" href="../../installation/troubleshooting/">
+      
+      
+        <link rel="next" href="../real-time-monitoring/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
+    
+    
+      
+        <title>Dashboard Overview - Steel Defect Prediction System Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#dashboard-overview" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Steel Defect Prediction System Documentation" class="md-header__button md-logo" aria-label="Steel Defect Prediction System Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Steel Defect Prediction System Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Dashboard Overview
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="deep-orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dhar174/steel_defect_demo" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dhar174/steel_defect_demo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../getting-started/quick-start/" class="md-tabs__link">
+          
+  
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../installation/development-setup/" class="md-tabs__link">
+          
+  
+  
+  Installation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  User Guide
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../api-reference/authentication/" class="md-tabs__link">
+          
+  
+  
+  API Reference
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../architecture/system-overview/" class="md-tabs__link">
+          
+  
+  
+  Architecture
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../operations/monitoring/" class="md-tabs__link">
+          
+  
+  
+  Operations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../development/code-structure/" class="md-tabs__link">
+          
+  
+  
+  Development
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../tutorials/basic-usage/" class="md-tabs__link">
+          
+  
+  
+  Tutorials
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../releases/changelog/" class="md-tabs__link">
+          
+  
+  
+  Releases
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Steel Defect Prediction System Documentation" class="md-nav__button md-logo" aria-label="Steel Defect Prediction System Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Steel Defect Prediction System Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dhar174/steel_defect_demo" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    dhar174/steel_defect_demo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/quick-start/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Quick Start
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/system-requirements/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    System Requirements
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/first-prediction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    First Prediction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Installation
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Installation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/development-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Development Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/production-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Production Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/docker-installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Docker Installation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    User Guide
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            User Guide
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Dashboard Overview
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dashboard Overview
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dashboard-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dashboard Access
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../real-time-monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Real-time Monitoring
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model-comparison/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Model Comparison
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../historical-analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Historical Analysis
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../alert-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Alert Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-preferences/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User Preferences
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    API Reference
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            API Reference
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-reference/authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Authentication
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-reference/prediction-endpoints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Prediction Endpoints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-reference/data-endpoints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Endpoints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-reference/monitoring-endpoints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Monitoring Endpoints
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api-reference/dashboard-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dashboard Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Architecture
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/system-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    System Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/data-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data Pipeline
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/ml-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ML Pipeline
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/security-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Security Model
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../architecture/deployment-topology/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deployment Topology
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Operations
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Operations
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Monitoring
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/maintenance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Maintenance
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/backup-recovery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Backup & Recovery
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/performance-tuning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Performance Tuning
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../operations/incident-response/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Incident Response
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Development
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Development
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/code-structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Code Structure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/development-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Development Workflow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/testing-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Testing Guidelines
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/coding-standards/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Coding Standards
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../development/contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contributing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Tutorials
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            Tutorials
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/basic-usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Basic Usage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/advanced-features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Advanced Features
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/integration-examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Integration Examples
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/customization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Customization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Releases
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            Releases
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Changelog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/migration-guides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Migration Guides
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../releases/compatibility/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Compatibility
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dashboard-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dashboard Access
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="dashboard-overview">Dashboard Overview<a class="headerlink" href="#dashboard-overview" title="Permanent link">&para;</a></h1>
+<p>The Steel Defect Prediction System dashboard provides a comprehensive real-time monitoring interface for steel casting operations.
+This guide walks you through all major features and components.</p>
+<h2 id="dashboard-access">Dashboard Access<a class="headerlink" href="#dashboard-access" title="Permanent link">&para;</a></h2>
+<p>The dashboard is accessible at <code>http://localhost:8050</code> when running locally, or at your configured production URL.</p>
+<p>```bash</p>
+<h1 id="start-the-dashboard">Start the dashboard<a class="headerlink" href="#start-the-dashboard" title="Permanent link">&para;</a></h1>
+<p>python scripts/run_dashboard.py
+```text</p>
+<h2 id="main-interface-layout">Main Interface Layout<a class="headerlink" href="#main-interface-layout" title="Permanent link">&para;</a></h2>
+<p>The dashboard is organized into several key sections:</p>
+<h3 id="navigation-bar">Navigation Bar<a class="headerlink" href="#navigation-bar" title="Permanent link">&para;</a></h3>
+<p>The top navigation provides access to all major dashboard sections:</p>
+<ul>
+<li><strong>Real-time Monitoring</strong>: Live sensor data and predictions</li>
+<li><strong>Model Comparison</strong>: Performance analysis between different models</li>
+<li><strong>Historical Analysis</strong>: Trends and pattern analysis over time</li>
+<li><strong>Alert Management</strong>: Configure and manage alert thresholds</li>
+<li><strong>System Status</strong>: Monitor system health and performance</li>
+</ul>
+<h3 id="main-content-area">Main Content Area<a class="headerlink" href="#main-content-area" title="Permanent link">&para;</a></h3>
+<p>The central area displays the selected dashboard view with interactive charts, tables, and controls.</p>
+<h3 id="side-panel-when-applicable">Side Panel (when applicable)<a class="headerlink" href="#side-panel-when-applicable" title="Permanent link">&para;</a></h3>
+<p>Some views include a side panel with:</p>
+<ul>
+<li>Filter controls</li>
+<li>Configuration options</li>
+<li>Additional metrics</li>
+<li>Quick actions</li>
+</ul>
+<h2 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h2>
+<h3 id="1-real-time-monitoring">1. Real-time Monitoring<a class="headerlink" href="#1-real-time-monitoring" title="Permanent link">&para;</a></h3>
+<p>The real-time monitoring view provides:</p>
+<h4 id="live-sensor-readings">Live Sensor Readings<a class="headerlink" href="#live-sensor-readings" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Temperature</strong>: Mold temperature readings</li>
+<li><strong>Pressure</strong>: Casting pressure metrics</li>
+<li><strong>Flow Rates</strong>: Cooling water and steel flow</li>
+<li><strong>Speed</strong>: Casting speed monitoring</li>
+</ul>
+<h4 id="prediction-display">Prediction Display<a class="headerlink" href="#prediction-display" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Defect Probability</strong>: Real-time defect likelihood (0-1 scale)</li>
+<li><strong>Confidence Score</strong>: Model confidence in predictions</li>
+<li><strong>Alert Level</strong>: Visual indicators (Green/Yellow/Red)</li>
+<li><strong>Trend Indicators</strong>: Directional arrows showing trends</li>
+</ul>
+<h4 id="key-metrics-cards">Key Metrics Cards<a class="headerlink" href="#key-metrics-cards" title="Permanent link">&para;</a></h4>
+<p><code>text
+┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐
+│ Current Defect  │ │ Avg Confidence  │ │ Active Alerts   │
+│ Probability     │ │                 │ │                 │
+│                 │ │                 │ │                 │
+│     0.15        │ │     0.89        │ │       2         │
+│                 │ │                 │ │                 │
+└─────────────────┘ └─────────────────┘ └─────────────────┘</code>text</p>
+<h3 id="2-model-comparison">2. Model Comparison<a class="headerlink" href="#2-model-comparison" title="Permanent link">&para;</a></h3>
+<h3 id="2-model-comparison_1">2. Model Comparison<a class="headerlink" href="#2-model-comparison_1" title="Permanent link">&para;</a></h3>
+<p>Compare performance between different ML models:</p>
+<h4 id="performance-metrics">Performance Metrics<a class="headerlink" href="#performance-metrics" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Accuracy</strong>: Overall prediction accuracy</li>
+<li><strong>Precision</strong>: True positive rate</li>
+<li><strong>Recall</strong>: Sensitivity measure</li>
+<li><strong>F1-Score</strong>: Harmonic mean of precision and recall</li>
+<li><strong>AUC-ROC</strong>: Area under ROC curve</li>
+</ul>
+<h4 id="visualization-charts">Visualization Charts<a class="headerlink" href="#visualization-charts" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>ROC Curves</strong>: Model discrimination ability</li>
+<li><strong>Precision-Recall Curves</strong>: Performance trade-offs</li>
+<li><strong>Feature Importance</strong>: Variable significance</li>
+<li><strong>Confusion Matrix</strong>: Classification accuracy breakdown</li>
+</ul>
+<h4 id="side-by-side-comparison">Side-by-side Comparison<a class="headerlink" href="#side-by-side-comparison" title="Permanent link">&para;</a></h4>
+<p><code>text
+Model Performance Comparison
+                    XGBoost    LSTM     Ensemble
+Accuracy            0.87       0.89     0.91
+Precision           0.84       0.88     0.90
+Recall              0.82       0.86     0.89
+F1-Score            0.83       0.87     0.89
+Training Time       2.3 min    8.7 min  11.2 min</code>text</p>
+<h3 id="3-historical-analysis">3. Historical Analysis<a class="headerlink" href="#3-historical-analysis" title="Permanent link">&para;</a></h3>
+<h3 id="3-historical-analysis_1">3. Historical Analysis<a class="headerlink" href="#3-historical-analysis_1" title="Permanent link">&para;</a></h3>
+<p>Analyze trends and patterns over time:</p>
+<h4 id="time-series-charts">Time Series Charts<a class="headerlink" href="#time-series-charts" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Defect Rate Trends</strong>: Historical defect rates</li>
+<li><strong>Sensor Pattern Analysis</strong>: Long-term sensor behavior</li>
+<li><strong>Model Performance</strong>: Accuracy trends over time</li>
+<li><strong>Process Stability</strong>: Variance and consistency metrics</li>
+</ul>
+<h4 id="interactive-features">Interactive Features<a class="headerlink" href="#interactive-features" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Date Range Selection</strong>: Choose analysis period</li>
+<li><strong>Zoom and Pan</strong>: Detailed chart exploration</li>
+<li><strong>Data Export</strong>: Download analysis results</li>
+<li><strong>Statistical Summaries</strong>: Automatic trend analysis</li>
+</ul>
+<h3 id="4-alert-management">4. Alert Management<a class="headerlink" href="#4-alert-management" title="Permanent link">&para;</a></h3>
+<h3 id="4-alert-management_1">4. Alert Management<a class="headerlink" href="#4-alert-management_1" title="Permanent link">&para;</a></h3>
+<p>Configure and manage the alerting system:</p>
+<h4 id="alert-configuration">Alert Configuration<a class="headerlink" href="#alert-configuration" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Threshold Settings</strong>: Defect probability limits</li>
+<li><strong>Notification Methods</strong>: Email, SMS, dashboard</li>
+<li><strong>Escalation Rules</strong>: Multi-level alert hierarchy</li>
+<li><strong>Time-based Rules</strong>: Different thresholds by shift/time</li>
+</ul>
+<h4 id="active-alerts-dashboard">Active Alerts Dashboard<a class="headerlink" href="#active-alerts-dashboard" title="Permanent link">&para;</a></h4>
+<p><code>text
+Current Alerts
+┌─────────────────────────────────────────────────────────┐
+│ 🔴 HIGH: Defect probability 0.85 (Threshold: 0.8)      │
+│ 🟡 MED:  Temperature variance above normal              │
+│ 🟡 MED:  Model confidence below 0.7                    │
+└─────────────────────────────────────────────────────────┘</code>text</p>
+<h2 id="interactive-controls">Interactive Controls<a class="headerlink" href="#interactive-controls" title="Permanent link">&para;</a></h2>
+<h3 id="time-range-selector">Time Range Selector<a class="headerlink" href="#time-range-selector" title="Permanent link">&para;</a></h3>
+<p>Most views include time range controls:</p>
+<p><code>text
+[Last Hour] [Last 4 Hours] [Last Day] [Custom Range]</code>text</p>
+<h3 id="refresh-controls">Refresh Controls<a class="headerlink" href="#refresh-controls" title="Permanent link">&para;</a></h3>
+<p><code>text
+Auto-refresh: [ON/OFF]  Interval: [5s] [15s] [30s] [1m]</code>text</p>
+<h3 id="export-options">Export Options<a class="headerlink" href="#export-options" title="Permanent link">&para;</a></h3>
+<p><code>text
+[Export CSV] [Export PNG] [Generate Report]</code>text</p>
+<h2 id="dashboard-configuration">Dashboard Configuration<a class="headerlink" href="#dashboard-configuration" title="Permanent link">&para;</a></h2>
+<h3 id="user-preferences">User Preferences<a class="headerlink" href="#user-preferences" title="Permanent link">&para;</a></h3>
+<p>Access user preferences via the settings menu:</p>
+<ul>
+<li><strong>Display Options</strong>: Chart types, color schemes</li>
+<li><strong>Refresh Rates</strong>: Auto-update intervals</li>
+<li><strong>Alert Preferences</strong>: Notification settings</li>
+<li><strong>Dashboard Layout</strong>: Customize panel arrangement</li>
+</ul>
+<h3 id="theme-options">Theme Options<a class="headerlink" href="#theme-options" title="Permanent link">&para;</a></h3>
+<p>The dashboard supports multiple themes:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Light Theme</label><label for="__tabbed_1_2">Dark Theme</label><label for="__tabbed_1_3">High Contrast</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Clean, professional appearance suitable for well-lit environments.</p>
+</div>
+<div class="tabbed-block">
+<p>Reduced eye strain for low-light monitoring environments.</p>
+</div>
+<div class="tabbed-block">
+<p>Enhanced visibility for accessibility requirements.</p>
+</div>
+</div>
+</div>
+<h2 id="mobile-responsiveness">Mobile Responsiveness<a class="headerlink" href="#mobile-responsiveness" title="Permanent link">&para;</a></h2>
+<p>The dashboard is optimized for various screen sizes:</p>
+<h3 id="desktop-1200px">Desktop (&gt;1200px)<a class="headerlink" href="#desktop-1200px" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Full feature set</li>
+<li>Multi-panel layout</li>
+<li>Detailed charts and tables</li>
+</ul>
+<h3 id="tablet-768px-1200px">Tablet (768px - 1200px)<a class="headerlink" href="#tablet-768px-1200px" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Responsive layout</li>
+<li>Simplified navigation</li>
+<li>Touch-friendly controls</li>
+</ul>
+<h3 id="mobile-768px">Mobile (&lt; 768px)<a class="headerlink" href="#mobile-768px" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Essential features only</li>
+<li>Vertical layout</li>
+<li>Large touch targets</li>
+</ul>
+<h2 id="performance-optimization">Performance Optimization<a class="headerlink" href="#performance-optimization" title="Permanent link">&para;</a></h2>
+<h3 id="data-loading">Data Loading<a class="headerlink" href="#data-loading" title="Permanent link">&para;</a></h3>
+<p>The dashboard implements several performance optimizations:</p>
+<ul>
+<li><strong>Lazy Loading</strong>: Charts load only when visible</li>
+<li><strong>Data Caching</strong>: Recent data cached locally</li>
+<li><strong>Progressive Loading</strong>: Large datasets load incrementally</li>
+<li><strong>WebSocket Updates</strong>: Real-time data via WebSockets</li>
+</ul>
+<h3 id="browser-requirements">Browser Requirements<a class="headerlink" href="#browser-requirements" title="Permanent link">&para;</a></h3>
+<p>For optimal performance:</p>
+<ul>
+<li><strong>RAM</strong>: 2GB+ available memory</li>
+<li><strong>Network</strong>: Stable internet connection</li>
+<li><strong>Browser</strong>: Modern browser with JavaScript enabled</li>
+</ul>
+<h2 id="keyboard-shortcuts">Keyboard Shortcuts<a class="headerlink" href="#keyboard-shortcuts" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Shortcut</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>R</code></td>
+<td>Refresh current view</td>
+</tr>
+<tr>
+<td><code>F</code></td>
+<td>Toggle fullscreen</td>
+</tr>
+<tr>
+<td><code>H</code></td>
+<td>Show/hide help</td>
+</tr>
+<tr>
+<td><code>Space</code></td>
+<td>Pause/resume auto-refresh</td>
+</tr>
+<tr>
+<td><code>Esc</code></td>
+<td>Close modals</td>
+</tr>
+</tbody>
+</table>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
+<h3 id="common-issues">Common Issues<a class="headerlink" href="#common-issues" title="Permanent link">&para;</a></h3>
+<div class="admonition warning">
+<p class="admonition-title">Dashboard Not Loading</p>
+<ul>
+<li>Check that the dashboard service is running</li>
+<li>Verify port 8050 is not blocked by firewall</li>
+<li>Clear browser cache and cookies</li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Slow Performance</p>
+<ul>
+<li>Reduce auto-refresh frequency</li>
+<li>Clear browser cache</li>
+<li>Check network connectivity</li>
+<li>Restart dashboard service</li>
+</ul>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Data Not Updating</p>
+<ul>
+<li>Check data source connections</li>
+<li>Verify auto-refresh is enabled</li>
+<li>Check for JavaScript errors in browser console</li>
+</ul>
+</div>
+<h3 id="browser-console">Browser Console<a class="headerlink" href="#browser-console" title="Permanent link">&para;</a></h3>
+<p>Access browser developer tools (F12) to check for errors:</p>
+<p>```javascript
+// Check WebSocket connection
+console.log(window.WebSocket);</p>
+<p>// Check for JavaScript errors
+console.log('Dashboard loaded successfully');
+```text</p>
+<h2 id="getting-help">Getting Help<a class="headerlink" href="#getting-help" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Tooltips</strong>: Hover over charts and controls for help</li>
+<li><strong>Help Menu</strong>: Click the <code>?</code> icon for context-sensitive help</li>
+<li><strong>Documentation</strong>: This guide and <a href="../../api-reference/dashboard-integration/">API Reference</a></li>
+<li><strong>Support</strong>: <a href="https://github.com/dhar174/steel_defect_demo/issues">GitHub Issues</a></li>
+</ul>
+<hr />
+<h1 id="next-api-reference">Next: <a href="../../api-reference/dashboard-integration/">API Reference →</a><a class="headerlink" href="#next-api-reference" title="Permanent link">&para;</a></h1>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>The Steel Defect Detection Dashboard provides a comprehensive interface for
+monitoring continuous steel casting processes and predicting quality defects
+in real-time. This guide covers all aspects of using the dashboard effectively.</p>
+<h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
+<h3 id="accessing-the-dashboard">Accessing the Dashboard<a class="headerlink" href="#accessing-the-dashboard" title="Permanent link">&para;</a></h3>
+<p>The dashboard is accessible through a web browser at the configured URL.
+Default local access is typically available at:</p>
+<p><code>http
+http://localhost:8501</code>text</p>
+<h3 id="authentication">Authentication<a class="headerlink" href="#authentication" title="Permanent link">&para;</a></h3>
+<p>Currently, the dashboard operates in demonstration mode without authentication
+requirements. In production deployments, appropriate access controls should
+be implemented.</p>
+<h2 id="main-interface-components">Main Interface Components<a class="headerlink" href="#main-interface-components" title="Permanent link">&para;</a></h2>
+<h3 id="navigation-menu">Navigation Menu<a class="headerlink" href="#navigation-menu" title="Permanent link">&para;</a></h3>
+<p>The dashboard features a sidebar navigation with the following sections:</p>
+<ul>
+<li><strong>Home</strong>: Overview and system status</li>
+<li><strong>Real-time Monitoring</strong>: Live sensor data and predictions</li>
+<li><strong>Historical Analysis</strong>: Past performance and trends</li>
+<li><strong>Alert Management</strong>: Active alerts and notification settings</li>
+<li><strong>Model Performance</strong>: ML model metrics and evaluation</li>
+<li><strong>Configuration</strong>: System settings and parameters</li>
+</ul>
+<h3 id="status-indicators">Status Indicators<a class="headerlink" href="#status-indicators" title="Permanent link">&para;</a></h3>
+<p>Color-coded status indicators provide quick visual feedback:</p>
+<ul>
+<li><strong>Green</strong>: Normal operation, no issues detected</li>
+<li><strong>Yellow</strong>: Warning condition, attention recommended</li>
+<li><strong>Red</strong>: Alert condition, immediate action required</li>
+<li><strong>Gray</strong>: No data or system offline</li>
+</ul>
+<h2 id="real-time-monitoring">Real-time Monitoring<a class="headerlink" href="#real-time-monitoring" title="Permanent link">&para;</a></h2>
+<h3 id="live-data-display">Live Data Display<a class="headerlink" href="#live-data-display" title="Permanent link">&para;</a></h3>
+<p>The monitoring interface shows real-time sensor data including:</p>
+<ul>
+<li><strong>Temperature readings</strong> from multiple casting zones</li>
+<li><strong>Pressure measurements</strong> throughout the process</li>
+<li><strong>Flow rates</strong> for cooling water and molten steel</li>
+<li><strong>Chemical composition</strong> data when available</li>
+</ul>
+<h3 id="prediction-results">Prediction Results<a class="headerlink" href="#prediction-results" title="Permanent link">&para;</a></h3>
+<p>ML model predictions are displayed with:</p>
+<ul>
+<li><strong>Defect probability scores</strong> for different defect types</li>
+<li><strong>Confidence intervals</strong> for prediction reliability</li>
+<li><strong>Risk assessments</strong> based on current process conditions</li>
+<li><strong>Trend indicators</strong> showing prediction changes over time</li>
+</ul>
+<h3 id="interactive-charts">Interactive Charts<a class="headerlink" href="#interactive-charts" title="Permanent link">&para;</a></h3>
+<p>Charts and visualizations provide detailed insights:</p>
+<ul>
+<li><strong>Time series plots</strong> for sensor data trends</li>
+<li><strong>Correlation matrices</strong> showing parameter relationships</li>
+<li><strong>Distribution plots</strong> for quality metrics</li>
+<li><strong>Prediction timelines</strong> with historical context</li>
+</ul>
+<h2 id="alert-management">Alert Management<a class="headerlink" href="#alert-management" title="Permanent link">&para;</a></h2>
+<h3 id="alert-types">Alert Types<a class="headerlink" href="#alert-types" title="Permanent link">&para;</a></h3>
+<p>The system monitors for several types of quality issues:</p>
+<ul>
+<li><strong>Surface cracks</strong>: Longitudinal and transverse defects</li>
+<li><strong>Internal defects</strong>: Inclusions and porosity</li>
+<li><strong>Dimensional variations</strong>: Thickness and width deviations</li>
+<li><strong>Chemical composition</strong>: Out-of-specification conditions</li>
+</ul>
+<h3 id="alert-configuration_1">Alert Configuration<a class="headerlink" href="#alert-configuration_1" title="Permanent link">&para;</a></h3>
+<p>Users can configure alert parameters:</p>
+<ul>
+<li><strong>Threshold values</strong> for different defect probabilities</li>
+<li><strong>Notification methods</strong> (dashboard, email, SMS)</li>
+<li><strong>Escalation rules</strong> for critical conditions</li>
+<li><strong>Acknowledgment requirements</strong> for alert resolution</li>
+</ul>
+<h3 id="alert-history">Alert History<a class="headerlink" href="#alert-history" title="Permanent link">&para;</a></h3>
+<p>The alert history section provides:</p>
+<ul>
+<li><strong>Chronological log</strong> of all alert events</li>
+<li><strong>Resolution tracking</strong> and response times</li>
+<li><strong>Performance metrics</strong> for alert accuracy</li>
+<li><strong>Export capabilities</strong> for reporting</li>
+</ul>
+<h2 id="historical-analysis">Historical Analysis<a class="headerlink" href="#historical-analysis" title="Permanent link">&para;</a></h2>
+<h3 id="data-exploration">Data Exploration<a class="headerlink" href="#data-exploration" title="Permanent link">&para;</a></h3>
+<p>Historical analysis tools include:</p>
+<ul>
+<li><strong>Date range selection</strong> for specific time periods</li>
+<li><strong>Filter options</strong> by shift, product type, or conditions</li>
+<li><strong>Statistical summaries</strong> of process performance</li>
+<li><strong>Trend analysis</strong> with regression and forecasting</li>
+</ul>
+<h3 id="performance-metrics_1">Performance Metrics<a class="headerlink" href="#performance-metrics_1" title="Permanent link">&para;</a></h3>
+<p>Key performance indicators (KPIs) tracked:</p>
+<ul>
+<li><strong>Defect detection rate</strong> and false positive percentages</li>
+<li><strong>Process efficiency</strong> and throughput metrics</li>
+<li><strong>Quality scores</strong> and customer satisfaction data</li>
+<li><strong>Cost impact</strong> analysis for defect prevention</li>
+</ul>
+<h3 id="reporting-features">Reporting Features<a class="headerlink" href="#reporting-features" title="Permanent link">&para;</a></h3>
+<p>Generate comprehensive reports with:</p>
+<ul>
+<li><strong>Executive summaries</strong> for management review</li>
+<li><strong>Technical details</strong> for process engineers</li>
+<li><strong>Trend analysis</strong> with recommendations</li>
+<li><strong>Export formats</strong> (PDF, Excel, CSV)</li>
+</ul>
+<h2 id="model-performance">Model Performance<a class="headerlink" href="#model-performance" title="Permanent link">&para;</a></h2>
+<h3 id="model-metrics">Model Metrics<a class="headerlink" href="#model-metrics" title="Permanent link">&para;</a></h3>
+<p>Monitor ML model performance through:</p>
+<ul>
+<li><strong>Accuracy scores</strong> and confusion matrices</li>
+<li><strong>Precision and recall</strong> for different defect types</li>
+<li><strong>ROC curves</strong> and AUC measurements</li>
+<li><strong>Feature importance</strong> rankings</li>
+</ul>
+<h3 id="model-comparison">Model Comparison<a class="headerlink" href="#model-comparison" title="Permanent link">&para;</a></h3>
+<p>Compare different model approaches:</p>
+<ul>
+<li><strong>LSTM vs baseline</strong> model performance</li>
+<li><strong>Training progress</strong> and validation curves</li>
+<li><strong>Hyperparameter optimization</strong> results</li>
+<li><strong>Ensemble model</strong> performance</li>
+</ul>
+<h2 id="configuration-settings">Configuration Settings<a class="headerlink" href="#configuration-settings" title="Permanent link">&para;</a></h2>
+<h3 id="system-parameters">System Parameters<a class="headerlink" href="#system-parameters" title="Permanent link">&para;</a></h3>
+<p>Configurable system settings include:</p>
+<ul>
+<li><strong>Data ingestion</strong> frequency and sources</li>
+<li><strong>Model prediction</strong> intervals and thresholds</li>
+<li><strong>Display preferences</strong> and dashboard layout</li>
+<li><strong>User access</strong> controls and permissions</li>
+</ul>
+<h3 id="data-sources">Data Sources<a class="headerlink" href="#data-sources" title="Permanent link">&para;</a></h3>
+<p>Configure data input connections:</p>
+<ul>
+<li><strong>PLC interfaces</strong> for real-time sensor data</li>
+<li><strong>Database connections</strong> for historical information</li>
+<li><strong>File imports</strong> for batch processing</li>
+<li><strong>API endpoints</strong> for external systems</li>
+</ul>
+<h2 id="troubleshooting_1">Troubleshooting<a class="headerlink" href="#troubleshooting_1" title="Permanent link">&para;</a></h2>
+<h3 id="common-issues_1">Common Issues<a class="headerlink" href="#common-issues_1" title="Permanent link">&para;</a></h3>
+<p>Frequently encountered problems and solutions:</p>
+<ul>
+<li><strong>Data connectivity</strong>: Check network and sensor connections</li>
+<li><strong>Slow performance</strong>: Review data volume and processing load</li>
+<li><strong>Prediction accuracy</strong>: Verify model training and data quality</li>
+<li><strong>Display issues</strong>: Clear browser cache and check compatibility</li>
+</ul>
+<h3 id="support-resources">Support Resources<a class="headerlink" href="#support-resources" title="Permanent link">&para;</a></h3>
+<p>Additional help and support:</p>
+<ul>
+<li><strong>User manual</strong> with detailed instructions</li>
+<li><strong>Technical documentation</strong> for advanced configuration</li>
+<li><strong>Contact information</strong> for system administrators</li>
+<li><strong>Training materials</strong> and video tutorials</li>
+</ul>
+<h2 id="best-practices">Best Practices<a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h2>
+<h3 id="monitoring-guidelines">Monitoring Guidelines<a class="headerlink" href="#monitoring-guidelines" title="Permanent link">&para;</a></h3>
+<p>Recommended practices for effective monitoring:</p>
+<ul>
+<li><strong>Regular review</strong> of alert thresholds and accuracy</li>
+<li><strong>Shift handover</strong> procedures using dashboard data</li>
+<li><strong>Trend analysis</strong> for predictive maintenance</li>
+<li><strong>Quality improvement</strong> based on historical patterns</li>
+</ul>
+<h3 id="data-management">Data Management<a class="headerlink" href="#data-management" title="Permanent link">&para;</a></h3>
+<p>Maintain data quality through:</p>
+<ul>
+<li><strong>Regular calibration</strong> of sensors and instruments</li>
+<li><strong>Data validation</strong> checks and error correction</li>
+<li><strong>Backup procedures</strong> for critical information</li>
+<li><strong>Archive management</strong> for long-term storage</li>
+</ul>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>The Steel Defect Detection Dashboard provides powerful tools for monitoring
+and improving continuous casting quality. Regular use of all features will
+maximize the benefits of predictive defect detection and help maintain
+optimal process performance.</p>
+<p>For additional support or questions about specific features, consult the
+technical documentation or contact the system development team.</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  <form class="md-feedback" name="feedback" hidden>
+    <fieldset>
+      <legend class="md-feedback__title">
+        Was this page helpful?
+      </legend>
+      <div class="md-feedback__inner">
+        <div class="md-feedback__list">
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page was helpful" data-md-value="1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5 9v12H1V9zm4 12a2 2 0 0 1-2-2V9c0-.55.22-1.05.59-1.41L14.17 1l1.06 1.06c.27.27.44.64.44 1.05l-.03.32L14.69 8H21a2 2 0 0 1 2 2v2c0 .26-.05.5-.14.73l-3.02 7.05C19.54 20.5 18.83 21 18 21zm0-2h9.03L21 12v-2h-8.79l1.13-5.32L9 9.03z"/></svg>
+            </button>
+          
+            <button class="md-feedback__icon md-icon" type="submit" title="This page could be improved" data-md-value="0">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 15V3h4v12zM15 3a2 2 0 0 1 2 2v10c0 .55-.22 1.05-.59 1.41L9.83 23l-1.06-1.06c-.27-.27-.44-.64-.44-1.06l.03-.31.95-4.57H3a2 2 0 0 1-2-2v-2c0-.26.05-.5.14-.73l3.02-7.05C4.46 3.5 5.17 3 6 3zm0 2H5.97L3 12v2h8.78l-1.13 5.32L15 14.97z"/></svg>
+            </button>
+          
+        </div>
+        <div class="md-feedback__note">
+          
+            <div data-md-value="1" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks for your feedback!
+            </div>
+          
+            <div data-md-value="0" hidden>
+              
+              
+                
+              
+              
+              
+                
+                
+              
+              Thanks for your feedback! Help us improve this page by <a href="https://github.com/dhar174/steel_defect_demo/issues/new" target="_blank" rel="noopener">opening an issue</a>.
+            </div>
+          
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/dhar174/steel_defect_demo" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "toc.follow", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.56ea9cef.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
