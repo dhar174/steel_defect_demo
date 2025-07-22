@@ -33,7 +33,7 @@ analyzer = HistoricalAnalyzer(
     ],
     date_range=('2023-01-01', '2024-01-01')
 )
-```text
+```
 
 ### Data Loading
 
@@ -52,7 +52,7 @@ historical_data = analyzer.load_data(
 
 print(f"Loaded {len(historical_data)} records")
 print(f"Date range: {historical_data['timestamp'].min()} to {historical_data['timestamp'].max()}")
-```text
+```
 
 ## Trend Analysis
 
@@ -77,7 +77,7 @@ sns.lineplot(data=defect_trends, x='month', y='defect_rate')
 plt.title('Monthly Defect Rate Trends')
 plt.ylabel('Defect Rate (%)')
 plt.show()
-```text
+```
 
 ### Process Parameter Trends
 
@@ -108,7 +108,7 @@ for i, param in enumerate(parameters):
 
 plt.tight_layout()
 plt.show()
-```text
+```
 
 ## Correlation Analysis
 
@@ -135,7 +135,7 @@ plt.figure(figsize=(10, 8))
 sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', center=0)
 plt.title('Process Parameter Correlations with Defect Probability')
 plt.show()
-```text
+```
 
 ### Cross-correlation Analysis
 
@@ -159,7 +159,7 @@ plt.ylabel('Cross-correlation')
 plt.title('Cross-correlation: Mold Temperature vs Defect Rate')
 plt.grid(True, alpha=0.3)
 plt.show()
-```text
+```
 
 ## Pattern Detection
 
@@ -191,7 +191,7 @@ for i, period in enumerate(periods):
 
 plt.tight_layout()
 plt.show()
-```text
+```
 
 ### Anomaly Detection
 
@@ -223,7 +223,7 @@ plt.title('Historical Anomalies in Defect Rate')
 plt.legend()
 plt.xticks(rotation=45)
 plt.show()
-```text
+```
 
 ## Root Cause Analysis
 
@@ -260,7 +260,7 @@ root_causes = rca_analyzer.analyze_factors(
 print("Top Contributing Factors to High Defect Rates:")
 for factor, importance in root_causes.items():
     print(f"  {factor}: {importance:.3f}")
-```text
+```
 
 ### Decision Tree Analysis
 
@@ -285,7 +285,7 @@ plot_tree(dt_model, feature_names=features, class_names=['Normal', 'High Defect'
           filled=True, fontsize=10)
 plt.title('Decision Tree for Defect Prediction')
 plt.show()
-```text
+```
 
 ## Time Series Analysis
 
@@ -309,7 +309,7 @@ decomposition.seasonal.plot(ax=axes[2], title='Seasonal')
 decomposition.resid.plot(ax=axes[3], title='Residual')
 plt.tight_layout()
 plt.show()
-```text
+```
 
 ### Forecast Analysis
 
@@ -342,7 +342,7 @@ plt.title('Defect Rate Forecast')
 plt.legend()
 plt.grid(True, alpha=0.3)
 plt.show()
-```text
+```
 
 ## Performance Analysis
 
@@ -377,7 +377,7 @@ plt.title('OEE Trends by Steel Grade')
 plt.legend()
 plt.grid(True, alpha=0.3)
 plt.show()
-```text
+```
 
 ### Quality Benchmarking
 
@@ -416,7 +416,7 @@ for i, metric in enumerate(metrics):
 
 plt.tight_layout()
 plt.show()
-```text
+```
 
 ## Report Generation
 
@@ -444,7 +444,7 @@ report = reporter.generate_report(
 # Save report
 
 reporter.save_report(report, 'reports/historical_analysis_2023.html')
-```text
+```
 
 ### Custom Analysis Templates
 
@@ -476,6 +476,6 @@ template = {
 # Generate report from template
 
 custom_report = reporter.generate_from_template(template, historical_data)
-```text
+```
 
 This historical analysis framework provides deep insights into your steel casting operations, enabling data-driven improvements and proactive quality management.
