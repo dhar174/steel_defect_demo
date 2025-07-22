@@ -1,0 +1,20 @@
+# Documentation tools
+mkdocs>=1.4.0
+mkdocs-material>=8.5.0
+mkdocs-mermaid2-plugin>=0.6.0
+mkdocs-swagger-ui-tag>=0.6.0
+mkdocs-pdf-export-plugin>=0.5.0
+
+# Diagram generation
+pymdown-extensions>=9.8.0
+
+# Content management
+markdown>=3.4.0
+
+# Screenshot and media tools
+selenium>=4.5.0
+pillow>=9.3.0
+
+# API documentation (if needed)
+fastapi>=0.88.0
+swagger-ui-bundle>=0.0.9

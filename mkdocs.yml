@@ -1,0 +1,187 @@
+site_name: Steel Defect Prediction System Documentation
+site_description: Comprehensive documentation for the predictive quality monitoring system for continuous steel casting
+site_author: Steel Defect Prediction Team
+site_url: https://dhar174.github.io/steel_defect_demo/
+
+# Repository
+repo_name: dhar174/steel_defect_demo
+repo_url: https://github.com/dhar174/steel_defect_demo
+edit_uri: edit/main/docs_site/
+
+# Source directory
+docs_dir: docs_site
+
+# Configuration
+theme:
+  name: material
+  palette:
+    # Palette toggle for light mode
+    - scheme: default
+      primary: blue grey
+      accent: deep orange
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      primary: blue grey
+      accent: deep orange
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - search.share
+    - toc.follow
+    - content.code.copy
+    - content.code.annotate
+
+  icon:
+    repo: fontawesome/brands/github
+
+# Navigation
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Quick Start: getting-started/quick-start.md
+    - System Requirements: getting-started/system-requirements.md
+    - First Prediction: getting-started/first-prediction.md
+  - Installation:
+    - Development Setup: installation/development-setup.md
+    - Production Deployment: installation/production-deployment.md
+    - Docker Installation: installation/docker-installation.md
+    - Troubleshooting: installation/troubleshooting.md
+  - User Guide:
+    - Dashboard Overview: user-guide/dashboard-overview.md
+    - Real-time Monitoring: user-guide/real-time-monitoring.md
+    - Model Comparison: user-guide/model-comparison.md
+    - Historical Analysis: user-guide/historical-analysis.md
+    - Alert Management: user-guide/alert-management.md
+    - User Preferences: user-guide/user-preferences.md
+  - API Reference:
+    - Authentication: api-reference/authentication.md
+    - Prediction Endpoints: api-reference/prediction-endpoints.md
+    - Data Endpoints: api-reference/data-endpoints.md
+    - Monitoring Endpoints: api-reference/monitoring-endpoints.md
+    - Dashboard Integration: api-reference/dashboard-integration.md
+  - Architecture:
+    - System Overview: architecture/system-overview.md
+    - Data Pipeline: architecture/data-pipeline.md
+    - ML Pipeline: architecture/ml-pipeline.md
+    - Security Model: architecture/security-model.md
+    - Deployment Topology: architecture/deployment-topology.md
+  - Operations:
+    - Monitoring: operations/monitoring.md
+    - Maintenance: operations/maintenance.md
+    - Backup & Recovery: operations/backup-recovery.md
+    - Performance Tuning: operations/performance-tuning.md
+    - Incident Response: operations/incident-response.md
+  - Development:
+    - Code Structure: development/code-structure.md
+    - Development Workflow: development/development-workflow.md
+    - Testing Guidelines: development/testing-guidelines.md
+    - Coding Standards: development/coding-standards.md
+    - Contributing: development/contributing.md
+  - Tutorials:
+    - Basic Usage: tutorials/basic-usage.md
+    - Advanced Features: tutorials/advanced-features.md
+    - Integration Examples: tutorials/integration-examples.md
+    - Customization: tutorials/customization.md
+  - Releases:
+    - Changelog: releases/changelog.md
+    - Migration Guides: releases/migration-guides.md
+    - Compatibility: releases/compatibility.md
+
+# Plugins
+plugins:
+  - search:
+      lang: en
+  - mermaid2:
+      arguments:
+        theme: |
+          ^(JSON.parse(__md_get("__palette").index == 1)) ?
+          'dark' : 'light'
+  - swagger-ui-tag
+
+# Extensions
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - meta
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: dhar174
+      repo: steel_defect_demo
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+# Extra
+extra:
+  version:
+    provider: mike
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/dhar174/steel_defect_demo
+  analytics:
+    feedback:
+      title: Was this page helpful?
+      ratings:
+        - icon: material/thumb-up-outline
+          name: This page was helpful
+          data: 1
+          note: >-
+            Thanks for your feedback!
+        - icon: material/thumb-down-outline
+          name: This page could be improved
+          data: 0
+          note: >-
+            Thanks for your feedback! Help us improve this page by
+            <a href="https://github.com/dhar174/steel_defect_demo/issues/new" target="_blank" rel="noopener">opening an issue</a>.
+
+# CSS customization
+extra_css:
+  - stylesheets/extra.css
+
+# JavaScript customization
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js

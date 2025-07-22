@@ -1,0 +1,119 @@
+/* Custom styles for Steel Defect Prediction System documentation */
+
+:root {
+  --steel-blue: #455a64;
+  --steel-light: #718792;
+  --steel-dark: #1c313a;
+  --orange-accent: #ff6f00;
+  --orange-light: #ffa040;
+  --orange-dark: #c43e00;
+}
+
+/* Custom header styling */
+.md-header {
+  background: linear-gradient(135deg, var(--steel-blue), var(--steel-dark));
+}
+
+/* Custom link colors */
+.md-typeset a {
+  color: var(--orange-accent);
+}
+
+.md-typeset a:hover {
+  color: var(--orange-dark);
+}
+
+/* Custom button styling */
+.md-button {
+  background-color: var(--orange-accent);
+  border-color: var(--orange-accent);
+}
+
+.md-button:hover {
+  background-color: var(--orange-dark);
+  border-color: var(--orange-dark);
+}
+
+/* Grid cards styling */
+.grid.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.grid.cards > * {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.2rem;
+  padding: 1rem;
+  transition: box-shadow 0.2s;
+}
+
+.grid.cards > *:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Code block enhancements */
+.highlight pre {
+  border-left: 4px solid var(--orange-accent);
+}
+
+/* Admonition custom colors */
+.md-typeset .admonition.tip,
+.md-typeset details.tip {
+  border-color: var(--orange-accent);
+}
+
+.md-typeset .tip > .admonition-title,
+.md-typeset .tip > summary {
+  background-color: rgba(255, 111, 0, 0.1);
+  border-color: var(--orange-accent);
+}
+
+/* Table enhancements */
+.md-typeset table:not([class]) {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 0.2rem;
+}
+
+.md-typeset table:not([class]) th {
+  background-color: var(--steel-blue);
+  color: white;
+}
+
+/* Mermaid diagram styling */
+.mermaid {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+/* Custom navigation styling */
+.md-nav__item--active > .md-nav__link {
+  color: var(--orange-accent);
+}
+
+/* Footer customization */
+.md-footer {
+  background: linear-gradient(135deg, var(--steel-dark), var(--steel-blue));
+}
+
+/* Search box styling */
+.md-search__input {
+  border-radius: 0.2rem;
+}
+
+/* Version selector styling */
+.md-version__current {
+  color: var(--orange-accent);
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
+  .grid.cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .md-typeset .highlight {
+    margin: 0 -0.8rem;
+  }
+}
