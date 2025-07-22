@@ -31,7 +31,7 @@ sensor_data = {
     "oxygen_content": 0.025,
     "steel_grade": "304L"
 }
-```text
+```
 
 ### Real-time Metrics
 
@@ -82,7 +82,7 @@ data_sources:
 
 update_frequency: 1  # seconds
 buffer_size: 1000   # data points
-```text
+```
 
 ### 2. Start Monitoring Service
 
@@ -98,7 +98,7 @@ docker run -d --name steel-monitor \
   -p 8001:8001 \
   steel-defect-prediction:latest \
   python -m src.monitoring.real_time_monitor
-```text
+```
 
 ### 3. Access Monitoring Dashboard
 
@@ -125,7 +125,7 @@ collector.start()
 # Get latest data
 
 latest_data = collector.get_latest()
-```text
+```
 
 ### Prediction Engine
 
@@ -144,7 +144,7 @@ predictor = RealTimePredictor(
 prediction = predictor.predict(sensor_data)
 print(f"Defect probability: {prediction['probability']:.3f}")
 print(f"Confidence: {prediction['confidence']:.3f}")
-```text
+```
 
 ### Alert System
 
@@ -173,7 +173,7 @@ alert_manager = AlertManager(
 # Process alerts
 
 alert_manager.evaluate(sensor_data, prediction)
-```text
+```
 
 ## Configuration Options
 
@@ -194,7 +194,7 @@ MONITOR_UPDATE_INTERVAL = 1.0  # 1 second
 # Low frequency for overview monitoring
 
 MONITOR_UPDATE_INTERVAL = 5.0  # 5 seconds
-```text
+```
 
 ### Data Retention
 
@@ -207,7 +207,7 @@ Configure how long data is kept in memory:
 REALTIME_BUFFER_SIZE = 3600    # 1 hour of data at 1Hz
 HISTORY_RETENTION_DAYS = 7     # Keep 7 days of detailed history
 ARCHIVE_RETENTION_MONTHS = 12  # Keep 12 months of summary data
-```text
+```
 
 ### Display Preferences
 
@@ -223,7 +223,7 @@ const dashboardConfig = {
     showPredictionBands: true,   // Show confidence intervals
     enableSounds: true          // Audio alerts
 };
-```text
+```
 
 ## Alert Configuration
 
@@ -250,7 +250,7 @@ alert_levels:
     sound: true
     auto_dismiss: false
     requires_acknowledgment: true
-```text
+```
 
 ### Notification Channels
 
@@ -278,7 +278,7 @@ notifications:
     url: https://api.company.com/alerts
     headers:
       Authorization: "Bearer ${API_TOKEN}"
-```text
+```
 
 ## Performance Optimization
 
@@ -307,7 +307,7 @@ def process_sensor_batch(sensor_batch):
     """Process multiple sensor readings at once"""
     predictions = model.predict_batch(sensor_batch)
     return predictions
-```text
+```
 
 ### Memory Management
 
@@ -330,7 +330,7 @@ def check_memory():
         gc.collect()  # Force garbage collection
         
     return memory_mb
-```text
+```
 
 ## Troubleshooting
 
@@ -362,7 +362,7 @@ perf_monitor.start()
 metrics = perf_monitor.get_metrics()
 print(f"Average processing time: {metrics['avg_processing_time']:.3f}s")
 print(f"Predictions per second: {metrics['predictions_per_second']:.1f}")
-```text
+```
 
 ### System Status
 
@@ -381,7 +381,7 @@ journalctl -u steel-defect-monitor -f
 # Check resource usage
 
 htop
-```text
+```
 
 ## Integration Examples
 
@@ -406,7 +406,7 @@ sensor_values = scada.read_sensors([
     'casting_speed_tag',
     'cooling_flow_tag'
 ])
-```text
+```
 
 ### PLC Integration
 
@@ -429,6 +429,6 @@ process_data = plc.read_data_block(
     start_address=0,
     size=100
 )
-```text
+```
 
 This real-time monitoring system provides comprehensive visibility into your steel casting operations, enabling proactive quality management and immediate response to potential defects.
