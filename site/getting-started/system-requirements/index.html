@@ -835,6 +835,72 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#optional-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional Dependencies
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-benchmarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Benchmarks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Benchmarks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model-training-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Training Time
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Usage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cloud-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cloud Deployment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cloud Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS Requirements
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2380,6 +2446,72 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#optional-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optional Dependencies
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-benchmarks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Benchmarks
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Benchmarks">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model-training-time" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Training Time
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memory-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Usage
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cloud-deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cloud Deployment
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cloud Deployment">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS Requirements
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2693,30 +2825,32 @@ pip install -r requirements-docs.txt
 </div>
 <h2 id="dependencies">Dependencies<a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h2>
 <h3 id="core-dependencies">Core Dependencies<a class="headerlink" href="#core-dependencies" title="Permanent link">&para;</a></h3>
-<p>```bash</p>
-<h1 id="data-processing">Data processing<a class="headerlink" href="#data-processing" title="Permanent link">&para;</a></h1>
-<p>pandas&gt;=1.5.0
+<div class="language-text highlight"><pre><span></span><code># Data processing
+pandas&gt;=1.5.0
 numpy&gt;=1.23.0
-pyarrow&gt;=10.0.0</p>
-<h1 id="machine-learning">Machine learning<a class="headerlink" href="#machine-learning" title="Permanent link">&para;</a></h1>
-<p>scikit-learn&gt;=1.1.0
+pyarrow&gt;=10.0.0
+
+# Machine learning
+scikit-learn&gt;=1.1.0
 xgboost&gt;=1.7.0
-torch&gt;=1.13.0</p>
-<h1 id="visualization">Visualization<a class="headerlink" href="#visualization" title="Permanent link">&para;</a></h1>
-<p>plotly&gt;=5.15.0
+torch&gt;=1.13.0
+
+# Visualization
+plotly&gt;=5.15.0
 dash&gt;=3.0.0
 matplotlib&gt;=3.6.0
-```text</p>
+</code></pre></div>
 <h3 id="optional-dependencies">Optional Dependencies<a class="headerlink" href="#optional-dependencies" title="Permanent link">&para;</a></h3>
-<p>```bash</p>
-<h1 id="gpu-acceleration-cuda">GPU acceleration (CUDA)<a class="headerlink" href="#gpu-acceleration-cuda" title="Permanent link">&para;</a></h1>
-<p>torch[cuda]  # For NVIDIA GPUs</p>
-<h1 id="database-connectors">Database connectors<a class="headerlink" href="#database-connectors" title="Permanent link">&para;</a></h1>
-<p>psycopg2&gt;=2.9.0  # PostgreSQL
-redis&gt;=4.3.0     # Redis cache</p>
-<h1 id="production-monitoring">Production monitoring<a class="headerlink" href="#production-monitoring" title="Permanent link">&para;</a></h1>
-<p>prometheus-client&gt;=0.14.0
-```text</p>
+<div class="language-text highlight"><pre><span></span><code># GPU acceleration (CUDA)
+torch[cuda]  # For NVIDIA GPUs
+
+# Database connectors
+psycopg2&gt;=2.9.0  # PostgreSQL
+redis&gt;=4.3.0     # Redis cache
+
+# Production monitoring
+prometheus-client&gt;=0.14.0
+</code></pre></div>
 <h2 id="performance-benchmarks">Performance Benchmarks<a class="headerlink" href="#performance-benchmarks" title="Permanent link">&para;</a></h2>
 <h3 id="model-training-time">Model Training Time<a class="headerlink" href="#model-training-time" title="Permanent link">&para;</a></h3>
 <table>

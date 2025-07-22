@@ -9,7 +9,7 @@ you need to know to contribute effectively.
 - [Development Workflow](#development-workflow)
 - [Code Standards](#code-standards)
 - [Testing Guidelines](#testing-guidelines)
-- [Documentation](#documentation)
+- [Documentation](#documentation)  
 - [Pull Request Process](#pull-request-process)
 - [Code of Conduct](#code-of-conduct)
 
@@ -563,7 +563,7 @@ def example_function():
     Use tips for helpful suggestions.
 ```text
 
-## Pull Request Process
+## Pull Request Template
 
 ### Before Submitting
 

@@ -462,4 +462,5 @@ stream.on('prediction', (data) => {
 });
 ```text
 
-This prediction API provides comprehensive capabilities for integrating defect prediction into your steel casting operations with high performance and reliability.
+This prediction API provides comprehensive capabilities for integrating defect prediction into your
+steel casting operations with high performance and reliability.

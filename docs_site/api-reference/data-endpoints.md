@@ -457,4 +457,5 @@ ws.run_forever()
 }
 ```text
 
-This Data API provides comprehensive access to all sensor data and operational information needed for effective steel defect monitoring and analysis.
+This Data API provides comprehensive access to all sensor data and operational information needed for
+effective steel defect monitoring and analysis.
