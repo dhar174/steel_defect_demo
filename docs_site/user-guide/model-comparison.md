@@ -450,4 +450,5 @@ if drift_score > 0.1:
     print("Consider updating model with recent data")
 ```
 
-This comprehensive model comparison framework helps you select and maintain the optimal model for your steel defect prediction needs.
+This comprehensive model comparison framework helps you
+select and maintain the optimal model for your steel defect prediction needs.
