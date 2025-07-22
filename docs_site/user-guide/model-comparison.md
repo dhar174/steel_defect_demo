@@ -7,7 +7,7 @@ and choose the best model for your specific casting conditions.
 
 ### 1. LSTM Neural Network
 
-**Best for**: Time-series prediction with temporal dependencies
+**Best for**:  Time-series prediction with temporal dependencies
 
 ```python
 from src.models.lstm_model import LSTMModel
@@ -22,22 +22,22 @@ lstm_model = LSTMModel(
 )
 ```
 
-#### Advantages:
+#### Advantages: 
 
 - Captures temporal patterns in sensor data
 - Good for sequential defect prediction
 - Handles variable-length sequences
 
-#### Performance:
+#### Performance: 
 
-- Accuracy: 89.5%
-- Precision: 87.2%
-- Recall: 91.8%
-- F1-Score: 89.4%
+- Accuracy:  89.5%
+- Precision:  87.2%
+- Recall:  91.8%
+- F1-Score:  89.4%
 
 ### 2. Random Forest
 
-**Best for**: Feature importance analysis and interpretability
+**Best for**:  Feature importance analysis and interpretability
 
 ```python
 from src.models.random_forest_model import RandomForestModel
@@ -51,23 +51,23 @@ rf_model = RandomForestModel(
 )
 ```
 
-#### Advantages:
+#### Advantages: 
 
 - Fast training and inference
 - Feature importance ranking
 - Robust to outliers
 - No overfitting tendency
 
-#### Performance:
+#### Performance: 
 
-- Accuracy: 85.3%
-- Precision: 84.1%
-- Recall: 86.7%
-- F1-Score: 85.4%
+- Accuracy:  85.3%
+- Precision:  84.1%
+- Recall:  86.7%
+- F1-Score:  85.4%
 
 ### 3. Gradient Boosting
 
-**Best for**: High accuracy with tabular data
+**Best for**:  High accuracy with tabular data
 
 ```python
 from src.models.gradient_boosting_model import GradientBoostingModel
@@ -81,48 +81,48 @@ gb_model = GradientBoostingModel(
 )
 ```
 
-#### Advantages:
+#### Advantages: 
 
 - High prediction accuracy
 - Good generalization
 - Handles missing values
 - Feature interaction capture
 
-#### Performance:
+#### Performance: 
 
-- Accuracy: 91.2%
-- Precision: 90.8%
-- Recall: 91.6%
-- F1-Score: 91.2%
+- Accuracy:  91.2%
+- Precision:  90.8%
+- Recall:  91.6%
+- F1-Score:  91.2%
 
 ## Model Comparison Dashboard
 
 ### Access Comparison View
 
-Navigate to the model comparison dashboard:
+Navigate to the model comparison dashboard: 
 
 ```
-http://localhost:8000/models/comparison
+http: //localhost: 8000/models/comparison
 ```
 
 ### Performance Metrics
 
-The dashboard displays comprehensive metrics for each model:
+The dashboard displays comprehensive metrics for each model: 
 
 #### Classification Metrics
 
-- **Accuracy**: Overall correct predictions
-- **Precision**: True positives / (True positives + False positives)
-- **Recall**: True positives / (True positives + False negatives)
-- **F1-Score**: Harmonic mean of precision and recall
-- **AUC-ROC**: Area under ROC curve
+- **Accuracy**:  Overall correct predictions
+- **Precision**:  True positives / (True positives + False positives)
+- **Recall**:  True positives / (True positives + False negatives)
+- **F1-Score**:  Harmonic mean of precision and recall
+- **AUC-ROC**:  Area under ROC curve
 
 #### Operational Metrics
 
-- **Inference Time**: Average prediction time
-- **Memory Usage**: Model memory footprint
-- **Training Time**: Time to train the model
-- **Model Size**: File size of saved model
+- **Inference Time**:  Average prediction time
+- **Memory Usage**:  Model memory footprint
+- **Training Time**:  Time to train the model
+- **Model Size**:  File size of saved model
 
 ### Model Selection Criteria
 
@@ -133,9 +133,9 @@ The dashboard displays comprehensive metrics for each model:
 # Prioritize inference speed
 
 model_ranking = {
-    'random_forest': {'speed': 9, 'accuracy': 7, 'memory': 8},
-    'gradient_boosting': {'speed': 7, 'accuracy': 9, 'memory': 6},
-    'lstm': {'speed': 5, 'accuracy': 8, 'memory': 4}
+    'random_forest':  {'speed':  9, 'accuracy':  7, 'memory':  8},
+    'gradient_boosting':  {'speed':  7, 'accuracy':  9, 'memory':  6},
+    'lstm':  {'speed':  5, 'accuracy':  8, 'memory':  4}
 }
 ```
 
@@ -146,9 +146,9 @@ model_ranking = {
 # Prioritize prediction accuracy
 
 model_ranking = {
-    'gradient_boosting': {'accuracy': 9, 'stability': 8, 'interpretability': 7},
-    'lstm': {'accuracy': 8, 'stability': 7, 'interpretability': 5},
-    'random_forest': {'accuracy': 7, 'stability': 9, 'interpretability': 9}
+    'gradient_boosting':  {'accuracy':  9, 'stability':  8, 'interpretability':  7},
+    'lstm':  {'accuracy':  8, 'stability':  7, 'interpretability':  5},
+    'random_forest':  {'accuracy':  7, 'stability':  9, 'interpretability':  9}
 }
 ```
 
@@ -183,9 +183,9 @@ from src.evaluation.custom_evaluator import CustomEvaluator
 # Define custom metrics
 
 custom_metrics = {
-    'defect_detection_rate': lambda y_true, y_pred: custom_defect_rate(y_true, y_pred),
-    'false_alarm_rate': lambda y_true, y_pred: custom_false_alarm_rate(y_true, y_pred),
-    'cost_savings': lambda y_true, y_pred: calculate_cost_savings(y_true, y_pred)
+    'defect_detection_rate':  lambda y_true, y_pred:  custom_defect_rate(y_true, y_pred),
+    'false_alarm_rate':  lambda y_true, y_pred:  custom_false_alarm_rate(y_true, y_pred),
+    'cost_savings':  lambda y_true, y_pred:  calculate_cost_savings(y_true, y_pred)
 }
 
 evaluator = CustomEvaluator(custom_metrics)
@@ -196,7 +196,7 @@ results = evaluator.evaluate_all_models(test_data)
 
 ### Ensemble Configuration
 
-Combine multiple models for improved performance:
+Combine multiple models for improved performance: 
 
 ```python
 from src.models.ensemble_model import EnsembleModel
@@ -250,18 +250,18 @@ from sklearn.model_selection import cross_val_score
 # 5-fold cross-validation
 
 models = {
-    'LSTM': lstm_model,
-    'Random Forest': rf_model,
-    'Gradient Boosting': gb_model
+    'LSTM':  lstm_model,
+    'Random Forest':  rf_model,
+    'Gradient Boosting':  gb_model
 }
 
 cv_results = {}
-for name, model in models.items():
+for name, model in models.items(): 
     scores = cross_val_score(model, X, y, cv=5, scoring='f1')
     cv_results[name] = {
-        'mean': scores.mean(),
-        'std': scores.std(),
-        'scores': scores.tolist()
+        'mean':  scores.mean(),
+        'std':  scores.std(),
+        'scores':  scores.tolist()
     }
 ```
 
@@ -345,7 +345,7 @@ selector.launch_wizard()
 # Get recommendation
 
 recommended_model = selector.get_recommendation()
-print(f"Recommended model: {recommended_model}")
+print(f"Recommended model:  {recommended_model}")
 ```
 
 ### Automated Selection
@@ -360,9 +360,9 @@ auto_selector = AutoModelSelector()
 best_model = auto_selector.select_best_model(
     X_train, y_train, X_val, y_val,
     constraints={
-        'max_inference_time': 100,  # milliseconds
-        'max_memory_usage': 512,    # MB
-        'min_accuracy': 0.85
+        'max_inference_time':  100,  # milliseconds
+        'max_memory_usage':  512,    # MB
+        'min_accuracy':  0.85
     }
 )
 ```
@@ -386,8 +386,8 @@ ab_test.setup_test(
 # Monitor test results
 
 results = ab_test.get_results()
-print(f"Model A accuracy: {results['model_a']['accuracy']}")
-print(f"Model B accuracy: {results['model_b']['accuracy']}")
+print(f"Model A accuracy:  {results['model_a']['accuracy']}")
+print(f"Model B accuracy:  {results['model_b']['accuracy']}")
 ```
 
 ### Gradual Rollout
@@ -397,10 +397,10 @@ print(f"Model B accuracy: {results['model_b']['accuracy']}")
 # Gradually increase traffic to new model
 
 rollout_schedule = [
-    {'model': 'new_model', 'percentage': 10, 'duration': '1 day'},
-    {'model': 'new_model', 'percentage': 25, 'duration': '2 days'},
-    {'model': 'new_model', 'percentage': 50, 'duration': '3 days'},
-    {'model': 'new_model', 'percentage': 100, 'duration': 'ongoing'}
+    {'model':  'new_model', 'percentage':  10, 'duration':  '1 day'},
+    {'model':  'new_model', 'percentage':  25, 'duration':  '2 days'},
+    {'model':  'new_model', 'percentage':  50, 'duration':  '3 days'},
+    {'model':  'new_model', 'percentage':  100, 'duration':  'ongoing'}
 ]
 
 ab_test.gradual_rollout(rollout_schedule)
@@ -428,7 +428,7 @@ drift_detected = monitor.detect_drift(
     threshold=0.05  # 5% accuracy drop
 )
 
-if drift_detected:
+if drift_detected: 
     print("Model performance drift detected - consider retraining")
 ```
 
@@ -445,8 +445,8 @@ drift_detector = DataDriftDetector(reference_data=X_train)
 
 drift_score = drift_detector.detect_drift(new_data=X_recent)
 
-if drift_score > 0.1:
-    print(f"Data drift detected (score: {drift_score:.3f})")
+if drift_score > 0.1: 
+    print(f"Data drift detected (score:  {drift_score: .3f})")
     print("Consider updating model with recent data")
 ```
 
