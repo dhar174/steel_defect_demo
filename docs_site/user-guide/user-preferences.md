@@ -496,4 +496,6 @@ if response.status_code == 200:
     print("Preferences updated successfully")
 ```
 
-This comprehensive preference system ensures that each user can tailor the Steel Defect Prediction System to their specific needs and workflow requirements.
+This comprehensive preference system ensures that each user
+can tailor the Steel Defect Prediction System to their
+specific needs and workflow requirements.
