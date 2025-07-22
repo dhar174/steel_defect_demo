@@ -28,7 +28,7 @@ Alert management features include:
     "threshold": 0.80,
     "message": "High defect probability detected in casting line 1"
 }
-```text
+```
 
 **Warning Alert**: Defect probability 60-80%
 
@@ -41,7 +41,7 @@ Alert management features include:
     "threshold": 0.60,
     "message": "Elevated defect risk in casting line 1"
 }
-```text
+```
 
 ### Process Parameter Alerts
 
@@ -57,7 +57,7 @@ Alert management features include:
     "deviation": 55.5,
     "message": "Mold temperature exceeds target by 55°C"
 }
-```text
+```
 
 #### Flow Rate Alert
 
@@ -70,7 +70,7 @@ Alert management features include:
     "min_threshold": 180.0,
     "message": "Cooling water flow below minimum threshold"
 }
-```text
+```
 
 ## Alert Configuration
 
@@ -102,7 +102,7 @@ alert_manager.add_rule({
     'cooldown': 600,  # 10 minutes
     'notifications': ['email', 'dashboard']
 })
-```text
+```
 
 ### Threshold Management
 
@@ -130,7 +130,7 @@ alert_thresholds:
   cooling_water_flow:
     min_warning: 180
     min_critical: 160
-```text
+```
 
 ## Notification Channels
 
@@ -163,7 +163,7 @@ notifier.send_alert({
     'message': 'High defect probability detected. Immediate attention required.',
     'data': sensor_data
 })
-```text
+```
 
 ### SMS Notifications
 
@@ -190,7 +190,7 @@ sms_notifier.send_alert({
     'level': 'critical',
     'message': 'URGENT: Critical defect alert on Line 1. Defect probability: 85%'
 })
-```text
+```
 
 ### Dashboard Notifications
 
@@ -215,7 +215,7 @@ function displayAlert(alert) {
     
     document.getElementById('alerts-container').appendChild(alertElement);
 }
-```text
+```
 
 ## Alert Escalation
 
@@ -251,7 +251,7 @@ from src.alerts.escalation_manager import EscalationManager
 
 escalation_manager = EscalationManager(escalation_config)
 escalation_manager.start_escalation(alert_id='CRIT-001')
-```text
+```
 
 ### Auto-escalation Logic
 
@@ -277,7 +277,7 @@ class AlertEscalator:
         if not self.is_acknowledged(escalation_id):
             self.send_notifications(level['notifications'])
             logging.info(f"Escalated alert {escalation_id} to {level['name']}")
-```text
+```
 
 ## Alert Dashboard
 
@@ -296,7 +296,7 @@ print(f"Active alerts: {status['active_count']}")
 print(f"Critical alerts: {status['critical_count']}")
 print(f"Acknowledged alerts: {status['acknowledged_count']}")
 print(f"Average response time: {status['avg_response_time']} minutes")
-```text
+```
 
 ### Alert History
 
@@ -317,7 +317,7 @@ stats = dashboard.generate_alert_statistics(alert_history)
 print(f"Total alerts: {stats['total_alerts']}")
 print(f"Most common alert type: {stats['most_common_type']}")
 print(f"Average response time: {stats['avg_response_time']}")
-```text
+```
 
 ## Alert Acknowledgment
 
@@ -337,7 +337,7 @@ response = requests.post(
         'acknowledgment_note': 'Investigated and taking corrective action'
     }
 )
-```text
+```
 
 ### Auto-acknowledgment Rules
 
@@ -362,7 +362,7 @@ from src.alerts.auto_acknowledger import AutoAcknowledger
 
 auto_ack = AutoAcknowledger(auto_ack_rules)
 auto_ack.check_for_resolution(current_sensor_data)
-```text
+```
 
 ## Alert Analytics
 
@@ -387,7 +387,7 @@ plt.xlabel('Hour of Day')
 plt.ylabel('Alert Count')
 plt.title('Alert Frequency by Hour')
 plt.show()
-```text
+```
 
 ### Response Time Analysis
 
@@ -408,7 +408,7 @@ response_by_level = alert_df.groupby('level')['response_time'].agg([
 
 print("Response Time Statistics (minutes):")
 print(response_by_level)
-```text
+```
 
 ## Integration Examples
 
@@ -433,7 +433,7 @@ scada_alerts.send_alarm({
     'severity': 'HIGH',
     'area': 'Casting_Line_1'
 })
-```text
+```
 
 ### Third-party Systems
 
@@ -460,7 +460,7 @@ def send_webhook_alert(alert_data):
         headers=webhook_config['headers']
     )
     return response.status_code == 200
-```text
+```
 
 ## Troubleshooting
 
@@ -489,6 +489,6 @@ test_results = tester.test_all_rules(test_data)
 
 for rule, result in test_results.items():
     print(f"{rule}: {'PASS' if result['success'] else 'FAIL'}")
-```text
+```
 
 This alert management system ensures prompt response to critical conditions and maintains operational safety in your steel casting operations.
