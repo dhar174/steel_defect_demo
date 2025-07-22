@@ -20,7 +20,7 @@ lstm_model = LSTMModel(
     num_layers=2,
     output_size=1
 )
-```text
+```
 
 #### Advantages:
 
@@ -49,7 +49,7 @@ rf_model = RandomForestModel(
     max_depth=10,
     random_state=42
 )
-```text
+```
 
 #### Advantages:
 
@@ -79,7 +79,7 @@ gb_model = GradientBoostingModel(
     learning_rate=0.1,
     max_depth=6
 )
-```text
+```
 
 #### Advantages:
 
@@ -101,9 +101,9 @@ gb_model = GradientBoostingModel(
 
 Navigate to the model comparison dashboard:
 
-```text
+```
 http://localhost:8000/models/comparison
-```text
+```
 
 ### Performance Metrics
 
@@ -137,7 +137,7 @@ model_ranking = {
     'gradient_boosting': {'speed': 7, 'accuracy': 9, 'memory': 6},
     'lstm': {'speed': 5, 'accuracy': 8, 'memory': 4}
 }
-```text
+```
 
 #### For High Accuracy Requirements
 
@@ -150,7 +150,7 @@ model_ranking = {
     'lstm': {'accuracy': 8, 'stability': 7, 'interpretability': 5},
     'random_forest': {'accuracy': 7, 'stability': 9, 'interpretability': 9}
 }
-```text
+```
 
 ## Running Model Comparisons
 
@@ -173,7 +173,7 @@ results = comparator.compare_models()
 # Display results
 
 comparator.generate_report(output_path='reports/model_comparison.html')
-```text
+```
 
 ### Custom Evaluation
 
@@ -190,7 +190,7 @@ custom_metrics = {
 
 evaluator = CustomEvaluator(custom_metrics)
 results = evaluator.evaluate_all_models(test_data)
-```text
+```
 
 ## Model Ensemble
 
@@ -212,7 +212,7 @@ ensemble = EnsembleModel(
 # Make predictions
 
 prediction = ensemble.predict(sensor_data)
-```text
+```
 
 ### Voting Ensemble
 
@@ -225,7 +225,7 @@ voting_ensemble = EnsembleModel(
     method='majority_voting',
     threshold=0.5
 )
-```text
+```
 
 ### Stacking Ensemble
 
@@ -238,7 +238,7 @@ stacking_ensemble = EnsembleModel(
     meta_model=LogisticRegression(),
     method='stacking'
 )
-```text
+```
 
 ## Performance Analysis
 
@@ -263,7 +263,7 @@ for name, model in models.items():
         'std': scores.std(),
         'scores': scores.tolist()
     }
-```text
+```
 
 ### Learning Curves
 
@@ -286,7 +286,7 @@ plt.xlabel('Training Set Size')
 plt.ylabel('F1 Score')
 plt.legend()
 plt.show()
-```text
+```
 
 ### Feature Importance Comparison
 
@@ -318,7 +318,7 @@ plt.figure(figsize=(12, 8))
 sns.heatmap(importance_df, annot=True, cmap='viridis')
 plt.title('Feature Importance Comparison')
 plt.show()
-```text
+```
 
 ## Model Selection Wizard
 
@@ -346,7 +346,7 @@ selector.launch_wizard()
 
 recommended_model = selector.get_recommendation()
 print(f"Recommended model: {recommended_model}")
-```text
+```
 
 ### Automated Selection
 
@@ -365,7 +365,7 @@ best_model = auto_selector.select_best_model(
         'min_accuracy': 0.85
     }
 )
-```text
+```
 
 ## Production Deployment
 
@@ -388,7 +388,7 @@ ab_test.setup_test(
 results = ab_test.get_results()
 print(f"Model A accuracy: {results['model_a']['accuracy']}")
 print(f"Model B accuracy: {results['model_b']['accuracy']}")
-```text
+```
 
 ### Gradual Rollout
 
@@ -404,7 +404,7 @@ rollout_schedule = [
 ]
 
 ab_test.gradual_rollout(rollout_schedule)
-```text
+```
 
 ## Model Monitoring
 
@@ -430,7 +430,7 @@ drift_detected = monitor.detect_drift(
 
 if drift_detected:
     print("Model performance drift detected - consider retraining")
-```text
+```
 
 ### Data Drift Detection
 
@@ -448,6 +448,6 @@ drift_score = drift_detector.detect_drift(new_data=X_recent)
 if drift_score > 0.1:
     print(f"Data drift detected (score: {drift_score:.3f})")
     print("Consider updating model with recent data")
-```text
+```
 
 This comprehensive model comparison framework helps you select and maintain the optimal model for your steel defect prediction needs.
