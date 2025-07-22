@@ -101,7 +101,7 @@ gb_model = GradientBoostingModel(
 
 Navigate to the model comparison dashboard: 
 
-```
+```http
 http: //localhost: 8000/models/comparison
 ```
 
