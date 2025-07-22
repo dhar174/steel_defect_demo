@@ -491,5 +491,5 @@ for rule, result in test_results.items():
     print(f"{rule}: {'PASS' if result['success'] else 'FAIL'}")
 ```
 
-This alert management system ensures prompt response to critical conditions and maintains 
+This alert management system ensures prompt response to critical conditions and maintains
 operational safetyin your steel casting operations.
