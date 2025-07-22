@@ -253,22 +253,22 @@ For optimal performance:
 
 !!! warning "Dashboard Not Loading"
 
-    - Check that the dashboard service is running
-    - Verify port 8050 is not blocked by firewall
-    - Clear browser cache and cookies
+  - Check that the dashboard service is running
+  - Verify port 8050 is not blocked by firewall
+  - Clear browser cache and cookies
 
 !!! warning "Slow Performance"
 
-    - Reduce auto-refresh frequency
-    - Clear browser cache
-    - Check network connectivity
-    - Restart dashboard service
+  - Reduce auto-refresh frequency
+  - Clear browser cache
+  - Check network connectivity
+  - Restart dashboard service
 
 !!! warning "Data Not Updating"
 
-    - Check data source connections
-    - Verify auto-refresh is enabled
-    - Check for JavaScript errors in browser console
+  - Check data source connections
+  - Verify auto-refresh is enabled
+  - Check for JavaScript errors in browser console
 
 ### Browser Console
 
