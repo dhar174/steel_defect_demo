@@ -478,4 +478,6 @@ template = {
 custom_report = reporter.generate_from_template(template, historical_data)
 ```
 
-This historical analysis framework provides deep insights into your steel casting operations, enabling data-driven improvements and proactive quality management.
+This historical analysis framework provides
+deep insights into your steel casting operations,
+enabling data-driven improvements and proactive quality management.
