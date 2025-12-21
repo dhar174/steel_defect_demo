@@ -32,7 +32,7 @@ All scripts now use robust package imports instead of fragile path manipulations
 ## 1. Introduction and Context
 Continuous (strand) casting solidifies molten steel into semi-finished slabs or billets for downstream rolling. Maintaining high cast quality is challenging because *hundreds* of interacting thermal, mechanical, material, environmental, and equipment condition variables influence defect formation.
 
-KISS Technologies (Holland, MI) focuses on data-driven continuous casting solutions to “take the guesswork out of casting.” This specification defines a proof‑of‑concept (PoC) **Predictive Quality Monitoring System** that performs near real‑time machine learning (ML) inference on streaming caster sensor data to predict quality outcomes (e.g., *defect vs. good* or a continuous quality score) and surface early warnings for operators. The initial PoC uses **synthetic data** while providing a clear migration path to production integration with real plant data infrastructure.
+This system focuses on data-driven continuous casting solutions to “take the guesswork out of casting.” This specification defines a proof‑of‑concept (PoC) **Predictive Quality Monitoring System** that performs near real‑time machine learning (ML) inference on streaming caster sensor data to predict quality outcomes (e.g., *defect vs. good* or a continuous quality score) and surface early warnings for operators. The initial PoC uses **synthetic data** while providing a clear migration path to production integration with real plant data infrastructure.
 
 ## 2. Scope and Objectives
 The system will ingest streaming / batch sensor and contextual data, execute ML models (baseline + sequence model), and expose predictions plus supporting telemetry.
